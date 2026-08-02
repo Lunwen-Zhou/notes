@@ -74,4 +74,7 @@ plugins:
         - zh
         - en
 
+hooks:
+  - hooks/typora_math.py
+
 copyright: Copyright &copy; 2026 伦文
