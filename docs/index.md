@@ -10,10 +10,10 @@ hide:
 
 <div class="note-grid">
 
-<a class="note-card" href="recommendation/dcin/">
-  <span class="note-card__category">推荐算法 · 论文</span>
-  <h2>DCIN</h2>
-  <p>决策上下文建模、CIU、AIAU 与历史页面兴趣聚合。</p>
+<a class="note-card" href="recommendation/推荐算法项目知识/">
+  <span class="note-card__category">推荐算法 · 项目</span>
+  <h2>推荐算法项目知识</h2>
+  <p>推荐系统流程、离线评估指标与项目实践知识。</p>
   <span class="note-card__link">查看笔记 →</span>
 </a>
 
@@ -53,15 +53,3 @@ hide:
 </a>
 
 </div>
-
-## 数学公式测试
-
-行内公式：设当前商品表示为 $\mathbf{x}_t\in\mathbb{R}^{D}$。
-
-独立公式：
-
-$$
-\operatorname{Attention}(Q,K,V)
-=
-\operatorname{Softmax}\left(\frac{QK^\top}{\sqrt d}\right)V.
-$$

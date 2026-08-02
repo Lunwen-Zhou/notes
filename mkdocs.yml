@@ -8,7 +8,7 @@ repo_name: Markdown Notes
 nav:
   - 首页: index.md
   - 推荐算法:
-      - DCIN 论文笔记: recommendation/dcin.md
+      - 推荐算法项目知识: recommendation/推荐算法项目知识.md
       - DLF 论文笔记: recommendation/dlf.md
       - MMoE 基础: recommendation/mmoe.md
   - 数学与优化:
