@@ -1,0 +1,77 @@
+site_name: 伦文的学习笔记
+site_description: 推荐算法、优化理论与工程实践的个人 Markdown 笔记
+# 部署后可改成：https://你的GitHub用户名.github.io/仓库名/
+# site_url: https://your-name.github.io/your-repository/
+
+repo_name: Markdown Notes
+
+nav:
+  - 首页: index.md
+  - 推荐算法:
+      - DCIN 论文笔记: recommendation/dcin.md
+      - DLF 论文笔记: recommendation/dlf.md
+      - MMoE 基础: recommendation/mmoe.md
+  - 数学与优化:
+      - 优化理论笔记: mathematics/optimization.md
+  - TensorFlow:
+      - TF1.x 代码笔记: tensorflow/tf1.md
+  - 工具:
+      - Git 常用操作: tools/git.md
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - content.code.copy
+    - search.highlight
+    - search.suggest
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 切换至深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 切换至浅色模式
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - def_list
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.details
+  - admonition
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+
+copyright: Copyright &copy; 2026 伦文

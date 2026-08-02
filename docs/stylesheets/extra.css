@@ -1,0 +1,92 @@
+/* 首页笔记卡片 */
+.note-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1.1rem;
+  margin: 1.6rem 0 2.2rem;
+}
+
+.note-card {
+  aspect-ratio: 1 / 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 1.25rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.75rem;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  text-decoration: none;
+  box-shadow: 0 0.15rem 0.45rem rgba(0, 0, 0, 0.06);
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+  overflow: hidden;
+}
+
+.note-card:hover,
+.note-card:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 0.55rem 1.15rem rgba(0, 0, 0, 0.13);
+  text-decoration: none;
+}
+
+.note-card__category {
+  color: var(--md-accent-fg-color);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.note-card h2 {
+  margin: 0.55rem 0 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.note-card p {
+  margin: 0;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.note-card__link {
+  margin-top: auto;
+  padding-top: 0.8rem;
+  color: var(--md-accent-fg-color);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+/* 公式过宽时允许横向滚动 */
+.arithmatex {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+@media (max-width: 600px) {
+  .note-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .note-card {
+    padding: 0.9rem;
+  }
+
+  .note-card h2 {
+    font-size: 1rem;
+  }
+
+  .note-card p {
+    font-size: 0.7rem;
+    line-height: 1.45;
+  }
+}
+
+@media (max-width: 390px) {
+  .note-grid {
+    grid-template-columns: 1fr;
+  }
+}
