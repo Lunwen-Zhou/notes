@@ -59,10 +59,38 @@
   font-weight: 700;
 }
 
+/* 中间正文区域字号略微放大，两侧目录保持主题默认大小 */
+.md-content .md-typeset {
+  font-size: 0.85rem;
+}
+
 /* 公式过宽时允许横向滚动 */
 .arithmatex {
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+/* 桌面端两侧目录适度收窄，不影响移动端抽屉 */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary {
+    width: 9rem;
+  }
+
+  .md-sidebar--primary .md-nav {
+    font-size: 0.75rem;
+  }
+
+  .md-sidebar--primary .md-sidebar__inner {
+    padding-right: 0;
+  }
+
+  .md-sidebar--secondary {
+    width: 10rem;
+  }
+
+  .md-sidebar--secondary .md-sidebar__inner {
+    padding-left: 0;
+  }
 }
 
 @media (max-width: 600px) {
