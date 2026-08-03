@@ -22,11 +22,21 @@
 }
 
 .md-tabs__link {
+  padding: 0.3rem 0.55rem;
+  border-radius: 0.25rem;
   color: rgba(255, 255, 255, 0.68);
+  font-size: 0.8rem;
+  font-weight: 700;
   opacity: 1;
+  transition: color 160ms ease, background-color 160ms ease;
 }
 
 .md-tabs__link:hover,
+.md-tabs__link:focus-visible {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.32);
+}
+
 .md-tabs__item--active .md-tabs__link {
   color: #fff;
 }
@@ -92,7 +102,7 @@
 .md-typeset .note-card h2 {
   margin: 0.55rem 0 0.5rem;
   color: var(--md-typeset-a-color);
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.25;
 }
