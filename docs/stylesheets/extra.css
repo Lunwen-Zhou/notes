@@ -93,6 +93,12 @@
 /* 普通 Markdown 表格使用与正文一致的字号 */
 .md-typeset table:not([class]) {
   font-size: 1em;
+  border-collapse: collapse;
+}
+
+/* 显示表格内部的横线和竖线 */
+.md-typeset table:not([class]) :is(th, td) {
+  border: 0.05rem solid var(--md-default-fg-color--lightest);
 }
 
 /* 引用块保留竖线，并使用比代码块更浅的灰色底纹和阴影 */

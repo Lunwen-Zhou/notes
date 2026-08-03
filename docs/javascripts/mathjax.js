@@ -1,9 +1,9 @@
 window.MathJax = {
   loader: {
-    load: ["[tex]/boldsymbol"]
+    load: ["[tex]/boldsymbol", "[tex]/textmacros"]
   },
   tex: {
-    packages: { "[+]": ["boldsymbol"] },
+    packages: { "[+]": ["boldsymbol", "textmacros"] },
     inlineMath: [["\\(", "\\)"], ["$", "$"]],
     displayMath: [["\\[", "\\]"], ["$$", "$$"]],
     processEscapes: true,
