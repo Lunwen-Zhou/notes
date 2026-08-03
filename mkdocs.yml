@@ -20,7 +20,9 @@ nav:
 
 theme:
   name: material
+  custom_dir: overrides
   language: zh
+  font: false
   features:
     - navigation.tabs
     - navigation.sections
@@ -62,6 +64,7 @@ markdown_extensions:
   - admonition
 
 extra_css:
+  - "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap"
   - stylesheets/extra.css
 
 extra_javascript:
