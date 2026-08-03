@@ -82,6 +82,14 @@
   color: var(--md-typeset-a-color);
 }
 
+/* 构建时从 Markdown 源文件读取并显示最后修改时间 */
+.md-typeset h1 + .document-modified-time {
+  margin: -0.6rem 0 1.5rem;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
 /* 普通 Markdown 表格使用与正文一致的字号 */
 .md-typeset table:not([class]) {
   font-size: 1em;

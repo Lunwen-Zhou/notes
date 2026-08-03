@@ -8,6 +8,9 @@ unchanged.
 
 from __future__ import annotations
 
+from datetime import datetime
+from html import escape
+from pathlib import Path
 import re
 
 
@@ -15,6 +18,7 @@ _MATH_DELIMITER = re.compile(r"^(?P<prefix>\s*(?:>\s*)*)\$\$\s*$")
 _FENCE = re.compile(r"^(?P<marker>`{3,}|~{3,})")
 _CONTAINER_PREFIX = re.compile(r"^\s*(?:>\s*)*")
 _BLANK_OR_QUOTE_SEPARATOR = re.compile(r"^\s*(?:>\s*)*$")
+_LEVEL_ONE_HEADING = re.compile(r"^#(?:[ \t]+|$)")
 
 
 def _content_without_container_prefix(line: str) -> str:
@@ -98,7 +102,46 @@ def normalize_typora_math(markdown: str) -> str:
     return result
 
 
-def on_page_markdown(markdown: str, **kwargs) -> str:
+def add_modified_time(markdown: str, source_path: str) -> str:
+    """Render the source file's modification time below its first H1."""
+
+    modified_at = datetime.fromtimestamp(Path(source_path).stat().st_mtime)
+    display_time = modified_at.strftime("%Y年%m月%d日 %H:%M")
+    timestamp = modified_at.astimezone().isoformat(timespec="minutes")
+    modified_markup = (
+        '<p class="document-modified-time">'
+        '更新时间：<time datetime="'
+        f'{escape(timestamp, quote=True)}">{escape(display_time)}</time></p>'
+    )
+
+    lines = markdown.splitlines()
+    fence_character: str | None = None
+    fence_length = 0
+
+    for index, line in enumerate(lines):
+        fence_match = _FENCE.match(line)
+        if fence_match:
+            marker = fence_match.group("marker")
+            if fence_character is None:
+                fence_character = marker[0]
+                fence_length = len(marker)
+            elif marker[0] == fence_character and len(marker) >= fence_length:
+                fence_character = None
+                fence_length = 0
+            continue
+
+        if fence_character is None and _LEVEL_ONE_HEADING.match(line):
+            lines[index + 1:index + 1] = ["", modified_markup]
+            result = "\n".join(lines)
+            if markdown.endswith("\n"):
+                result += "\n"
+            return result
+
+    return markdown
+
+
+def on_page_markdown(markdown: str, page, **kwargs) -> str:
     """MkDocs hook entry point."""
 
+    markdown = add_modified_time(markdown, page.file.abs_src_path)
     return normalize_typora_math(markdown)
