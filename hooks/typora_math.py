@@ -51,6 +51,7 @@ def normalize_typora_math(markdown: str) -> str:
     normalized: list[str] = []
     in_math = False
     math_dedent = 0
+    math_quote_prefix: str | None = None
     fence_character: str | None = None
     fence_length = 0
 
@@ -72,17 +73,33 @@ def normalize_typora_math(markdown: str) -> str:
 
         delimiter_match = None if fence_character else _MATH_DELIMITER.fullmatch(line)
         if delimiter_match is None:
-            normalized.append(_dedent_math_line(line, math_dedent) if in_math else line)
+            if in_math and math_quote_prefix is not None:
+                content = _content_without_container_prefix(line)
+                # A blank quoted line splits a display-math paragraph in
+                # Python Markdown. Typora ignores it, so omit it here too.
+                if content.strip():
+                    normalized.append(f"{math_quote_prefix}{content}")
+            else:
+                normalized.append(_dedent_math_line(line, math_dedent) if in_math else line)
             continue
 
         prefix = delimiter_match.group("prefix")
+        if not in_math and ">" in prefix:
+            # Typora permits display math indented beneath a list inside a
+            # blockquote (for example ``>   $$``). Flatten only the math block
+            # back to its quote level so pymdownx.arithmatex can recognize it.
+            math_quote_prefix = "> " * prefix.count(">")
         if not in_math and ">" not in prefix and 0 < len(prefix) < 4:
             # Typora indents list continuations by two spaces. Python Markdown
             # requires four, so render the equation as a top-level block.
             math_dedent = len(prefix)
 
-        rendered_line = _dedent_math_line(line, math_dedent)
-        rendered_prefix = _dedent_math_line(prefix, math_dedent)
+        if math_quote_prefix is not None:
+            rendered_line = f"{math_quote_prefix}$$"
+            rendered_prefix = math_quote_prefix
+        else:
+            rendered_line = _dedent_math_line(line, math_dedent)
+            rendered_prefix = _dedent_math_line(prefix, math_dedent)
         separator = _separator_for(rendered_prefix)
 
         if not in_math and normalized and not _is_separator(normalized[-1]):
@@ -95,6 +112,7 @@ def normalize_typora_math(markdown: str) -> str:
             normalized.append(separator)
         if not in_math:
             math_dedent = 0
+            math_quote_prefix = None
 
     result = "\n".join(normalized)
     if markdown.endswith("\n"):
@@ -143,5 +161,7 @@ def add_modified_time(markdown: str, source_path: str) -> str:
 def on_page_markdown(markdown: str, page, **kwargs) -> str:
     """MkDocs hook entry point."""
 
-    markdown = add_modified_time(markdown, page.file.abs_src_path)
+    source_path = Path(page.file.abs_src_path)
+    if source_path.name.lower() != "index.md":
+        markdown = add_modified_time(markdown, str(source_path))
     return normalize_typora_math(markdown)

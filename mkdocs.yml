@@ -1,5 +1,5 @@
 site_name: 伦文的学习笔记
-site_description: 推荐算法、优化理论与工程实践的个人 Markdown 笔记
+site_description: 推荐算法、Python、数学分析与高等代数学习笔记
 # 部署后可改成：https://你的GitHub用户名.github.io/仓库名/
 # site_url: https://your-name.github.io/your-repository/
 
@@ -8,15 +8,28 @@ repo_name: Markdown Notes
 nav:
   - 首页: index.md
   - 推荐算法:
+      - 推荐算法: recommendation/index.md
+      - 推荐算法基础: recommendation/推荐算法基础.md
+      - 机器学习: recommendation/机器学习.md
       - 推荐算法项目知识: recommendation/推荐算法项目知识.md
-      - DLF 论文笔记: recommendation/dlf.md
-      - MMoE 基础: recommendation/mmoe.md
-  - 数学与优化:
-      - 优化理论笔记: mathematics/optimization.md
-  - TensorFlow:
-      - TF1.x 代码笔记: tensorflow/tf1.md
-  - 工具:
-      - Git 常用操作: tools/git.md
+  - Python:
+      - Python: python/index.md
+      - Leetcode 解法笔记: python/Leetcode 解法笔记.md
+  - 数学分析:
+      - 数学分析: math-analysis/index.md
+      - 一元微积分: math-analysis/一元微积分.md
+      - 多元微积分: math-analysis/多元微积分.md
+      - 分析学习题: math-analysis/习题 - 分析学.md
+  - 高等代数:
+      - 高等代数: higher-algebra/index.md
+      - 高等代数: higher-algebra/0 高等代数.md
+      - 迹: higher-algebra/1 迹.md
+      - 矩阵分解: higher-algebra/2 矩阵分解.md
+      - 矩阵求导: higher-algebra/3 矩阵求导.md
+      - 矩阵基础: higher-algebra/4 矩阵基础.md
+      - 正定矩阵: higher-algebra/5 正定矩阵.md
+      - 二次型: higher-algebra/6 二次型.md
+      - 高等代数习题: higher-algebra/习题 - 高等代数.md
 
 theme:
   name: material
@@ -64,7 +77,6 @@ markdown_extensions:
   - admonition
 
 extra_css:
-  - "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=Roboto+Mono:wght@400;700&display=swap"
   - stylesheets/extra.css
 
 extra_javascript:

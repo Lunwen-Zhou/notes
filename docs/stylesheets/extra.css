@@ -1,13 +1,45 @@
 /* Apple 平台使用系统字体，其他平台回退到相近的跨平台字体 */
 :root {
   --md-text-font: -apple-system, BlinkMacSystemFont, "SF Pro Text",
-    "SF Pro Display", "PingFang SC", "Inter", "Noto Sans SC", "Segoe UI",
-    Arial, sans-serif;
-  --md-code-font: "SFMono-Regular", "SF Mono", "Roboto Mono",
-    "Cascadia Code", Consolas, monospace;
+    "SF Pro Display", "PingFang SC", "Helvetica Neue", "Segoe UI", Arial,
+    sans-serif;
+  --md-code-font: "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas,
+    monospace;
 }
 
-/* 首页笔记卡片 */
+/* 恢复最初的蓝色顶栏与简洁导航 */
+.md-header,
+.md-tabs {
+  background-color: #4054bd;
+}
+
+.md-header {
+  box-shadow: none;
+}
+
+.md-search__form {
+  background-color: rgba(32, 43, 123, 0.58);
+}
+
+.md-tabs__link {
+  color: rgba(255, 255, 255, 0.68);
+  opacity: 1;
+}
+
+.md-tabs__link:hover,
+.md-tabs__item--active .md-tabs__link {
+  color: #fff;
+}
+
+.md-footer {
+  background-color: #4054bd;
+}
+
+.md-footer-meta {
+  background-color: #3548a7;
+}
+
+/* 首页与模块页的方形卡片 */
 .note-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -15,29 +47,39 @@
   margin: 1.6rem 0 2.2rem;
 }
 
+.module-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .note-card {
-  aspect-ratio: 1 / 1;
-  min-width: 0;
   display: flex;
-  flex-direction: column;
+  min-width: 0;
+  aspect-ratio: 1 / 1;
   box-sizing: border-box;
+  flex-direction: column;
+  overflow: hidden;
   padding: 1.25rem;
   border: 1px solid var(--md-default-fg-color--lightest);
   border-radius: 0.75rem;
   background: var(--md-default-bg-color);
   color: var(--md-default-fg-color);
-  text-decoration: none;
   box-shadow: 0 0.15rem 0.45rem rgba(0, 0, 0, 0.06);
-  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
-  overflow: hidden;
+  text-decoration: none;
+  transition: transform 160ms ease, box-shadow 160ms ease,
+    border-color 160ms ease;
 }
 
 .note-card:hover,
 .note-card:focus-visible {
-  transform: translateY(-4px);
   border-color: var(--md-accent-fg-color);
   box-shadow: 0 0.55rem 1.15rem rgba(0, 0, 0, 0.13);
   text-decoration: none;
+  transform: translateY(-4px);
+}
+
+.note-card:focus-visible {
+  outline: 0.1rem solid var(--md-accent-fg-color);
+  outline-offset: 0.12rem;
 }
 
 .note-card__category {
@@ -47,13 +89,19 @@
   letter-spacing: 0.04em;
 }
 
-.note-card h2 {
+.md-typeset .note-card h2 {
   margin: 0.55rem 0 0.5rem;
+  color: var(--md-typeset-a-color);
   font-size: 1.25rem;
+  font-weight: 700;
   line-height: 1.25;
 }
 
-.note-card p {
+.md-typeset .module-card h2 {
+  font-size: 1.45rem;
+}
+
+.md-typeset .note-card p {
   margin: 0;
   color: var(--md-default-fg-color--light);
   font-size: 0.82rem;
@@ -68,12 +116,24 @@
   font-weight: 700;
 }
 
-/* 中间正文区域字号略微放大，两侧目录保持主题默认大小 */
+/* 首页与模块标题保持原始的蓝色与宽松留白 */
+.md-content:has(.note-grid) .md-typeset > h1 {
+  margin-top: 2.2rem;
+  color: var(--md-typeset-a-color);
+  font-size: 2.35rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.md-content:has(.note-grid) .md-typeset > h1 + .note-grid {
+  margin-top: 1.25rem;
+}
+
+/* 笔记正文恢复为无外框的传统阅读布局 */
 .md-content .md-typeset {
   font-size: 0.85rem;
 }
 
-/* 正文所有标题加粗，一级至四级标题使用主题蓝色 */
 .md-content .md-typeset :is(h1, h2, h3, h4, h5, h6) {
   font-weight: 700;
 }
@@ -82,7 +142,11 @@
   color: var(--md-typeset-a-color);
 }
 
-/* 构建时从 Markdown 源文件读取并显示最后修改时间 */
+.md-content:not(:has(.note-grid)) .md-typeset h1 {
+  font-size: 2.2rem;
+}
+
+/* 每篇笔记的更新时间保持朴素文本样式 */
 .md-typeset h1 + .document-modified-time {
   margin: -0.6rem 0 1.5rem;
   color: var(--md-default-fg-color--light);
@@ -90,18 +154,17 @@
   line-height: 1.5;
 }
 
-/* 普通 Markdown 表格使用与正文一致的字号 */
+/* 普通 Markdown 表格 */
 .md-typeset table:not([class]) {
-  font-size: 1em;
   border-collapse: collapse;
+  font-size: 1em;
 }
 
-/* 显示表格内部的横线和竖线 */
 .md-typeset table:not([class]) :is(th, td) {
   border: 0.05rem solid var(--md-default-fg-color--lightest);
 }
 
-/* 引用块保留竖线，并使用比代码块更浅的灰色底纹和阴影 */
+/* 引用块使用轻微灰色底纹 */
 .md-typeset blockquote {
   padding: 0.35rem 0.8rem;
   background-color: rgba(127, 127, 127, 0.035);
@@ -121,13 +184,12 @@
   margin-bottom: 0;
 }
 
-/* 公式过宽时允许横向滚动 */
 .arithmatex {
   overflow-x: auto;
   overflow-y: hidden;
 }
 
-/* 桌面端：左侧显示本页目录，右侧显示其他笔记，并充分利用宽屏空间 */
+/* 桌面端：左侧本页目录，右侧同模块笔记 */
 @media screen and (min-width: 76.25em) {
   .md-main__inner.md-grid {
     max-width: calc(100% - 2rem);
@@ -138,16 +200,36 @@
     width: 9rem;
   }
 
-  .md-sidebar--primary .md-nav {
+  .md-sidebar--secondary {
+    width: 10rem;
+  }
+
+  .md-sidebar .md-sidebar__inner {
+    padding: 0.7rem;
+  }
+
+  .md-sidebar .md-nav {
     font-size: 0.75rem;
   }
 
-  .md-sidebar--primary .md-sidebar__inner {
-    padding-right: 0;
+  .md-sidebar .md-nav__link {
+    margin-top: 0.1rem;
+    padding: 0.28rem 0.52rem;
+    border-radius: 0.7rem;
+    transition: color 150ms ease, background-color 150ms ease;
   }
 
-  .md-sidebar--secondary {
-    width: 10rem;
+  .md-sidebar .md-nav__link:hover {
+    color: var(--md-accent-fg-color);
+    background: color-mix(
+      in srgb,
+      var(--md-accent-fg-color) 9%,
+      transparent
+    );
+  }
+
+  .md-sidebar--primary .md-sidebar__inner {
+    padding-right: 0.7rem;
   }
 
   .md-sidebar--secondary > .md-nav__title {
@@ -158,16 +240,22 @@
     color: var(--md-default-fg-color);
   }
 
+  .md-sidebar--secondary .md-nav__link--active {
+    color: var(--md-accent-fg-color);
+  }
+
   .md-sidebar--secondary > .md-nav__list > .md-nav__item > .md-nav__link {
     font-weight: 700;
   }
+}
 
-  .md-sidebar--secondary .md-sidebar__inner {
-    padding-left: 0;
+@media screen and (max-width: 900px) {
+  .module-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .note-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.75rem;
@@ -177,18 +265,33 @@
     padding: 0.9rem;
   }
 
-  .note-card h2 {
+  .md-typeset .note-card h2,
+  .md-typeset .module-card h2 {
     font-size: 1rem;
   }
 
-  .note-card p {
+  .md-typeset .note-card p {
     font-size: 0.7rem;
     line-height: 1.45;
   }
+
+  .md-content:has(.note-grid) .md-typeset > h1 {
+    margin-top: 1.4rem;
+    font-size: 1.9rem;
+  }
 }
 
-@media (max-width: 390px) {
-  .note-grid {
+@media screen and (max-width: 390px) {
+  .note-grid,
+  .module-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
   }
 }
