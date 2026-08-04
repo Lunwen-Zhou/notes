@@ -2004,15 +2004,15 @@ J^\top J
 </li>
 <li>
 <p>解线性最小二乘子问题，或者解正规方程  </p>
-<p>$$
-  J^\top J s_k=-J^\top r
-  $$</p>
+<div class="arithmatex">\[
+J^\top J s_k=-J^\top r
+\]</div>
 </li>
 <li>
 <p>更新 </p>
-<p>$$
-  x_{k+1}=x_k+\alpha_k s_k
-  $$</p>
+<div class="arithmatex">\[
+x_{k+1}=x_k+\alpha_k s_k
+\]</div>
 </li>
 <li>
 <p>重复直到收敛</p>
@@ -2032,51 +2032,51 @@ J^\top J
 <ol>
 <li>
 <p>第 <span class="arithmatex">\(k\)</span> 轮读取新来的 <span class="arithmatex">\(h\)</span> 个样本：</p>
-<p>$$
-  A_h^{(k+1)}
-  =
-  \begin{bmatrix}
-  a^{(kh+1)} &amp; a^{(kh+2)} &amp; \cdots &amp; a^{(kh+h)}
-  \end{bmatrix}
-  $$</p>
+<div class="arithmatex">\[
+A_h^{(k+1)}
+=
+\begin{bmatrix}
+a^{(kh+1)} &amp; a^{(kh+2)} &amp; \cdots &amp; a^{(kh+h)}
+\end{bmatrix}
+\]</div>
 <p>对应的小批量协方差矩阵是：</p>
-<p>$$
-  \Sigma_h^{(k)}
-  =
-  \frac1h A_h^{(k+1)}(A_h^{(k+1)})^\top
-  $$</p>
+<div class="arithmatex">\[
+\Sigma_h^{(k)}
+=
+\frac1h A_h^{(k+1)}(A_h^{(k+1)})^\top
+\]</div>
 </li>
 <li>
 <p>计算 SGN 方向</p>
 <p>残差</p>
-<p>$$
-  R^{(k)}(X)=XX^\top-\Sigma_h^{(k)}
-  $$</p>
-<p>$$
-  S^{(k)}(X)
-  =
-  \Sigma_h^{(k)}X(X^\top X)^{-1}
-  -
-  \frac12X
-  -
-  \frac12X(X^\top X)^{-1}X^\top\Sigma_h^{(k)}X(X^\top X)^{-1}
-  $$</p>
+<div class="arithmatex">\[
+R^{(k)}(X)=XX^\top-\Sigma_h^{(k)}
+\]</div>
+<div class="arithmatex">\[
+S^{(k)}(X)
+=
+\Sigma_h^{(k)}X(X^\top X)^{-1}
+-
+\frac12X
+-
+\frac12X(X^\top X)^{-1}X^\top\Sigma_h^{(k)}X(X^\top X)^{-1}
+\]</div>
 </li>
 <li>
 <p>更新 <span class="arithmatex">\(X\)</span></p>
-<p>$$
-  X^{(k+1)}
-  =
-  X^{(k)}
-  +
-  \alpha^{(k)}S^{(k)}(X^{(k)})
-  $$</p>
+<div class="arithmatex">\[
+X^{(k+1)}
+=
+X^{(k)}
++
+\alpha^{(k)}S^{(k)}(X^{(k)})
+\]</div>
 </li>
 <li>
 <p>迭代至算法停止后，输出主子空间</p>
-<p>$$
-  \operatorname{orth}(X^{(k)})
-  $$</p>
+<div class="arithmatex">\[
+\operatorname{orth}(X^{(k)})
+\]</div>
 </li>
 </ol>
 

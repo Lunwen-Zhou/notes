@@ -4224,7 +4224,7 @@
 
 
 <h1 id="leetcode">leetcode 解法笔记</h1>
-<p class="document-modified-time">更新时间：<time datetime="2026-08-03T11:29+00:00">2026年08月03日 19:29</time></p>
+<p class="document-modified-time">更新时间：<time datetime="2026-08-04T09:55+00:00">2026年08月04日 17:55</time></p>
 
 <h3 id="_1">说明</h3>
 <p>笔记每一个点最好提炼出一个主题，便于后续阅读</p>
@@ -5288,6 +5288,7 @@ A+ B +kR &amp;=nR
 <div class="arithmatex">\[
 l_S + A = 
 \]</div>
+<p>【注】这里的证明还在思考</p>
 <p><strong>出错</strong>：最后未考虑无环情况 <code>return None</code></p>
 <hr />
 <h3 id="21">21 合并两个有序链表</h3>
@@ -6961,11 +6962,11 @@ x + y = c_2 \quad (\text{副对角线})
 </code></pre></div>
 <p>本程序的目标是求：</p>
 <div class="arithmatex">\[
-\min \{ i \mid nums[i] \ge target \}
+\min \{ i \mid \text{nums}[i] \geq \text{target} \}
 \]</div>
-<p>维护区间 <span class="arithmatex">\([left,right)\)</span></p>
+<p>维护区间 <span class="arithmatex">\([\text{left},\text{right})\)</span></p>
 <blockquote>
-<p>找的是第一个 <span class="arithmatex">\(\geq target\)</span> 的位置</p>
+<p>找的是第一个 <span class="arithmatex">\(\geq \text{target}\)</span> 的位置</p>
 </blockquote>
 <ul>
 <li>
