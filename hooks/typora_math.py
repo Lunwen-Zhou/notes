@@ -29,6 +29,10 @@ _LIST_ITEM = re.compile(r"^(?P<indent> *)(?:[-+*]|\d+[.)])[ \t]+")
 _LEADING_SPACES = re.compile(r"^ *")
 _PROJECT_ROOT = Path(__file__).resolve().parents[1]
 _MODIFIED_TIMES_PATH = _PROJECT_ROOT / ".note-modified-times.json"
+_LOCAL_HTML_IMAGE = re.compile(
+    r'(?P<prefix><img\b[^>]*?\bsrc\s*=\s*["\'])(?P<src>[^"\']+)(?P<suffix>["\'])',
+    re.IGNORECASE,
+)
 
 
 @lru_cache(maxsize=1)
@@ -236,6 +240,16 @@ def normalize_typora_math(markdown: str) -> str:
             # Typora indents list continuations by two spaces. Python Markdown
             # requires four, so render the equation as a top-level block.
             math_dedent = len(prefix)
+        elif (
+            not in_math
+            and ">" not in prefix
+            and len(prefix) >= 4
+            and len(prefix) % 4 == 2
+        ):
+            # ``normalize_typora_lists`` doubles a three-space continuation to
+            # six spaces. Display math needs four spaces at that list level;
+            # remove only the two-space excess and keep it inside the item.
+            math_dedent = 2
 
         if math_quote_prefix is not None:
             rendered_line = f"{math_quote_prefix}$$"
@@ -309,3 +323,28 @@ def on_page_markdown(markdown: str, page, **kwargs) -> str:
         markdown = add_modified_time(markdown, str(source_path))
     markdown = normalize_typora_lists(markdown)
     return normalize_typora_math(markdown)
+
+
+def on_page_content(html: str, page, config, **kwargs) -> str:
+    """Keep same-folder Typora image paths working with directory URLs.
+
+    A regular MkDocs page is emitted as ``page/index.html``, one directory
+    deeper than its Markdown source. MkDocs adjusts Markdown image syntax but
+    leaves raw ``<img>`` tags unchanged, so add that one directory traversal
+    to local raw-HTML image sources at build time only.
+    """
+
+    is_index = Path(page.file.abs_src_path).name.lower() == "index.md"
+    if not config.get("use_directory_urls", True) or is_index:
+        return html
+
+    def rewrite(match: re.Match[str]) -> str:
+        src = match.group("src")
+        if (
+            src.startswith(("/", "../", "#", "//"))
+            or re.match(r"^[a-z][a-z0-9+.-]*:", src, re.IGNORECASE)
+        ):
+            return match.group(0)
+        return f'{match.group("prefix")}../{src}{match.group("suffix")}'
+
+    return _LOCAL_HTML_IMAGE.sub(rewrite, html)

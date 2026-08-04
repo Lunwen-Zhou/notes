@@ -1040,7 +1040,7 @@ class Solution:
 
 你必须在 **原地** 旋转图像，这意味着你需要直接修改输入的二维矩阵。**请不要** 使用另一个矩阵来旋转图像。例：
 
-<img src="../Leetcode 解法笔记.assets/mat1.jpg" alt="mat1" style="zoom:48%;" />
+<img src="Leetcode 解法笔记.assets/mat1.jpg" alt="mat1" style="zoom:48%;" />
 
 ```
 输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]
@@ -1080,7 +1080,7 @@ class Solution(object):
 
 图示两个链表在节点 `c1` 开始相交：
 
-<img src="../Leetcode 解法笔记.assets/160_statement.png" alt="160_statement" style="zoom:48%;" />
+<img src="Leetcode 解法笔记.assets/160_statement.png" alt="160_statement" style="zoom:48%;" />
 
 题目数据 **保证** 整个链式结构中不存在环
 
@@ -1135,7 +1135,7 @@ class Solution:
 
 例：
 
-<img src="../Leetcode 解法笔记.assets/rev1ex1.jpg" alt="rev1ex1" style="zoom:52%;" />
+<img src="Leetcode 解法笔记.assets/rev1ex1.jpg" alt="rev1ex1" style="zoom:52%;" />
 
 ```
 输入：head = [1,2,3,4,5]
@@ -1330,7 +1330,7 @@ class Solution:
 
 **Proof**：如下图所示，即证明：快慢指针第一次相遇于 $M$ 后，把一个指针放回 `head`，另一个留在 $M$，二者都每次走一步，它们会在环入口 $E$ 相遇
 
-<img src="../Leetcode 解法笔记.assets/ChatGPT Image 2026年7月16日 19_07_34.png" alt="ChatGPT Image 2026年7月16日 19_07_34" style="zoom:26%;" />
+<img src="Leetcode 解法笔记.assets/ChatGPT Image 2026年7月16日 19_07_34.png" alt="ChatGPT Image 2026年7月16日 19_07_34" style="zoom:26%;" />
 
 定义 $d(x,y)$ 为：从节点 $x$ 出发，沿着 `next` 走，**第一次** 到达 $y$ 所需要的 **步数**（至少需要 1 步）
 
@@ -1355,6 +1355,7 @@ $$
 l_S + A = 
 $$
 
+【注】这里的证明还在思考
 
 **出错**：最后未考虑无环情况 `return None`
 
@@ -2040,7 +2041,7 @@ class Solution:
 输出：[4,7,2,9,6,3,1]
 ```
 
-<img src="../Leetcode 解法笔记.assets/image-20260714215428738.png" alt="image-20260714215428738" style="zoom:19%;" />
+<img src="Leetcode 解法笔记.assets/image-20260714215428738.png" alt="image-20260714215428738" style="zoom:19%;" />
 
 ```
 下图
@@ -2048,7 +2049,7 @@ class Solution:
 输出：[2,3,1]
 ```
 
-<img src="../Leetcode 解法笔记.assets/image-20260714215550616.png" alt="image-20260714215550616" style="zoom:18%;" />
+<img src="Leetcode 解法笔记.assets/image-20260714215550616.png" alt="image-20260714215550616" style="zoom:18%;" />
 
 ```
 输入：root = []
@@ -2148,7 +2149,7 @@ class Solution:
 输出：3
 ```
 
-<img src="../Leetcode 解法笔记.assets/image-20260714220743286.png" alt="image-20260714220743286" style="zoom:14%;" />
+<img src="Leetcode 解法笔记.assets/image-20260714220743286.png" alt="image-20260714220743286" style="zoom:14%;" />
 
 ```
 输入：root = [1,2]
@@ -3224,7 +3225,7 @@ class Solution:
 
 **进阶：**你可以使用搜索剪枝的技术来优化解决方案，使其在 `board` 更大的情况下可以更快解决问题？
 
-<img src="../Leetcode 解法笔记.assets/word2.jpg" alt="word2" style="zoom:65%;" />
+<img src="Leetcode 解法笔记.assets/word2.jpg" alt="word2" style="zoom:65%;" />
 
 ```
 输入：board = [['A','B','C','E'],['S','F','C','S'],['A','D','E','E']], word = "ABCCED"
@@ -3433,11 +3434,11 @@ def lower_bound(nums, target) -> int:
 
 本程序的目标是求：
 $$
-\min \{ i \mid nums[i] \ge target \}
+\min \{ i \mid \text{nums}[i] \geq \text{target} \}
 $$
-维护区间 $[left,right)$
+维护区间 $[\text{left},\text{right})$
 
-> 找的是第一个 $\geq target$ 的位置
+> 找的是第一个 $\geq \text{target}$ 的位置
 
 - `if nums[mid] < target` 设置的原因：
 
