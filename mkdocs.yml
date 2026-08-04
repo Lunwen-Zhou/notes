@@ -12,9 +12,14 @@ nav:
       - 推荐算法项目知识: recommendation/推荐算法项目知识.md
       - 推荐算法基础: recommendation/推荐算法基础.md
       - 机器学习: recommendation/机器学习.md
+      - 聚类: recommendation/聚类.md
   - Python:
       - Python: python/index.md
+      - Python 笔记本: python/MD  Python 笔记本.md
       - Leetcode 解法笔记: python/Leetcode 解法笔记.md
+      - Leetcode 补充习题: python/MD  Leetcode 补充习题.md
+      - 数据结构与算法: python/MD  数据结构与算法.md
+      - Python 库: python/MD  Python 库.md
   - 数学分析:
       - 数学分析: math-analysis/index.md
       - 一元微积分: math-analysis/一元微积分.md
