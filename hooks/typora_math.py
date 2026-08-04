@@ -1,8 +1,10 @@
-"""Make Typora-style display math compatible with Python Markdown.
+"""Make Typora-style Markdown compatible with Python Markdown.
 
 Typora accepts a ``$$`` block immediately after or before prose, while
 Python Markdown requires a blank line around the block. This hook adds those
-blank lines in memory before pymdownx.arithmatex runs. Source files are left
+blank lines in memory before pymdownx.arithmatex runs. Typora also accepts two
+spaces per nested-list level, while Python Markdown requires four. The hook
+expands only list-related indentation during the build. Source files are left
 unchanged.
 """
 
@@ -19,6 +21,76 @@ _FENCE = re.compile(r"^(?P<marker>`{3,}|~{3,})")
 _CONTAINER_PREFIX = re.compile(r"^\s*(?:>\s*)*")
 _BLANK_OR_QUOTE_SEPARATOR = re.compile(r"^\s*(?:>\s*)*$")
 _LEVEL_ONE_HEADING = re.compile(r"^#(?:[ \t]+|$)")
+_LIST_ITEM = re.compile(r"^(?P<indent> *)(?:[-+*]|\d+[.)])[ \t]+")
+_LEADING_SPACES = re.compile(r"^ *")
+
+
+def normalize_typora_lists(markdown: str) -> str:
+    """Expand Typora's two-space list indentation for Python Markdown.
+
+    The transformation is limited to indented lines belonging to a list. A
+    fenced code block inside a list receives only the container's additional
+    indentation, so indentation inside the code itself is preserved.
+    """
+
+    lines = markdown.splitlines()
+    normalized: list[str] = []
+    in_list = False
+    fence_character: str | None = None
+    fence_length = 0
+    fence_indent = 0
+    fence_delta = 0
+
+    for line in lines:
+        leading_spaces = len(_LEADING_SPACES.match(line).group())
+        content = line[leading_spaces:]
+
+        if fence_character is not None:
+            adjusted_line = f"{' ' * fence_delta}{line}" if line else line
+            normalized.append(adjusted_line)
+            fence_match = _FENCE.match(content)
+            if (
+                fence_match
+                and fence_match.group("marker")[0] == fence_character
+                and len(fence_match.group("marker")) >= fence_length
+                and leading_spaces == fence_indent
+            ):
+                fence_character = None
+                fence_length = 0
+                fence_indent = 0
+                fence_delta = 0
+            continue
+
+        list_match = _LIST_ITEM.match(line)
+        if leading_spaces == 0 and line.strip() and list_match is None:
+            in_list = False
+
+        if list_match is not None:
+            in_list = True
+
+        if in_list and leading_spaces >= 2:
+            # Typora uses two spaces for each list level. Doubling the
+            # structural indentation gives Python Markdown its required four.
+            adjusted_indent = leading_spaces * 2
+            adjusted_line = f"{' ' * adjusted_indent}{content}"
+        else:
+            adjusted_indent = leading_spaces
+            adjusted_line = line
+
+        fence_match = _FENCE.match(content)
+        if in_list and fence_match:
+            marker = fence_match.group("marker")
+            fence_character = marker[0]
+            fence_length = len(marker)
+            fence_indent = leading_spaces
+            fence_delta = adjusted_indent - leading_spaces
+
+        normalized.append(adjusted_line)
+
+    result = "\n".join(normalized)
+    if markdown.endswith("\n"):
+        result += "\n"
+    return result
 
 
 def _content_without_container_prefix(line: str) -> str:
@@ -164,4 +236,5 @@ def on_page_markdown(markdown: str, page, **kwargs) -> str:
     source_path = Path(page.file.abs_src_path)
     if source_path.name.lower() != "index.md":
         markdown = add_modified_time(markdown, str(source_path))
+    markdown = normalize_typora_lists(markdown)
     return normalize_typora_math(markdown)

@@ -9,9 +9,9 @@ nav:
   - 首页: index.md
   - 推荐算法:
       - 推荐算法: recommendation/index.md
+      - 推荐算法项目知识: recommendation/推荐算法项目知识.md
       - 推荐算法基础: recommendation/推荐算法基础.md
       - 机器学习: recommendation/机器学习.md
-      - 推荐算法项目知识: recommendation/推荐算法项目知识.md
   - Python:
       - Python: python/index.md
       - Leetcode 解法笔记: python/Leetcode 解法笔记.md
@@ -22,6 +22,7 @@ nav:
       - 分析学习题: math-analysis/习题 - 分析学.md
   - 高等代数:
       - 高等代数: higher-algebra/index.md
+      - 高等代数习题: higher-algebra/习题 - 高等代数.md
       - 高等代数: higher-algebra/0 高等代数.md
       - 迹: higher-algebra/1 迹.md
       - 矩阵分解: higher-algebra/2 矩阵分解.md
@@ -29,8 +30,7 @@ nav:
       - 矩阵基础: higher-algebra/4 矩阵基础.md
       - 正定矩阵: higher-algebra/5 正定矩阵.md
       - 二次型: higher-algebra/6 二次型.md
-      - 高等代数习题: higher-algebra/习题 - 高等代数.md
-
+      
 theme:
   name: material
   custom_dir: overrides
