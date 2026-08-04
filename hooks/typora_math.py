@@ -11,9 +11,13 @@ unchanged.
 from __future__ import annotations
 
 from datetime import datetime
+from functools import lru_cache
+from hashlib import sha256
 from html import escape
+import json
 from pathlib import Path
 import re
+import subprocess
 
 
 _MATH_DELIMITER = re.compile(r"^(?P<prefix>\s*(?:>\s*)*)\$\$\s*$")
@@ -23,6 +27,73 @@ _BLANK_OR_QUOTE_SEPARATOR = re.compile(r"^\s*(?:>\s*)*$")
 _LEVEL_ONE_HEADING = re.compile(r"^#(?:[ \t]+|$)")
 _LIST_ITEM = re.compile(r"^(?P<indent> *)(?:[-+*]|\d+[.)])[ \t]+")
 _LEADING_SPACES = re.compile(r"^ *")
+_PROJECT_ROOT = Path(__file__).resolve().parents[1]
+_MODIFIED_TIMES_PATH = _PROJECT_ROOT / ".note-modified-times.json"
+
+
+@lru_cache(maxsize=1)
+def _stored_modified_times() -> dict[str, dict[str, str]]:
+    """Read portable file times captured from the author's filesystem."""
+
+    try:
+        data = json.loads(_MODIFIED_TIMES_PATH.read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        return {}
+    return data.get("files", {})
+
+
+def _git_modified_time(relative_path: str) -> datetime | None:
+    """Return the last commit time for a clean file, when available."""
+
+    try:
+        status = subprocess.run(
+            ["git", "status", "--porcelain", "--", relative_path],
+            cwd=_PROJECT_ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        if status.stdout:
+            return None
+        result = subprocess.run(
+            ["git", "log", "-1", "--format=%cI", "--", relative_path],
+            cwd=_PROJECT_ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return None
+
+    timestamp = result.stdout.strip()
+    return datetime.fromisoformat(timestamp) if timestamp else None
+
+
+def get_modified_time(source_path: str) -> datetime:
+    """Resolve a Markdown file's real modification time automatically.
+
+    A content hash lets CI reuse the file time captured on the author's
+    computer instead of the checkout time. For new clean content, Git's last
+    commit time is the portable fallback; uncommitted local edits use mtime.
+    """
+
+    path = Path(source_path).resolve()
+    filesystem_time = datetime.fromtimestamp(path.stat().st_mtime).astimezone()
+
+    try:
+        relative_path = path.relative_to(_PROJECT_ROOT).as_posix()
+    except ValueError:
+        return filesystem_time
+
+    stored = _stored_modified_times().get(relative_path)
+    content_hash = sha256(path.read_bytes()).hexdigest()
+    if stored and stored.get("content_sha256") == content_hash:
+        try:
+            return datetime.fromisoformat(stored["modified_at"])
+        except (KeyError, ValueError):
+            pass
+
+    return _git_modified_time(relative_path) or filesystem_time
 
 
 def normalize_typora_lists(markdown: str) -> str:
@@ -195,7 +266,7 @@ def normalize_typora_math(markdown: str) -> str:
 def add_modified_time(markdown: str, source_path: str) -> str:
     """Render the source file's modification time below its first H1."""
 
-    modified_at = datetime.fromtimestamp(Path(source_path).stat().st_mtime)
+    modified_at = get_modified_time(source_path)
     display_time = modified_at.strftime("%Y年%m月%d日 %H:%M")
     timestamp = modified_at.astimezone().isoformat(timespec="minutes")
     modified_markup = (

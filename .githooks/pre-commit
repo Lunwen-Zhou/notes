@@ -1,0 +1,80 @@
+#!/usr/bin/env python3
+"""Keep portable Markdown modification times in sync before each commit."""
+
+from __future__ import annotations
+
+from datetime import datetime
+from hashlib import sha256
+import json
+from pathlib import Path
+import subprocess
+
+
+ROOT = Path(__file__).resolve().parents[1]
+METADATA_PATH = ROOT / ".note-modified-times.json"
+
+
+def git_paths(diff_filter: str) -> list[str]:
+    result = subprocess.run(
+        [
+            "git",
+            "diff",
+            "--cached",
+            "--name-only",
+            "-z",
+            f"--diff-filter={diff_filter}",
+            "--",
+            "docs",
+        ],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+    )
+    return [
+        path.decode("utf-8")
+        for path in result.stdout.split(b"\0")
+        if path and path.lower().endswith(b".md")
+    ]
+
+
+def staged_bytes(relative_path: str) -> bytes:
+    result = subprocess.run(
+        ["git", "show", f":{relative_path}"],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+    )
+    return result.stdout
+
+
+def main() -> None:
+    data = json.loads(METADATA_PATH.read_text(encoding="utf-8"))
+    files = data.setdefault("files", {})
+    changed = False
+
+    for relative_path in git_paths("ACMR"):
+        path = ROOT / relative_path
+        modified_at = datetime.fromtimestamp(path.stat().st_mtime).astimezone()
+        files[relative_path] = {
+            "content_sha256": sha256(staged_bytes(relative_path)).hexdigest(),
+            "modified_at": modified_at.isoformat(timespec="seconds"),
+        }
+        changed = True
+
+    for relative_path in git_paths("D"):
+        changed = files.pop(relative_path, None) is not None or changed
+
+    if changed:
+        METADATA_PATH.write_text(
+            json.dumps(data, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        subprocess.run(
+            ["git", "add", str(METADATA_PATH.relative_to(ROOT))],
+            cwd=ROOT,
+            check=True,
+        )
+
+
+if __name__ == "__main__":
+    main()
