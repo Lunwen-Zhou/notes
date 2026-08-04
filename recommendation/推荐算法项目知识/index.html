@@ -1,0 +1,4343 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="推荐算法、Python、数学分析与高等代数学习笔记">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>推荐算法项目知识 - 伦文的学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="伦文的学习笔记" class="md-header__button md-logo" aria-label="伦文的学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            伦文的学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              推荐算法项目知识
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  推荐算法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../python/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../math-analysis/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  数学分析
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../higher-algebra/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  高等代数
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="伦文的学习笔记" class="md-nav__button md-logo" aria-label="伦文的学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    伦文的学习笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    推荐算法
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    推荐算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    推荐算法项目知识
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    推荐算法项目知识
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        推荐算法项目知识
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="推荐算法项目知识">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        指标
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="指标">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AUC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gauc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GAUC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recallk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recall@K 召回率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#precisionk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Precision@K 准确率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hit-ratek" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hit Rate@K 命中率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MRR 平均倒数排名
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ndcgk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NDCG@K
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NDCG@K">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dcgk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DCG@K
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idcg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IDCG
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ctr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CTR 点击率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cvr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CVR 转化率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        召回覆盖率
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#youtubednn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        YoutubeDNN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LR
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        损失函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反向传播
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        embedding 向量
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DNN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deepfm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DeepFM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DeepFM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        传统神经网络知识
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#embedding_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Embedding 层
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Embedding 层">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用途
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数学表达
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dcn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DCN
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DCN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross Network
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deep-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deep Network
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xdeepfm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xDeepFM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="xDeepFM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CIN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dnn_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DNN 部分
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模型对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#din" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DIN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gbdt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GBDT 基线
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GBDT 基线">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#boosting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boosting 思想
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        项目相关
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="项目相关">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        训练集与测试集
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        特征
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        项目文件
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="项目文件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 数据与预处理模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 召回阶段
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    推荐算法基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../python/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/Leetcode%20%E8%A7%A3%E6%B3%95%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Leetcode 解法笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../math-analysis/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数学分析
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数学分析
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math-analysis/%E4%B8%80%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    一元微积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math-analysis/%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多元微积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math-analysis/%E4%B9%A0%E9%A2%98%20-%20%E5%88%86%E6%9E%90%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分析学习题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../higher-algebra/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高等代数
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    高等代数
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../higher-algebra/%E4%B9%A0%E9%A2%98%20-%20%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高等代数习题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../higher-algebra/0%20%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高等代数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../higher-algebra/1%20%E8%BF%B9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    迹
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../higher-algebra/2%20%E7%9F%A9%E9%98%B5%E5%88%86%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    矩阵分解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../higher-algebra/3%20%E7%9F%A9%E9%98%B5%E6%B1%82%E5%AF%BC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    矩阵求导
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../higher-algebra/4%20%E7%9F%A9%E9%98%B5%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    矩阵基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../higher-algebra/5%20%E6%AD%A3%E5%AE%9A%E7%9F%A9%E9%98%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    正定矩阵
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../higher-algebra/6%20%E4%BA%8C%E6%AC%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二次型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        推荐算法项目知识
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="推荐算法项目知识">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        指标
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="指标">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#auc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AUC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gauc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GAUC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recallk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recall@K 召回率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#precisionk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Precision@K 准确率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hit-ratek" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hit Rate@K 命中率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mrr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MRR 平均倒数排名
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ndcgk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NDCG@K
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NDCG@K">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dcgk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DCG@K
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#idcg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IDCG
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ctr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CTR 点击率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cvr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CVR 转化率
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        召回覆盖率
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#youtubednn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        YoutubeDNN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LR
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        损失函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        反向传播
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        embedding 向量
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dnn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DNN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deepfm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DeepFM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DeepFM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        传统神经网络知识
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#embedding_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Embedding 层
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Embedding 层">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用途
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数学表达
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dcn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DCN
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DCN">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross Network
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deep-network" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deep Network
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#xdeepfm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        xDeepFM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="xDeepFM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CIN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dnn_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DNN 部分
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模型对比
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#din" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DIN
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gbdt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GBDT 基线
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GBDT 基线">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#boosting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boosting 思想
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        项目相关
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="项目相关">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        训练集与测试集
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        特征
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        项目文件
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="项目文件">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1 数据与预处理模块
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2 召回阶段
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">推荐算法项目知识</h1>
+<p class="document-modified-time">更新时间：<time datetime="2026-08-04T03:25+00:00">2026年08月04日 03:25</time></p>
+
+<p>MLP：全连接神经网络，Fully Connected Layer</p>
+<p>推荐系统通常分为</p>
+<div class="arithmatex">\[
+\text{全量物品库}
+\rightarrow
+\text{召回}
+\rightarrow
+\text{粗排/精排}
+\rightarrow
+\text{重排}
+\rightarrow
+\text{最终推荐}
+\]</div>
+<h2 id="_2">指标</h2>
+<h3 id="auc">AUC</h3>
+<p>AUC：Area Under Curve</p>
+<p>衡量：随机抽一个正样本和一个负样本，模型把正样本排在前面的概率</p>
+<div class="arithmatex">\[
+\boxed{\text{AUC} = \frac{\#\{(s_{u,i} &gt; s_{u,j}) \mid y_{u,i}=1, y_{u,j}=0\}}{\#\text{所有正负样本对}}}
+\]</div>
+<p>好处：它只关心 <strong>正负样本对之间的排序</strong>，不直接受正负样本数量比例影响</p>
+<p>具体例子：</p>
+<blockquote>
+<p>假设某个推荐模型对 5 篇文章打分如下</p>
+<table>
+<thead>
+<tr>
+<th>文章</th>
+<th>真实标签</th>
+<th>模型预测分数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>1</td>
+<td>0.90</td>
+</tr>
+<tr>
+<td>B</td>
+<td>1</td>
+<td>0.70</td>
+</tr>
+<tr>
+<td>C</td>
+<td>0</td>
+<td>0.80</td>
+</tr>
+<tr>
+<td>D</td>
+<td>0</td>
+<td>0.40</td>
+</tr>
+<tr>
+<td>E</td>
+<td>0</td>
+<td>0.30</td>
+</tr>
+</tbody>
+</table>
+<p>正样本有 2 个：A、B；负样本有 3 个：C、D、E，故 AUC 的分母为 6</p>
+<p>遍历所有正样本：</p>
+<ul>
+<li>A：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>正样本</th>
+<th>负样本</th>
+<th>比较</th>
+<th>是否排序正确</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>C</td>
+<td>0.90 &gt; 0.80</td>
+<td>正确</td>
+</tr>
+<tr>
+<td>A</td>
+<td>D</td>
+<td>0.90 &gt; 0.40</td>
+<td>正确</td>
+</tr>
+<tr>
+<td>A</td>
+<td>E</td>
+<td>0.90 &gt; 0.30</td>
+<td>正确</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>B：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>正样本</th>
+<th>负样本</th>
+<th>比较</th>
+<th>是否排序正确</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B</td>
+<td>C</td>
+<td>0.70 &lt; 0.80</td>
+<td>错误</td>
+</tr>
+<tr>
+<td>B</td>
+<td>D</td>
+<td>0.70 &gt; 0.40</td>
+<td>正确</td>
+</tr>
+<tr>
+<td>B</td>
+<td>E</td>
+<td>0.70 &gt; 0.30</td>
+<td>正确</td>
+</tr>
+</tbody>
+</table>
+<p>因此 AUC 的分子为 5，从而 <span class="arithmatex">\(\text{AUC} = \frac 56 \approx 0.8333\)</span></p>
+</blockquote>
+<p><strong>代码 1</strong>，暴力解法，时间 <span class="arithmatex">\(O(n^2)\)</span>，空间 <span class="arithmatex">\(O(n)\)</span></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">auc_bruteforce</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">scores</span><span class="p">):</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">positive_scores</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">negative_scores</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="c1"># 1.分离正负样本</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">scores</span><span class="p">):</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="k">if</span> <span class="n">label</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            <span class="n">positive_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="n">negative_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="n">num_positive</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">positive_scores</span><span class="p">)</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">num_negative</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">negative_scores</span><span class="p">)</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="k">if</span> <span class="n">num_positive</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">num_negative</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        <span class="k">return</span> <span class="mf">0.0</span>  <span class="c1"># undefined case in practice</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="c1"># 2. pairwise comparison</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    <span class="n">correct_pairs</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    <span class="k">for</span> <span class="n">pos_score</span> <span class="ow">in</span> <span class="n">positive_scores</span><span class="p">:</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>        <span class="k">for</span> <span class="n">neg_score</span> <span class="ow">in</span> <span class="n">negative_scores</span><span class="p">:</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>            <span class="k">if</span> <span class="n">pos_score</span> <span class="o">&gt;</span> <span class="n">neg_score</span><span class="p">:</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>                <span class="n">correct_pairs</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>            <span class="k">elif</span> <span class="n">pos_score</span> <span class="o">==</span> <span class="n">neg_score</span><span class="p">:</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>                <span class="n">correct_pairs</span> <span class="o">+=</span> <span class="mf">0.5</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>    <span class="c1"># 3. normalization</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>    <span class="k">return</span> <span class="n">correct_pairs</span> <span class="o">/</span> <span class="p">(</span><span class="n">num_positive</span> <span class="o">*</span> <span class="n">num_negative</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>代码 2</strong>：</p>
+<hr />
+<h3 id="gauc">GAUC</h3>
+<div class="arithmatex">\[
+\boxed{
+\text{GAUC} = \frac{\sum_u w_u \cdot \text{AUC}_u}{\sum_u w_u}
+}
+\]</div>
+<p>其中：<span class="arithmatex">\(w_u\)</span> 为该用户候选对数</p>
+<blockquote>
+<p>该用户样本中“所有正样本与所有负样本组成的样本对（Pair）的总数</p>
+<p>在 AUC 的例子中，为 6</p>
+</blockquote>
+<hr />
+<h3 id="recallk">Recall@K 召回率</h3>
+<p>衡量：真实喜欢的东西，有多少被你找回来了</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Recall@K}=\frac{|R_K \cap G|}{|G|}
+}
+\]</div>
+<p>召回阶段核心指标，强调的是不要漏掉</p>
+<hr />
+<h3 id="precisionk">Precision@K 准确率</h3>
+<p>衡量：推荐的 K 个里，有多少是用户真正喜欢的</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Precision@K}=\frac{|R_K \cap G|}{K}
+}
+\]</div>
+<p>排序阶段常用，强调别乱推荐</p>
+<hr />
+<h3 id="hit-ratek">Hit Rate@K 命中率</h3>
+<p>衡量：Top-K 是否<strong>至少命中一个</strong>正样本</p>
+<div class="arithmatex">\[
+\boxed{
+\text{HitRate@K}=
+\begin{cases}
+1, &amp; |R_K \cap G|&gt;0 \\
+0, &amp; \text{otherwise}
+\end{cases}
+}
+\]</div>
+<hr />
+<h3 id="mrr">MRR 平均倒数排名</h3>
+<p>衡量：<strong>第一个正样本排得有多靠前</strong></p>
+<div class="arithmatex">\[
+\boxed{
+\text{MRR} = \frac{1}{N} \sum \frac{1}{\text{rank}_i}
+}
+\]</div>
+<p>如果某个用户没有命中，则 <span class="arithmatex">\(\text{rank} = \infty\)</span>，<span class="arithmatex">\(1/\text{rank} = 0\)</span></p>
+<hr />
+<h3 id="ndcgk">NDCG@K</h3>
+<p><strong>归一化折损累积增益</strong>（@K）。NDCG：Normalized Discounted Cumulative Gain</p>
+<div class="arithmatex">\[
+\boxed{
+\text{NDCG}@K = \frac{\text{DCG}@K}{\text{IDCG}@K}
+}
+\]</div>
+<h4 id="dcgk">DCG@K</h4>
+<div class="arithmatex">\[
+\text{DCG}@K = \sum_{i=1}^{K} \frac{\text{rel}_i}{\log_2(i+1)}
+\]</div>
+<p>关于 <span class="arithmatex">\(\text{rel}_i\)</span>：第 <span class="arithmatex">\(i\)</span> 个位置的相关性（gain），可以是：</p>
+<ul>
+<li>二值相关性，即 <span class="arithmatex">\(\text{rel}_i \in \{0,1\}\)</span></li>
+<li>分级相关性 <span class="arithmatex">\((0,1,2,3,\ldots)\)</span></li>
+</ul>
+<p><span class="arithmatex">\(\log_2(i+1)\)</span>：位置折损（越靠后权重越低）</p>
+<p>具体例子</p>
+<blockquote>
+<p>假设用户真实行为：点了 <span class="arithmatex">\(i_2\)</span>、<span class="arithmatex">\(i_4\)</span>；买了 <span class="arithmatex">\(i_6\)</span></p>
+<p>定义：click = 1、purchase = 3</p>
+<p>推荐列表为</p>
+<table>
+<thead>
+<tr>
+<th>rank</th>
+<th>item</th>
+<th>行为</th>
+<th>rel_i</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><span class="arithmatex">\(i_1\)</span></td>
+<td>无</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td><span class="arithmatex">\(i_6\)</span></td>
+<td>purchase</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3</td>
+<td><span class="arithmatex">\(i_2\)</span></td>
+<td>click</td>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td>
+<td><span class="arithmatex">\(i_9\)</span></td>
+<td>无</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>虽然用户点击了 <span class="arithmatex">\(i_4\)</span>，但不在列表中，所以不用管。此时</p>
+<div class="arithmatex">\[
+\text{DCG} = \frac{3}{\log_2(3)} + \frac{1}{\log_2(4)} \approx 2.3928
+\]</div>
+</blockquote>
+<h4 id="idcg">IDCG</h4>
+<p>对于 ideal DCG，需要构造最优排序序列</p>
+<p>排序原则：rel 从大到小排序</p>
+<p>具体例子</p>
+<blockquote>
+<p>承接 DCG 中的例子。根据 <em>排序原则</em> 可以构造</p>
+<table>
+<thead>
+<tr>
+<th>rank</th>
+<th>item</th>
+<th>rel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><span class="arithmatex">\(i_6\)</span></td>
+<td>3</td>
+</tr>
+<tr>
+<td>2</td>
+<td><span class="arithmatex">\(i_2\)</span></td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td><span class="arithmatex">\(i_4\)</span></td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>此时</p>
+<div class="arithmatex">\[
+\text{IDCG} = \frac{3}{\log_2(2)} + \frac{1}{\log_2(3)} + \frac{1}{\log_2(4)} \approx 4.1310
+\]</div>
+<p>得到 NDCG 为</p>
+<div class="arithmatex">\[
+\text{NDCG} = \frac{\text{DCG}}{\text{IDCG}} = 0.5792
+\]</div>
+</blockquote>
+<hr />
+<h3 id="ctr">CTR 点击率</h3>
+<p>CTR：Click-Through Rate</p>
+<p><strong>衡量</strong>：推荐系统把内容“展示出来之后，有多少被用户点了”</p>
+<div class="arithmatex">\[
+\boxed{
+\text{CTR} = \frac{\text{用户点击次数}}{\text{曝光次数}}
+}= \frac{\text{click}}{\text{impression}}
+\]</div>
+<p>具体例子</p>
+<blockquote>
+<p>某用户一天，系统展示了 100 个推荐 item（<span class="arithmatex">\(\text{mpression} = 100\)</span>），用户点了其中 8 个（<span class="arithmatex">\(\text{click} = 8\)</span>），此时 <span class="arithmatex">\(\text{CTR} = 8 \%\)</span></p>
+</blockquote>
+<hr />
+<h3 id="cvr">CVR 转化率</h3>
+<p>CVR：Conversion Rate</p>
+<p>Conversion：转化，用户完成了期望的特定行为。如“浏览 / 点击”转变为“购买 / 下载 / 注册”等</p>
+<div class="arithmatex">\[
+\boxed{
+\text{CVR} = \frac{\text{转化次数}}{\text{点击次数}}
+}= \frac{\text{purchase}}{\text{click}}
+\]</div>
+<p>转化的具体内容</p>
+<blockquote>
+<ul>
+<li>
+<p>电商推荐：下单（purchase）、支付成功 </p>
+</li>
+<li>
+<p>广告系统：注册、 下载、填表、购买</p>
+</li>
+</ul>
+</blockquote>
+<p>与 CTR 的关系：</p>
+<div class="arithmatex">\[
+\text{曝光 (Impression)} \xrightarrow{\text{CTR}} \text{点击 (Click)} \xrightarrow{\text{CVR}} \text{转化 (Conversion)}
+\]</div>
+<hr />
+<h3 id="_3">召回覆盖率</h3>
+<p>真实用户后来交互的物品，有多少被召回进了候选集</p>
+<p>设考虑用户 <span class="arithmatex">\(u\)</span>，召回候选集为 <span class="arithmatex">\(C_u\)</span>，真实测试物品集合为 <span class="arithmatex">\(T_u\)</span>（在项目中只有一个），则</p>
+<div class="arithmatex">\[
+\boxed{
+\text{Coverage}
+=
+\frac{
+\sum_u |C_u \cap T_u|
+}{
+\sum_u |T_u|
+}
+}
+\]</div>
+<div class="arithmatex">\[
+\text{覆盖率}
+=
+\frac{
+\text{被候选集命中的真实正样本数}
+}{
+\text{所有真实正样本数}
+}
+\]</div>
+<p><strong>真实正样本</strong> 含义：</p>
+<blockquote>
+<p>真实：指它来自真实日志/测试集，不是模型猜的。在项目中：指用户后面实际交互过的文章</p>
+<p>正样本：指标签为 <span class="arithmatex">\(1\)</span> 的样本，也就是交互了的物品</p>
+<p>如用户 <span class="arithmatex">\(u\)</span> 后来真的看了文章 <span class="arithmatex">\(i\)</span>，那么 <span class="arithmatex">\((u,i)\)</span> 是正样本，即 <span class="arithmatex">\(y_{u,i} = 1\)</span></p>
+<p>如果用户 <span class="arithmatex">\(u\)</span> 后来没有看过文章 <span class="arithmatex">\(j\)</span>，则 <span class="arithmatex">\((u,j)\)</span> 称为负样本，即 <span class="arithmatex">\(y_{u,j}=0\)</span></p>
+</blockquote>
+<p>项目实际数据</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>========== YouTubeDNN Candidate ==========
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>labels: 1620
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>covered labels: 833
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>coverage: 0.514198
+</code></pre></div>
+<h2 id="youtubednn">YoutubeDNN</h2>
+<p>目标不是为了直接精细预测某个用户是否会点击某篇文章，而是从全量文章库中，快速召回用户可能感兴趣的 Top-K 篇文章</p>
+<p>定义召回分数</p>
+<div class="arithmatex">\[
+s(u,i)
+=
+\boldsymbol{z}_u^\top \boldsymbol{v}_i
+\]</div>
+<p>分数越高，说明用户向量 <span class="arithmatex">\(\boldsymbol{z}\)</span> 和文章向量 <span class="arithmatex">\(\boldsymbol{v}_i\)</span> 越接近，文章越可能被召回</p>
+<p>最终召回结果是：</p>
+<div class="arithmatex">\[
+\operatorname{Recall}(u)
+=
+\operatorname{TopK}_{i\in \mathcal I}
+\boldsymbol{z}_u^\top \boldsymbol{v}_i
+\]</div>
+<p>其中 <span class="arithmatex">\(\mathcal I\)</span> 表示全量文章集合。公式表示：通过计算用户与<strong>所有文章</strong>（即 <span class="arithmatex">\(i\in \mathcal I\)</span>）的匹配度，为用户 <span class="arithmatex">\(u\)</span> 筛选出最感兴趣的 <span class="arithmatex">\(K\)</span> 篇文章作为最终召回的结果</p>
+<h2 id="lr">LR</h2>
+<p>Logistic Regression，逻辑回归</p>
+<p>用于<strong>二分类问题</strong>，比如推荐系统中的 CTR 预估：</p>
+<div class="arithmatex">\[
+y =
+\begin{cases}
+1, &amp; \text{用户点击} \\
+0, &amp; \text{用户未点击}
+\end{cases}
+\]</div>
+<p>模型的目标是预测：</p>
+<div class="arithmatex">\[
+\hat y = P(y=1 \mid x)
+\]</div>
+<p>即给定一个样本特征 <span class="arithmatex">\(x\)</span>，预测它属于正类的概率</p>
+<blockquote>
+<p>例如：样本可能是</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>用户：user_id = 1024
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>物品：item_id = 889
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>类别：category = 科技
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>设备：device = iPhone
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>时间：hour = 21
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>标签：click = 1
+</code></pre></div>
+<p>LR 就是根据这些特征预测出 <span class="arithmatex">\(P(\text{click}=1)\)</span> 的大小</p>
+</blockquote>
+<p><strong>不使用线性回归的原因</strong></p>
+<p>最朴素的模型是线性模型</p>
+<div class="arithmatex">\[
+z = w^\top x + b
+\]</div>
+<ul>
+<li><span class="arithmatex">\(x\)</span>：输入特征</li>
+<li><span class="arithmatex">\(w\)</span>：是特征权重</li>
+<li><span class="arithmatex">\(b\)</span>：是偏置</li>
+<li><span class="arithmatex">\(z\)</span>：是线性打分</li>
+</ul>
+<p><span class="arithmatex">\(z\)</span> 的取值范围是 <span class="arithmatex">\((-\infty, +\infty)\)</span>，并不是概率的区间。此时使用 <strong>Sigmoid 函数</strong> 将 <span class="arithmatex">\(\mathbb R \rightarrow [0,1]\)</span></p>
+<p>LR 的预测形式：</p>
+<div class="arithmatex">\[
+\boxed{
+\hat y = \sigma(w^\top x + b)
+}
+\]</div>
+<p>其中</p>
+<div class="arithmatex">\[
+\sigma(z)=\frac{1}{1+e^{-z}}
+\]</div>
+<p>如果某个 <span class="arithmatex">\(w_i &gt; 0\)</span>，说明这个特征会提高点击概率</p>
+<p>如果某个 <span class="arithmatex">\(w_i &lt; 0\)</span>，说明这个特征会降低点击概率</p>
+<p>因此 LR 的优点是可解释性比较强，每个特征的权重都可以解释为它对最终点击概率的贡献</p>
+<p>假设有 <span class="arithmatex">\(n\)</span> 个特征：</p>
+<div class="arithmatex">\[
+x = [x_1, x_2, x_3, \dots, x_n]
+\]</div>
+<p>则 LR 的线性部分是</p>
+<div class="arithmatex">\[
+w^\top x + b
+=
+w_1x_1 + w_2x_2 + \cdots + w_nx_n + b
+\]</div>
+<h3 id="_4">损失函数</h3>
+<p>对于一个样本，<strong>交叉熵损失</strong> 为</p>
+<div class="arithmatex">\[
+L(y,\hat y)
+=
+-\left[
+y\log \hat y + (1-y)\log(1-\hat y)
+\right]
+\]</div>
+<ul>
+<li>
+<p>若真实标签是点击（<span class="arithmatex">\(y=1\)</span>），此时</p>
+<div class="arithmatex">\[
+L = -\log \hat y
+\]</div>
+<p><span class="arithmatex">\(\hat y\rightarrow 1\)</span> 时，<span class="arithmatex">\(L\)</span> 会变小，所以模型希望 <span class="arithmatex">\(\hat y\)</span> 越接近 1 越好</p>
+</li>
+<li>
+<p>若真实标签是未点击（<span class="arithmatex">\(y=0\)</span>），此时</p>
+<div class="arithmatex">\[
+L = -\log(1-\hat y)
+\]</div>
+<p>希望 <span class="arithmatex">\(\hat y\)</span> 越接近 0 越好</p>
+</li>
+</ul>
+<p>交叉熵作用：预测概率越接近真实标签，损失越小；预测越离谱，损失越大</p>
+<p>对于所有训练样本，整体损失是：</p>
+<div class="arithmatex">\[
+\mathcal L(w,b)
+=
+-\sum_{i=1}^{N}
+\left[
+y_i\log \hat y_i
++
+(1-y_i)\log(1-\hat y_i)
+\right]
+\]</div>
+<p>LR 的训练目标是找到最优参数 <span class="arithmatex">\(w,b\)</span>，使损失函数最小</p>
+<div class="arithmatex">\[
+\min_{w,b}
+\mathcal L(w,b)
+\]</div>
+<p>常见训练方法有：梯度下降、随机梯度下降 SGD、mini-batch SGD、L-BFGS、牛顿法或拟牛顿法</p>
+<p>局限性：不能自动学习特征交叉</p>
+<p>LR 依赖人工特征工程，不能自动学习复杂特征交叉</p>
+<p>例如：</p>
+<div class="arithmatex">\[
+\text{用户喜欢篮球} \times \text{文章类别是体育}
+\]</div>
+<p>LR 默认不会自动建模这个组合，只能分别学习</p>
+<div class="arithmatex">\[
+w_1 x_{\text{用户喜欢篮球}} \quad w_2 x_{\text{文章类别是体育}}
+\]</div>
+<p>如果想让 LR 学到这个关系，就必须人工构造交叉特征</p>
+<div class="arithmatex">\[
+x_{\text{用户喜欢篮球 } \times \text{ 文章类别是体育}}
+\]</div>
+<h3 id="_5">反向传播</h3>
+<p><strong>概述</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>前向传播：负责“算预测值”
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>反向传播：负责“算参数该怎么改”
+</code></pre></div>
+<p>前面学习的是 LR 的前向传播，会用到参数 <span class="arithmatex">\(w,b\)</span>，<strong>反向传播的目标 </strong>是求 <span class="arithmatex">\(\frac{\partial L}{\partial w}, \frac{\partial L}{\partial b}\)</span>，然后用 <strong>梯度下降</strong> 更新参数</p>
+<div class="arithmatex">\[
+\boxed{
+\frac{\partial L}{\partial w}
+=
+(p-y)x,\quad \frac{\partial L}{\partial b}
+=
+p-y}
+\]</div>
+<p>计算过程：</p>
+<blockquote>
+<p>设损失函数</p>
+<div class="arithmatex">\[
+L
+=
+-
+\left[
+y\log p + (1-y)\log(1-p)
+\right]
+\]</div>
+<p>对预测概率 <span class="arithmatex">\(p\)</span> 求偏导得：</p>
+<div class="arithmatex">\[
+\frac{\partial L}{\partial p} = - \left[ \frac{y}{p} - \frac{1-y}{1-p} \right]=\frac{p-y}{p(1-p)}
+\]</div>
+<blockquote>
+<p>这里将损失函数视为 <span class="arithmatex">\(L = L(y,p)\)</span>，因此为偏导</p>
+</blockquote>
+<p>设 sigmoid 函数为</p>
+<div class="arithmatex">\[
+p = \sigma(z)=\frac{1}{1+e^{-z}}
+\]</div>
+<p>对其求导：</p>
+<div class="arithmatex">\[
+\frac{\partial p}{\partial z}
+=
+-(1+e^{-z})^{-2}\cdot (-e^{-z}) = (1-p)\cdot p
+\]</div>
+<blockquote>
+<p>用导数当然也可以，这里只是统一写成了偏导的形式</p>
+</blockquote>
+<p>再考虑线性部分求导。由于 <span class="arithmatex">\(z = w^\top x+b\)</span>，则</p>
+<div class="arithmatex">\[
+\frac{\partial z}{\partial w_j}=x_j, \quad \frac{\partial z}{\partial b}=1
+\]</div>
+<p>由链式法则：</p>
+<div class="arithmatex">\[
+\frac{\partial L}{\partial w_j}
+=
+\frac{\partial L}{\partial p}
+\cdot
+\frac{\partial p}{\partial z}
+\cdot
+\frac{\partial z}{\partial w_j}
+=
+\frac{p-y}{p(1-p)}
+\cdot
+p(1-p)
+\cdot
+x_j=(p-y)x_j
+\]</div>
+<p>由于 <span class="arithmatex">\(p-y\)</span> 为标量，写成向量形式为</p>
+<div class="arithmatex">\[
+\frac{\partial L}{\partial w}
+=
+\begin{bmatrix}
+\frac{\partial L}{\partial w_1}\\
+\frac{\partial L}{\partial w_2}\\
+\vdots\\
+\frac{\partial L}{\partial w_n}
+\end{bmatrix}
+=
+(p-y)
+\begin{bmatrix}
+x_1\\
+x_2\\
+\vdots\\
+x_n
+\end{bmatrix} = (p-y)x
+\]</div>
+<p>同理，对于偏置项（<span class="arithmatex">\(b \in\mathbb R\)</span>）：</p>
+<div class="arithmatex">\[
+\frac{\partial L}{\partial b}
+=
+\frac{\partial L}{\partial p}
+\cdot
+\frac{\partial p}{\partial z}
+\cdot
+\frac{\partial z}{\partial b}
+=
+\frac{p-y}{p(1-p)}
+\cdot
+p(1-p)
+\cdot
+1=p-y
+\]</div>
+</blockquote>
+<p>设 <span class="arithmatex">\(X\in \mathbb{R}^{m \times n}\)</span>，考虑第 <span class="arithmatex">\(i(i=1,\ldots,m)\)</span> 个样本 <span class="arithmatex">\(x_i^\top\)</span>：</p>
+<div class="arithmatex">\[
+\frac{\partial L_i}{\partial w_j}
+=
+(p_i-y_i)x_{ij},\quad j =1 , \ldots, n
+\]</div>
+<p>更新：</p>
+<div class="arithmatex">\[
+w_j \leftarrow w_j - \eta (p_i-y_i)x_{ij}
+\]</div>
+<div class="arithmatex">\[
+b \leftarrow b-\eta(p_i-y_i)
+\]</div>
+<p>向量形式：</p>
+<div class="arithmatex">\[
+\frac{\partial L_i}{\partial w}
+=
+(p_i-y_i)x_i
+\]</div>
+<blockquote>
+<p>其中 </p>
+<div class="arithmatex">\[
+x_i =
+[x_{i1},x_{i2},\dots,x_{in}]^\top
+\]</div>
+<p>即取出数据矩阵 <span class="arithmatex">\(X\)</span> 的第 <span class="arithmatex">\(i\)</span> 行（按样本来划分）后转置为列向量</p>
+<div class="arithmatex">\[
+\frac{\partial L_i}{\partial w}
+=
+\begin{bmatrix}
+(p_i-y_i)x_{i1}\\
+(p_i-y_i)x_{i2}\\
+\vdots\\
+(p_i-y_i)x_{in}
+\end{bmatrix}
+\]</div>
+</blockquote>
+<p>具体例子</p>
+<ol>
+<li>
+<p>情况一：真实点击了（<span class="arithmatex">\(y=1\)</span>），但模型预测低（设 <span class="arithmatex">\(p=0.2\)</span>）</p>
+<p><span class="arithmatex">\(p-y=-0.8\)</span>，即 <span class="arithmatex">\(w_j \leftarrow w_j + 0.8 \eta x_j\)</span>。故如果某个特征 <span class="arithmatex">\(x_j&gt;0\)</span>，它对应的权重会被增大</p>
+<p>直观：这个样本本来应该被推荐得更靠前，但模型给 <strong>低了</strong>，所以模型会提高相关特征的权重</p>
+</li>
+<li>
+<p>情况二：真实没点击（<span class="arithmatex">\(y=0\)</span>），但模型预测高（设 <span class="arithmatex">\(p=0.8\)</span>）</p>
+<p><span class="arithmatex">\(p-y=0.8\)</span>，即 <span class="arithmatex">\(w_j \leftarrow w_j - 0.8\eta x_j\)</span></p>
+<p>直观：这个物品用户没点，但模型给了高分，所以模型会降低相关特征的权重</p>
+</li>
+</ol>
+<p><strong>多个样本时</strong></p>
+<p>假设有 <span class="arithmatex">\(m\)</span> 个样本，总损失一般写成平均损失：</p>
+<div class="arithmatex">\[
+L=\frac{1}{m}\sum_{i=1}^m L_i
+\]</div>
+<div class="arithmatex">\[
+\frac{\partial L}{\partial w_j}
+=
+\frac{1}{m}\sum_{i=1}^m (p_i-y_i)x_{ij}
+\]</div>
+<div class="arithmatex">\[
+\frac{\partial L}{\partial b}
+=
+\frac{1}{m}\sum_{i=1}^m (p_i-y_i)
+\]</div>
+<p>向量形式</p>
+<div class="arithmatex">\[
+\frac{\partial L}{\partial w}
+=
+\frac{1}{m}X^\top(p-y)
+\]</div>
+<p>LR 的反向传播代码（<em>我：字节 26-06-08 一面手撕</em>）</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">LogisticRegression</span><span class="p">:</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">=</span> <span class="n">lr</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">epochs</span> <span class="o">=</span> <span class="n">epochs</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>        <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">))</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>        <span class="c1"># X: (m, n)</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>        <span class="c1"># y: (m,)</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>        <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epochs</span><span class="p">):</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>            <span class="c1"># 前向传播</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>            <span class="n">z</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>            <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>            <span class="c1"># 反向传播</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>            <span class="n">dz</span> <span class="o">=</span> <span class="n">p</span> <span class="o">-</span> <span class="n">y</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>            <span class="n">dw</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">dz</span><span class="p">)</span> <span class="o">/</span> <span class="n">m</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>            <span class="n">db</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dz</span><span class="p">)</span> <span class="o">/</span> <span class="n">m</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a>            <span class="c1"># 参数更新</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">*</span> <span class="n">dw</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lr</span> <span class="o">*</span> <span class="n">db</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a>
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a>        <span class="n">z</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">w</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span>
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>        <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a>        <span class="k">return</span> <span class="n">p</span>
+<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a>
+<a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+<a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a>        <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a>        <span class="k">return</span> <span class="p">(</span><span class="n">p</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</code></pre></div>
+<p><code>lr</code>：learning rate 学习率。<code>lr</code> 越大，每次更新幅度越大；太大可能震荡，太小训练会很慢</p>
+<p><code>epochs</code>：训练轮数</p>
+<p><code>def predict(self, X):</code> 这里输入的 <code>X</code> 为测试集</p>
+<p><strong>练习</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">class</span><span class="w"> </span><span class="nc">LogisticRegression</span><span class="p">:</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>        <span class="k">pass</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>        <span class="k">pass</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>        <span class="k">pass</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>        <span class="k">pass</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>        <span class="k">pass</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># =========================</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># 1. 构造训练集</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="c1"># =========================</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># 每一行是一个用户-文章样本</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># 第 1 列：用户活跃度</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># 第 2 列：文章热度</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="n">X_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>    <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>    <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="p">])</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="c1"># 是否点击</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="c1"># =========================</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="c1"># 2. 训练模型</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="c1"># =========================</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;训练得到的 w:&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">w</span><span class="p">)</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;训练得到的 b:&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>
+<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>
+<a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a><span class="c1"># =========================</span>
+<a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a><span class="c1"># 3. 构造测试集</span>
+<a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a><span class="c1"># =========================</span>
+<a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a>
+<a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a><span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a>    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>   <span class="c1"># 用户活跃度低，文章热度低</span>
+<a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a>    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>   <span class="c1"># 中等偏低</span>
+<a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a>    <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>   <span class="c1"># 用户活跃度高，文章热度高</span>
+<a id="__codelineno-6-42" name="__codelineno-6-42" href="#__codelineno-6-42"></a>    <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>    <span class="c1"># 非常高</span>
+<a id="__codelineno-6-43" name="__codelineno-6-43" href="#__codelineno-6-43"></a><span class="p">])</span>
+<a id="__codelineno-6-44" name="__codelineno-6-44" href="#__codelineno-6-44"></a>
+<a id="__codelineno-6-45" name="__codelineno-6-45" href="#__codelineno-6-45"></a>
+<a id="__codelineno-6-46" name="__codelineno-6-46" href="#__codelineno-6-46"></a><span class="c1"># =========================</span>
+<a id="__codelineno-6-47" name="__codelineno-6-47" href="#__codelineno-6-47"></a><span class="c1"># 4. 预测测试集</span>
+<a id="__codelineno-6-48" name="__codelineno-6-48" href="#__codelineno-6-48"></a><span class="c1"># =========================</span>
+<a id="__codelineno-6-49" name="__codelineno-6-49" href="#__codelineno-6-49"></a>
+<a id="__codelineno-6-50" name="__codelineno-6-50" href="#__codelineno-6-50"></a><span class="n">proba</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<a id="__codelineno-6-51" name="__codelineno-6-51" href="#__codelineno-6-51"></a><span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<a id="__codelineno-6-52" name="__codelineno-6-52" href="#__codelineno-6-52"></a>
+<a id="__codelineno-6-53" name="__codelineno-6-53" href="#__codelineno-6-53"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;预测概率:&quot;</span><span class="p">,</span> <span class="n">proba</span><span class="p">)</span>
+<a id="__codelineno-6-54" name="__codelineno-6-54" href="#__codelineno-6-54"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;预测类别:&quot;</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
+</code></pre></div>
+<p>结果</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>训练得到的 w: [1.62083082 1.61838942]
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>训练得到的 b: -7.146625250271031
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>预测概率: [0.01969681 0.33890342 0.99701229 0.9999954 ]
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>预测类别: [0 0 1 1]
+</code></pre></div>
+<p>而 <code>predict(self, X)</code> 是在 <code>predict_proba</code> 的基础上，把概率转成<strong>类别标签</strong></p>
+<h2 id="fm">FM</h2>
+<p>Factorization Machine 因子分解机</p>
+<p>在 LR 的基础上，自动加入“二阶特征交叉”的模型</p>
+<p>为了让模型学习两个特征之间的关系，可以在线性模型后面加上二阶交叉项，但是这样参数很多</p>
+<p>表达式</p>
+<div class="arithmatex">\[
+\hat y
+=
+w_0
++
+\sum_{i=1}^n w_i x_i
++
+\sum_{i&lt;j}\langle v_i,v_j\rangle x_i x_j
+\]</div>
+<p>FM 算法需要学习：全局偏置 <span class="arithmatex">\(w_0\)</span>、 一阶特征权重 <span class="arithmatex">\(w_i\)</span>、 特征 embedding 向量 <span class="arithmatex">\(v_i\)</span></p>
+<p>参数量：<span class="arithmatex">\(O(nk)\)</span></p>
+<blockquote>
+<p>下述模型的参数量为 <span class="arithmatex">\(O(n^2)\)</span></p>
+<div class="arithmatex">\[
+y = w_0 + \sum_{i=1}^{n} w_i x_i +\sum_{i&lt;j}\langle v_i,v_j\rangle w_{ij}x_i x_j
+\]</div>
+</blockquote>
+<p>FM 的数学变形</p>
+<div class="arithmatex">\[
+\sum_{i=1}^{n-1}\sum_{j=i+1}^{n}
+\langle v_i, v_j\rangle x_i x_j
+=
+\frac{1}{2}
+\sum_{f=1}^{k}
+\left[
+\left(
+\sum_{i=1}^{n} v_{i,f}x_i
+\right)^2
+-
+\sum_{i=1}^{n} v_{i,f}^2x_i^2
+\right]
+\]</div>
+<p>局限性：主要处理的是 <strong>二阶交叉</strong>，对更复杂的高阶组合表达能力有限</p>
+<h3 id="embedding">embedding 向量</h3>
+<p><span class="arithmatex">\(k\)</span> 是 embedding 向量的维度（隐向量维度），人为设置，远小于 <span class="arithmatex">\(n\)</span></p>
+<p>在 FM 中，每一个特征 <span class="arithmatex">\(x_i\)</span> 都对应一个向量 <span class="arithmatex">\(v_i \in \mathbb R^k\)</span></p>
+<p><span class="arithmatex">\(k\)</span> 的大小对模型的影响：</p>
+<ul>
+<li>
+<p>如果 <span class="arithmatex">\(k\)</span> 太小，模型表达能力弱，可能学不到复杂关系</p>
+</li>
+<li>
+<p>如果 <span class="arithmatex">\(k\)</span> 太大，参数更多，容易过拟合，训练也更慢</p>
+</li>
+</ul>
+<p><strong>查表操作</strong></p>
+<p>用户 ID 通过 embedding 得到用户静态向量</p>
+<div class="arithmatex">\[
+u=E_{\text{user}}[\text{user\_id}]
+\]</div>
+<p>这里 <span class="arithmatex">\([\text{user\_id}]\)</span> 是 <strong>查表操作</strong>。设共有 <span class="arithmatex">\(N\)</span> 个用户，每个用户用一个 <span class="arithmatex">\(k\)</span> 维向量表示，得到表：</p>
+<div class="arithmatex">\[
+E_{\text{user}}=\begin{bmatrix}
+u_1^\top \\
+u_2^\top \\
+\vdots   \\
+u_N^\top 
+\end{bmatrix}\in \mathbb{R}^{N\times k}
+\]</div>
+<h2 id="dnn">DNN</h2>
+<p>DNN 负责学习高阶、非线性的特征交叉</p>
+<p>深度神经网络 Deep Neural Network</p>
+<p>一个 DNN 一般包括三部分</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>输入层 → 隐藏层 → 输出层
+</code></pre></div>
+<p>比如</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>输入特征
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>   ↓
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>第 1 个隐藏层
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>   ↓
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>第 2 个隐藏层
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>   ↓
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>第 3 个隐藏层
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>   ↓
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>输出层
+</code></pre></div>
+<p>本质上是一个由很多层组成的函数，输入特征 <span class="arithmatex">\(x\)</span>，输出预测值 <span class="arithmatex">\(\hat y\)</span>，可以简单理解为：</p>
+<div class="arithmatex">\[
+\hat y = f(x)
+\]</div>
+<p>只不过这个 <span class="arithmatex">\(f\)</span> 不是简单的线性函数，而是很多层线性变换和非线性激活函数组合起来的复杂函数</p>
+<p>DNN 的想法：不只做一次线性变换，而是做很多次</p>
+<p><strong>DNN的每一层</strong></p>
+<ol>
+<li>线性变换</li>
+</ol>
+<div class="arithmatex">\[
+z^{(l)} = W^{(l)}a^{(l)} + b^{(l)}
+\]</div>
+<ul>
+<li><span class="arithmatex">\(a^{(l)}\)</span>：第 <span class="arithmatex">\(l\)</span> 层的输入</li>
+<li><span class="arithmatex">\(W^{(l)}\)</span>：权重矩阵</li>
+<li><span class="arithmatex">\(b^{(l)}\)</span>：偏置</li>
+<li>
+<p><span class="arithmatex">\(z^{(l)}\)</span>：线性变换后的结果</p>
+</li>
+<li>
+<p>非线性激活</p>
+</li>
+</ul>
+<div class="arithmatex">\[
+a^{(l+1)} = \sigma(z^{(l)})
+\]</div>
+<p>不一定使用 Sigmoid，可以是 ReLU、Tanh 等。DNN 中，最常用的是 ReLU：</p>
+<div class="arithmatex">\[
+\text{ReLU}(x)=\max(0,x)
+\]</div>
+<p>用于引入非线性，否则多层线性变换叠加起来，还是一个线性变换</p>
+<p>线性层负责特征组合，激活函数负责引入非线性表达能力</p>
+<p>局限性：DNN 对低阶交叉，尤其是二阶交叉，不一定学得足够直接、稳定</p>
+<h2 id="deepfm">DeepFM</h2>
+<p>FM 和 DNN 共用同一套 embedding，减少参数冗余</p>
+<p>DeepFM 通常用于 CTR 预估，标签 <span class="arithmatex">\(y \in \{0,1\}\)</span></p>
+<p>图示</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>      输入特征
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>         ↓
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>    Embedding 层
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>         ↓
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a> ┌───────────────┐
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a> ↓               ↓
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>FM 部分          DNN 部分
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a> ↓               ↓
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>y_FM            y_DNN
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a> └───────┬───────┘
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>         ↓
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>   y_FM + y_DNN
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>         ↓
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>      Sigmoid
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>         ↓
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>     点击概率
+</code></pre></div>
+<h3 id="_6">传统神经网络知识</h3>
+<p>输入 → 隐藏层 → 输出层（全连接层）</p>
+<h3 id="embedding_1">Embedding 层</h3>
+<p>Embedding 层：嵌入层</p>
+<p>一个可训练的查表层。它把高维稀疏的 one-hot 特征，映射成低维稠密的 embedding 向量</p>
+<h4 id="_7">用途</h4>
+<p><strong>离散特征映射为稠密向量</strong>（线性变换）</p>
+<p>推荐系统里的输入特征通常是这种形式：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>user_id = 1024
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>item_id = 889
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>category = 科技
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>device = iPhone
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>hour = 21
+</code></pre></div>
+<p>这些特征很多都是 <strong>离散类别特征</strong>。比如 <code>user_id</code> 可能有几十万、几百万个取值</p>
+<p>如果直接 one-hot 编码：</p>
+<div class="arithmatex">\[
+\text{user\_id}=1024
+\quad \Rightarrow \quad
+[0,0,\dots,1,\dots,0]
+\]</div>
+<p>这个向量会非常长，而且大部分位置都是 0</p>
+<p>Embedding 层的作用就是把这个很长的 one-hot 向量，映射成一个短向量，例如</p>
+<div class="arithmatex">\[
+\text{user\_id}=1024
+\quad \Rightarrow \quad
+e_{\text{user}=1024}\in \mathbb R^k
+\]</div>
+<p>设 <span class="arithmatex">\(k=8\)</span>，则可能是：</p>
+<div class="arithmatex">\[
+e_{\text{user}=1024}
+=
+[0.12,\ -0.31,\ 0.08,\ 0.44,\ -0.25,\ 0.17,\ 0.03,\ 0.29]
+\]</div>
+<p>这个向量不是人工指定的，而是模型训练过程中学出来的</p>
+<h4 id="_8">数学表达</h4>
+<p>假设某一类特征一共有 <span class="arithmatex">\(n\)</span> 个可能取值，如用户 ID 有 <span class="arithmatex">\(n\)</span> 个。Embedding 层本质上维护一个参数矩阵：<span class="arithmatex">\(E\in \mathbb R^{n\times k}\)</span></p>
+<ul>
+<li><span class="arithmatex">\(n\)</span>：该特征一共有多少种取值</li>
+<li><span class="arithmatex">\(k\)</span>：embedding 维度</li>
+<li>第 <span class="arithmatex">\(i\)</span> 行 <span class="arithmatex">\(E_i\)</span>：第 <span class="arithmatex">\(i\)</span> 个特征取值对应的 embedding 向量</li>
+</ul>
+<p>设输入是第 <span class="arithmatex">\(i\)</span> 个类别，它的 one-hot 向量记为列向量</p>
+<div class="arithmatex">\[
+x_i=
+[0,0,\dots,1,\dots,0]^\top
+\in\mathbb R^{n\times 1}
+\]</div>
+<p>embedding 查表可以写成</p>
+<div class="arithmatex">\[
+e_i = E^\top x_i \in \mathbb{R}^k
+\]</div>
+<p>这个乘法本质上就是取出矩阵 <span class="arithmatex">\(E\)</span> 的第 <span class="arithmatex">\(i\)</span> 行，再转置成列向量 <span class="arithmatex">\(e_i = E_{i,:}^\top\)</span></p>
+<h2 id="dcn">DCN</h2>
+<p>Deep &amp; Cross Network</p>
+<p>专门为推荐系统、广告点击率预估这类任务设计的模型，用来自动学习特征交叉，尤其是显式高阶特征交叉</p>
+<p>DCN 的输入一般也是推荐模型常见的形式：</p>
+<ol>
+<li><strong>类别特征</strong>先过 Embedding 层</li>
+<li><strong>数值特征</strong>归一化后与 1 中的向量拼接</li>
+</ol>
+<blockquote>
+<p>如年龄 23，归一化为 0.23</p>
+</blockquote>
+<ol>
+<li>得到统一输入向量</li>
+</ol>
+<div class="arithmatex">\[
+\boldsymbol{x}_0
+=
+[\boldsymbol{x}_{\text{embed},1}^\top,\dots,
+\boldsymbol{x}_{\text{embed},k}^\top,
+\boldsymbol{x}_{\text{dense}}^\top]
+\]</div>
+<ul>
+<li><span class="arithmatex">\(\boldsymbol{x}_{\text{dense}}\)</span> 是数值型向量</li>
+</ul>
+<p>然后 <span class="arithmatex">\(\boldsymbol{x}_0\)</span> 同时进入两个分支，表示为如下图示</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>       输入特征
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>          ↓
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>  Embedding + Dense 拼接
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>          ↓
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>         x_0
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>          ↓
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a> ┌───────────────┬
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a> │               │
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>Cross Network     Deep Network
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>显式特征交叉        隐式非线性表达
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a> │               │
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a> └──── 拼接 ──────┘
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>         ↓
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>      Sigmoid
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>         ↓
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>      点击概率
+</code></pre></div>
+<p>Cross Network 负责显式交叉，Deep Network 负责隐式非线性表达</p>
+<p>Cross Network 每加深一层，就会把交叉阶数提高一阶</p>
+<p>Cross Network 是 DCN 的核心</p>
+<p>如果 Cross Network 有 <span class="arithmatex">\(L\)</span> 层，那么它最多可以显式建模到 <span class="arithmatex">\(L+1\)</span> 阶特征交叉</p>
+<p>层数记号：</p>
+<ul>
+<li>
+<p>Cross Network 堆叠了 <span class="arithmatex">\(L_1\)</span> 层交叉层（Cross Layer），输出 <span class="arithmatex">\(\boldsymbol{x}_{L_1}\)</span></p>
+</li>
+<li>
+<p>Deep Network 堆叠了 <span class="arithmatex">\(L_2\)</span> 层普通全连接层（DNN Layer），它的最终输出叫做 <span class="arithmatex">\(\boldsymbol{h}_{L_2}\)</span> </p>
+</li>
+</ul>
+<p>拼接：</p>
+<p>算法最后要拼接 <span class="arithmatex">\(\boldsymbol{x}_{L_1}\)</span>、<span class="arithmatex">\(\boldsymbol{h}_{L_2}\)</span> ：</p>
+<div class="arithmatex">\[
+\boldsymbol{z} = [\boldsymbol{x}_{L_1}^\top, \boldsymbol{h}_{L_2}^\top]^\top
+\]</div>
+<p>再送入逻辑回归层得到点击概率：</p>
+<div class="arithmatex">\[
+p = \sigma(\boldsymbol{w}_{\text{logits}}^T \boldsymbol{z} + b)
+\]</div>
+<p><strong>对比 DeepFM</strong></p>
+<p>DeepFM 里面的高阶交叉主要靠 DNN 隐式学习。DNN 虽然可以学习高阶交叉，但它学到的交叉不够显式，不容易解释</p>
+<h3 id="cross-network">Cross Network</h3>
+<p>Cross Layer 是 Cross Network 的一个处理单元</p>
+<p>原理：用原始特征 <span class="arithmatex">\(x_0\)</span> 去不断调制（modulate）当前表示 <span class="arithmatex">\(x_l\)</span>。<strong>不是</strong> 组合爆炸</p>
+<p>在数学上，是一个向量（下式中的 <span class="arithmatex">\(x_{l+1}\)</span>）</p>
+<p>公式为</p>
+<div class="arithmatex">\[
+x_{l+1}=x_l+x_0(x_l^\top w_l)+b_l
+\]</div>
+<ul>
+<li><span class="arithmatex">\(x_0\)</span>：最原始的输入特征向量</li>
+<li><span class="arithmatex">\(x_l\)</span>：第 <span class="arithmatex">\(l\)</span> 层 Cross Network 的输出</li>
+<li><span class="arithmatex">\(w_l\)</span>：第 <span class="arithmatex">\(l\)</span> 层的权重向量</li>
+<li><span class="arithmatex">\(b_l\)</span>：偏置</li>
+<li><span class="arithmatex">\(x_{l+1}\)</span>：下一层输出</li>
+</ul>
+<p>具体例子（产生特征交叉）</p>
+<blockquote>
+<p>设输入向量：<span class="arithmatex">\(x_0 =[x_1,x_2,x_3]^\top\)</span></p>
+<p>第一层时：</p>
+<div class="arithmatex">\[
+x_1=x_0+x_0(x_0^\top w_0)+b_0
+\]</div>
+<p>其中：</p>
+<div class="arithmatex">\[
+x_0^\top w_0 =w_1x_1+w_2x_2+w_3x_3
+\]</div>
+<div class="arithmatex">\[
+x_0(x_0^\top w_0)
+=
+\begin{bmatrix}
+x_1 \\
+x_2 \\
+x_3
+\end{bmatrix}
+(w_1x_1+w_2x_2+w_3x_3)
+=
+\begin{bmatrix}
+w_1x_1^2+w_2x_1x_2+w_3x_1x_3 \\
+w_1x_2x_1+w_2x_2^2+w_3x_2x_3 \\
+w_1x_3x_1+w_2x_3x_2+w_3x_3^2
+\end{bmatrix}
+\]</div>
+<p>此时已出现了<strong>二阶特征交叉</strong></p>
+<p>第 <span class="arithmatex">\(l+1\)</span> 层输出理论上会包含所有 <span class="arithmatex">\(l+1\)</span> 次的单项代数式</p>
+<div class="arithmatex">\[
+x_1^{m_1} x_2^{m_2} \dots x_d^{m_d},\quad  m_1+m_2+\dots+m_d = l+1
+\]</div>
+<p>但由于 <span class="arithmatex">\(x_0^\top w_0 \in \mathbb{R}\)</span>，并不是在枚举所有高阶单项式（不会生成这些独立的向量）。隐式表达高阶特征交叉</p>
+</blockquote>
+<h3 id="deep-network">Deep Network</h3>
+<p>类似 DeepFM 的 DNN 部分</p>
+<p><strong>目的</strong>：捕捉特征之间的<strong>复杂非线性关系</strong>，这些关系可能不是 Cross Network 显式交叉能覆盖的</p>
+<p><strong>位置</strong>：Deep Network 与 Cross Network 并行，输入同样是 <span class="arithmatex">\(x_0\)</span></p>
+<p><strong>输出</strong>：一个向量 <span class="arithmatex">\(h_{L_2}\)</span>，表示 Deep Network 提取的高阶非线性特征</p>
+<p>Deep Network 本质是一个<strong>标准的全连接神经网络（MLP）</strong>：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+h_1 &amp;= \sigma(W_1 x_0 + b_1) \\
+h_2 &amp;= \sigma(W_2 h_1 + b_2) \\
+&amp;\ \vdots \\
+h_{L_2} &amp;= \sigma(W_{L_2} h_{L_2-1} + b_{L_2})
+\end{aligned}
+\]</div>
+<ul>
+<li>MLP：Fully Connected Layer</li>
+</ul>
+<h2 id="xdeepfm">xDeepFM</h2>
+<table>
+<thead>
+<tr>
+<th>部分</th>
+<th>作用</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>线性部分</td>
+<td>学习一阶特征</td>
+<td>类似 LR</td>
+</tr>
+<tr>
+<td>CIN 部分</td>
+<td>显式学习向量级高阶特征交叉</td>
+<td>xDeepFM 核心</td>
+</tr>
+<tr>
+<td>DNN 部分</td>
+<td>隐式学习高阶非线性</td>
+<td>类似 DeepFM 的 DNN</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>              输入特征
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>                 ↓
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>            Embedding 层
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>                 ↓
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a> ┌───────────────┬───────────────┬
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a> │               │               │
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>线性部分          CIN 部分         DNN 部分
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>一阶特征          显式高阶交叉      隐式高阶交叉
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a> │               │               │
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a> └───────────────┴───────────────┴
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>                 ↓
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>              Sigmoid
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>                 ↓
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>              点击概率
+</code></pre></div>
+<p>最终预测公式可以写成</p>
+<div class="arithmatex">\[
+\hat{y}=\sigma(w_{\text{linear}}^{\top}a+w_{\text{cin}}^{\top}p^{+}+w_{\text{DNN}}^{\top}h+b)
+\]</div>
+<p>其中：<span class="arithmatex">\(a\)</span> 表示原始特征、<span class="arithmatex">\(p^+\)</span> 表示 CIN 的输出、<span class="arithmatex">\(h\)</span> 表示 DNN 的输出</p>
+<blockquote>
+<p>原始特征 <span class="arithmatex">\(a\)</span>：</p>
+<p><span class="arithmatex">\(a=[x_{\text{sparse}},x_{\text{dense}}]\)</span>，就是原始的特征经过拼接后的向量</p>
+<p>用 <span class="arithmatex">\(w_{\text{linear}}^{\top}a\)</span> 建模一阶特征对点击概率的影响</p>
+</blockquote>
+<p>在 DCN 里，输入是拼接后的大向量：<span class="arithmatex">\(x_0 \in \mathbb{R}^{d}\)</span></p>
+<p>在 xDeepFM 的 CIN 里，输入矩阵：<span class="arithmatex">\(X_0 \in \mathbb{R}^{m \times D}\)</span></p>
+<p>具体例子</p>
+<blockquote>
+<p><strong>特征域</strong>（field），表示类似如下信息</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>user_id
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>article_id
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>category
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>device
+</code></pre></div>
+<p>设 field 的个数为 <span class="arithmatex">\(m=4\)</span>，embedding 的维数为 <span class="arithmatex">\(D=3\)</span>，假设：</p>
+<div class="arithmatex">\[
+e_{\text{user}} = [0.2,-0.1,0.4]
+\]</div>
+<div class="arithmatex">\[
+e_{\text{article}} = [0.5,0.3,-0.2]
+\]</div>
+<div class="arithmatex">\[
+e_{\text{category}} = [-0.3,0.6,0.1]
+\]</div>
+<div class="arithmatex">\[
+e_{\text{device}} = [0.1,0.2,0.7]
+\]</div>
+<p>CIN 的输入为</p>
+<div class="arithmatex">\[
+X_0
+=
+\begin{bmatrix}
+0.2 &amp; -0.1 &amp; 0.4 \\
+0.5 &amp; 0.3 &amp; -0.2 \\
+-0.3 &amp; 0.6 &amp; 0.1 \\
+0.1 &amp; 0.2 &amp; 0.7
+\end{bmatrix}
+\in \mathbb{R}^{4\times 3}
+\]</div>
+</blockquote>
+<p><strong>向量级交互</strong></p>
+<p>DCN 是将向量拼成一个很长的向量，而 CIN 网络保留了向量的结构</p>
+<h3 id="cin">CIN</h3>
+<p>CIN 第一层</p>
+<p>假设 CIN 输入是：</p>
+<div class="arithmatex">\[
+X_0
+=
+\begin{bmatrix}
+e_1 \\
+e_2 \\
+e_3
+\end{bmatrix}
+\in \mathbb{R}^{3\times D}
+\]</div>
+<p>第一层 CIN 会让上一层输出 <span class="arithmatex">\(X_0\)</span> 和原始输入 <span class="arithmatex">\(X_0\)</span> 做两两交互</p>
+<div class="arithmatex">\[
+e_i \circ e_j, \quad i,j = 1,\ldots,D
+\]</div>
+<p>共 9 种交互向量，得到的结果仍为 <span class="arithmatex">\(D\)</span> 维向量</p>
+<p>压缩</p>
+<p>如果把所有交互向量都保留下来，数量会越来越多</p>
+<p>做法：先生成大量交互向量，再通过加权求和，把它们压缩成固定数量的新向量</p>
+<p>假设第一层想输出 <span class="arithmatex">\(H_1\)</span> 个新向量，那么 <span class="arithmatex">\(X_1 \in \mathbb{R}^{H_1 \times D}\)</span></p>
+<p>设输入矩阵：<span class="arithmatex">\(X_0 \in \mathbb{R}^{m \times D}\)</span></p>
+<div class="arithmatex">\[
+X_{h,*}^{1}
+=
+\sum_{i=1}^{m}
+\sum_{j=1}^{m}
+W_{i,j}^{1,h}
+(
+X_{i,*}^{0}
+\odot 
+X_{j,*}^{0}
+)
+\]</div>
+<p><span class="arithmatex">\(W^1 \in \mathbb{R}^{m \times m \times H_1}\)</span> 是三维张量，但是 <span class="arithmatex">\(W^{1,h}\in \mathbb{R}^{m \times m}\)</span></p>
+<p><span class="arithmatex">\(W_{i,j}^{1,h}\)</span> 是标量，可学习的标量参数</p>
+<p>CIN 的第 <span class="arithmatex">\(k\)</span> 层</p>
+<p>第 <span class="arithmatex">\(k\)</span> 层输入是上一层的输出 <span class="arithmatex">\(X_{k-1} \in \mathbb{R}^{H_{k-1}\times D}\)</span>。CIN 每一层都让 <span class="arithmatex">\(X_{k-1}\)</span> 与 <span class="arithmatex">\(X_{0}\)</span> 作交互</p>
+<p>第 <span class="arithmatex">\(k\)</span> 层第 <span class="arithmatex">\(h\)</span> 个输出向量为</p>
+<div class="arithmatex">\[
+X_{h,*}^{k}
+=
+\sum_{i=1}^{H_{k-1}}
+\sum_{j=1}^{m}
+W_{i,j}^{k,h}
+(
+X_{i,*}^{k-1}
+\odot 
+X_{j,*}^{0}
+)
+\]</div>
+<p>CIN 每一层都会得到 <span class="arithmatex">\(X_k \in \mathbb{R}^{H_k\times D}\)</span>，按行求和，得到 <span class="arithmatex">\(p_k\)</span>，即</p>
+<div class="arithmatex">\[
+p_{k,i}
+=
+\sum_{d=1}^{D}
+X_{i,d}^{k}
+\]</div>
+<p>每一层都如此操作，得到：</p>
+<div class="arithmatex">\[
+p^{+}=[p_1, p_2, \dots, p_T]
+\]</div>
+<h3 id="dnn_1">DNN 部分</h3>
+<p>xDeepFM 的 DNN 部分和 DeepFM 的 DNN 部分很像，都是把 embedding 拼接后送入 MLP：</p>
+<div class="arithmatex">\[
+h_1=\sigma(W_1x_0+b_1)
+\]</div>
+<div class="arithmatex">\[
+h_2=\sigma(W_2h_1+b_2)
+\]</div>
+<div class="arithmatex">\[
+\cdots
+\]</div>
+<div class="arithmatex">\[
+h_{L}=\sigma(W_Lh_{L-1}+b_L)
+\]</div>
+<p>它负责隐式学习高阶非线性关系</p>
+<h3 id="_9">模型对比</h3>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th style="text-align: right;">显式交叉</th>
+<th style="text-align: right;">隐式交叉</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FM</td>
+<td style="text-align: right;">二阶</td>
+<td style="text-align: right;">无</td>
+<td>明确二阶交叉</td>
+</tr>
+<tr>
+<td>DeepFM</td>
+<td style="text-align: right;">二阶</td>
+<td style="text-align: right;">高阶</td>
+<td>FM + DNN</td>
+</tr>
+<tr>
+<td>DCN</td>
+<td style="text-align: right;">高阶</td>
+<td style="text-align: right;">高阶</td>
+<td>Cross Network 显式高阶交叉 + DNN</td>
+</tr>
+<tr>
+<td>xDeepFM</td>
+<td style="text-align: right;">向量级高阶</td>
+<td style="text-align: right;">高阶</td>
+<td>CIN 显式向量级高阶交叉 + DNN</td>
+</tr>
+</tbody>
+</table>
+<h2 id="din">DIN</h2>
+<p>DIN 核心：候选物品激活历史行为</p>
+<p>传统<strong>平均池化</strong>存在多峰兴趣消融现象</p>
+<p>属于堆叠架构</p>
+<p>Local Activation（局部激活）：针对当前候选商品，只激活用户历史行为中与它相关的部分，而不是把所有的历史行为都同等看待</p>
+<p>针对当前候选物品动态生成的 <strong>用户兴趣向量</strong> 为</p>
+<div class="arithmatex">\[
+v_U(A) = \sum_{i=1}^{H} w_i e_i
+\]</div>
+<p>其中：<span class="arithmatex">\(e_i\)</span> 是用户第 <span class="arithmatex">\(j\)</span> 个历史行为的嵌入向量。权重的计算公式： </p>
+<div class="arithmatex">\[
+w_i = a(e_i, v_A)
+\]</div>
+<p>公式中 <span class="arithmatex">\(a(\cdot)\)</span> 是一个函数，由多层感知机 MLP 实现的注意力网络</p>
+<p>我的项目例子</p>
+<blockquote>
+<p>项目中召回阶段候选集的大小为 300，即文章 <span class="arithmatex">\(A_1,A_2, \ldots, A_{300}\)</span>，取其中一篇文章作为候选文章（即待打分的文章），设为 <span class="arithmatex">\(A\)</span></p>
+<p>候选文章的嵌入向量为 <span class="arithmatex">\(e_A\)</span>（12 维），用户历史序列为 <span class="arithmatex">\(e_i(1\leq i \leq 30)\)</span>（已嵌入，12 维），构造向量</p>
+<div class="arithmatex">\[
+a_i = [e_A, e_i, e_A - e_i, e_A \circ e_i] \in \mathbb R^{48}
+\]</div>
+<p>经过两层神经网络：<span class="arithmatex">\(a_i \rightarrow \mathbb R^{64} \rightarrow \mathbb R^{32} \rightarrow \mathbb R\)</span>，得到 <strong>attention 分数</strong> <span class="arithmatex">\(s_i\)</span>，再作 softmax 得到 <span class="arithmatex">\(w_i\)</span>：</p>
+<div class="arithmatex">\[
+w_i = \frac{\exp(s_i)}{\sum_{k=1}^{30}\exp(s_k)}
+\]</div>
+<p>此时 <span class="arithmatex">\(v_U(A) = \sum_{i=1}^{30} w_i e_i\)</span> 即为用户 <span class="arithmatex">\(u\)</span> 对文章 <span class="arithmatex">\(A\)</span> 的用户兴趣向量。</p>
+</blockquote>
+<p>Concat 后输入 MLP：</p>
+<div class="arithmatex">\[
+x=[x_{\text{dense}},u,e_A,v_U(A)]
+\]</div>
+<p>即</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>[稠密数值特征，用户静态特征，候选物品特征，动态用户兴趣特征]
+</code></pre></div>
+<blockquote>
+<p>Concat 把不同来源的特征向量<strong>横向拼接成一个更长的向量</strong>，然后送入 MLP</p>
+</blockquote>
+<h2 id="gbdt">GBDT 基线</h2>
+<p>不用神经网络，而是用一堆决策树逐步修正预测误差的传统机器学习精排模型</p>
+<p>GBDT：Gradient Boosting Decision Tree，梯度提升决策树</p>
+<p>不是一次性训练一棵很强的树，而是训练很多棵弱树，让它们一棵一棵叠加起来，逐步逼近真实标签</p>
+<p>不擅长处理高维稀疏特征</p>
+<p>一棵树可以写成一个函数 <span class="arithmatex">\(f(x)\)</span>，它接收样本特征 <span class="arithmatex">\(x\)</span>，输出一个预测分数。GBDT 不是只用一棵树，而是用很多棵树叠加，再结合学习率：</p>
+<div class="arithmatex">\[
+F_M(x)=F_0(x)+ \eta \sum_{m=1}^{M} f_m(x)
+\]</div>
+<ul>
+<li>
+<p><span class="arithmatex">\(F_M(x)\)</span>：这里的 <span class="arithmatex">\(M\)</span> 表示是加了 <span class="arithmatex">\(M\)</span> 棵树</p>
+</li>
+<li>
+<p>最后输出点击率时，要将 <span class="arithmatex">\(F_M(x)\)</span> 经过 sigmoid 后映射到 <span class="arithmatex">\([0,1]\)</span></p>
+</li>
+</ul>
+<h3 id="boosting">Boosting 思想</h3>
+<p>设当前模型对第 <span class="arithmatex">\(i\)</span> 个样本的预测为 <span class="arithmatex">\(F_{m-1}(x_i)\)</span>，真实标签是 <span class="arithmatex">\(y_i\)</span>，当前残差是：</p>
+<div class="arithmatex">\[
+r_i^{(m)}=y_i - F_{m-1}(x_i), \quad i = 1,2,\ldots,N
+\]</div>
+<p>第 <span class="arithmatex">\(m\)</span> 棵树就去学习这个残差（第 <span class="arithmatex">\(m\)</span> 棵树不是由某一个样本决定的，而是由所有样本的残差共同决定的）：</p>
+<div class="arithmatex">\[
+f_m(x_i) \approx r_i^{(m)}, \quad i = 1,2,\ldots,N
+\]</div>
+<blockquote>
+<p>即类似解</p>
+<div class="arithmatex">\[
+f_m
+=
+\arg\min_f
+\sum_{i=1}^{N}
+\left(
+r_i^{(m)}-f(x_i)
+\right)^2
+\]</div>
+</blockquote>
+<p>然后更新模型：</p>
+<div class="arithmatex">\[
+F_m(x)
+=
+F_{m-1}(x)
++
+\eta f_m(x)
+\]</div>
+<p>直观理解：当前模型哪里预测低了，新树就往上补；当前模型哪里预测高了，新树就往下修正。</p>
+<p>训练过程是：预测 → 计算误差 → 训练新树修正误差 → 更新预测，不断重复</p>
+<p><strong>叶子节点数量</strong></p>
+<p>在<strong>一般的 GBDT</strong>里，决策可以有很多叶子区域，设共有 <span class="arithmatex">\(J\)</span> 个叶子节点，区域记为 <span class="arithmatex">\(R_1,R_2,\ldots,R_J\)</span>，此时 <span class="arithmatex">\(f_m(x)\)</span> 的表达式为</p>
+<div class="arithmatex">\[
+f_m(x)=\sum_{j=1}^{J}\gamma_j\mathbf{1}(x\in R_j)
+\]</div>
+<p>在项目中</p>
+<blockquote>
+<p>由于设置了 <code>GBDT_MAX_DEPTH = 1</code>，在我的程序中可以认为</p>
+<div class="arithmatex">\[
+f_m(x)=
+\gamma_1\mathbf{1}(x\in R_1)
++
+\gamma_2\mathbf{1}(x\in R_2)
+\]</div>
+</blockquote>
+<p><strong>CTR 场景</strong></p>
+<p>推荐系统 CTR 预估是二分类问题 <span class="arithmatex">\(y \in \{0,1\}\)</span>。GBDT 先输出一个分数 <span class="arithmatex">\(F(x)\)</span>，通过 Sigmoid 转成点击概率。交叉熵损失为：</p>
+<div class="arithmatex">\[
+L=-\sum_{i=1}^{N}\left[y_i\log \hat y_i+(1-y_i)\log(1-\hat y_i)\right]
+\]</div>
+<p>这种情况下，负梯度可以理解为 <span class="arithmatex">\(g_i=y_i-\hat y_i\)</span>，即：
+- 如果真实是点击（<span class="arithmatex">\(y_i=1\)</span>），但模型预测 <span class="arithmatex">\(\hat y_i\)</span> 很小，此时 <span class="arithmatex">\(y_i-\hat y_i &gt; 0\)</span></p>
+<div class="highlight"><pre><span></span><code>新树会把这个样本的预测分数往上拉
+</code></pre></div>
+<ul>
+<li>
+<p>如果真实是未点击（<span class="arithmatex">\(y_i=0\)</span>），但模型预测 <span class="arithmatex">\(\hat y_i\)</span> 很大，此时 <span class="arithmatex">\(y_i-\hat y_i &lt; 0\)</span></p>
+<p>新树会把这个样本的预测分数往下压</p>
+</li>
+</ul>
+<p>具体例子</p>
+<blockquote>
+<p>输入特征为</p>
+<p><code>x = [召回分数、召回来源、文章热度、文章近期热度、用户历史点击次数、用户活跃度、文章新鲜度、类别偏好匹配度、语言匹配、时间差]</code></p>
+<p>GBDT 学到的是类似这种规则组合：</p>
+<p>召回分数高 <span class="arithmatex">\(\land\)</span> 文章近期热度高 <span class="arithmatex">\(\land\)</span> 用户对该类别有偏好 <span class="arithmatex">\(\Rightarrow\)</span> 点击概率高</p>
+<p>文章很老 <span class="arithmatex">\(\land\)</span> 用户近期活跃度低 <span class="arithmatex">\(\land\)</span> 点击概率低 <span class="arithmatex">\(\Rightarrow\)</span> 点击概率低</p>
+</blockquote>
+<p>相较于 LR 的优势：可以通过树的分裂自动形成组合规则，自动学习一些<strong>非线性规则</strong>和<strong>特征组合</strong></p>
+<p>项目中做法</p>
+<blockquote>
+<p>第 <span class="arithmatex">\(m\)</span> 棵树会看所有训练样本：</p>
+<div class="arithmatex">\[
+(x_{u_1,A},r_{u_1,A}),
+(x_{u_1,B},r_{u_1,B}),
+(x_{u_2,C},r_{u_2,C}),
+\ldots
+\]</div>
+<p>然后找出一条划分规则，比如 <code>item_strength_sum &gt; 100</code>，让整体的拟合效果最好</p>
+</blockquote>
+<h1 id="_10">项目相关</h1>
+<h2 id="_11">训练集与测试集</h2>
+<p>项目中两次切分的去区别：</p>
+<p>假设用户 <span class="arithmatex">\(u_1\)</span> 按时间顺序一共只交互了 5 篇文章：<span class="arithmatex">\(A \rightarrow B \rightarrow C \rightarrow D \rightarrow E\)</span></p>
+<ul>
+<li>
+<p>第 1 次切分</p>
+<p><span class="arithmatex">\(A,B,C,D\)</span> 作为 <code>train_df</code>，<span class="arithmatex">\(E\)</span> 作为 <code>test_df</code>，即</p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>用户</th>
+<th>train_df</th>
+<th>test_df</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(u_1\)</span></td>
+<td><span class="arithmatex">\(A, B, C, D\)</span></td>
+<td><span class="arithmatex">\(E\)</span></td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+</li>
+<li>
+<p>第 2 次切分</p>
+<p>用于训练 GBDT，算法需要知道哪个候选文章是正样本</p>
+<p><span class="arithmatex">\(A,B,C\)</span> 作为 <code>rank_base_df</code>，<span class="arithmatex">\(D\)</span> 作为 <code>rank_label_df</code></p>
+<p>对于用户 <span class="arithmatex">\(u_1\)</span>，GBDT 训练时只知道历史 <span class="arithmatex">\([A,B,C]\)</span>，YouTubeDNN 基于该历史给用户召回候选文章 <span class="arithmatex">\([D,X,Y,Z]\)</span>，构造下述训练样本</p>
+<table>
+<thead>
+<tr>
+<th>personId</th>
+<th>contentId</th>
+<th>label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(u_1\)</span></td>
+<td>D</td>
+<td>1</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(u_1\)</span></td>
+<td>X</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(u_1\)</span></td>
+<td>Y</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(u_1\)</span></td>
+<td>Z</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>GBDT 得到的是</p>
+<div class="arithmatex">\[
+X_{\text{rank\_train}}
+=
+\begin{bmatrix}
+x_{u_1,D} \\
+x_{u_1,X} \\
+x_{u_1,Y} \\
+x_{u_1,Z}
+\end{bmatrix} \quad 
+y_{\text{rank\_train}}
+=
+\begin{bmatrix}
+1 \\
+0 \\
+0 \\
+0
+\end{bmatrix}
+\]</div>
+<p>其中 <span class="arithmatex">\((u_1,D)\)</span> 为正样本，<span class="arithmatex">\((u_1,X),(u_1,Y),(u_1,Z)\)</span> 为负样本</p>
+</li>
+</ul>
+<h2 id="_12">特征</h2>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>程序英文名</th>
+<th>中文名</th>
+<th>面试时怎么解释</th>
+<th>取值示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用户侧</td>
+<td><code>user_hist_count</code></td>
+<td>用户历史文章数</td>
+<td>用户过去看过/交互过多少篇不同文章，反映用户兴趣积累程度</td>
+<td><code>12</code></td>
+</tr>
+<tr>
+<td>用户侧</td>
+<td><code>user_strength_sum</code></td>
+<td>用户总交互强度</td>
+<td>把用户历史行为按权重累加，反映用户整体活跃和兴趣强度</td>
+<td><code>35.7</code></td>
+</tr>
+<tr>
+<td>用户侧</td>
+<td><code>user_recency_days</code></td>
+<td>用户最近活跃间隔</td>
+<td>距离用户最近一次交互过去多少天，越小表示用户越活跃</td>
+<td><code>2.5</code></td>
+</tr>
+<tr>
+<td>用户侧</td>
+<td><code>user_interactions_per_active_day</code></td>
+<td>用户日均交互次数</td>
+<td>用户交互次数除以活跃天数，衡量用户活跃频率</td>
+<td><code>0.8</code></td>
+</tr>
+<tr>
+<td>文章侧</td>
+<td><code>item_user_count</code></td>
+<td>文章交互用户数</td>
+<td>有多少不同用户交互过这篇文章，反映文章受欢迎程度</td>
+<td><code>56</code></td>
+</tr>
+<tr>
+<td>文章侧</td>
+<td><code>item_strength_sum</code></td>
+<td>文章总交互强度</td>
+<td>文章收到的所有交互强度之和，表示文章整体热度</td>
+<td><code>126.4</code></td>
+</tr>
+<tr>
+<td>文章侧</td>
+<td><code>item_recency_days</code></td>
+<td>文章最近被交互间隔</td>
+<td>距离这篇文章最近一次被交互过去多少天，反映文章是否还热门</td>
+<td><code>1.2</code></td>
+</tr>
+<tr>
+<td>文章侧</td>
+<td><code>recent_7d_strength_ratio</code></td>
+<td>近 7 天热度占比</td>
+<td>近 7 天热度占文章总热度的比例，用来判断文章是不是近期突然变热</td>
+<td><code>0.32</code></td>
+</tr>
+<tr>
+<td>内容侧</td>
+<td><code>title_length</code></td>
+<td>标题长度</td>
+<td>文章标题的字符长度，属于简单内容统计特征</td>
+<td><code>48</code></td>
+</tr>
+<tr>
+<td>内容侧</td>
+<td><code>text_length</code></td>
+<td>正文长度</td>
+<td>文章正文长度，粗略反映内容丰富程度</td>
+<td><code>3200</code></td>
+</tr>
+<tr>
+<td>内容侧</td>
+<td><code>article_age_at_train_end_days</code></td>
+<td>训练结束时文章年龄</td>
+<td>到训练集结束时，文章已经发布了多少天，反映新旧程度</td>
+<td><code>35.0</code></td>
+</tr>
+<tr>
+<td>匹配侧</td>
+<td><code>user_lang_strength</code></td>
+<td>用户对该语言的历史偏好强度</td>
+<td>如果候选文章是英文，就看用户历史上对英文文章的交互强度</td>
+<td><code>20.5</code></td>
+</tr>
+<tr>
+<td>匹配侧</td>
+<td><code>lang_preference_ratio</code></td>
+<td>语言偏好占比</td>
+<td>用户对该语言的交互强度占总交互强度的比例</td>
+<td><code>0.63</code></td>
+</tr>
+<tr>
+<td>匹配侧</td>
+<td><code>user_author_strength</code></td>
+<td>用户对该作者的历史偏好强度</td>
+<td>如果用户以前经常看某个作者，那么该作者的新文章更可能被推荐</td>
+<td><code>8.0</code></td>
+</tr>
+<tr>
+<td>匹配侧</td>
+<td><code>author_preference_ratio</code></td>
+<td>作者偏好占比</td>
+<td>用户对当前作者的兴趣强度占用户总兴趣强度的比例</td>
+<td><code>0.25</code></td>
+</tr>
+<tr>
+<td>匹配侧</td>
+<td><code>content_type_preference_ratio</code></td>
+<td>内容类型偏好占比</td>
+<td>用户是否偏好当前文章的内容类型，比如 HTML、VIDEO 等</td>
+<td><code>0.82</code></td>
+</tr>
+<tr>
+<td>匹配侧</td>
+<td><code>popularity_per_user_activity</code></td>
+<td>文章热度相对用户活跃度</td>
+<td>用文章热度除以用户总活跃度，衡量这篇文章相对这个用户是否足够热门</td>
+<td><code>3.54</code></td>
+</tr>
+<tr>
+<td>时间匹配侧</td>
+<td><code>article_abs_publish_gap_user_last_days</code></td>
+<td>发布时间与用户最近活跃时间差</td>
+<td>文章发布时间和用户最近活跃时间的距离，衡量时间上是否匹配</td>
+<td><code>6.3</code> 天</td>
+</tr>
+<tr>
+<td>召回侧</td>
+<td><code>recall_best_rank</code></td>
+<td>最好召回排名</td>
+<td>候选文章在召回阶段排第几，越靠前通常越重要</td>
+<td><code>3</code></td>
+</tr>
+<tr>
+<td>召回侧</td>
+<td><code>recall_youtubednn_score</code></td>
+<td>YouTubeDNN 召回分</td>
+<td>代码里用 <span class="arithmatex">\(1/\text{rank}\)</span> 表示召回分，rank 越靠前分越高</td>
+<td>rank=3 时为 <code>0.3333</code></td>
+</tr>
+<tr>
+<td>召回侧</td>
+<td><code>recall_rrf_score</code></td>
+<td>RRF 召回分</td>
+<td>用 <span class="arithmatex">\(1/(60+\text{rank})\)</span> 表示排序融合分</td>
+<td>rank=3 时约为 <code>0.0159</code></td>
+</tr>
+<tr>
+<td>阶段分数</td>
+<td><code>stage_gbdt_score</code></td>
+<td>GBDT 排序分</td>
+<td>传统机器学习基线模型给出的点击概率分数</td>
+<td><code>0.21</code></td>
+</tr>
+<tr>
+<td>阶段分数</td>
+<td><code>stage_deepfm_score</code></td>
+<td>DeepFM 排序分</td>
+<td>DeepFM 学到低阶和高阶交叉后给出的分数</td>
+<td><code>0.67</code></td>
+</tr>
+<tr>
+<td>阶段分数</td>
+<td><code>stage_xdeepfm_blend_score</code></td>
+<td>xDeepFM 融合分</td>
+<td>融合 DeepFM、xDeepFM、GBDT 后的重排分数</td>
+<td><code>0.69</code></td>
+</tr>
+<tr>
+<td>阶段分数</td>
+<td><code>stage_din_score</code></td>
+<td>DIN 排序分</td>
+<td>DIN 根据用户历史序列和当前候选文章做 attention 后得到的分数</td>
+<td><code>0.76</code></td>
+</tr>
+</tbody>
+</table>
+<h1 id="_13">项目文件</h1>
+<h2 id="1">1 数据与预处理模块</h2>
+<p>提要：</p>
+<blockquote>
+<p>① <strong>读取 CSV 文件</strong>（用户行为、文章元数据）</p>
+<p>② <strong>筛选事件类型</strong>（只保留 CONTENT SHARED，得到 <code>articles_clean</code>）和语言过滤</p>
+<p>③ <strong>对交互事件赋权重</strong>（VIEW、LIKE、BOOKMARK 等）</p>
+<p>④ <strong>按用户-文章聚合</strong>，计算 <code>strength_sum</code>、<code>interaction_count</code>、<code>last_timestamp</code></p>
+<p>⑤ <strong>对 strength_sum 取 log2</strong> → 得到 <code>strength</code></p>
+<p>⑥ <strong>按用户 + 时间排序</strong></p>
+<p>⑦ <strong>留一法划分训练/测试集</strong>（处理单条交互用户的逻辑也在这里）</p>
+<p>⑧ <strong>构建用户历史字典</strong> <code>{user_id: {article_id}}</code></p>
+<p>⑨ <strong>构建测试字典</strong> <code>{user_id: {article_id}}</code></p>
+<p>⑩ <strong>构建文章标题映射</strong> <code>{contentId: title}</code></p>
+</blockquote>
+<p>问题</p>
+<blockquote>
+<p>为什么要赋权重？ → 区分不同交互重要性</p>
+<p>为什么取 log？ → 缓和高频交互影响</p>
+<p>为什么构建用户历史字典？ → 用于兴趣建模和过滤已读文章</p>
+<p>为什么留一法？ → 模拟真实推荐场景</p>
+</blockquote>
+<p>users_interactions.csv：<span class="arithmatex">\(72312 \times 8\)</span> 维</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>timestamp, eventType, contentId, personId, sessionId, userAgent, userRegion, userCountry
+</code></pre></div>
+<p>数值化交互事件（③）：赋予 VIEM、LIKE、BOOKMARK、FOLLOW、COMMENT CREATED 不同权重（浏览、点赞、收藏、关注、评论）</p>
+<p>统计每个用户对每篇文章的交互（④），并进行聚合：</p>
+<ul>
+<li>
+<p><code>strength_sum</code>：加权交互强度</p>
+</li>
+<li>
+<p><code>last_timestamp</code>：用户最后一次交互时间</p>
+</li>
+<li>
+<p><code>interaction_count</code>：交互次数</p>
+</li>
+</ul>
+<p>（⑤）</p>
+<div class="arithmatex">\[
+\text{strength} = \log_2\big(1 + \text{strength\_sum}\big)
+\]</div>
+<p>③ - ⑤ 的处理概括为：</p>
+<p><code>users_interactions.csv</code> 经过 <strong>筛选事件类型</strong>、<strong>语言过滤</strong> 和 <strong>聚合</strong> 后得到 <code>interactions_agg</code>，其内容如下</p>
+<table>
+<thead>
+<tr>
+<th>personId</th>
+<th>contentId</th>
+<th>strength_sum</th>
+<th>interaction_count</th>
+<th>last_timestamp</th>
+<th>strength</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U1</td>
+<td>A1</td>
+<td>7.5</td>
+<td>3</td>
+<td>1680000000</td>
+<td>3.09</td>
+</tr>
+<tr>
+<td>U1</td>
+<td>A3</td>
+<td>1.0</td>
+<td>1</td>
+<td>1681000000</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>U2</td>
+<td>A5</td>
+<td>4.0</td>
+<td>2</td>
+<td>1680500000</td>
+<td>2.32</td>
+</tr>
+</tbody>
+</table>
+<p>⑥：第一关键字，按照用户排序。第二关键字，在同一个用户内部，按照时间（last_timestamp）升序排序，排序完仍然叫 <code>interactions_agg</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">interactions_agg</span> <span class="o">=</span> <span class="n">interactions_agg</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="p">[</span><span class="s2">&quot;personId&quot;</span><span class="p">,</span> <span class="s2">&quot;last_timestamp&quot;</span><span class="p">]</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="p">)</span>
+</code></pre></div>
+<p>再进行时间留一法切分（⑦）interactions_agg → train_df + test_df</p>
+<p>shared_articles.csv：<span class="arithmatex">\(3122\times 13\)</span> 维</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>timestamp, eventType, contentId, authorPersonId, authorSessionId, authorUserAgent, authorRegion, authorCountry, contentType, url, title, text, lang
+</code></pre></div>
+<p>保留文章数据中 <code>eventType=="CONTENT SHARED"</code> 的文章</p>
+<p>如果配置了语言过滤（<code>LANGUAGE</code>），只保留对应语言文章，这里没有过滤</p>
+<p><strong>把处理后的数据整理成推荐系统后续模块更容易使用的形式</strong></p>
+<ul>
+<li>
+<p>构建用户历史字典</p>
+<p>形式是：<span class="arithmatex">\(\{user\_id: \{article\_id\}\}\)</span></p>
+<p>记录每个用户在训练集中已经交互过哪些文章。用途：</p>
+<p>第一，在召回和推荐时，要避免给用户推荐已经看过的文章</p>
+<p>第二，像 YouTubeDNN、DIN 这类模型需要用户历史行为作为输入，用这些历史文章来表示用户兴趣</p>
+</li>
+<li>
+<p>构建测试字典</p>
+<p>形式是：<span class="arithmatex">\(\{user\_id: \{article\_id\}\}\)</span></p>
+<blockquote>
+<p>如：<span class="arithmatex">\(\{u_1:\{a_8\},\ u_2:\{a_9\}\}\)</span></p>
+</blockquote>
+<p>面试</p>
+<blockquote>
+<p>测试字典用于保存每个用户在测试集中真实交互的文章，后续计算 AUC、GAUC 等指标时，用它作为真实标签</p>
+</blockquote>
+</li>
+<li>
+<p>构建文章标题映射</p>
+<p>它不直接参与模型训练，主要是为了结果展示</p>
+<p>因为模型输出的是文章 ID，如果只看 ID，不方便理解推荐结果</p>
+</li>
+</ul>
+<h2 id="2">2 召回阶段</h2>
+<p>提要：</p>
+<blockquote>
+<p>① 初始化 YouTubeDNNRecall</p>
+<p>② 建立用户 ID 和文章 ID 的索引映射（变为从1开始的连续整数编号）</p>
+<p>③ 构建用户历史序列（使用新的整数）</p>
+<p>④ 构造正负训练样本（真实交互标签为1，配3个负样本）</p>
+<p>⑤ 训练 YouTubeDNN 双塔模型</p>
+<p>⑥ 计算用户向量和文章向量内积</p>
+<p>⑦ 为每个用户生成 Top-K 候选文章</p>
+<p>⑧ 整理成 candidate_pairs，交给精排阶段</p>
+</blockquote>
+<p>目标：</p>
+<ul>
+<li>快速为每个用户生成一个候选文章集合（Candidate Set），供后续排序阶段精排</li>
+<li>候选集不要求特别精细，只要保证覆盖用户可能感兴趣的文章即可</li>
+</ul>
+<p>介绍</p>
+<blockquote>
+<p>召回阶段我使用 YouTubeDNN。首先基于训练集构造用户历史序列，并将用户 ID 和文章 ID 编码成连续索引，方便 embedding</p>
+<p>训练时，用户真实交互文章作为正样本，从未交互文章中采样负样本。模型通过用户 ID embedding 和历史文章 embedding 得到用户兴趣向量，再与文章 embedding 做内积学习匹配分数</p>
+<p>推理时，对每个用户计算其向量，与全量文章向量做内积排序，过滤已读文章后取 Top-K，形成候选集。最后把候选结果整理成 user-item 候选对表，并保留召回排名和召回分数，供后续 DeepFM、xDeepFM、DIN 精排使用</p>
+</blockquote>
+<p>模型参数</p>
+<blockquote>
+<p><code>YOUTUBE_DNN_EMBEDDING_DIM = 64</code></p>
+<p>用户和文章 embedding 向量维度是 64</p>
+<p><code>YOUTUBE_DNN_HIDDEN_UNITS = (128, 64)</code></p>
+<p>用户塔 MLP 有两层隐藏层，神经元数分别是 128 和 64</p>
+<p><code>YOUTUBE_DNN_EPOCHS = 2</code></p>
+<p>训练 2 轮</p>
+<p><code>YOUTUBE_DNN_BATCH_SIZE = 4096</code></p>
+<p>每次训练用 4096 条样本做一个 batch</p>
+<p><code>YOUTUBE_DNN_NEGATIVE_SAMPLES = 3</code></p>
+<p>每个正样本配 3 个负样本</p>
+<p><code>YOUTUBE_DNN_MAX_HISTORY = 30</code> </p>
+<p>每个用户最多保留最近 30 篇历史文章作为兴趣序列</p>
+<p><code>YOUTUBE_DNN_LEARNING_RATE = 1e-3</code>  </p>
+<p>学习率是 <span class="arithmatex">\(10^{-3}=0.001\)</span></p>
+</blockquote>
+<p>⑤ <strong>训练 YouTubeDNN 双塔模型</strong></p>
+<p>用户塔：专门用来生成用户兴趣向量的神经网络</p>
+<p>面试</p>
+<blockquote>
+<p>在实现上，我用 TensorFlow/Keras 搭建 YouTubeDNN</p>
+<p>项目中的深度模型部分是基于 TensorFlow/Keras 实现的，比如 YouTubeDNN 中，用 <code>tf.keras.Sequential</code> 搭建用户塔，并通过 <code>model.compile</code> 和 <code>model.fit</code> 训练模型。</p>
+<p>使用 <code>tf.keras.layers.Embedding</code> 构建用户和文章 embedding。Embedding 层本质是一个可训练的查表矩阵，用来把用户 ID 和文章 ID 从高维稀疏表示转换成低维稠密向量。用户塔是一个 MLP，它把用户 ID embedding 和历史文章 embedding 的聚合表示拼接后，编码成最终用户兴趣向量</p>
+<p><code>model.compile</code> 用来指定训练规则，比如优化器 AdamW 和二分类交叉熵损失</p>
+<p><code>model.fit</code> 则是真正执行训练，根据正负样本不断更新 embedding 和 MLP 参数。最终模型通过用户向量和文章向量的内积来计算召回分数。</p>
+</blockquote>
+<p>⑥ <strong>计算用户向量和文章向量内积</strong></p>
+<blockquote>
+<p>模型训练好以后，会对每个用户计算用户兴趣向量，然后和全量文章向量做内积排序，取 Top-K 作为候选集。同时会过滤用户历史中已经看过的文章，避免重复推荐</p>
+</blockquote>
+<p>⑧ </p>
+<p>最终 <code>candidate_pairs</code> 大概长这样：</p>
+<table>
+<thead>
+<tr>
+<th>personId</th>
+<th>contentId</th>
+<th>recall_best_rank</th>
+<th>recall_youtubednn_score</th>
+<th>recall_rrf_score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U1</td>
+<td>A8</td>
+<td>1</td>
+<td>1.000</td>
+<td>1/61</td>
+</tr>
+<tr>
+<td>U1</td>
+<td>A3</td>
+<td>2</td>
+<td>0.500</td>
+<td>1/62</td>
+</tr>
+<tr>
+<td>U1</td>
+<td>A9</td>
+<td>3</td>
+<td>0.333</td>
+<td>1/63</td>
+</tr>
+<tr>
+<td>U2</td>
+<td>A5</td>
+<td>1</td>
+<td>1.000</td>
+<td>1/61</td>
+</tr>
+</tbody>
+</table>
+<p>3 排序特征与训练数据</p>
+<p>提要</p>
+<blockquote>
+<p>① 对训练集再次做时间切分，构造排序训练标签</p>
+<p>② 用 YouTubeDNN 在排序训练集上生成候选集</p>
+<p>③ 检查候选集是否覆盖真实标签</p>
+<p>④ 基于候选集构造正负样本</p>
+<p>⑤ 构建排序特征生成器 RankFeatureBuilder</p>
+<p>⑥ 生成用户特征、文章特征、用户-文章匹配特征</p>
+<p>⑦ 把召回阶段的排名和分数作为排序特征</p>
+<p>⑧ 输出排序模型训练数据 X_rank_train, y_rank_train</p>
+</blockquote>
+<p>4 精排模型</p>
+<p>5 排序工具与分数融合</p>
+<p>6 评估模块</p>
+<p>7 主流程整合</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 伦文
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "content.code.copy", "search.highlight", "search.suggest"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
