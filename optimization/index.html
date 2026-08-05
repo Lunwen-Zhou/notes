@@ -6,33 +6,33 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="推荐算法、Python、数学分析与高等代数学习笔记">
+        <meta name="description" content="推荐算法、Python、规划控制、最优化与大学数学学习笔记">
       
       
       
       
-        <link rel="prev" href="../1%20%E8%BF%B9/">
+        <link rel="prev" href="../planning-control/%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/">
       
       
-        <link rel="next" href="../3%20%E7%9F%A9%E9%98%B5%E6%B1%82%E5%AF%BC/">
+        <link rel="next" href="%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98%E6%A6%82%E8%BF%B0/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>矩阵分解 - 伦文的学习笔记</title>
+        <title>最优化 - 伦文的学习笔记</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -45,9 +45,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -86,7 +86,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../.." title="伦文的学习笔记" class="md-header__button md-logo" aria-label="伦文的学习笔记" data-md-component="logo">
+    <a href=".." title="伦文的学习笔记" class="md-header__button md-logo" aria-label="伦文的学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              矩阵分解
+              最优化
             
           </span>
         </div>
@@ -207,7 +207,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href=".." class="md-tabs__link">
         
   
   
@@ -228,7 +228,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../recommendation/" class="md-tabs__link">
+        <a href="../recommendation/" class="md-tabs__link">
           
   
   
@@ -250,7 +250,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../python/" class="md-tabs__link">
+        <a href="../python/" class="md-tabs__link">
           
   
   
@@ -272,13 +272,13 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../math-analysis/" class="md-tabs__link">
+        <a href="../planning-control/" class="md-tabs__link">
           
   
   
     
   
-  数学分析
+  规控算法
 
         </a>
       </li>
@@ -296,7 +296,51 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  最优化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../math-analysis/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  数学分析
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../higher-algebra/" class="md-tabs__link">
           
   
   
@@ -321,7 +365,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -332,7 +378,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="伦文的学习笔记" class="md-nav__button md-logo" aria-label="伦文的学习笔记" data-md-component="logo">
+    <a href=".." title="伦文的学习笔记" class="md-nav__button md-logo" aria-label="伦文的学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -350,7 +396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -391,6 +437,8 @@
       
         
       
+        
+      
     
     
     
@@ -408,7 +456,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../recommendation/" class="md-nav__link ">
+            <a href="../recommendation/" class="md-nav__link ">
               
   
   
@@ -452,7 +500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../recommendation/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E9%A1%B9%E7%9B%AE%E7%9F%A5%E8%AF%86/" class="md-nav__link">
+      <a href="../recommendation/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E9%A1%B9%E7%9B%AE%E7%9F%A5%E8%AF%86/" class="md-nav__link">
         
   
   
@@ -480,7 +528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../recommendation/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      <a href="../recommendation/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/" class="md-nav__link">
         
   
   
@@ -508,7 +556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../recommendation/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+      <a href="../recommendation/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
         
   
   
@@ -536,7 +584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../recommendation/%E8%81%9A%E7%B1%BB/" class="md-nav__link">
+      <a href="../recommendation/%E8%81%9A%E7%B1%BB/" class="md-nav__link">
         
   
   
@@ -544,6 +592,34 @@
     
   
     聚类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recommendation/AI%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 与大模型
   
 
     
@@ -587,6 +663,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -604,7 +686,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../python/" class="md-nav__link ">
+            <a href="../python/" class="md-nav__link ">
               
   
   
@@ -648,7 +730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../python/MD%20%20Python%20%E7%AC%94%E8%AE%B0%E6%9C%AC/" class="md-nav__link">
+      <a href="../python/MD%20%20Python%20%E7%AC%94%E8%AE%B0%E6%9C%AC/" class="md-nav__link">
         
   
   
@@ -676,7 +758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../python/Leetcode%20%E8%A7%A3%E6%B3%95%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+      <a href="../python/Leetcode%20%E8%A7%A3%E6%B3%95%E7%AC%94%E8%AE%B0/" class="md-nav__link">
         
   
   
@@ -704,7 +786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../python/MD%20%20Leetcode%20%E8%A1%A5%E5%85%85%E4%B9%A0%E9%A2%98/" class="md-nav__link">
+      <a href="../python/MD%20%20Leetcode%20%E8%A1%A5%E5%85%85%E4%B9%A0%E9%A2%98/" class="md-nav__link">
         
   
   
@@ -732,7 +814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../python/MD%20%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="md-nav__link">
+      <a href="../python/MD%20%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="md-nav__link">
         
   
   
@@ -760,7 +842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../python/MD%20%20Python%20%E5%BA%93/" class="md-nav__link">
+      <a href="../python/MD%20%20Python%20%E5%BA%93/" class="md-nav__link">
         
   
   
@@ -768,6 +850,90 @@
     
   
     Python 库
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/%E6%9C%BA%E8%80%83%E7%AC%94%E8%AF%95_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机考：数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/%E6%9C%BA%E8%80%83%E7%AC%94%E8%AF%95_%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%B8%8E%E6%95%B0%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机考：大模型与数学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python/Matlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matlab 笔记本
   
 
     
@@ -824,14 +990,14 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../math-analysis/" class="md-nav__link ">
+            <a href="../planning-control/" class="md-nav__link ">
               
   
   
   <span class="md-ellipsis">
     
   
-    数学分析
+    规控算法
   
 
     
@@ -853,7 +1019,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    数学分析
+    规控算法
   
 
           </label>
@@ -868,14 +1034,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math-analysis/%E4%B8%80%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86/" class="md-nav__link">
+      <a href="../planning-control/%E8%A7%84%E6%8E%A7%E7%AE%97%E6%B3%95/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    一元微积分
+    规控算法
   
 
     
@@ -896,14 +1062,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math-analysis/%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86/" class="md-nav__link">
+      <a href="../planning-control/%E8%BF%90%E7%AD%B9%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    多元微积分
+    运筹优化算法
   
 
     
@@ -924,14 +1090,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math-analysis/%E4%B9%A0%E9%A2%98%20-%20%E5%88%86%E6%9E%90%E5%AD%A6/" class="md-nav__link">
+      <a href="../planning-control/%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    分析学习题
+    启发式算法
   
 
     
@@ -965,16 +1131,6 @@
       
         
           
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
         
       
         
@@ -1003,7 +1159,423 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    最优化
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    最优化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    优化问题概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="%E6%9C%80%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    最优化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="KKT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KKT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../math-analysis/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数学分析
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数学分析
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math-analysis/%E4%B8%80%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    一元微积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math-analysis/%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多元微积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math-analysis/%E4%B9%A0%E9%A2%98%20-%20%E5%88%86%E6%9E%90%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分析学习题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math-analysis/%E6%B3%9B%E5%87%BD%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    泛函分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math-analysis/%E5%88%9D%E7%AD%89%E6%95%B0%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    初等数学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math-analysis/%E4%B9%A0%E9%A2%98%20-%20%E5%88%9D%E7%AD%89%E6%95%B0%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    初等数学习题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../higher-algebra/" class="md-nav__link ">
               
   
   
@@ -1021,14 +1593,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1047,35 +1619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E4%B9%A0%E9%A2%98%20-%20%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    高等代数习题
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../0%20%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/" class="md-nav__link">
+      <a href="../higher-algebra/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/" class="md-nav__link">
         
   
   
@@ -1103,304 +1647,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../1%20%E8%BF%B9/" class="md-nav__link">
+      <a href="../higher-algebra/%E4%B9%A0%E9%A2%98%20-%20%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    迹
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    矩阵分解
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    矩阵分解
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        矩阵分解
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="矩阵分解">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#def" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        def 置换矩阵
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="def 置换矩阵">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        作用 对向量重排
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        例 交换前两个分量
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#def_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        def 对称函数
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#def_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        def 谱函数
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="def 谱函数">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#x_f2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        例 \(\|X\|_F^2\)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        对称矩阵与反对称矩阵的唯一分解
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../3%20%E7%9F%A9%E9%98%B5%E6%B1%82%E5%AF%BC/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    矩阵求导
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../4%20%E7%9F%A9%E9%98%B5%E5%9F%BA%E7%A1%80/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    矩阵基础
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../5%20%E6%AD%A3%E5%AE%9A%E7%9F%A9%E9%98%B5/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    正定矩阵
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../6%20%E4%BA%8C%E6%AC%A1%E5%9E%8B/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    二次型
+    高等代数习题
   
 
     
@@ -1429,7 +1683,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -1448,105 +1704,10 @@
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        矩阵分解
+        最优化
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="矩阵分解">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#def" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        def 置换矩阵
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="def 置换矩阵">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        作用 对向量重排
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        例 交换前两个分量
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#def_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        def 对称函数
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#def_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        def 谱函数
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="def 谱函数">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#x_f2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        例 \(\|X\|_F^2\)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        对称矩阵与反对称矩阵的唯一分解
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1564,119 +1725,38 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
 
 
 
-<h1 id="_1">矩阵分解</h1>
-<p class="document-modified-time">更新时间：<time datetime="2026-05-08T16:35+00:00">2026年05月09日 00:35</time></p>
 
-<h3 id="def">def 置换矩阵</h3>
-<p>设 <span class="arithmatex">\(P\in\mathbb{R}^{n\times n}\)</span>，若 <span class="arithmatex">\(P\)</span> 的每一行和每一列都恰好有一个1，其余为0，则称 <span class="arithmatex">\(P\)</span> 为<strong>置换矩阵（permutation matrix）</strong></p>
-<hr />
-<h4 id="_2">作用 对向量重排</h4>
-<p>对一个列向量 <span class="arithmatex">\(x \in \mathbb{R}^n\)</span>，<span class="arithmatex">\(Px\)</span> 的用处在于将其打乱位置，但是还是一列 <span class="arithmatex">\(n\)</span> 维的列向量，即</p>
-<div class="arithmatex">\[
-P x = 
-\begin{bmatrix}
-x_{\pi(1)} \\
-\vdots \\
-x_{\pi(n)}
-\end{bmatrix}
-\]</div>
-<hr />
-<h4 id="_3">例 交换前两个分量</h4>
-<div class="arithmatex">\[
-P=
-\begin{pmatrix}
-0&amp;1&amp;0\\
-1&amp;0&amp;0\\
-0&amp;0&amp;1
-\end{pmatrix}
-\]</div>
-<p>可实现</p>
-<div class="arithmatex">\[
-\begin{pmatrix}
-0 &amp; 1 &amp; 0 \\
-1 &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; 1
-\end{pmatrix}
-\begin{pmatrix}
-x_1 \\
-x_2 \\
-x_3
-\end{pmatrix}
-=
-\begin{pmatrix}
-x_2 \\
-x_1 \\
-x_3
-\end{pmatrix}
-\]</div>
-<hr />
-<h3 id="def_1">def 对称函数</h3>
-<p>设 <span class="arithmatex">\(f:\mathbb{R}^n\to\mathbb{R}\)</span>，若对任意置换矩阵 <span class="arithmatex">\(P\)</span>，都有</p>
-<div class="arithmatex">\[
-f(x)=f(Px)
-\]</div>
-<p>则称 <span class="arithmatex">\(f\)</span> 为<strong>对称函数（symmetric function）</strong></p>
-<ul>
-<li>等价写法：对任意排列 <span class="arithmatex">\(\pi\)</span>,</li>
-</ul>
-<div class="arithmatex">\[
-\phi(x_1,\dots,x_n)
-=
-\phi(x_{\pi(1)},\dots,x_{\pi(n)})
-\]</div>
-<hr />
-<h3 id="def_2">def 谱函数</h3>
-<p>（Spectral Function）</p>
-<p>设矩阵 <span class="arithmatex">\(X\in\mathbb{R}^{m\times n}\)</span>，奇异值为 <span class="arithmatex">\(\sigma(X)=(\sigma_1,\dots,\sigma_r)\)</span>，如果存在<strong>对称函数</strong> <span class="arithmatex">\(\phi\)</span>，使得</p>
-<div class="arithmatex">\[
-f(X)=\phi(\sigma(X))
-\]</div>
-<p>则称 <span class="arithmatex">\(f\)</span> 为 <strong>谱函数</strong>。</p>
-<ul>
-<li>等价刻画：</li>
-</ul>
-<div class="arithmatex">\[
-f(UXV)=f(X)
-\quad
-\forall\; U,V\ \text{正交}
-\]</div>
-<p>可能会写成 <span class="arithmatex">\(V^T\)</span> 以更贴近SVD分解</p>
-<hr />
-<h4 id="x_f2">例 <span class="arithmatex">\(\|X\|_F^2\)</span></h4>
-<p>（法1）因为</p>
-<div class="arithmatex">\[
-\|X\|_F^2=\sum_i \sigma_i^2(X)
-\]</div>
-<p>只依赖奇异值，并且明显关于 <span class="arithmatex">\((\sigma_1,\dots,\sigma_r)\)</span> 是<strong>对称</strong>的</p>
-<p>（法2）对任意正交 <span class="arithmatex">\(U,V\)</span>，有 <span class="arithmatex">\(\|UXV\|_F^2=\|X\|_F^2\)</span> </p>
-<p>验证：</p>
-<div class="arithmatex">\[
-\begin{aligned}
-\|UXV\|_{F}^{2}
-&amp;= \operatorname{Tr}\!\left(V^{T} X^{T} U^{T} U X V\right) \\
-&amp;= \operatorname{Tr}\!\left(V^{T} X^{T} X V\right) \\
-&amp;= \operatorname{Tr}\!\left(V V^{T} X^{T} X\right)
-\end{aligned}
-\]</div>
-<p>再用 <span class="arithmatex">\(V^T = V^{-1}\)</span> 即可，从而为谱函数</p>
-<h3 id="_4">对称矩阵与反对称矩阵的唯一分解</h3>
-<p><span class="arithmatex">\(\forall A \in \mathbb{R}^{n \times n}\)</span>，存在<strong>唯一</strong> <span class="arithmatex">\(S, K \in \mathbb{R}^{n \times n}\)</span>，使得 <span class="arithmatex">\(A\)</span> 可以分解为</p>
-<div class="arithmatex">\[
-A = S + K
-\]</div>
-<p>满足：</p>
-<ul>
-<li><span class="arithmatex">\(S\)</span> 是对称矩阵</li>
-<li><span class="arithmatex">\(K\)</span> 是反对称矩阵（ <span class="arithmatex">\(K^T = -K\)</span> ）</li>
-</ul>
-<p>由以下公式<strong>唯一构造</strong>：</p>
-<div class="arithmatex">\[
-S = \frac{1}{2}(A + A^T) \\
-K = \frac{1}{2}(A - A^T)
-\]</div>
+<h1 id="_1">最优化</h1>
+<div class="note-grid">
+<a class="note-card" href="优化问题概述/">
+  <span class="note-card__category">数学 · 最优化</span>
+
+  <h2>优化问题概述</h2>
+  <p></p>
+  <span class="note-card__link">查看笔记 →</span>
+</a>
+
+<a class="note-card" href="最优化基础/">
+  <span class="note-card__category">数学 · 最优化</span>
+
+  <h2>最优化基础</h2>
+  <p></p>
+  <span class="note-card__link">查看笔记 →</span>
+</a>
+
+<a class="note-card" href="KKT/">
+  <span class="note-card__category">数学 · 最优化</span>
+
+  <h2>KKT</h2>
+  <p></p>
+  <span class="note-card__link">查看笔记 →</span>
+</a>
+
+</div>
 
 
 
@@ -1684,8 +1764,13 @@ K = \frac{1}{2}(A - A^T)
 
 
 
+  
+  
 
 
+
+
+  
 
 
 
@@ -1736,12 +1821,12 @@ K = \frac{1}{2}(A - A^T)
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "content.code.copy", "search.highlight", "search.suggest"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "content.code.copy", "search.highlight", "search.suggest"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       

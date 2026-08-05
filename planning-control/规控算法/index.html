@@ -1,0 +1,3189 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="推荐算法、Python、规划控制、最优化与大学数学学习笔记">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../%E8%BF%90%E7%AD%B9%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>规控算法 - 伦文的学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="伦文的学习笔记" class="md-header__button md-logo" aria-label="伦文的学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            伦文的学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              规控算法
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../recommendation/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  推荐算法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../python/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  规控算法
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../optimization/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  最优化
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../math-analysis/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  数学分析
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../higher-algebra/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  高等代数
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="伦文的学习笔记" class="md-nav__button md-logo" aria-label="伦文的学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    伦文的学习笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../recommendation/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    推荐算法
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    推荐算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recommendation/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E9%A1%B9%E7%9B%AE%E7%9F%A5%E8%AF%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    推荐算法项目知识
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recommendation/%E6%8E%A8%E8%8D%90%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    推荐算法基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recommendation/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recommendation/%E8%81%9A%E7%B1%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    聚类
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../recommendation/AI%E4%B8%8E%E5%A4%A7%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 与大模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../python/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/MD%20%20Python%20%E7%AC%94%E8%AE%B0%E6%9C%AC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 笔记本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/Leetcode%20%E8%A7%A3%E6%B3%95%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Leetcode 解法笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/MD%20%20Leetcode%20%E8%A1%A5%E5%85%85%E4%B9%A0%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Leetcode 补充习题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/MD%20%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/MD%20%20Python%20%E5%BA%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 库
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/%E6%9C%BA%E8%80%83%E7%AC%94%E8%AF%95_%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机考：数据结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/%E6%9C%BA%E8%80%83%E7%AC%94%E8%AF%95_%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%B8%8E%E6%95%B0%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机考：大模型与数学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/Matlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Matlab 笔记本
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    规控算法
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    规控算法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    规控算法
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    规控算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        规控算法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="规控算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DP 动态规划
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DP 动态规划">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        局限性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="QP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        求解方法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="求解方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主动集法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="主动集法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        算法使用范围
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        算法流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        内点法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dijkstra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dijkstra 算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bellman-ford" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bellman-Ford
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bellman-Ford">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        算法流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        复杂度
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A* 算法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A* 算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        启发函数 \(h(n)\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        算法流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        混合 A* 路径搜索算法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="混合 A* 路径搜索算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        运动基元
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        启发函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PID 算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MPC
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MPC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mpc-qp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MPC 与 QP 的关系
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vectornet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VectorNet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VectorNet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#polyline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Polyline 多段线
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%BF%90%E7%AD%B9%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    运筹优化算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%90%AF%E5%8F%91%E5%BC%8F%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    启发式算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../optimization/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    最优化
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    最优化
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimization/%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    优化问题概述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimization/%E6%9C%80%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    最优化基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimization/KKT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KKT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../math-analysis/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数学分析
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数学分析
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math-analysis/%E4%B8%80%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    一元微积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math-analysis/%E5%A4%9A%E5%85%83%E5%BE%AE%E7%A7%AF%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多元微积分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math-analysis/%E4%B9%A0%E9%A2%98%20-%20%E5%88%86%E6%9E%90%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    分析学习题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math-analysis/%E6%B3%9B%E5%87%BD%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    泛函分析
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math-analysis/%E5%88%9D%E7%AD%89%E6%95%B0%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    初等数学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math-analysis/%E4%B9%A0%E9%A2%98%20-%20%E5%88%9D%E7%AD%89%E6%95%B0%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    初等数学习题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../higher-algebra/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高等代数
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    高等代数
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../higher-algebra/%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高等代数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../higher-algebra/%E4%B9%A0%E9%A2%98%20-%20%E9%AB%98%E7%AD%89%E4%BB%A3%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    高等代数习题
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        规控算法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="规控算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DP 动态规划
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DP 动态规划">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        局限性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        QP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="QP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        求解方法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="求解方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        主动集法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="主动集法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        算法使用范围
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        算法流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        内点法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dijkstra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        dijkstra 算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bellman-ford" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bellman-Ford
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bellman-Ford">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        算法流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        复杂度
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A* 算法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A* 算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        启发函数 \(h(n)\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        算法流程
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        混合 A* 路径搜索算法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="混合 A* 路径搜索算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        运动基元
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        启发函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PID 算法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MPC
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="MPC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mpc-qp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MPC 与 QP 的关系
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vectornet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VectorNet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VectorNet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#polyline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Polyline 多段线
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">规控算法</h1>
+<p class="document-modified-time">更新时间：<time datetime="2026-06-19T05:23+00:00">2026年06月19日 13:23</time></p>
+
+<p>规划控制问题本质：在安全约束下，找一条尽量平滑、舒适、接近参考线的路径或轨迹</p>
+<h2 id="dp">DP 动态规划</h2>
+<p>动态规划 DP（Dynamic Programming）常用于做<strong>路径规划、速度规划、轨迹规划</strong></p>
+<p>把一个复杂的连续规划问题，离散成很多小决策问题</p>
+<p>每一步只保留到达当前状态的最优代价，然后逐步向前递推，最后回溯出一条全局较优路径</p>
+<h3 id="_2">流程</h3>
+<ol>
+<li>
+<p>状态空间离散化</p>
+</li>
+<li>
+<p>初始化</p>
+<p>起点代价为 0：<span class="arithmatex">\(J(0,0) = 0\)</span></p>
+<p>其他点代价为无穷大：<span class="arithmatex">\(J(i,j)=+\infty\)</span></p>
+</li>
+<li>
+<p>状态转移</p>
+<p>从前一层状态转移到当前层状态：</p>
+<div class="arithmatex">\[
+J(i,j)
+=
+\min_k
+\left[
+J(i-1,k)
++
+\text{cost}(k \rightarrow j)
+\right]
+\]</div>
+<p>同时记录最优前驱：</p>
+<div class="arithmatex">\[
+j^* = \arg\min_j J(N,j)
+\]</div>
+</li>
+<li>
+<p>终点选择</p>
+<p>在最后一层中选择总代价最小的点：</p>
+<div class="arithmatex">\[
+j^* = \arg\min_j J(N,j)
+\]</div>
+</li>
+<li>
+<p>路径回溯</p>
+<p>根据记录的前驱节点，从终点反向回溯：</p>
+<div class="arithmatex">\[
+x_N \rightarrow x_{N-1} \rightarrow \cdots \rightarrow x_0
+\]</div>
+<p>再反过来得到最终路径</p>
+</li>
+</ol>
+<h3 id="_3">局限性</h3>
+<ol>
+<li>
+<p>离散化精度有限</p>
+<p>网格越粗，结果越不平滑；网格越细，计算量越大</p>
+</li>
+<li>
+<p>计算量可能较大</p>
+<p>如果一共有 <span class="arithmatex">\(N\)</span> 层，每层有 <span class="arithmatex">\(M\)</span> 个状态，每个状态要看上一层 <span class="arithmatex">\(M\)</span> 个状态，那么复杂度大约是</p>
+<div class="arithmatex">\[
+O(NM^2)
+\]</div>
+</li>
+<li>
+<p>结果不一定足够平滑</p>
+<p>因为 DP 是在离散点中选路径，所以结果可能折线感比较强。通常还需要后处理或者 QP 平滑</p>
+</li>
+</ol>
+<h2 id="qp">QP</h2>
+<p>QP：Quadratic Programming，二次规划</p>
+<p>在自动驾驶规划控制里，它常用于 <strong>路径平滑、轨迹优化、MPC 控制</strong></p>
+<p>QP 就是在满足线性约束的前提下，最小化一个二次型目标函数</p>
+<p>标准形式：</p>
+<div class="arithmatex">\[
+\begin{aligned}
+\min_x \quad &amp; \frac12 x^T Hx+f^Tx \\
+\text{s.t.} \quad &amp; Ax\le b \\
+&amp; A_{eq}x=b_{eq}
+\end{aligned}
+\]</div>
+<p>车辆要从当前位置开到前方，需要同时满足：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>不能撞障碍物
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>不能出车道
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>曲率不能太大
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>加速度、方向盘转角不能太激烈
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>路径要尽量平滑
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>还要尽量贴近参考线
+</code></pre></div>
+<p>如：路径平滑目标函数</p>
+<div class="arithmatex">\[
+\min \sum_i (l_i-l_i^{ref})^2+\sum_i (l_i')^2+\sum_i(l_i'')^2
+\]</div>
+<p>QP 在 MPC 中的应用：</p>
+<p>每一时刻预测未来一段时间的车辆状态，然后求一个最优控制序列，只执行第一步，下一时刻重新优化</p>
+<p>设车辆状态</p>
+<div class="arithmatex">\[
+x_k=[位置,\ 速度,\ 航向角,\ 横向误差,\ 航向误差]^\top
+\]</div>
+<p>控制量：</p>
+<div class="arithmatex">\[
+u_k=[加速度,\ 转角]^\top
+\]</div>
+<p>MPC 目标：</p>
+<div class="arithmatex">\[
+\min \sum_{k=0}^{N}
+\|x_k-x_k^{ref}\|_Q^2
++
+\sum_{k=0}^{N-1}
+\|u_k\|_R^2
++
+\sum_{k=0}^{N-1}
+\|u_{k+1}-u_k\|_S^2
+\]</div>
+<h3 id="_4">求解方法</h3>
+<ol>
+<li><strong>无约束情形</strong>：求导</li>
+</ol>
+<p>直接对 <span class="arithmatex">\(x\)</span> 求导：</p>
+<div class="arithmatex">\[
+Hx+f=0
+\]</div>
+<p>若 <span class="arithmatex">\(H\)</span> 是可逆的，则</p>
+<div class="arithmatex">\[
+x^*=-H^{-1}f
+\]</div>
+<ol>
+<li><strong>只有等式约束</strong>：用 KKT 条件</li>
+</ol>
+<p>设只有等式 <span class="arithmatex">\(A_{eq}x=b_{eq}\)</span> 约束，构造拉格朗日函数：</p>
+<div class="arithmatex">\[
+L(x,\lambda)=\frac12 x^T Hx+f^Tx+\lambda^\top (A_{eq}x-b_{eq})
+\]</div>
+<p>一阶最优条件是：</p>
+<div class="arithmatex">\[
+Hx+f+A_{eq}^\top \lambda=0
+\]</div>
+<div class="arithmatex">\[
+A_{eq}x=b_{eq}
+\]</div>
+<p>可以改写为求解一下线性方程组</p>
+<div class="arithmatex">\[
+\begin{bmatrix}
+H &amp; A_{eq}^T\\
+A_{eq} &amp; 0
+\end{bmatrix}
+\begin{bmatrix}
+x\\
+\lambda
+\end{bmatrix}
+=
+\begin{bmatrix}
+-f\\
+b_{eq}
+\end{bmatrix}
+\]</div>
+<ol>
+<li><strong>有不等式约束</strong></li>
+</ol>
+<p>主动集法、内点法、ADMM</p>
+<h4 id="_5">主动集法</h4>
+<p>主动集思想：不等式约束里，最后真正“卡住最优解”的那部分约束，可以看成等式约束</p>
+<blockquote>
+<p>以约束 <span class="arithmatex">\(x_1\leq 3\)</span> 为例，如果最优解刚好满足 <span class="arithmatex">\(x_1 = 3\)</span>，则这个约束是 <strong>主动约束</strong></p>
+<p>如果最优解的 <span class="arithmatex">\(x_1 &lt;3\)</span>，这个约束便没有卡住最优解，不是主动约束</p>
+</blockquote>
+<h5 id="_6">算法使用范围</h5>
+<p>标准主动集法只能处理 <span class="arithmatex">\(\leq,\geq,=\)</span> 这种闭集约束，不能处理严格不等式</p>
+<p>工程中转化方法：</p>
+<blockquote>
+<p>自动驾驶里的避障约束，理论上不能碰到障碍物，即 <span class="arithmatex">\(d(x)&gt;0\)</span></p>
+<p>但工程上可以设定一个 <span class="arithmatex">\(d_{\text{safe}} &gt; 0\)</span>，而要求</p>
+<div class="arithmatex">\[
+d(x)\geq d_{\text{safe}}
+\]</div>
+</blockquote>
+<h5 id="_7">算法流程</h5>
+<p>先猜哪一部分约束是主动的</p>
+<p>把这些约束当作等式约束，解一个等式约束的 QP（这个问题已经解决了）</p>
+<p>检查有没有违反其他不等式约束，如果违反，就加入主动集</p>
+<p>如果某个主动约束对应的拉格朗日乘子不合理，就移出主动集</p>
+<blockquote>
+<p>见 <em>只有等式约束</em>，解出来的解形式是 <span class="arithmatex">\((x,\lambda)\)</span>，看这里 <span class="arithmatex">\(\lambda\)</span> 的分量 <span class="arithmatex">\(\lambda_i \geq 0\)</span> 是否都成立</p>
+</blockquote>
+<p>不断迭代</p>
+<h4 id="_8">内点法</h4>
+<p>不直接碰到约束边界，而是在可行域内部逐渐逼近最优解。</p>
+<h2 id="dijkstra">dijkstra 算法</h2>
+<p>通过优先队列（堆 heap），逐步扩展当前已知的最短路径，并动态更新邻居节点的最短距离，最终找到从起点到所有节点的最短路径</p>
+<p>最后找最短路径的时候用回溯</p>
+<p>贪心 + 动态更新</p>
+<p>算法视频，见 <em>视频资料</em></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">heapq</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">dijkstra</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">dist</span> <span class="o">=</span> <span class="p">{}</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">:</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        <span class="n">dist</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="n">dist</span><span class="p">[</span><span class="n">start</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="n">parent</span> <span class="o">=</span> <span class="p">{}</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="n">pq</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="n">start</span><span class="p">)]</span> <span class="c1"># Priority Queue</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    <span class="n">visited</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>    <span class="k">while</span> <span class="n">pq</span><span class="p">:</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>        <span class="n">cur_dist</span><span class="p">,</span> <span class="n">cur_node</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">pq</span><span class="p">)</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>        <span class="k">if</span> <span class="n">cur_node</span> <span class="ow">in</span> <span class="n">visited</span><span class="p">:</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>            <span class="k">continue</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>        <span class="n">visited</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">cur_node</span><span class="p">)</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>        <span class="k">if</span> <span class="n">cur_node</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>            <span class="k">break</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>        <span class="k">for</span> <span class="n">neighbor</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">cur_node</span><span class="p">]:</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>            <span class="n">new_dist</span> <span class="o">=</span> <span class="n">cur_dist</span> <span class="o">+</span> <span class="n">weight</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>            <span class="k">if</span> <span class="n">new_dist</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]:</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>                <span class="n">dist</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_dist</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>                <span class="n">parent</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="n">cur_node</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>                <span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">pq</span><span class="p">,</span> <span class="p">(</span><span class="n">new_dist</span><span class="p">,</span> <span class="n">neighbor</span><span class="p">))</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>    <span class="c1"># 如果 target 不可达</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>    <span class="k">if</span> <span class="n">dist</span><span class="p">[</span><span class="n">target</span><span class="p">]</span> <span class="o">==</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">):</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">),</span> <span class="p">[]</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>    <span class="c1"># 回溯路径</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>    <span class="n">path</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>    <span class="n">cur</span> <span class="o">=</span> <span class="n">target</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>    <span class="k">while</span> <span class="n">cur</span> <span class="o">!=</span> <span class="n">start</span><span class="p">:</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>        <span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cur</span><span class="p">)</span>
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>        <span class="n">cur</span> <span class="o">=</span> <span class="n">parent</span><span class="p">[</span><span class="n">cur</span><span class="p">]</span>
+<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a>
+<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a>    <span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a>    <span class="n">path</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a>
+<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a>    <span class="k">return</span> <span class="n">dist</span><span class="p">[</span><span class="n">target</span><span class="p">],</span> <span class="n">path</span>
+<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a>
+<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a>
+<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a><span class="n">graph</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a>    <span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)],</span>
+<a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a>    <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">)],</span>
+<a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a>    <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)],</span>
+<a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a>    <span class="s1">&#39;D&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)],</span>
+<a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a>    <span class="s1">&#39;E&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="mi">13</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)],</span>
+<a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a>    <span class="s1">&#39;F&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)],</span>
+<a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a><span class="p">}</span>
+<a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a>
+<a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="n">distance</span><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="n">dijkstra</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;F&#39;</span><span class="p">)</span>
+<a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;最短距离:&quot;</span><span class="p">,</span> <span class="n">distance</span><span class="p">)</span>
+<a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;最短路径:&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+<a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a>
+<a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a><span class="c1"># 最短距离: 14</span>
+<a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a><span class="c1"># 最短路径: [&#39;A&#39;, &#39;C&#39;, &#39;E&#39;, &#39;F&#39;]</span>
+</code></pre></div>
+<p>如果是无向图，一条边需要存储两次；有向图则只写一次。上例中为无向图</p>
+<ul>
+<li>
+<p>Dijkstra 不适用于有负权边的情况</p>
+<p>有负权边的图需要使用 Bellman-Ford 算法</p>
+<p>Dijkstra的关键假设为：</p>
+<blockquote>
+<p>每次从优先队列中取出的当前最小距离节点，它的最短路已经确定</p>
+</blockquote>
+<p>该假设成立的前提是所有边权都非负</p>
+</li>
+</ul>
+<p>要单独写一个 <code>dist[start] = 0</code></p>
+<p>在 Dijkstra 算法中，一个点第一次从优先队列里被弹出时，它的最短距离就已经确定了。因此可以在 <code>if cur_node == target:</code> 的情况下算法停止</p>
+<h2 id="bellman-ford">Bellman-Ford</h2>
+<h3 id="_9">算法流程</h3>
+<p>设图为 <span class="arithmatex">\(G=(V,E)\)</span>，起点为 <span class="arithmatex">\(s\)</span></p>
+<ol>
+<li>
+<p>初始化</p>
+<p>对所有顶点 <span class="arithmatex">\(v\in V\)</span>：<span class="arithmatex">\(dist[v]=+\infty\)</span></p>
+<p>起点：<span class="arithmatex">\(dist[s]=0\)</span></p>
+<blockquote>
+<p>其中 <span class="arithmatex">\(dist[v]\)</span> 表示当前 <strong>已知的</strong> 从 <span class="arithmatex">\(s\)</span> 到 <span class="arithmatex">\(v\)</span> 的最短距离估计值</p>
+</blockquote>
+</li>
+<li>
+<p>重复进行 <span class="arithmatex">\(n-1\)</span> 轮松弛</p>
+<blockquote>
+<p>这里 <span class="arithmatex">\(n = |V|\)</span></p>
+</blockquote>
+<p>对于每一轮：遍历图中的每一条边 <span class="arithmatex">\((u,v,w)\)</span>，若</p>
+<div class="arithmatex">\[
+dist[u]+w&lt;dist[v]
+\]</div>
+<p>则更新</p>
+<div class="arithmatex">\[
+dist[v]=dist[u]+w
+\]</div>
+<blockquote>
+<p>这一步称为对边 <span class="arithmatex">\((u,v)\)</span> 进行一次松弛（Relaxation）</p>
+</blockquote>
+<p>如果本轮最短路径没有变化并且不是第 <span class="arithmatex">\(n-1\)</span> 轮，可以提前终止循环</p>
+</li>
+<li>
+<p>负环检测</p>
+<p>再次遍历所有边 <span class="arithmatex">\((u,v,w)\)</span>，若仍然存在</p>
+<div class="arithmatex">\[
+dist[u]+w&lt;dist[v]
+\]</div>
+<p>说明存在负环，算法无法收敛</p>
+</li>
+</ol>
+<h3 id="_10">复杂度</h3>
+<p>设 <span class="arithmatex">\(n=|V|\)</span>，<span class="arithmatex">\(m=|E|\)</span></p>
+<p>时间复杂度：<span class="arithmatex">\(O(mn)\)</span></p>
+<blockquote>
+<p>每轮遍历所有边一次：<span class="arithmatex">\(O(m)\)</span>，共进行 <span class="arithmatex">\(n-1\)</span> 轮，因此为 <span class="arithmatex">\(O(nm)\)</span></p>
+</blockquote>
+<p>空间复杂度：<span class="arithmatex">\(O(n)\)</span></p>
+<blockquote>
+<p>用于存储距离数组</p>
+</blockquote>
+<h2 id="a">A* 算法</h2>
+<p>A* 算法用于求从起点到终点的最短路径，核心评价函数</p>
+<div class="arithmatex">\[
+f(n)=g(n)+h(n)
+\]</div>
+<p>其中 <span class="arithmatex">\(g(n)\)</span> 为从起点到当前节点 <span class="arithmatex">\(n\)</span> 的实际代价；<span class="arithmatex">\(h(n)\)</span> 为当前节点 <span class="arithmatex">\(n\)</span> 到终点的估计代价（启发函数）</p>
+<p><span class="arithmatex">\(g\)</span> 才是真实路径长度，<span class="arithmatex">\(f=g+h\)</span> 只决定搜索优先级</p>
+<p>只要此时处理的就是要找的节点，即使有的节点没有访问过，算法也停止了</p>
+<p>同 Dijkstra 算法一样，要求边权 <span class="arithmatex">\(c(n,m) \geq 0\)</span></p>
+<h3 id="hn">启发函数 <span class="arithmatex">\(h(n)\)</span></h3>
+<p>希望能比较精准地估算出当前节点到目标节点的距离</p>
+<p><strong>重要设计原则</strong>：可低估但不可高估（Admissible Heuristic）</p>
+<p><span class="arithmatex">\(h(n)\)</span> 可以低估从当前节点 <span class="arithmatex">\(n\)</span> 到终点的真实最短距离，但不能高估</p>
+<p>如果 <span class="arithmatex">\(h(n)\)</span> 被高估了，某条本来很有希望的路径可能会被误判为很差，从而被推迟甚至错过</p>
+<p>时间复杂度 <span class="arithmatex">\(O(E)\sim O(E + V\log V)\)</span></p>
+<p>（启发函数设计的好，主要边数，若没有起到什么作用，则接近 Dijkstra 的时间复杂度）</p>
+<h3 id="_11">算法流程</h3>
+<ol>
+<li>
+<p>初始化</p>
+<ul>
+<li>将起点加入 open list</li>
+<li>起点的 <span class="arithmatex">\(g(start)=0\)</span></li>
+<li>计算 <span class="arithmatex">\(f(start)=g(start)+h(start)\)</span></li>
+<li>closed list 为空</li>
+</ul>
+</li>
+<li>
+<p>每次从 open list 中选出 <span class="arithmatex">\(f(n)\)</span> 最小的节点 <span class="arithmatex">\(n\)</span></p>
+</li>
+<li>
+<p>如果节点 <span class="arithmatex">\(n\)</span> 是终点，则算法结束，返回路径</p>
+<p>否则，将节点 <span class="arithmatex">\(n\)</span> 从 open list 移到 closed list</p>
+</li>
+<li>
+<p>遍历节点 <span class="arithmatex">\(n\)</span> 的所有邻接节点 <span class="arithmatex">\(m\)</span>：</p>
+<ul>
+<li>
+<p>如果 <span class="arithmatex">\(m\)</span> 已在 closed list 中，则跳过该节点</p>
+</li>
+<li>
+<p>计算新的路径代价：</p>
+<div class="arithmatex">\[
+g_{\text{new}}(m)=g(n)+c(n,m)
+\]</div>
+<p>其中 <span class="arithmatex">\(c(n,m)\)</span> 是边 <span class="arithmatex">\((n,m)\)</span> 的代价</p>
+</li>
+<li>
+<p>若 <span class="arithmatex">\(m\)</span> 不在 open list 或 <span class="arithmatex">\(g_{new}(m)&lt;g(m)\)</span>，则更新：</p>
+<div class="arithmatex">\[
+g(m)=g_{\text{new}}(m)
+\]</div>
+<div class="arithmatex">\[
+f(m)=g(m)+h(m)
+\]</div>
+<p>并记录 <span class="arithmatex">\(m\)</span> 的前驱节点为 <span class="arithmatex">\(n\)</span></p>
+</li>
+<li>
+<p>若 <span class="arithmatex">\(m\)</span> 不在 open list 中，则将其加入 open list</p>
+</li>
+</ul>
+</li>
+<li>
+<p>重复以上过程，直到找到终点，或者 open list 为空</p>
+</li>
+</ol>
+<h2 id="a_1">混合 A* 路径搜索算法</h2>
+<p>传统 A* 算法基于离散栅格进行路径拓展，生成的路径不平滑，没有考虑运动学的非完整性约束，生成的路径可能物理不可行</p>
+<p>综合障碍影响和运动学特性</p>
+<h3 id="_12">运动基元</h3>
+<p>在混合 A* 搜索中，车辆每一步允许执行的“基本动作”，从一个节点扩展到下一个节点时，车辆可以执行的动作</p>
+<p>传统 A* 在栅格地图上扩展节点时，通常是：从一个格子走到上下左右，或者八邻域格子，如</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>上、下、左、右、左上、右上、左下、右下
+</code></pre></div>
+<p>车辆不是一个可以随便平移的点，比如汽车不能直接横着平移，也不能原地转向到任意角度。它受到车辆运动学约束</p>
+<ul>
+<li>最小转弯半径</li>
+<li>只能沿车头方向前进或后退</li>
+<li>方向角变化必须连续</li>
+<li>转向角不能无限大</li>
+</ul>
+<p>所以混合 A* 中的节点通常不是简单的 <span class="arithmatex">\((x,y)\)</span>，而是 <span class="arithmatex">\((x,y,\theta)\)</span></p>
+<p>设车辆使用简单的自行车模型，状态 <span class="arithmatex">\((x,y,\theta)\)</span>，控制量 <span class="arithmatex">\((v,\delta)\)</span></p>
+<p>其中 <span class="arithmatex">\(v\)</span>：速度，正数表示前进，负数表示倒车。<span class="arithmatex">\(\delta\)</span>：前轮转角</p>
+<p>车辆运动学模型可以写成：</p>
+<div class="arithmatex">\[
+\dot{x}=v\cos\theta
+\]</div>
+<div class="arithmatex">\[
+\dot{y}=v\sin\theta
+\]</div>
+<div class="arithmatex">\[
+\dot{\theta}=\frac{v}{L}\tan\delta
+\]</div>
+<p>其中 <span class="arithmatex">\(L\)</span> 是轴距</p>
+<p>在混合 A* 中，我们不会让 <span class="arithmatex">\(\delta\)</span> 取连续的任意值，而是离散成几个典型动作，例如：</p>
+<div class="arithmatex">\[
+\delta \in \{-\delta_{\max},0,\delta_{\max}\}
+\]</div>
+<div class="arithmatex">\[
+v \in \{+v_0,-v_0\}
+\]</div>
+<p>从而动作集合</p>
+<div class="arithmatex">\[
+\mathcal{A}
+=
+\{(v,\delta):v\in\{+v_0,-v_0\},\delta\in\{-\delta_{\max},0,\delta_{\max}\}\}
+\]</div>
+<p>这个有限集合中的每一个动作 <span class="arithmatex">\((v,\delta)\)</span>，就是一个运动基元</p>
+<h3 id="_13">启发函数</h3>
+<p>混合 A* 算法的启发函数通常设计为：</p>
+<div class="arithmatex">\[
+h(n)=\max\{\text{ConstrainedCost},\text{UnconstrainedCost}\}
+\]</div>
+<p>这里 <span class="arithmatex">\(h\)</span>，构成评价函数 <span class="arithmatex">\(f = g+h\)</span> 的一部分</p>
+<ol>
+<li><strong>有约束启发项</strong> ConstrainedCost</li>
+</ol>
+<p>考虑车辆的非完整运动学约束，但不考虑障碍物</p>
+<p>即在没有障碍物的情况下，车辆从当前状态到目标状态所需要的最小运动代价</p>
+<ol>
+<li><strong>无约束启发项</strong> UnconstrainedCost</li>
+</ol>
+<p>考虑障碍物信息，但不考虑车辆的运动学约束</p>
+<p>它把车辆近似看成一个普通点，只关心地图上能不能绕开障碍物</p>
+<p>不考虑车辆转向、朝向、最小转弯半径等运动学限制，只在障碍物地图中从当前位置到目标位置的最短代价</p>
+<h2 id="pid">PID 算法</h2>
+<p>主要解决的问题：已知目标值和当前实际值，如何根据二者的误差设计控制量，使系统输出逐渐跟踪目标值</p>
+<p>假设我们有一个被控对象（车辆、电机、机械臂等）</p>
+<p>记目标值（参考值） <span class="arithmatex">\(r(t)\)</span>，系统实际输出 <span class="arithmatex">\(y(t)\)</span>，定义误差</p>
+<div class="arithmatex">\[
+e(t)=r(t)-y(t)
+\]</div>
+<p>根据误差 <span class="arithmatex">\(e(t)\)</span>，生成控制量 <span class="arithmatex">\(u(t)\)</span></p>
+<ul>
+<li>如：<span class="arithmatex">\(e(t) = v_{ref}(t) - v(t)\)</span></li>
+</ul>
+<blockquote>
+<p>如</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>目标值 <span class="arithmatex">\(r(t)\)</span></th>
+<th>实际输出 <span class="arithmatex">\(y(t)\)</span></th>
+<th>控制量 <span class="arithmatex">\(u(t)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>速度控制</td>
+<td>目标速度</td>
+<td>当前速度</td>
+<td>油门 / 刹车</td>
+</tr>
+<tr>
+<td>横向控制</td>
+<td>目标横向位置</td>
+<td>当前横向位置</td>
+<td>方向盘转角</td>
+</tr>
+<tr>
+<td>温度控制</td>
+<td>目标温度</td>
+<td>当前温度</td>
+<td>加热功率</td>
+</tr>
+<tr>
+<td>电机控制</td>
+<td>目标转速</td>
+<td>当前转速</td>
+<td>电压 / 电流</td>
+</tr>
+</tbody>
+</table>
+<p>如 <span class="arithmatex">\(u(t)&gt;0\)</span> 表示加速，<span class="arithmatex">\(u(t)&lt;0\)</span> 表示减速</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>u(t) = 0.3   → 轻踩油门
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>u(t) = 0.8   → 较大油门
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>u(t) = -0.2  → 轻微刹车
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>u(t) = -0.7  → 较强刹车
+</code></pre></div>
+</blockquote>
+<p>P：当前偏差</p>
+<p>I：过去累计偏差</p>
+<p>D：偏差变化趋势</p>
+<p>连续时间形式</p>
+<div class="arithmatex">\[
+u(t) = K_pe(t) + K_i \int_{0}^{t} e(\tau)d\tau + K_d \frac{de(t)}{dt}
+\]</div>
+<p>其中</p>
+<div class="arithmatex">\[
+K_p, \quad K_i, \quad K_d
+\]</div>
+<p>分别是比例、积分、微分三个参数</p>
+<p>离散形式</p>
+<div class="arithmatex">\[
+u_k = K_p e_k + K_i \sum_{j=0}^{k} e_j \Delta t + K_d \frac{e_k - e_{k-1}}{\Delta t}
+\]</div>
+<p>积分控制</p>
+<p>消除长期存在的稳态误差</p>
+<p>如果误差长期存在，就不断加大纠正力度</p>
+<p>微分控制</p>
+<p>抑制震荡，减少超调，提高系统稳定性</p>
+<blockquote>
+<p><strong>超调</strong>：实际值超过了目标值</p>
+<p><strong>震荡</strong>：实际值在目标值附近来回摆动</p>
+</blockquote>
+<p>面试</p>
+<p>PID 是一种经典的反馈控制算法，主要用于让系统输出跟踪给定的目标值。它首先根据目标值和实际输出计算误差，然后通过比例、积分、微分三部分生成控制量。比例项根据当前误差进行纠正，积分项根据历史累计误差消除稳态误差，微分项根据误差变化趋势抑制超调和震荡。</p>
+<p>在自动驾驶中，PID 可以用于速度控制或简单的横向控制。例如在速度控制中，目标速度和当前速度的差作为误差，PID 根据该误差输出油门或刹车控制量。PID 的优点是结构简单、计算量小、不强依赖精确模型；缺点是参数需要调节，并且在复杂非线性约束场景下不如 MPC 等方法。</p>
+<h2 id="mpc">MPC</h2>
+<p>MPC：Model Predictive Control，模型预测控制</p>
+<p>假设上层规划已经给你一条参考轨迹</p>
+<div class="arithmatex">\[
+x_0^{ref},x_1^{ref},\dots,x_N^{ref}
+\]</div>
+<p>车辆当前状态是 <span class="arithmatex">\(x_0\)</span>，MPC 需要计算未来一段时间的控制量：·</p>
+<div class="arithmatex">\[
+u_0,u_1,\dots,u_{N-1}
+\]</div>
+<p>其中 <span class="arithmatex">\(u_k\)</span> 可能是 <span class="arithmatex">\(u_k=
+\begin{bmatrix}
+a_k\\
+\delta_k
+\end{bmatrix}\)</span>，<span class="arithmatex">\(a_k\)</span> 表示加速度，<span class="arithmatex">\(\delta_k\)</span> 表示前轮转角</p>
+<p>经典 MPC 目标函数：</p>
+<div class="arithmatex">\[
+\min_{u_0,\dots,u_{N-1}}\sum_{k=0}^{N}\|x_k-x_k^{ref}\|_Q^2+\sum_{k=0}^{N-1}\|u_k\|_R^2+\sum_{k=0}^{N-1}\|u_{k+1}-u_k\|_S^2
+\]</div>
+<p>其中 <span class="arithmatex">\(Q,R,S\)</span> 为权重矩阵：<span class="arithmatex">\(\|x\|_Q^2 = x^\top Qx\)</span></p>
+<ul>
+<li>
+<p>第一项</p>
+<p>惩罚车辆状态和参考轨迹的偏差。比如横向误差、航向角误差、速度误差</p>
+</li>
+<li>
+<p>第二项</p>
+<p>惩罚控制量本身，避免加速度太大、方向盘转角太大</p>
+</li>
+<li>
+<p>第三项</p>
+<p>惩罚控制量变化，避免方向盘或加速度突然变化，提高舒适性</p>
+</li>
+</ul>
+<p>MPC 不只是最小化目标函数，还要满足车辆运动模型：</p>
+<div class="arithmatex">\[
+x_{k+1}=f(x_k,u_k)
+\]</div>
+<p>即：当前状态 <span class="arithmatex">\(x_k\)</span>，加上控制量 <span class="arithmatex">\(u_k\)</span>，会得到下一时刻状态 <span class="arithmatex">\(x_{k+1}\)</span>，还需要满足各种约束：</p>
+<div class="arithmatex">\[
+v_{\min}\le v_k\le v_{\max}
+\]</div>
+<div class="arithmatex">\[
+a_{\min}\le a_k\le a_{\max}
+\]</div>
+<div class="arithmatex">\[
+\delta_{\min}\le \delta_k\le \delta_{\max}
+\]</div>
+<div class="arithmatex">\[
+\dot{\delta}_{\min}\le \dot{\delta}_k\le \dot{\delta}_{\max}
+\]</div>
+<p>分别表示：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>速度不能超限
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>加速度不能超限
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>方向盘转角不能超限
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>方向盘变化率不能太大
+</code></pre></div>
+<p>MPC 是一个 <strong>带约束的优化问题</strong></p>
+<p>具体例子</p>
+<blockquote>
+<p>假设未来 5 步的控制量：</p>
+<div class="arithmatex">\[
+u_t,u_{t+1},u_{t+2},u_{t+3},u_{t+4}
+\]</div>
+<p>根据车辆模型 <span class="arithmatex">\(x_{k+1}=f(x_k,u_k)\)</span>，预测未来状态：</p>
+<div class="arithmatex">\[
+x_{t+1},x_{t+2},x_{t+3},x_{t+4},x_{t+5}
+\]</div>
+<p>然后得到一组最优的控制量：</p>
+<div class="arithmatex">\[
+u_t^*,u_{t+1}^*,\dots,u_{t+N-1}^*
+\]</div>
+<p>MPC 会解一个优化问题：</p>
+<div class="arithmatex">\[
+\min \sum_{k=0}^{N}\|x_{t+k}-x_{t+k}^{ref}\|^2
++
+\sum_{k=0}^{N-1}\|u_{t+k}\|^2
+\]</div>
+<p>虽然 MPC 算出来的是一整串控制量</p>
+<div class="arithmatex">\[
+u_t^*,u_{t+1}^*,u_{t+2}^*,u_{t+3}^*,u_{t+4}^*
+\]</div>
+<p>但是<strong>只真正执行第一个控制量</strong></p>
+<p>到了下一时刻 <span class="arithmatex">\(t+1\)</span>，要重新计算：</p>
+<div class="arithmatex">\[
+u_{t+1}^{new},u_{t+2}^{new},u_{t+3}^{new},u_{t+4}^{new}
+\]</div>
+<p>然后只执行 <span class="arithmatex">\(u_{t+1}^{new}\)</span></p>
+<p>这个过程称为<strong>滚动优化</strong>（<strong>滚动时域控制</strong>）</p>
+</blockquote>
+<h3 id="mpc-qp">MPC 与 QP 的关系</h3>
+<p>车辆模型是非线性的，比如自行车模型中有 <span class="arithmatex">\(\tan(\delta)\)</span></p>
+<p>工程上常用做法是：在当前参考点附近线性化：</p>
+<div class="arithmatex">\[
+x_{k+1}\approx A_kx_k+B_ku_k+c_k
+\]</div>
+<p>如果目标函数是二次型，约束是线性的，那么 MPC 就可以转化成 QP：</p>
+<div class="arithmatex">\[
+\min_z \frac12 z^THz+f^Tz
+\]</div>
+<div class="arithmatex">\[
+\text{s.t.}\quad Gz\le h,\quad Ez=e
+\]</div>
+<p>这里 <span class="arithmatex">\(z\)</span> 通常包含所有未来状态和控制量：</p>
+<div class="arithmatex">\[
+z=
+[x_0,x_1,\dots,x_N,u_0,u_1,\dots,u_{N-1}]
+\]</div>
+<h2 id="vectornet">VectorNet</h2>
+<p>论文 <em>CVPR - 2020 - VectorNet: Encoding HD Maps and Agent Dynamics from Vectorized Representation</em></p>
+<p>轨迹预测：已知目标车过去几秒的轨迹、周围车/行人的历史轨迹、车道线/停止线/人行横道等高精地图信息，预测目标车未来几秒可能怎么走</p>
+<p>数学形式：</p>
+<div class="arithmatex">\[
+\hat{Y}
+=
+\{ \hat{p}_{T+1}, \hat{p}_{T+2}, \dots, \hat{p}_{T+H} \}
+\]</div>
+<p>其中 <span class="arithmatex">\(p_t=(x_t,y_t)\)</span> 表示某一时刻的位置</p>
+<p>Vector</p>
+<p>比如目标车过去轨迹是：<span class="arithmatex">\(p_0,p_1,p_2,\ldots\)</span>，可以拆成几段小向量：</p>
+<div class="arithmatex">\[
+v_1=(p_0 \rightarrow p_1),\quad
+v_2=(p_1 \rightarrow p_2),\quad
+v_3=(p_2 \rightarrow p_3)
+\]</div>
+<p>每一段 vector 可以包含：</p>
+<div class="arithmatex">\[
+[x_{\text{start}}, y_{\text{start}}, x_{\text{end}}, y_{\text{end}}, \text{type}, \text{timestamp}, \dots]
+\]</div>
+<p>车道线也一样。比如一条车道中心线由很多点组成：</p>
+<div class="arithmatex">\[
+q_0,q_1,q_2,\dots,q_m
+\]</div>
+<p>也可以拆成：</p>
+<div class="arithmatex">\[
+(q_0\rightarrow q_1),\quad(q_1\rightarrow q_2),\quad\dots,\quad(q_{m-1}\rightarrow q_m)
+\]</div>
+<h3 id="polyline">Polyline 多段线</h3>
+<p>一条完整轨迹可以看成一个 polyline：</p>
+<div class="arithmatex">\[
+P_{\text{agent}}
+=
+[v_1,v_2,\dots,v_n]
+\]</div>
+<p>一条车道线也可以看成一个 polyline：</p>
+<div class="arithmatex">\[
+P_{\text{lane}}
+=
+[v_1,v_2,\dots,v_m]
+\]</div>
+<p>所以整体场景可以表示成很多个 polyline：</p>
+<div class="arithmatex">\[
+\mathcal{P}
+=
+\{P_1,P_2,\dots,P_M\}
+\]</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 伦文
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.indexes", "content.code.copy", "search.highlight", "search.suggest"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
