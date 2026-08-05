@@ -1,11 +1,11 @@
 """Make Typora-style Markdown compatible with Python Markdown.
 
-Typora accepts a ``$$`` block immediately after or before prose, while
-Python Markdown requires a blank line around the block. This hook adds those
-blank lines in memory before pymdownx.arithmatex runs. Typora also accepts two
-spaces per nested-list level, while Python Markdown requires four. The hook
-expands only list-related indentation during the build. Source files are left
-unchanged.
+Typora accepts a ``$$`` block immediately after or before prose and permits
+blank lines inside it, while Python Markdown uses blank lines as paragraph
+boundaries. This hook normalizes that whitespace in memory before
+pymdownx.arithmatex runs. Typora also accepts two spaces per nested-list level,
+while Python Markdown requires four. The hook expands only list-related
+indentation during the build. Source files are left unchanged.
 """
 
 from __future__ import annotations
@@ -192,7 +192,7 @@ def _dedent_math_line(line: str, width: int) -> str:
 
 
 def normalize_typora_math(markdown: str) -> str:
-    """Add missing blank lines around standalone ``$$`` math blocks."""
+    """Normalize whitespace around and inside standalone ``$$`` math blocks."""
 
     lines = markdown.splitlines()
     normalized: list[str] = []
@@ -220,14 +220,18 @@ def normalize_typora_math(markdown: str) -> str:
 
         delimiter_match = None if fence_character else _MATH_DELIMITER.fullmatch(line)
         if delimiter_match is None:
-            if in_math and math_quote_prefix is not None:
+            if in_math:
                 content = _content_without_container_prefix(line)
-                # A blank quoted line splits a display-math paragraph in
-                # Python Markdown. Typora ignores it, so omit it here too.
-                if content.strip():
+                # A blank line splits a display-math paragraph in Python
+                # Markdown. Typora ignores it, so omit it while building.
+                if not content.strip():
+                    continue
+                if math_quote_prefix is not None:
                     normalized.append(f"{math_quote_prefix}{content}")
+                else:
+                    normalized.append(_dedent_math_line(line, math_dedent))
             else:
-                normalized.append(_dedent_math_line(line, math_dedent) if in_math else line)
+                normalized.append(line)
             continue
 
         prefix = delimiter_match.group("prefix")

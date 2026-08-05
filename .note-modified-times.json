@@ -1,49 +1,21 @@
 {
   "version": 1,
   "files": {
-    "docs/higher-algebra/0 高等代数.md": {
-      "content_sha256": "2d8ce685154f685b975fdf42705f146cc4d0e82924ae46c9e7d3c339c21fa19c",
-      "modified_at": "2026-05-09T15:10:15+08:00"
-    },
-    "docs/higher-algebra/1 迹.md": {
-      "content_sha256": "73875ebbd0ebb2ad952b54b15c938925bfef0823be48dc3d9f520cb2defbc3a3",
-      "modified_at": "2026-04-18T15:49:20+08:00"
-    },
-    "docs/higher-algebra/2 矩阵分解.md": {
-      "content_sha256": "619f965db23f42c67a387e2b0d0728305144c964cc4e5f2d4913b4188929b8ba",
-      "modified_at": "2026-05-09T00:35:01+08:00"
-    },
-    "docs/higher-algebra/3 矩阵求导.md": {
-      "content_sha256": "37702dee921d0cc97971a09d4e7d4a29c5d0544edbeb634ad6108c3f125fdccc",
-      "modified_at": "2026-05-14T16:08:05+08:00"
-    },
-    "docs/higher-algebra/4 矩阵基础.md": {
-      "content_sha256": "3a14df8c4e065d8525b5d5fc448fa760e78a7d99c949470a9d555842f7386dbc",
-      "modified_at": "2026-04-18T15:48:42+08:00"
-    },
-    "docs/higher-algebra/5 正定矩阵.md": {
-      "content_sha256": "cde117d45c97731ae44ad7aacb7f0147add06f427c2c8f1ca8e95cfd9c50f355",
-      "modified_at": "2026-04-18T15:47:49+08:00"
-    },
-    "docs/higher-algebra/6 二次型.md": {
-      "content_sha256": "f389e0ad7795ddf5663132096c8b45ba58806ab0c13ccbc53183904e2c36107e",
-      "modified_at": "2026-05-09T15:03:30+08:00"
-    },
     "docs/higher-algebra/index.md": {
-      "content_sha256": "190b80d4be6380bd6d7127edce15558b1c9fcbcaf700305f620f56a43264542c",
-      "modified_at": "2026-08-04T01:15:06+08:00"
+      "content_sha256": "1e99ea069b1d687bc1e05c76d90aa7c8ed3ce41f91686d509f7c73b6be1ce287",
+      "modified_at": "2026-08-05T13:35:45+08:00"
     },
     "docs/higher-algebra/习题 - 高等代数.md": {
       "content_sha256": "2a97d339ab6c184cd9c0d7232f7afe0fbfee5fccff44e0b62b4027721a178476",
       "modified_at": "2026-05-09T15:09:50+08:00"
     },
     "docs/index.md": {
-      "content_sha256": "75a2dd3cf73239eeffe077e8e41729bd6f039e5658df1b76e85aeb6e42926c0a",
-      "modified_at": "2026-08-04T00:50:06+08:00"
+      "content_sha256": "271c3d4088eedb94df571de3758a063308f31b30fae706eb84adf118533b7d57",
+      "modified_at": "2026-08-05T13:26:33+08:00"
     },
     "docs/math-analysis/index.md": {
-      "content_sha256": "8fb331e9e93324e8c30fa837f9896f619c2bcb8d614c6f0b0f6cee338ca2801f",
-      "modified_at": "2026-08-03T20:13:11+08:00"
+      "content_sha256": "edb03210ac24d6d6450cca7d6dc62e7cf181e3d7673ff7fc07c1f28a984b29e5",
+      "modified_at": "2026-08-05T12:44:19+08:00"
     },
     "docs/math-analysis/一元微积分.md": {
       "content_sha256": "d2f0d8ded8126d0b18e5731797ded4eb1a69dfea9b8c487bb80f5966969d3e75",
@@ -62,12 +34,12 @@
       "modified_at": "2026-08-04T17:55:09+08:00"
     },
     "docs/python/index.md": {
-      "content_sha256": "827649c1a4e8ef11fb70d2a191e61848fabe287c01dfa2f009fdcbe89be6df69",
-      "modified_at": "2026-08-04T13:25:46+08:00"
+      "content_sha256": "1252ea60c3a6e109be9a8d020e9e257fdff0fc9a85ae30a05213221d12096c44",
+      "modified_at": "2026-08-05T13:31:55+08:00"
     },
     "docs/recommendation/index.md": {
-      "content_sha256": "d391571ce4e073101570a240314c80bee529ed8f06338405d5dd6946c43e7021",
-      "modified_at": "2026-08-04T13:25:53+08:00"
+      "content_sha256": "8ffa3f3439cf55386a28f2bee46f2efea7126237e55d19c7b47a36e810a8af48",
+      "modified_at": "2026-08-05T13:38:11+08:00"
     },
     "docs/recommendation/推荐算法基础.md": {
       "content_sha256": "68dc307a0a2c380373e4d02589a714abd189799ae38785454328746e161f963b",
@@ -100,6 +72,70 @@
     "docs/recommendation/聚类.md": {
       "content_sha256": "5041851e1fe84dbe064df82d9df1e5d452d7447ea14609df0e864b053a9f705e",
       "modified_at": "2026-06-29T14:14:08+08:00"
+    },
+    "docs/higher-algebra/高等代数.md": {
+      "content_sha256": "3f31f1661301a07e3730450fcb44127c3a4c148c731b0eefaa72db45e4d9c9ef",
+      "modified_at": "2026-08-05T13:23:58+08:00"
+    },
+    "docs/math-analysis/习题 - 初等数学.md": {
+      "content_sha256": "df0e0fca89a993db92476062eaa4d717b6c773ce4f7f39d73e08bb842dd45efe",
+      "modified_at": "2026-08-05T12:48:40+08:00"
+    },
+    "docs/math-analysis/初等数学.md": {
+      "content_sha256": "f4d6b5b87e767a664c4e975ad223140a81fed859dbfffb4dadaed19ee4610d80",
+      "modified_at": "2026-07-14T00:10:41+08:00"
+    },
+    "docs/math-analysis/泛函分析.md": {
+      "content_sha256": "3bd0e3dad7803640973ec9b47bcb0be63456464fd0868ecaac5e7f7534147273",
+      "modified_at": "2026-08-05T12:38:55+08:00"
+    },
+    "docs/optimization/KKT.md": {
+      "content_sha256": "72d4226fbd61729ca21896b48c7fc4566ba3535f821df15c8eb07598c19e964f",
+      "modified_at": "2026-08-05T13:05:07+08:00"
+    },
+    "docs/optimization/index.md": {
+      "content_sha256": "29b6948fdc7d1e986c4133436f342945bbb909bf1665d4f098f486358eb1dfd2",
+      "modified_at": "2026-08-05T13:34:29+08:00"
+    },
+    "docs/optimization/优化问题概述.md": {
+      "content_sha256": "1b344a5c715226bf1ade2d44b6fabdc565eab417f7dce3d90face2d5ecabd57a",
+      "modified_at": "2026-03-18T00:35:22+08:00"
+    },
+    "docs/optimization/最优化基础.md": {
+      "content_sha256": "aeb9778de9cb4676544293b82233b084bdfc0a0db9f02e4368d159506aee4c3e",
+      "modified_at": "2026-08-05T13:42:11+08:00"
+    },
+    "docs/planning-control/index.md": {
+      "content_sha256": "faa412940b8e7562bb4d5cc942db6f2ab107b034f9befe1106adc3aeca02f1aa",
+      "modified_at": "2026-08-05T13:33:19+08:00"
+    },
+    "docs/planning-control/启发式算法.md": {
+      "content_sha256": "c41b86eec7dd7965341f055d31f13d2da243cb2ca8df575138cca19efcc4dddc",
+      "modified_at": "2026-08-05T13:12:27+08:00"
+    },
+    "docs/planning-control/规控算法.md": {
+      "content_sha256": "ff528606aedab248b7800a1c4baa1cf6f367610271ce1da3bf0c920e913e0ddd",
+      "modified_at": "2026-06-19T13:23:41+08:00"
+    },
+    "docs/planning-control/运筹优化算法.md": {
+      "content_sha256": "540d1b344283ae372a8fea81874e457df6be48f47442a53d381e63960d6fc44c",
+      "modified_at": "2026-06-03T11:29:02+08:00"
+    },
+    "docs/python/Matlab.md": {
+      "content_sha256": "b2a777d2a9e27f7690132bd7ba2e19b50155567f59dce76fcf2621ea7399fa3f",
+      "modified_at": "2026-03-10T22:02:53+08:00"
+    },
+    "docs/python/机考笔试_大模型与数学.md": {
+      "content_sha256": "7ce89ffd571a6181994b501d2b5d76266ce590e715e2410ca44357e65d5307a3",
+      "modified_at": "2026-07-15T20:56:20+08:00"
+    },
+    "docs/python/机考笔试_数据结构.md": {
+      "content_sha256": "4e3ba55660188935d8bcf9ee012f26b28d6009e91d05098e4debbeb4233256c5",
+      "modified_at": "2026-08-05T13:09:00+08:00"
+    },
+    "docs/recommendation/AI与大模型.md": {
+      "content_sha256": "b0fe18e5b70bddf9b7531d1a10a962c7533c27fcb8028565b883eb54fd41f895",
+      "modified_at": "2026-07-29T23:44:19+08:00"
     }
   }
 }

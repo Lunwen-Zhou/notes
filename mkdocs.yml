@@ -1,5 +1,5 @@
 site_name: 伦文的学习笔记
-site_description: 推荐算法、Python、数学分析与高等代数学习笔记
+site_description: 推荐算法、Python、规划控制、最优化与大学数学学习笔记
 # 部署后可改成：https://你的GitHub用户名.github.io/仓库名/
 # site_url: https://your-name.github.io/your-repository/
 
@@ -13,6 +13,7 @@ nav:
       - 推荐算法基础: recommendation/推荐算法基础.md
       - 机器学习: recommendation/机器学习.md
       - 聚类: recommendation/聚类.md
+      - AI 与大模型: recommendation/AI与大模型.md
   - Python:
       - Python: python/index.md
       - Python 笔记本: python/MD  Python 笔记本.md
@@ -20,21 +21,31 @@ nav:
       - Leetcode 补充习题: python/MD  Leetcode 补充习题.md
       - 数据结构与算法: python/MD  数据结构与算法.md
       - Python 库: python/MD  Python 库.md
+      - 机考：数据结构: python/机考笔试_数据结构.md
+      - 机考：大模型与数学: python/机考笔试_大模型与数学.md
+      - Matlab 笔记本: python/Matlab.md
+  - 规控算法:
+      - 规划控制算法: planning-control/index.md
+      - 规控算法: planning-control/规控算法.md
+      - 运筹优化算法: planning-control/运筹优化算法.md
+      - 启发式算法: planning-control/启发式算法.md
+  - 最优化:
+      - 最优化: optimization/index.md
+      - 优化问题概述: optimization/优化问题概述.md
+      - 最优化基础: optimization/最优化基础.md
+      - KKT: optimization/KKT.md
   - 数学分析:
       - 数学分析: math-analysis/index.md
       - 一元微积分: math-analysis/一元微积分.md
       - 多元微积分: math-analysis/多元微积分.md
       - 分析学习题: math-analysis/习题 - 分析学.md
+      - 泛函分析: math-analysis/泛函分析.md
+      - 初等数学: math-analysis/初等数学.md
+      - 初等数学习题: math-analysis/习题 - 初等数学.md
   - 高等代数:
       - 高等代数: higher-algebra/index.md
+      - 高等代数: higher-algebra/高等代数.md
       - 高等代数习题: higher-algebra/习题 - 高等代数.md
-      - 高等代数: higher-algebra/0 高等代数.md
-      - 迹: higher-algebra/1 迹.md
-      - 矩阵分解: higher-algebra/2 矩阵分解.md
-      - 矩阵求导: higher-algebra/3 矩阵求导.md
-      - 矩阵基础: higher-algebra/4 矩阵基础.md
-      - 正定矩阵: higher-algebra/5 正定矩阵.md
-      - 二次型: higher-algebra/6 二次型.md
       
 theme:
   name: material
@@ -79,6 +90,8 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.superfences
   - pymdownx.details
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - admonition
 
 extra_css:

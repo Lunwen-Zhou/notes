@@ -13,7 +13,7 @@ hide:
   <span class="note-card__category">算法工程</span>
 
   <h2>推荐算法</h2>
-  <p>内容正在持续整理中</p>
+  <p></p>
 
   <span class="note-card__link">进入模块 →</span>
 </a>
@@ -22,7 +22,23 @@ hide:
   <span class="note-card__category">编程</span>
 
   <h2>Python</h2>
-  <p>内容正在持续整理中</p>
+  <p></p>
+  <span class="note-card__link">进入模块 →</span>
+</a>
+
+<a class="note-card module-card" href="planning-control/">
+  <span class="note-card__category">算法工程</span>
+
+  <h2>规划控制算法</h2>
+  <p></p>
+  <span class="note-card__link">进入模块 →</span>
+</a>
+
+<a class="note-card module-card" href="optimization/">
+  <span class="note-card__category">数学 · 算法</span>
+
+  <h2>最优化</h2>
+  <p></p>
   <span class="note-card__link">进入模块 →</span>
 </a>
 
@@ -30,7 +46,7 @@ hide:
   <span class="note-card__category">数学</span>
 
   <h2>数学分析</h2>
-  <p>内容正在持续整理中</p>
+  <p></p>
   <span class="note-card__link">进入模块 →</span>
 </a>
 
@@ -38,7 +54,7 @@ hide:
   <span class="note-card__category">数学</span>
 
   <h2>高等代数</h2>
-  <p>内容正在持续整理中</p>
+  <p></p>
   <span class="note-card__link">进入模块 →</span>
 </a>
 
