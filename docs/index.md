@@ -35,7 +35,7 @@ hide:
 </a>
 
 <a class="note-card module-card" href="optimization/">
-  <span class="note-card__category">数学 · 算法</span>
+  <span class="note-card__category">数学</span>
 
   <h2>最优化</h2>
   <p></p>
