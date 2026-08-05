@@ -6,7 +6,7 @@ hide:
 
 # 伦文的数学算法笔记
 
-记录推荐算法、Python、大学数学等笔记。点击卡片进入对应模块
+记录推荐算法、大学数学等笔记。点击卡片进入对应模块，数学公式渲染可能需要等待数秒完成
 
 <div class="note-grid module-grid">
 <a class="note-card module-card" href="recommendation/">
