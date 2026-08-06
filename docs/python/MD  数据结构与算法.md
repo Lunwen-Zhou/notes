@@ -8,60 +8,68 @@
 
 #### 空间复杂度
 
-空间复杂度看的是**占用的峰值**，而不是**操作的次数**
+空间复杂度看的是 **占用的峰值**，而不是 **操作的次数**
 
 #### 时间复杂度
 
+用于描述一个算法随着 **输入规模** $n$ 增大，其运行时间增长速度的指标
+
+**定义**：设 $n$ 为算法的输入规模，算法的执行的基本操作次数为 $T(n)$，$f(n)$ 是一个描述 $n$ 增长数量级的函数。称算法的 **时间复杂度**为 $O(f(n))$，当存在 $c>0$、$n_0$，使得 $n>n_0$ 时，恒有
+$$
+T(n) \leq cf(n)
+$$
+
 ## 数学基础
 
-**性质**：对任意整数 $x$ 有
+**性质**：对任意 **整数** $x$ 有
 $$
 x=\left\lfloor \frac{x}{2} \right\rfloor +\left\lceil \frac{x}{2} \right\rceil
 $$
-**Proof**：可将 $x$ 分为偶数、奇数讨论。
-
-① 若 $x$ 为偶数，则存在 $k\in \mathbb{Z}$ 使得 $x=2k$。此时 $\frac{x}{2} = k$
-$$
-\left\lfloor \frac{x}{2} \right\rfloor=\left\lfloor k \right\rfloor=k
-$$
-
-$$
-\left\lceil \frac{x}{2} \right\rceil
-=
-\left\lceil k \right\rceil
-=k
-$$
-
-$$
-\left\lfloor \frac{x}{2} \right\rfloor+\left\lceil \frac{x}{2} \right\rceil=k+k=2k=x
-$$
-
-② 若 $x$ 为奇数，则存在 $k\in \mathbb{Z}$ 使得 $x=2k+1$。此时 $\frac{x}{2} = k+\frac{1}{2}$
-$$
-\left\lfloor \frac{x}{2} \right\rfloor=k
-$$
-
-$$
-\left\lceil \frac{x}{2} \right\rceil=k+1
-$$
-
-$$
-\left\lfloor \frac{x}{2} \right\rfloor+\left\lceil \frac{x}{2} \right\rceil=k+(k+1)=2k+1=x
-$$
-
-$\square$
-
 - 该性质 $\forall x \in \mathbb{R}$ 并不一定成立
 
   取 $x=\frac{3}{2}$，此时原性质等号左侧不是整数，右侧是整数，肯定不相等
 
-  
+**Proof**：
+
+> 可将 $x$ 分为偶数、奇数讨论：
+>
+> ① 若 $x$ 为偶数，则存在 $k\in \mathbb{Z}$ 使得 $x=2k$。此时 $\frac{x}{2} = k$
+> $$
+> \left\lfloor \frac{x}{2} \right\rfloor=\left\lfloor k \right\rfloor=k
+> $$
+>
+> $$
+> \left\lceil \frac{x}{2} \right\rceil
+> =
+> \left\lceil k \right\rceil
+> =k
+> $$
+>
+> $$
+> \left\lfloor \frac{x}{2} \right\rfloor+\left\lceil \frac{x}{2} \right\rceil=k+k=2k=x
+> $$
+>
+> ② 若 $x$ 为奇数，则存在 $k\in \mathbb{Z}$ 使得 $x=2k+1$。此时 $\frac{x}{2} = k+\frac{1}{2}$
+> $$
+> \left\lfloor \frac{x}{2} \right\rfloor=k
+> $$
+>
+> $$
+> \left\lceil \frac{x}{2} \right\rceil=k+1
+> $$
+>
+> $$
+> \left\lfloor \frac{x}{2} \right\rfloor+\left\lceil \frac{x}{2} \right\rceil=k+(k+1)=2k+1=x
+> $$
+>
+> $\square$
+>
 
 
 
 # 排序
 
-基于**比较**的排序算法（如快排、归并排序、堆排序等）其时间复杂度下限是 $O(n \log n)$
+基于 **比较** 的排序算法（如快排、归并排序、堆排序等）其时间复杂度下限是 $O(n \log n)$
 
 ### 冒泡排序
 
@@ -147,9 +155,9 @@ def merge_sort(nums: list[int]) -> list[int]:
 
 递归为
 $$
-\text{merge\_sort}(nums) =
+\text{merge\_sort}(\text{nums}) =
 \begin{cases}
-nums, & |nums| \le 1 \\
+\text{nums}, & |\text{nums}| \le 1 \\
 \text{merge}(\text{merge\_sort}(L),\ \text{merge\_sort}(R)), & \text{otherwise}
 \end{cases}
 $$
@@ -163,7 +171,7 @@ Linear Structures
 
 ### def 链表
 
-链表（Linked list）是一种常用的**数据结构**，由一系列**节点**组成，每个节点包含**数据域**和指针域。指针域存储了下一个节点的**地址**，从而建立起各**节点**之间的线性关系
+链表（Linked list）是一种常用的 **数据结构**，由一系列 **节点** 组成，每个节点包含 **数据域** 和指针域。指针域存储了下一个节点的 **地址**，从而建立起各 **节点 **之间的线性关系
 
 通过类来表示数据的节点
 
@@ -246,9 +254,9 @@ def preorderTraversal(root):
 
 （Complete Binary Tree）
 
-**定义**：除了最后一层，上面所有层都**完全填满**了。最后一层，**必须从左往右连续地有节点**，不能“跳着空”
+**定义**：除了最后一层，上面所有层都 **完全填满** 了。最后一层，**必须从左往右连续地有节点**，不能“跳着空”
 
-设 $x$ 为节点在数组中的下标索引，**从 0 开始编号**时：一个完全二叉树的某个节点 $x$，它的左儿子一定是 $2x + 1$，右儿子一定是 $2x + 2$，父节点为 $\left \lfloor \frac{x-1}{2} \right \rfloor$
+设 $x$ 为节点在数组中的下标索引，**从 0 开始编号 **时：一个完全二叉树的某个节点 $x$，它的左儿子一定是 $2x + 1$，右儿子一定是 $2x + 2$，父节点为 $\left \lfloor \frac{x-1}{2} \right \rfloor$
 
 ---
 
@@ -260,7 +268,7 @@ def preorderTraversal(root):
 
 heapq 是 Python 的最小堆实现
 
-可以理解成一种特殊**数组**
+可以理解成一种特殊 **数组**
 
 堆顶永远是最小值，`heap[0]`
 
@@ -331,15 +339,15 @@ BFS，Breadth-First Search
 
 ## 递归
 
-**剪枝**
+术语：
 
-提前终止了**不可能产生合法解**的搜索路径，避免无谓递归
+- **剪枝**
 
+  提前终止了 **不可能产生合法解 **的搜索路径，避免无谓递归
 
+- **终止条件**（base case）
 
-终止条件（base case）
-
-递归必须停止的“合法终点状态”
+  递归必须停止的“合法终点状态”
 
 
 
