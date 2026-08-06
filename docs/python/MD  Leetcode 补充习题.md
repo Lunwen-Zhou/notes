@@ -33,7 +33,7 @@ class Solution:
         return -1
 ```
 
-**公司**：美的机考（25-08经验贴）
+**公司**：美的机考（25-08 经验贴）
 
 
 
@@ -372,52 +372,52 @@ class Solution:
         return ans
 ```
 
-容易看出，这种解法是符合题目要求。下面证明它是最优的方案
+容易看出，这种解法是符合题目要求。下面证明它是 **最优** 的方案
 
-设任意一个合法的分配方案为 $c_0,c_1,\dots,c_{n-1}$，我们算法构造的方案为 
+**性质**：设任意一个合法的分配方案为 $c_0,c_1,\dots,c_{n-1}$，我们算法构造的方案为 
 $$
-d_i=\max(left[i],right[i]),\quad i = 0,1,\ldots,n-1
+d_i=\max(\text{left}[i],\text{right}[i]),\quad i = 0,1,\ldots,n-1
 $$
-下面证明：对任意合法方案 $c$，有 $c_i \ge d_i(i=1,\ldots,n-1)$，从而
+对任意合法方案 $c$，有 $c_i \ge d_i(i=1,\ldots,n-1)$，进而
 $$
 \sum_i c_i \ge \sum_i d_i
 $$
 **Proof**：
 
-① **性质**：任意合法方案 $c$ 满足 $c_i \geq left[i]$
+① **性质**：任意合法方案 $c$ 满足 $c_i \geq \text{left}[i]$
 
 用数学归纳法证明：
 
-- $i=0$ 时。$c_0 \ge 1 = left[0]$
+- $i=0$ 时。$c_0 \ge 1 = \text{left}[0]$
 
-- 设对 $i-1$ 有 $c_{i-1} \geq left[i-1]$。现在考虑 $c_i$ 与 $left[i]$ 的关系：
+- 设对 $i-1$ 有 $c_{i-1} \geq \text{left}[i-1]$。现在考虑 $c_i$ 与 $\text{left}[i]$ 的关系：
 
-  - 若 $ratings[i] > ratings[i-1]$：
+  - 若 $\text{ratings}[i] > \text{ratings}[i-1]$：
     $$
-    c_i \ge c_{i-1}+1 \ge left[i-1]+1 = left[i]
+    c_i \ge c_{i-1}+1 \ge \text{left}[i-1]+1 =\text{left}[i]
     $$
 
-  - 若 $ratings[i] \leq ratings[i-1]$：
+  - 若 $\text{ratings}[i] \leq \text{ratings}[i-1]$：
 
-    此时 $left[i] = 1$，显然 $c_i >= left[i]$
+    此时 $\text{left}[i] = 1$，显然 $c_i \geq \text{left}[i]$
 
-  故 $c_i\geq left[i]$
+  故 $c_i\geq \text{left}[i]$
 
-- $c_i \geq left[i],i=0,1,\ldots,n-1$
+- $c_i \geq \text{left}[i],i=0,1,\ldots,n-1$
 
-② 同理有 $c_i \geq right[i],i=0,1,\ldots,n-1$
+② 同理有 $c_i \geq \text{right},i=0,1,\ldots,n-1$
 
-③ 因此 $c_i \ge \max(left[i],right[i]) = d_i$ $\quad \square$
+③ 因此 $c_i \ge \max(\text{left}[i],\text{right}[i]) = d_i$ $\quad \square$
 
 
 
 ## 技巧
 
-1014 最佳观光组合
+### 1014 最佳观光组合
 
 给你一个正整数数组 `values`，其中 `values[i]` 表示第 `i`个观光景点的评分，并且两个景点 `i` 和 `j` 之间的 **距离**为 `j - i`
 
-一对景点（`i < j`）组成的观光组合的得分为 `values[i] + values[j] + i - j` ，也就是景点的评分之和 **减去** 它们两者之间的距离
+一对景点（$i<j$）组成的观光组合的得分为 `values[i] + values[j] + i - j` ，也就是景点的评分之和 **减去** 它们两者之间的距离
 
 返回一对观光景点能取得的最高分
 
