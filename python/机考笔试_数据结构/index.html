@@ -2484,7 +2484,7 @@
 
 
 <h1 id="-">机考笔试 - 数据结构</h1>
-<p class="document-modified-time">更新时间：<time datetime="2026-08-05T05:09+00:00">2026年08月05日 13:09</time></p>
+<p class="document-modified-time">更新时间：<time datetime="2026-08-06T04:36+00:00">2026年08月06日 12:36</time></p>
 
 <h2 id="_1">数学技巧</h2>
 <h3 id="24">24 落地成盒</h3>
@@ -2960,7 +2960,7 @@ a_1,a_2,\ldots,a_n \quad (1\le a_i\le n)
 <p>第五行有 <span class="arithmatex">\(n\)</span> 个处于区间 <span class="arithmatex">\([1, 100000]\)</span> 之内的整数，表示 <span class="arithmatex">\(n\)</span> 个候选张量重计算的代价</p>
 <p><strong>输出描述</strong></p>
 <p>如果没有找到合适的解，输出 <code>error</code>；否则，输出最小代价（行尾没有空格）</p>
-<p><strong>样例1</strong></p>
+<p><strong>样例 1</strong></p>
 <p>输入</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>10
 <a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>5
@@ -2971,12 +2971,7 @@ a_1,a_2,\ldots,a_n \quad (1\le a_i\le n)
 <p>输出</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>6
 </code></pre></div>
-<p>说明</p>
-<p>需要的存储空间是10</p>
-<p>候选张量长度分别为3，4，5，6，7</p>
-<p>张量长度组合 3 + 7，4 + 6，5 + 6，5 + 7，6 + 7，3 + 4 + 5，... 都大于等于10，满足运行的基本条件</p>
-<p>对于 3 + 7 来说，3 的最小代价是1，7 的最小代价是5，3 + 7 的最小代价是6，经过其他组的比较，达成目标的最小代价是6，所以输出 6</p>
-<p><strong>样例2</strong></p>
+<p><strong>样例 2</strong></p>
 <p>输入</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>12
 <a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>4
@@ -2987,11 +2982,6 @@ a_1,a_2,\ldots,a_n \quad (1\le a_i\le n)
 <p>输出</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>1
 </code></pre></div>
-<p>说明</p>
-<p>需要的存储空间是 12；</p>
-<p>候选张量长度分别为 18，20，10，12；</p>
-<p>张量长度 18，20，12 都大于等于 12，满足运行的基本条件；</p>
-<p>其中 12 的代价最小为 1，所以输出 1</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="n">m</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
 <a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
 <a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="n">sizes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()))</span>
@@ -3037,27 +3027,27 @@ a_1,a_2,\ldots,a_n \quad (1\le a_i\le n)
 <li>
 <p>不选第 <span class="arithmatex">\(i\)</span> 个张量：</p>
 <div class="arithmatex">\[
-dp[i][j] = dp[i-1][j]
+\text{dp}[i][j] = \text{dp}[i-1][j]
 \]</div>
 </li>
 <li>
 <p>选第 <span class="arithmatex">\(i\)</span> 个张量，大小是 <code>size</code>，代价是 <code>cost</code></p>
-<p>新释放量变成 <span class="arithmatex">\(j+size\)</span>，但超过目标 <span class="arithmatex">\(m\)</span> 后都统一压成 <span class="arithmatex">\(m\)</span>：</p>
+<p>新释放量变成 <span class="arithmatex">\(j+\text{size}\)</span>，但超过目标 <span class="arithmatex">\(m\)</span> 后都统一压成 <span class="arithmatex">\(m\)</span>：</p>
 <div class="arithmatex">\[
-new_j = \min(m, j+size)
+\text{new}_j = \min(m, j+\text{size})
 \]</div>
 <p>故：</p>
 <div class="arithmatex">\[
-dp[i][new_j] = \min(dp[i][new_j],\; dp[i-1][j] + cost)
+\text{dp}[i][\text{new}_j] = \min(\text{dp}[i][\text{new}_j],\ \text{ dp}[i-1][j] + \text{cost})
 \]</div>
 <blockquote>
-<p>如果 <span class="arithmatex">\(j+size \leq m\)</span>，这个状态转移方程很好理解，就是</p>
+<p>如果 <span class="arithmatex">\(j+\text{size} \leq m\)</span>，这个状态转移方程很好理解，就是</p>
 <div class="arithmatex">\[
-dp[i][j + size] = \min(dp[i][j + size],\; dp[i-1][j] + cost)
+dp[i][j + \text{size}] = \min(\text{dp}[i][j + \text{size}],\; \text{dp}[i-1][j] + \text{cost})
 \]</div>
-<p>就是从状态 <span class="arithmatex">\(dp[i-1][j]\)</span> 转移到 <span class="arithmatex">\(dp[i][j+size]\)</span></p>
+<p>就是从状态 <span class="arithmatex">\(\text{dp}[i-1][j]\)</span> 转移到 <span class="arithmatex">\(\text{dp}[i][j+size]\)</span></p>
 </blockquote>
-<p>因此需要先判断状态 <span class="arithmatex">\(dp[i-1][j]\)</span> 是否是可达的，<strong>只有当状态是可达的，我们才允许它转移</strong></p>
+<p>因此需要先判断状态 <span class="arithmatex">\(\text{dp}[i-1][j]\)</span> 是否是可达的，<strong>只有当状态是可达的，我们才允许它转移</strong></p>
 </li>
 </ul>
 <hr />
@@ -3300,7 +3290,7 @@ k &gt;\left\lceil \frac{n}{2} \right\rceil =  \left\lceil \frac{T-1}{2} \right\r
 <p><span class="arithmatex">\([[12.21.16.]\)</span></p>
 <p><span class="arithmatex">\([30.50.36.]\)</span></p>
 <p><span class="arithmatex">\([33.50.34.]]\)</span></p>
-<p>最大能量路径的值：119.0 最大能量路径：<span class="arithmatex">\((2,0) -&gt; (1,1) -&gt; (1,2)\)</span></p>
+<p>最大能量路径的值：119.0 最大能量路径：<span class="arithmatex">\((2,0) \to (1,1) \to (1,2)\)</span> </p>
 <p>提示</p>
 <ol>
 <li>策略矩阵为奇数，边缘处用零填充</li>
@@ -3603,7 +3593,7 @@ k &gt;\left\lceil \frac{n}{2} \right\rceil =  \left\lceil \frac{T-1}{2} \right\r
 </ul>
 <h4 id="_9">并查集</h4>
 <p>题目意思：每一行里的实体都属于同一个集合，如果两行之间有公共实体，那么这两行对应的集合要合并，最后输出所有连通块中的实体</p>
-<p>即：是一个<strong>按“有交集就连边”来求连通分量</strong>的问题</p>
+<p>即：是一个 <strong>按“有交集就连边”来求连通分量</strong> 的问题</p>
 <h2 id="_10">未归类</h2>
 <h3 id="28">28 数据清除</h3>
 <ul>

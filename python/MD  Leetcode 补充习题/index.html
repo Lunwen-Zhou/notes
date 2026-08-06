@@ -1034,6 +1034,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="技巧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1014" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1014 最佳观光组合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -2125,6 +2142,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="技巧">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1014" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1014 最佳观光组合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -2150,7 +2184,7 @@
 
 
 <h1 id="leetcode">Leetcode 补充习题</h1>
-<p class="document-modified-time">更新时间：<time datetime="2026-06-21T14:14+00:00">2026年06月21日 22:14</time></p>
+<p class="document-modified-time">更新时间：<time datetime="2026-08-06T04:43+00:00">2026年08月06日 12:43</time></p>
 
 <h2 id="_1">哈希表</h2>
 <h3 id="387">387 字符串中的第一个唯一字符</h3>
@@ -2176,7 +2210,7 @@
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>                <span class="k">return</span> <span class="n">i</span>
 <a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
 </code></pre></div>
-<p><strong>公司</strong>：美的机考（25-08经验贴）</p>
+<p><strong>公司</strong>：美的机考（25-08 经验贴）</p>
 <h2 id="_2">双指针</h2>
 <h3 id="264-ii">264 丑数 II</h3>
 <p>给你一个整数 <code>n</code> ，请你找出并返回第 <code>n</code> 个 <strong>丑数</strong> </p>
@@ -2445,48 +2479,48 @@ X &amp; \mathbf{O} &amp; X &amp; X \\
 <a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>            <span class="n">ans</span> <span class="o">+=</span> <span class="nb">max</span><span class="p">(</span><span class="n">left</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">right</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 <a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>        <span class="k">return</span> <span class="n">ans</span>
 </code></pre></div>
-<p>容易看出，这种解法是符合题目要求。下面证明它是最优的方案</p>
-<p>设任意一个合法的分配方案为 <span class="arithmatex">\(c_0,c_1,\dots,c_{n-1}\)</span>，我们算法构造的方案为 </p>
+<p>容易看出，这种解法是符合题目要求。下面证明它是 <strong>最优</strong> 的方案</p>
+<p><strong>性质</strong>：设任意一个合法的分配方案为 <span class="arithmatex">\(c_0,c_1,\dots,c_{n-1}\)</span>，我们算法构造的方案为 </p>
 <div class="arithmatex">\[
-d_i=\max(left[i],right[i]),\quad i = 0,1,\ldots,n-1
+d_i=\max(\text{left}[i],\text{right}[i]),\quad i = 0,1,\ldots,n-1
 \]</div>
-<p>下面证明：对任意合法方案 <span class="arithmatex">\(c\)</span>，有 <span class="arithmatex">\(c_i \ge d_i(i=1,\ldots,n-1)\)</span>，从而</p>
+<p>对任意合法方案 <span class="arithmatex">\(c\)</span>，有 <span class="arithmatex">\(c_i \ge d_i(i=1,\ldots,n-1)\)</span>，进而</p>
 <div class="arithmatex">\[
 \sum_i c_i \ge \sum_i d_i
 \]</div>
 <p><strong>Proof</strong>：</p>
-<p>① <strong>性质</strong>：任意合法方案 <span class="arithmatex">\(c\)</span> 满足 <span class="arithmatex">\(c_i \geq left[i]\)</span></p>
+<p>① <strong>性质</strong>：任意合法方案 <span class="arithmatex">\(c\)</span> 满足 <span class="arithmatex">\(c_i \geq \text{left}[i]\)</span></p>
 <p>用数学归纳法证明：</p>
 <ul>
 <li>
-<p><span class="arithmatex">\(i=0\)</span> 时。<span class="arithmatex">\(c_0 \ge 1 = left[0]\)</span></p>
+<p><span class="arithmatex">\(i=0\)</span> 时。<span class="arithmatex">\(c_0 \ge 1 = \text{left}[0]\)</span></p>
 </li>
 <li>
-<p>设对 <span class="arithmatex">\(i-1\)</span> 有 <span class="arithmatex">\(c_{i-1} \geq left[i-1]\)</span>。现在考虑 <span class="arithmatex">\(c_i\)</span> 与 <span class="arithmatex">\(left[i]\)</span> 的关系：</p>
+<p>设对 <span class="arithmatex">\(i-1\)</span> 有 <span class="arithmatex">\(c_{i-1} \geq \text{left}[i-1]\)</span>。现在考虑 <span class="arithmatex">\(c_i\)</span> 与 <span class="arithmatex">\(\text{left}[i]\)</span> 的关系：</p>
 <ul>
 <li>
-<p>若 <span class="arithmatex">\(ratings[i] &gt; ratings[i-1]\)</span>：</p>
+<p>若 <span class="arithmatex">\(\text{ratings}[i] &gt; \text{ratings}[i-1]\)</span>：</p>
 <div class="arithmatex">\[
-c_i \ge c_{i-1}+1 \ge left[i-1]+1 = left[i]
+c_i \ge c_{i-1}+1 \ge \text{left}[i-1]+1 =\text{left}[i]
 \]</div>
 </li>
 <li>
-<p>若 <span class="arithmatex">\(ratings[i] \leq ratings[i-1]\)</span>：</p>
-<p>此时 <span class="arithmatex">\(left[i] = 1\)</span>，显然 <span class="arithmatex">\(c_i &gt;= left[i]\)</span></p>
+<p>若 <span class="arithmatex">\(\text{ratings}[i] \leq \text{ratings}[i-1]\)</span>：</p>
+<p>此时 <span class="arithmatex">\(\text{left}[i] = 1\)</span>，显然 <span class="arithmatex">\(c_i \geq \text{left}[i]\)</span></p>
 </li>
 </ul>
-<p>故 <span class="arithmatex">\(c_i\geq left[i]\)</span></p>
+<p>故 <span class="arithmatex">\(c_i\geq \text{left}[i]\)</span></p>
 </li>
 <li>
-<p><span class="arithmatex">\(c_i \geq left[i],i=0,1,\ldots,n-1\)</span></p>
+<p><span class="arithmatex">\(c_i \geq \text{left}[i],i=0,1,\ldots,n-1\)</span></p>
 </li>
 </ul>
-<p>② 同理有 <span class="arithmatex">\(c_i \geq right[i],i=0,1,\ldots,n-1\)</span></p>
-<p>③ 因此 <span class="arithmatex">\(c_i \ge \max(left[i],right[i]) = d_i\)</span> <span class="arithmatex">\(\quad \square\)</span></p>
+<p>② 同理有 <span class="arithmatex">\(c_i \geq \text{right},i=0,1,\ldots,n-1\)</span></p>
+<p>③ 因此 <span class="arithmatex">\(c_i \ge \max(\text{left}[i],\text{right}[i]) = d_i\)</span> <span class="arithmatex">\(\quad \square\)</span></p>
 <h2 id="_7">技巧</h2>
-<p>1014 最佳观光组合</p>
+<h3 id="1014">1014 最佳观光组合</h3>
 <p>给你一个正整数数组 <code>values</code>，其中 <code>values[i]</code> 表示第 <code>i</code>个观光景点的评分，并且两个景点 <code>i</code> 和 <code>j</code> 之间的 <strong>距离</strong>为 <code>j - i</code></p>
-<p>一对景点（<code>i &lt; j</code>）组成的观光组合的得分为 <code>values[i] + values[j] + i - j</code> ，也就是景点的评分之和 <strong>减去</strong> 它们两者之间的距离</p>
+<p>一对景点（<span class="arithmatex">\(i&lt;j\)</span>）组成的观光组合的得分为 <code>values[i] + values[j] + i - j</code> ，也就是景点的评分之和 <strong>减去</strong> 它们两者之间的距离</p>
 <p>返回一对观光景点能取得的最高分</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>输入：values = [8,1,5,2,6]
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>输出：11

@@ -1936,7 +1936,7 @@
 
 
 <h1 id="_1">推荐算法基础</h1>
-<p class="document-modified-time">更新时间：<time datetime="2026-06-15T15:03+00:00">2026年06月15日 23:03</time></p>
+<p class="document-modified-time">更新时间：<time datetime="2026-08-06T04:44+00:00">2026年08月06日 12:44</time></p>
 
 <h2 id="_2">通用</h2>
 <p>推荐系统大致是：</p>
@@ -2066,7 +2066,7 @@
 <div class="arithmatex">\[
 \text{sim}(i_1, i_2) = \frac{|V|}{\sqrt{|W_1|\cdot|W_2|}}
 \]</div>
-<p>取值范围 <span class="arithmatex">\([0,1]\)</span>。该公式没有考虑用户喜欢物品的程度（喜欢看做 1，不喜欢看做 0）</p>
+<p>取值范围 <span class="arithmatex">\([0,1]\)</span>。该公式没有考虑用户喜欢物品的程度（喜欢为 1，不喜欢为 0）</p>
 <p>考虑喜欢的程度时，公式为（余弦相似度）</p>
 <div class="arithmatex">\[
 \text{sim}(i_1, i_2) = 
@@ -2082,7 +2082,7 @@
 <div class="arithmatex">\[
 \sqrt{ \sum_{u_1 \in W_1} \text{like}^2(u_1, i_1) }, \quad \sqrt{ \sum_{u_2 \in W_2} \text{like}^2(u_2, i_2) }
 \]</div>
-<p>分别是用户对物品 <span class="arithmatex">\(i_1\)</span>、<span class="arithmatex">\(i_2\)</span> 的兴趣分数。如果喜欢记为 1，不喜欢记为 0，会退化为前面的情形</p>
+<p>分别是用户对物品 <span class="arithmatex">\(i_1\)</span>、<span class="arithmatex">\(i_2\)</span> 的兴趣分数。如果喜欢记 1，不喜欢记 0，会退化为前面的情形</p>
 <p>计算两个物品的相似度：</p>
 <ul>
 <li>将每个物品表示为一个稀疏向量，向量中每个元素对应一个用户</li>
