@@ -2182,20 +2182,33 @@
 
 
 <h1 id="_1">数据结构与算法</h1>
-<p class="document-modified-time">更新时间：<time datetime="2026-07-15T12:45+00:00">2026年07月15日 20:45</time></p>
+<p class="document-modified-time">更新时间：<time datetime="2026-08-06T17:09+00:00">2026年08月07日 01:09</time></p>
 
 <h1 id="_2">基本理论</h1>
 <h2 id="_3">算法基础</h2>
 <h3 id="_4">复杂度</h3>
 <h4 id="_5">空间复杂度</h4>
-<p>空间复杂度看的是<strong>占用的峰值</strong>，而不是<strong>操作的次数</strong></p>
+<p>空间复杂度看的是 <strong>占用的峰值</strong>，而不是 <strong>操作的次数</strong></p>
 <h4 id="_6">时间复杂度</h4>
+<p>用于描述一个算法随着 <strong>输入规模</strong> <span class="arithmatex">\(n\)</span> 增大，其运行时间增长速度的指标</p>
+<p><strong>定义</strong>：设 <span class="arithmatex">\(n\)</span> 为算法的输入规模，算法的执行的基本操作次数为 <span class="arithmatex">\(T(n)\)</span>，<span class="arithmatex">\(f(n)\)</span> 是一个描述 <span class="arithmatex">\(n\)</span> 增长数量级的函数。称算法的 <strong>时间复杂度</strong>为 <span class="arithmatex">\(O(f(n))\)</span>，当存在 <span class="arithmatex">\(c&gt;0\)</span>、<span class="arithmatex">\(n_0\)</span>，使得 <span class="arithmatex">\(n&gt;n_0\)</span> 时，恒有</p>
+<div class="arithmatex">\[
+T(n) \leq cf(n)
+\]</div>
 <h2 id="_7">数学基础</h2>
-<p><strong>性质</strong>：对任意整数 <span class="arithmatex">\(x\)</span> 有</p>
+<p><strong>性质</strong>：对任意 <strong>整数</strong> <span class="arithmatex">\(x\)</span> 有</p>
 <div class="arithmatex">\[
 x=\left\lfloor \frac{x}{2} \right\rfloor +\left\lceil \frac{x}{2} \right\rceil
 \]</div>
-<p><strong>Proof</strong>：可将 <span class="arithmatex">\(x\)</span> 分为偶数、奇数讨论。</p>
+<ul>
+<li>
+<p>该性质 <span class="arithmatex">\(\forall x \in \mathbb{R}\)</span> 并不一定成立</p>
+<p>取 <span class="arithmatex">\(x=\frac{3}{2}\)</span>，此时原性质等号左侧不是整数，右侧是整数，肯定不相等</p>
+</li>
+</ul>
+<p><strong>Proof</strong>：</p>
+<blockquote>
+<p>可将 <span class="arithmatex">\(x\)</span> 分为偶数、奇数讨论：</p>
 <p>① 若 <span class="arithmatex">\(x\)</span> 为偶数，则存在 <span class="arithmatex">\(k\in \mathbb{Z}\)</span> 使得 <span class="arithmatex">\(x=2k\)</span>。此时 <span class="arithmatex">\(\frac{x}{2} = k\)</span></p>
 <div class="arithmatex">\[
 \left\lfloor \frac{x}{2} \right\rfloor=\left\lfloor k \right\rfloor=k
@@ -2219,15 +2232,11 @@ x=\left\lfloor \frac{x}{2} \right\rfloor +\left\lceil \frac{x}{2} \right\rceil
 <div class="arithmatex">\[
 \left\lfloor \frac{x}{2} \right\rfloor+\left\lceil \frac{x}{2} \right\rceil=k+(k+1)=2k+1=x
 \]</div>
-<p><span class="arithmatex">\(\square\)</span></p>
-<ul>
-<li>
-<p>该性质 <span class="arithmatex">\(\forall x \in \mathbb{R}\)</span> 并不一定成立</p>
-<p>取 <span class="arithmatex">\(x=\frac{3}{2}\)</span>，此时原性质等号左侧不是整数，右侧是整数，肯定不相等</p>
-</li>
-</ul>
+<p><span class="arithmatex">\(\square\)</span>
+</p>
+</blockquote>
 <h1 id="_8">排序</h1>
-<p>基于<strong>比较</strong>的排序算法（如快排、归并排序、堆排序等）其时间复杂度下限是 <span class="arithmatex">\(O(n \log n)\)</span></p>
+<p>基于 <strong>比较</strong> 的排序算法（如快排、归并排序、堆排序等）其时间复杂度下限是 <span class="arithmatex">\(O(n \log n)\)</span></p>
 <h3 id="_9">冒泡排序</h3>
 <p>时间：<span class="arithmatex">\(O(n^2)\)</span></p>
 <p>基本算法</p>
@@ -2297,9 +2306,9 @@ x=\left\lfloor \frac{x}{2} \right\rfloor +\left\lceil \frac{x}{2} \right\rceil
 </code></pre></div>
 <p>递归为</p>
 <div class="arithmatex">\[
-\text{merge\_sort}(nums) =
+\text{merge\_sort}(\text{nums}) =
 \begin{cases}
-nums, &amp; |nums| \le 1 \\
+\text{nums}, &amp; |\text{nums}| \le 1 \\
 \text{merge}(\text{merge\_sort}(L),\ \text{merge\_sort}(R)), &amp; \text{otherwise}
 \end{cases}
 \]</div>
@@ -2307,7 +2316,7 @@ nums, &amp; |nums| \le 1 \\
 <p>Linear Structures</p>
 <h2 id="_12">链表</h2>
 <h3 id="def">def 链表</h3>
-<p>链表（Linked list）是一种常用的<strong>数据结构</strong>，由一系列<strong>节点</strong>组成，每个节点包含<strong>数据域</strong>和指针域。指针域存储了下一个节点的<strong>地址</strong>，从而建立起各<strong>节点</strong>之间的线性关系</p>
+<p>链表（Linked list）是一种常用的 <strong>数据结构</strong>，由一系列 <strong>节点</strong> 组成，每个节点包含 <strong>数据域</strong> 和指针域。指针域存储了下一个节点的 <strong>地址</strong>，从而建立起各 <strong>节点 </strong>之间的线性关系</p>
 <p>通过类来表示数据的节点</p>
 <h3 id="_13">垃圾收集器</h3>
 <p>GC（Garbage Collection）用于自动管理内存并回收不再使用的对象所占用的资源。</p>
@@ -2356,13 +2365,13 @@ nums, &amp; |nums| \le 1 \\
 <p>每个节点的左右子树高度差的绝对值不超过 1</p>
 <h4 id="_22">完全二叉树</h4>
 <p>（Complete Binary Tree）</p>
-<p><strong>定义</strong>：除了最后一层，上面所有层都<strong>完全填满</strong>了。最后一层，<strong>必须从左往右连续地有节点</strong>，不能“跳着空”</p>
-<p>设 <span class="arithmatex">\(x\)</span> 为节点在数组中的下标索引，<strong>从 0 开始编号</strong>时：一个完全二叉树的某个节点 <span class="arithmatex">\(x\)</span>，它的左儿子一定是 <span class="arithmatex">\(2x + 1\)</span>，右儿子一定是 <span class="arithmatex">\(2x + 2\)</span>，父节点为 <span class="arithmatex">\(\left \lfloor \frac{x-1}{2} \right \rfloor\)</span></p>
+<p><strong>定义</strong>：除了最后一层，上面所有层都 <strong>完全填满</strong> 了。最后一层，<strong>必须从左往右连续地有节点</strong>，不能“跳着空”</p>
+<p>设 <span class="arithmatex">\(x\)</span> 为节点在数组中的下标索引，<strong>从 0 开始编号 </strong>时：一个完全二叉树的某个节点 <span class="arithmatex">\(x\)</span>，它的左儿子一定是 <span class="arithmatex">\(2x + 1\)</span>，右儿子一定是 <span class="arithmatex">\(2x + 2\)</span>，父节点为 <span class="arithmatex">\(\left \lfloor \frac{x-1}{2} \right \rfloor\)</span></p>
 <hr />
 <h2 id="_23">堆</h2>
 <h3 id="heapq">最小堆 heapq</h3>
 <p>heapq 是 Python 的最小堆实现</p>
-<p>可以理解成一种特殊<strong>数组</strong></p>
+<p>可以理解成一种特殊 <strong>数组</strong></p>
 <p>堆顶永远是最小值，<code>heap[0]</code></p>
 <p>可以当成 list 来使用，但是不能随便改，一改就会破坏</p>
 <p>每次堆操作的时间复杂度：<span class="arithmatex">\(O(k)\)</span>（假设最小堆有 <span class="arithmatex">\(k\)</span> 个元素）</p>
@@ -2400,10 +2409,17 @@ nums, &amp; |nums| \le 1 \\
 <p>一层一层（用队列）</p>
 <hr />
 <h2 id="_29">递归</h2>
+<p>术语：</p>
+<ul>
+<li>
 <p><strong>剪枝</strong></p>
-<p>提前终止了<strong>不可能产生合法解</strong>的搜索路径，避免无谓递归</p>
-<p>终止条件（base case）</p>
+<p>提前终止了 <strong>不可能产生合法解 </strong>的搜索路径，避免无谓递归</p>
+</li>
+<li>
+<p><strong>终止条件</strong>（base case）</p>
 <p>递归必须停止的“合法终点状态”</p>
+</li>
+</ul>
 <h2 id="_30">动态规划</h2>
 <p><strong>判断是否是动态规划</strong></p>
 <ol>

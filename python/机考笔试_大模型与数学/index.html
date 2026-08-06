@@ -1041,7 +1041,7 @@
   <a href="#5-knn" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5 基于KNN的语音数据分类
+        5 基于 KNN 的语音数据分类
       
     </span>
   </a>
@@ -1075,7 +1075,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        按行量化
+        按行、列量化
       
     </span>
   </a>
@@ -2136,7 +2136,7 @@
   <a href="#5-knn" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5 基于KNN的语音数据分类
+        5 基于 KNN 的语音数据分类
       
     </span>
   </a>
@@ -2170,7 +2170,7 @@
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        按行量化
+        按行、列量化
       
     </span>
   </a>
@@ -2382,7 +2382,7 @@
 
 
 <h1 id="-">机考笔试 - 大模型与数学</h1>
-<p class="document-modified-time">更新时间：<time datetime="2026-07-15T12:56+00:00">2026年07月15日 20:56</time></p>
+<p class="document-modified-time">更新时间：<time datetime="2026-08-06T17:27+00:00">2026年08月07日 01:27</time></p>
 
 <h2 id="_1">偏大模型</h2>
 <ul>
@@ -2393,49 +2393,63 @@
 <p>混淆矩阵是分类模型评估中的核心工具，尤其适用于多分类问题。它以矩阵形式展示每个类别的真正例（TP）、假正例（FP）、真负例（TN）和假负例（FN）。基于混淆矩阵，可以计算精确率（Precision）、召回率（Recall）和 F1 分数（F1 Score）等指标</p>
 <p><strong>详细说明</strong></p>
 <ol>
-<li>混淆矩阵扩展：
-      在多分类问题中，混淆矩阵扩展为 <span class="arithmatex">\(N \times N\)</span> 矩阵（<span class="arithmatex">\(N\)</span> 为类别数），每个类别对应一行和一列，分别记录 TP、FP、FN 和 TN。</li>
-<li>指标计算：</li>
-</ol>
+<li>
+<p>混淆矩阵扩展：</p>
+<p>在多分类问题中，混淆矩阵扩展为 <span class="arithmatex">\(N \times N\)</span> 矩阵（<span class="arithmatex">\(N\)</span> 为类别数），每个类别对应一行和一列，分别记录 TP、FP、FN 和 TN</p>
+</li>
+<li>
+<p>指标计算：</p>
+<ul>
+<li>
 <p>精确率（Precision）：对于每个类别，计算 <span class="arithmatex">\(\frac{TP}{TP + FP}\)</span>。若某个类别的 <span class="arithmatex">\(TP + FP\)</span> 为零，则该类别的精确率为 0</p>
+</li>
+<li>
 <p>召回率（Recall）：对于每个类别，计算 <span class="arithmatex">\(\frac{TP}{TP + FN}\)</span>。若某个类别的 <span class="arithmatex">\(TP + FN\)</span> 为零，则该类别的召回率为 0</p>
+</li>
+<li>
 <p>F1 分数：每个类别的 F1 分数为</p>
 <div class="arithmatex">\[
-2 \cdot \frac{Precision \cdot Recall}{Precision + Recall}
+2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
 \]</div>
-<p>若 Precision 和 Recall 均为零，则 F1 分数为零。</p>
-<ol>
-<li>加权计算：</li>
+<p>若 Precision 和 Recall 均为零，则 F1 分数为零</p>
+</li>
+</ul>
+</li>
+<li>
+<p>加权计算：</p>
+<p>使用 weights 参数对每个类别的 Precision、Recall 和 F1 Score 进行加权平均，得到整体的评估结果</p>
+</li>
 </ol>
-<p>使用 weights 参数对每个类别的 Precision、Recall 和 F1 Score 进行加权平均，得到整体的评估结果。</p>
 <p><strong>推导过程</strong></p>
 <ol>
-<li>构建混淆矩阵：</li>
+<li>
+<p>构建混淆矩阵：</p>
+<p>初始化一个 <span class="arithmatex">\(N \times N\)</span> 的零矩阵，<span class="arithmatex">\(N\)</span> 为类别数</p>
+<p>遍历每个样本的预测结果和真实标签，更新混淆矩阵中的 TP、FP、FN 和 TN</p>
+</li>
+<li>
+<p>计算每个类别的指标：</p>
+<p>对于每个类别，计算 TP、FP、FN 和 TN</p>
+<p>根据公式计算 Precision、Recall 和 F1 Score，处理分母为零的情况</p>
+</li>
+<li>
+<p>加权平均计算：</p>
+<p>使用提供的权重，对每个类别的 Precision、Recall 和 F1 Score 进行加权平均，得到整体评估结果</p>
+</li>
 </ol>
-<p>初始化一个 <span class="arithmatex">\(N \times N\)</span> 的零矩阵，<span class="arithmatex">\(N\)</span> 为类别数。</p>
-<p>遍历每个样本的预测结果和真实标签，更新混淆矩阵中的 TP、FP、FN 和 TN。</p>
-<ol>
-<li>计算每个类别的指标：</li>
-</ol>
-<p>对于每个类别，计算 TP、FP、FN 和 TN。</p>
-<p>根据公式计算 Precision、Recall 和 F1 Score，处理分母为零的情况。</p>
-<ol>
-<li>加权平均计算：</li>
-</ol>
-<p>使用提供的权重，对每个类别的 Precision、Recall 和 F1 Score 进行加权平均，得到整体评估结果。</p>
 <p><strong>输入描述</strong></p>
 <p>输入数据分为三行，分别对应以下内容：</p>
-<p>第一行是模型的预测结果 pred，表示每个样本的预测类别，用空格分隔。</p>
-<p>第二行是真实标签 trueY，表示第一行中每个样本的真实类别，用空格分隔。</p>
-<p>第三行是每个类别的权重 weights，用空格分隔，第一个数据表示类别 0 的权重，第二个数据表示类别 1 的权重，以此类推。</p>
-<p>说明：pred 和 trueY 的长度相等；样本类别是从 0 开始的整数；weights 的长度等于样本类别个数；weights 的值为非负数且总和为 1。</p>
+<p>第一行是模型的预测结果 pred，表示每个样本的预测类别，用空格分隔</p>
+<p>第二行是真实标签 trueY，表示第一行中每个样本的真实类别，用空格分隔</p>
+<p>第三行是每个类别的权重 weights，用空格分隔，第一个数据表示类别 0 的权重，第二个数据表示类别 1 的权重，以此类推</p>
+<p>说明：pred 和 trueY 的长度相等；样本类别是从 0 开始的整数；weights 的长度等于样本类别个数；weights 的值为非负数且总和为 1</p>
 <p><strong>输出描述</strong></p>
 <p>输出结果为一行，包含三个评估指标，用空格分隔：</p>
 <p>precision：精确率，计算方式为每个类别的 <span class="arithmatex">\(\frac{TP}{TP + FP}\)</span>，并根据权重计算加权平均</p>
 <p>recall：召回率，计算方式为每个类别的 <span class="arithmatex">\(\frac{TP}{TP + FN}\)</span>，并根据权重计算加权平均</p>
 <p>f1Score：F1 分数，每个类别的 F1 分数为精确率和召回率的调和平均，再根据权重计算加权平均</p>
 <p>输出结果保留 2 位小数，不足 2 位补零</p>
-<p><strong>样例1</strong></p>
+<p><strong>样例 1</strong></p>
 <p>输入</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>0 0 0 1 1 2 2 2 2
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>0 1 2 0 1 2 2 2 2
@@ -2453,7 +2467,7 @@
 <p>precision：0.71</p>
 <p>recall：0.65</p>
 <p>f1Score：0.67</p>
-<p><strong>样例2</strong></p>
+<p><strong>样例 2</strong></p>
 <p>输入</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>0 0 1 1
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>0 0 0 1
@@ -2581,24 +2595,27 @@
 <p>在华为网络通信业务中，网络带宽预测模型是保障数据传输稳定性的核心模块之一，通过历史数据拟合的带宽模型为：</p>
 <p><span class="arithmatex">\(y = w_1 \cdot x_1 + w_2 \cdot x_2 + b\)</span>（其中 <span class="arithmatex">\(y\)</span> 表示带宽，<span class="arithmatex">\(x_1\)</span> 和 <span class="arithmatex">\(x_2\)</span> 为影响带宽的因子，<span class="arithmatex">\(w_1\)</span> 和 <span class="arithmatex">\(w_2\)</span> 为权重参数，<span class="arithmatex">\(b\)</span> 为偏置参数）。请实现 AdamW 优化算法，基于给定样本数据迭代更新模型参数。</p>
 <p>核心概念解释：</p>
-<p>损失函数：对于单个样本 <span class="arithmatex">\((x_1, x_2, y_{true})\)</span>，损失 <span class="arithmatex">\(L = (y_{pred} - y_{true})^2\)</span>，其中 <span class="arithmatex">\(y_{pred} = w_1 \cdot x_1 + w_2 \cdot x_2 + b\)</span></p>
+<p>损失函数：对于单个样本 <span class="arithmatex">\((x_1, x_2, y_{\text{true}})\)</span>，损失 <span class="arithmatex">\(L = (y_{\text{pred}} - y_{\text{true}})^2\)</span>，其中</p>
+<div class="arithmatex">\[
+y_{pred} = w_1 \cdot x_1 + w_2 \cdot x_2 + b
+\]</div>
 <p>梯度计算：</p>
 <div class="arithmatex">\[
-g_{w1} = \frac{\partial L}{\partial w_1} = 2 \cdot (y_{pred} - y_{true}) \cdot x_1
+g_{w1} = \frac{\partial L}{\partial w_1} = 2 \cdot (y_{\text{pred}} - y_{\text{true}}) \cdot x_1
 \]</div>
 <div class="arithmatex">\[
-g_{w2} = \frac{\partial L}{\partial w_2} = 2 \cdot (y_{pred} - y_{true}) \cdot x_2
+g_{w2} = \frac{\partial L}{\partial w_2} = 2 \cdot (y_{\text{pred}} - y_{\text{true}}) \cdot x_2
 \]</div>
 <div class="arithmatex">\[
-g_b = \frac{\partial L}{\partial b} = 2 \cdot (y_{pred} - y_{true})
+g_b = \frac{\partial L}{\partial b} = 2 \cdot (y_{\text{pred}} - y_{\text{true}})
 \]</div>
-<p>AdamW 算法：动量参数 <span class="arithmatex">\(\beta_1 = 0.9\)</span>，<span class="arithmatex">\(\beta_2 = 0.999\)</span>，权重衰减系数 <span class="arithmatex">\(\lambda = 0.01\)</span>，学习率 <span class="arithmatex">\(\alpha = 0.001\)</span>，数值稳定性常数 <span class="arithmatex">\(\epsilon = 1e-8\)</span></p>
+<p>AdamW 算法：动量参数 <span class="arithmatex">\(\beta_1 = 0.9\)</span>，<span class="arithmatex">\(\beta_2 = 0.999\)</span>，权重衰减系数 <span class="arithmatex">\(\lambda = 0.01\)</span>，学习率 <span class="arithmatex">\(\alpha = 0.001\)</span>，数值稳定性常数 <span class="arithmatex">\(\varepsilon = 1e-8\)</span></p>
 <p>一阶动量（<span class="arithmatex">\(m\)</span>）更新：<span class="arithmatex">\(m_t = \beta_1 \cdot m_{t-1} + (1 - \beta_1) \cdot g_t\)</span>（<span class="arithmatex">\(g_t\)</span> 为当前梯度）</p>
 <p>二阶动量（<span class="arithmatex">\(v\)</span>）更新：<span class="arithmatex">\(v_t = \beta_2 \cdot v_{t-1} + (1 - \beta_2) \cdot g_t^2\)</span></p>
 <p>偏差修正：<span class="arithmatex">\(\hat{m}_t = \frac{m_t}{1 - \beta_1^t}\)</span>，<span class="arithmatex">\(\hat{v}_t = \frac{v_t}{1 - \beta_2^t}\)</span>（<span class="arithmatex">\(t\)</span> 为当前迭代次数，从 1 开始）</p>
 <p>参数更新：</p>
 <div class="arithmatex">\[
-\theta_t = \theta_{t-1} - \alpha \cdot \left( \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} + \lambda \cdot \theta_{t-1} \right)
+\theta_t = \theta_{t-1} - \alpha \cdot \left( \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \varepsilon} + \lambda \cdot \theta_{t-1} \right)
 \]</div>
 <p>其中 <span class="arithmatex">\(\theta\)</span> 表示 <span class="arithmatex">\((w_1, w_2, b)\)</span></p>
 <p>初始参数：<span class="arithmatex">\(w_1 = 0.0\)</span>，<span class="arithmatex">\(w_2 = 0.0\)</span>，<span class="arithmatex">\(b = 0.0\)</span></p>
@@ -2606,10 +2623,10 @@ g_b = \frac{\partial L}{\partial b} = 2 \cdot (y_{pred} - y_{true})
 <p>初始二阶动量：<span class="arithmatex">\(v_{w1} = 0.0\)</span>，<span class="arithmatex">\(v_{w2} = 0.0\)</span>，<span class="arithmatex">\(v_b = 0.0\)</span></p>
 <p><strong>输入描述</strong></p>
 <p>第一行输入一个整数 <span class="arithmatex">\(N\)</span>，表示样本数量</p>
-<p>接下来 <span class="arithmatex">\(N\)</span> 行，每行 3 个浮点数 <span class="arithmatex">\(x_1, x_2, y_{true}\)</span>，表示一个样本</p>
+<p>接下来 <span class="arithmatex">\(N\)</span> 行，每行 3 个浮点数 <span class="arithmatex">\(x_1, x_2, y_{\text{true}}\)</span>，表示一个样本</p>
 <p><strong>输出描述</strong></p>
-<p>一行，3 个浮点数，依次为还原后的 <span class="arithmatex">\(w_1, w_2, b\)</span>，结果保留 6 位小数，银行家舍入，以一个空格分隔，前后无冗余空格。</p>
-<p><strong>样例1</strong></p>
+<p>一行，3 个浮点数，依次为还原后的 <span class="arithmatex">\(w_1, w_2, b\)</span>，结果保留 6 位小数，银行家舍入，以一个空格分隔，前后无冗余空格</p>
+<p><strong>样例 1</strong></p>
 <p>输入</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>3
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>1.0 1.0 2.0
@@ -2619,7 +2636,7 @@ g_b = \frac{\partial L}{\partial b} = 2 \cdot (y_{pred} - y_{true})
 <p>输出</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>0.002750 0.002750 0.002923
 </code></pre></div>
-<p><strong>样例2</strong></p>
+<p><strong>样例 2</strong></p>
 <p>输入</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>1
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>0.0 0.0 0.0
@@ -2697,13 +2714,13 @@ v_t = \beta_2 v_{t-1} + (1 - \beta_2) g_t^2
 </li>
 </ul>
 <h2 id="_3">偏高等数学</h2>
-<h3 id="5-knn">5 基于KNN的语音数据分类</h3>
+<h3 id="5-knn">5 基于 KNN 的语音数据分类</h3>
 <ul>
 <li>华为 26-03-18，ai 岗，编程题2/2</li>
 </ul>
 <p><strong>题目描述</strong></p>
-<p>在终端穿戴场景中，往往涉及到用户和终端设备之间的语音交互，通常由用户唤醒相关的设备并进行语音命令控制设备完成相应的操作，设备在收到语音命令时会对用户的意图进行识别，例如识别“拍照”“摄像”等意图，从而进行对应的操作。  </p>
-<p>要求使用 <span class="arithmatex">\(KNN\)</span> 算法对用户输出的语音特征进行分类：  </p>
+<p>在终端穿戴场景中，往往涉及到用户和终端设备之间的语音交互，通常由用户唤醒相关的设备并进行语音命令控制设备完成相应的操作，设备在收到语音命令时会对用户的意图进行识别，例如识别“拍照”“摄像”等意图，从而进行对应的操作</p>
+<p>要求使用 KNN 算法对用户输出的语音特征进行分类：  </p>
 <p>语音片段经过特征提取后是一个 3 维的向量  </p>
 <p>所有距离使用欧式距离公式计算，即对于两个 <span class="arithmatex">\(N\)</span> 维向量</p>
 <div class="arithmatex">\[
@@ -2719,7 +2736,7 @@ d(\vec{x},\vec{y}) = \sqrt{\sum_{k=1}^{N} (x_k - y_k)^2}
 <p>第 14 行：待分类的语音特征向量  </p>
 <p><strong>输出描述</strong></p>
 <p>给出待分类语音的类别，该值为正整数在输入给定范围内。</p>
-<p><strong>样例1</strong></p>
+<p><strong>样例 1</strong></p>
 <p>输入</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>10 3  
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>0.5 0.3 0.4 0  
@@ -2805,7 +2822,7 @@ d(\vec{x},\vec{y}) = \sqrt{\sum_{k=1}^{N} (x_k - y_k)^2}
 <hr />
 <h3 id="6-int8">6 模型 INT8 量化计算</h3>
 <p><strong>题目内容</strong></p>
-<p>在深度学习模型部署中，为降低内存占用与计算延迟，常采用量化技术将 FP32 参数转换为低精度格式（如 INT8）。本题要求实现一种 INT8 量化策略，对输入矩阵 <span class="arithmatex">\(X\)</span> 与权重矩阵 <span class="arithmatex">\(W\)</span> 分别进行 per-token（按行）和 per-channel（按列）量化，计算量化后矩阵相乘（带 scales）的结果并输出。</p>
+<p>在深度学习模型部署中，为降低内存占用与计算延迟，常采用量化技术将 FP32 参数转换为低精度格式（如 INT8）。本题要求实现一种 INT8 量化策略，对输入矩阵 <span class="arithmatex">\(X\)</span> 与权重矩阵 <span class="arithmatex">\(W\)</span> 分别进行 per-token（按行）和 per-channel（按列）量化，计算量化后矩阵相乘（带 scales）的结果并输出</p>
 <p>原始矩阵：</p>
 <p>输入矩阵 <span class="arithmatex">\(X \in \mathbb{R}^{M \times K}\)</span>（按行视为 <span class="arithmatex">\(M\)</span> 个 Token）</p>
 <p>权重矩阵 <span class="arithmatex">\(W \in \mathbb{R}^{K \times N}\)</span>（按列视为 <span class="arithmatex">\(N\)</span> 个 Channel）</p>
@@ -2813,7 +2830,7 @@ d(\vec{x},\vec{y}) = \sqrt{\sum_{k=1}^{N} (x_k - y_k)^2}
 <p><span class="arithmatex">\(s_X^{(i)}\)</span>：第 <span class="arithmatex">\(i\)</span> 个 Token 的缩放因子（per-token）</p>
 <p><span class="arithmatex">\(s_W^{(j)}\)</span>：第 <span class="arithmatex">\(j\)</span> 个 Channel 的缩放因子（per-channel）</p>
 <p>量化公式</p>
-<p>(1) Per-Token 量化（输入矩阵 <span class="arithmatex">\(X\)</span>）</p>
+<p>（1）Per-Token 量化（输入矩阵 <span class="arithmatex">\(X\)</span>）</p>
 <p>缩放因子计算：</p>
 <div class="arithmatex">\[
 s_X^{(i)} = \frac{\max_{k \in [1, K]} |X_{i,k}|}{127}, \quad \forall i \in [1, M]
@@ -2829,7 +2846,7 @@ Q_X^{(i,k)} = \text{clip}\left(\text{round}\left(\frac{X_{i,k}}{s_X^{(i)}}\right
 <p>注意：</p>
 <p>round：四舍五入取整函数【按Python <code>round()</code> 函数处理逻辑，奇进偶弃舍入法。即非0.5的情况：遵循常规的四舍五入规则。0.5情况：舍入到最接近的偶数。】</p>
 <p><code>clip(x, -127, 127)</code>：将超过区间的值截断到 <span class="arithmatex">\([-127, 127]\)</span> 范围内，超过127则为127，小于-127同理。</p>
-<p>(2) Per-Channel 量化（权重矩阵 <span class="arithmatex">\(W\)</span>）</p>
+<p>（2）Per-Channel 量化（权重矩阵 <span class="arithmatex">\(W\)</span>）</p>
 <p>缩放因子计算：</p>
 <div class="arithmatex">\[
 s_W^{(j)} = \frac{\max_{k \in [1, K]} |W_{k,j}|}{127}, \quad \forall j \in [1, N]
@@ -2847,12 +2864,12 @@ Q_W^{(k,j)} = \text{clip}\left(\text{round}\left(\frac{W_{k,j}}{s_W^{(j)}}\right
 <div class="arithmatex">\[
 Y_{\text{int32}}^{(i,j)} = \sum_{k=1}^K Q_X^{(i,k)} \cdot Q_W^{(k,j)}
 \]</div>
-<p>输出为 INT32 矩阵（避免溢出）。</p>
+<p>输出为 INT32 矩阵（避免溢出）</p>
 <p>(2) 反量化到 FP32</p>
 <div class="arithmatex">\[
 Y_{\text{fp32}}^{(i,j)} = Y_{\text{int32}}^{(i,j)} \cdot s_X^{(i)} \cdot s_W^{(j)}
 \]</div>
-<p>组合缩放因子：每个元素的缩放因子为 <span class="arithmatex">\(s_X^{(i)} \cdot s_W^{(j)}\)</span>。</p>
+<p>组合缩放因子：每个元素的缩放因子为 <span class="arithmatex">\(s_X^{(i)} \cdot s_W^{(j)}\)</span></p>
 <p><strong>输入描述</strong></p>
 <p>输入为矩阵</p>
 <p><span class="arithmatex">\(X \in \mathbb{R}^{M \times K}\)</span> 输入矩阵</p>
@@ -2860,10 +2877,10 @@ Y_{\text{fp32}}^{(i,j)} = Y_{\text{int32}}^{(i,j)} \cdot s_X^{(i)} \cdot s_W^{(j
 <p>其中</p>
 <p><span class="arithmatex">\(0 &lt; M, K, N \le 128\)</span></p>
 <p><span class="arithmatex">\(-1000000.0 \le\)</span> 矩阵元素值 <span class="arithmatex">\(\le 1000000.0\)</span></p>
-<p>标准输入方式读入，按照 <span class="arithmatex">\(X\)</span>、<span class="arithmatex">\(W\)</span> 顺序读入，前两个数字为矩阵大小。</p>
+<p>标准输入方式读入，按照 <span class="arithmatex">\(X\)</span>、<span class="arithmatex">\(W\)</span> 顺序读入，前两个数字为矩阵大小</p>
 <p><strong>输出描述</strong></p>
-<p>输出<strong>量化后矩阵相乘</strong>结果（带 scale 计算），并四舍五入到小数点后两位小数【建议使用Python <code>format(num, '.2f')</code> 处理】。注意：每行结果以单个空格间隔，头尾不要有多余空格。</p>
-<p><strong>样例1</strong></p>
+<p>输出<strong>量化后矩阵相乘</strong>结果（带 scale 计算），并四舍五入到小数点后两位小数【建议使用 Python <code>format(num, '.2f')</code> 处理】。注意：每行结果以单个空格间隔，头尾不要有多余空格。</p>
+<p><strong>样例 1</strong></p>
 <p>输入</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="mi">2</span> <span class="mi">2</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="mf">1.0</span> <span class="mf">0.5</span>
@@ -2876,7 +2893,7 @@ Y_{\text{fp32}}^{(i,j)} = Y_{\text{int32}}^{(i,j)} \cdot s_X^{(i)} \cdot s_W^{(j
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>1.41 0.46
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>2.00 3.15
 </code></pre></div>
-<p><strong>样例2</strong></p>
+<p><strong>样例 2</strong></p>
 <p>输入</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>2 3
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>1.2 -2.3 3.4
@@ -2890,20 +2907,6 @@ Y_{\text{fp32}}^{(i,j)} = Y_{\text{int32}}^{(i,j)} \cdot s_X^{(i)} \cdot s_W^{(j
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>7.27 13.78
 <a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>-13.92 -25.37
 </code></pre></div>
-<p>说明</p>
-<p>以上输入对应如下矩阵内容：</p>
-<p>输入矩阵 <span class="arithmatex">\(X (2 * 3, M = 2 \text{ Tokens})\)</span></p>
-<div class="arithmatex">\[
-X = \begin{bmatrix} 1.2 &amp; -2.3 &amp; 3.4 \\ -4.5 &amp; 5.6 &amp; -6.7 \end{bmatrix}
-\]</div>
-<p>权重矩阵 <span class="arithmatex">\(W (3 * 2, N = 2 \text{ Channels})\)</span></p>
-<div class="arithmatex">\[
-W = \begin{bmatrix} 0.8 &amp; -1.9 \\ 2.0 &amp; -2.1 \\ 3.2 &amp; 3.3 \end{bmatrix}
-\]</div>
-<p>对应如下矩阵结果：</p>
-<div class="arithmatex">\[
-out_{\text{fp32}} = \begin{bmatrix} 7.27 &amp; 13.78 \\ -13.92 &amp; -25.37 \end{bmatrix}
-\]</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">M</span><span class="p">,</span> <span class="n">K</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">M</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
 <a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="n">K</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
@@ -2978,7 +2981,7 @@ out_{\text{fp32}} = \begin{bmatrix} 7.27 &amp; 13.78 \\ -13.92 &amp; -25.37 \end
 </code></pre></div>
 <p>补充知识：</p>
 <h4 id="_4">量化</h4>
-<p>量化本质上就除以 scale，变成整数，需要时再<strong>乘以 scale，还原近似值</strong></p>
+<p>量化本质上就除以 scale，变成整数，需要时再 <strong>乘以 scale，还原近似值</strong></p>
 <p>如某个数 <span class="arithmatex">\(x\)</span>，量化成整数 <span class="arithmatex">\(q\)</span>：</p>
 <div class="arithmatex">\[
 q=\operatorname{round}\left(\frac{x}{s}\right)
@@ -2987,7 +2990,7 @@ q=\operatorname{round}\left(\frac{x}{s}\right)
 <div class="arithmatex">\[
 \hat{x}=q\cdot s
 \]</div>
-<h4 id="_5">按行量化</h4>
+<h4 id="_5">按行、列量化</h4>
 <p>矩阵的每一行，单独算一个 scale</p>
 <p>设</p>
 <div class="arithmatex">\[
@@ -3022,7 +3025,7 @@ s_W^{(1)} \neq s_W^{(2)}
 <li>华为：26-03-04，ai岗，编程题 2/2</li>
 </ul>
 <p><strong>题目内容</strong></p>
-<p>某大型互联网公司的数据中心，记录了其核心服务在连续 <span class="arithmatex">\(N = 200\)</span> 天内的出口总流量（单位 GB，取值范围通常在 100.00 到 500.00 之间）已按时间顺序给出。由于监控系统维护，数据中有 <span class="arithmatex">\(M\)</span> 个（<span class="arithmatex">\(M\)</span> 的范围为 20 到 30）缺失值，按顺序标记为 Missing_1, Missing_2, ..., Missing_M。  </p>
+<p>某大型互联网公司的数据中心，记录了其核心服务在连续 <span class="arithmatex">\(N = 200\)</span> 天内的出口总流量（单位 GB，取值范围通常在 100.00 到 500.00 之间）已按时间顺序给出。由于监控系统维护，数据中有 <span class="arithmatex">\(M\)</span> 个（<span class="arithmatex">\(M\)</span> 的范围为 20 到 30）缺失值，按顺序标记为 <code>Missing_1</code>、<code>Missing_2</code>、……<code>Missing_M</code></p>
 <p>已知这些缺失值保证不会出现在第 1 天和最后 1 天（即首尾两条记录一定存在）  </p>
 <p><strong>任务描述</strong>  </p>
 <p>你需要为每一个缺失值，通过其邻近的、动态变化的真实数据区间，建立一个二阶多项式岭回归（2nd Ridge Regression）模型进行预测。  </p>
@@ -3059,7 +3062,7 @@ s_W^{(1)} \neq s_W^{(2)}
 <p>共 <span class="arithmatex">\(M\)</span> 行，严格按照 Missing_1, Missing_2, ..., Missing_M 的顺序输出 </p>
 <p>每行格式为 Missing_i: xxx.xx，即标签、冒号、空格、预测值。预测值要求保留两位小数</p>
 <p><strong>样例</strong></p>
-<p><em>见python程序 或 题册</em></p>
+<p>见 <em>python 程序</em> 或 <em>题册</em></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
 <a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">M</span><span class="p">,</span><span class="n">N</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
