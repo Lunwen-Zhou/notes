@@ -3215,6 +3215,28 @@ class Solution:
         return ans
 ```
 
+- backtrack 无需维护 **已有符号个数** `i`
+
+  如 `backtrack(left, right, i, path)`
+  
+  由于 `if left > n or right > left`，自然有
+  $$
+  \text{left} \leq n, \quad \text{right} \leq \text{left} \leq n
+  $$
+  因此无需控制 $i \leq 2n$
+
+  不过下面这样也是可以通过的：
+  
+  ```python
+  def backtrack(left, right, i, path):
+      if left == n and right == n:
+          ans.append("".join(path))
+          return 
+      if right > left or i >= 2*n: # 看这里
+          return
+  ```
+  
+
 ---
 
 ### 79 单词搜索
@@ -3280,9 +3302,7 @@ class Solution:
 
 - `backtrack(i,j,k)` 的定义
 
-  当前已经匹配成功 $k$ 个字符的情况下，从 $(i,j)$ 出发，去匹配第 $k+1$ 个字符到结束
-
-  函数会返回这样的匹配是否能够成功
+  当前已经匹配成功 $k$ 个字符的情况下，从 $(i,j)$ 出发，去匹配第 $k+1$ 个字符 **直至结束**，是否能够成功
 
   由于已经考虑了匹配到底，所以在 `for dx,dy in directions:` 的循环中，一旦有 True 的就可以返回
 
