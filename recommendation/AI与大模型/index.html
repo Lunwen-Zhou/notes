@@ -908,6 +908,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Transformer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -2383,6 +2400,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Transformer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cross-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-Attention
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -2570,7 +2604,7 @@
 
 
 <h1 id="ai">AI 与大模型</h1>
-<p class="document-modified-time">更新时间：<time datetime="2026-07-29T15:44+00:00">2026年07月29日 23:44</time></p>
+<p class="document-modified-time">更新时间：<time datetime="2026-08-09T17:32+00:00">2026年08月10日 01:32</time></p>
 
 <h2 id="_1">大模型</h2>
 <h3 id="_2">参数</h3>
@@ -2930,13 +2964,19 @@ I(X;Y) = H(Y) - H(Y \mid X)
 </code></pre></div>
 <p>Transformer 不只是按顺序读，而是会让每个词去“看”这句话里的其他词，判断哪些词对自己更重要</p>
 </blockquote>
-<p>RNN 特点：按顺序处理</p>
-<p>缺点：</p>
-<ol>
-<li>长句子中，前面的信息传到后面会衰减</li>
-<li>不能很好并行，因为必须一个词一个词处理；</li>
-<li>长距离依赖不好建模</li>
-</ol>
+<p>而 RNN 特点：按顺序处理</p>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li>
+<p>长句子中，前面的信息传到后面会衰减</p>
+</li>
+<li>
+<p>不能很好并行，因为必须一个词一个词处理；</p>
+</li>
+<li>
+<p>长距离依赖不好建模</p>
+</li>
+</ul>
 <p>Transformer：不再按顺序一步步读，而是让所有 token 同时互相“看一遍”，即为“Self-Attention”</p>
 <p>假设一句话有 4 个 token：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>我，喜欢，机器，学习
@@ -2956,7 +2996,7 @@ X=
 <li>4 表示有 4 个 token</li>
 <li><span class="arithmatex">\(d\)</span> 表示每个 token 的 embedding 维度（是 token 原始输入向量维度，hidden size 维度）</li>
 </ul>
-<p>Self-Attention 对每一个 token，重新生成一个新的向量，这个新向量会<strong>融合</strong>句子中其他 token 的信息</p>
+<p>Self-Attention 对每一个 token，重新生成一个新的向量，这个新向量会 <strong>融合</strong> 句子中其他 token 的信息</p>
 <blockquote>
 <p>比如对于“学习”这个 token，它可能会重点关注“机器”，因为“机器学习”是一个整体概念</p>
 </blockquote>
@@ -2974,16 +3014,11 @@ q_i=x_iW_Q, \quad k_i=x_iW_K, \quad v_i=x_iW_V
 Q=XW_Q,\quad K=XW_K,\quad V=XW_V
 \]</div>
 <ul>
-<li><span class="arithmatex">\(Q \in \mathbb R^{n \times d_k}\)</span>：所有 token 的 Query</li>
-<li><span class="arithmatex">\(K \in \mathbb R^{n \times d_k}\)</span>：所有 token 的 Key</li>
-<li><span class="arithmatex">\(V \in \mathbb R^{n \times d_v}\)</span>：所有 token 的 Value</li>
+<li><span class="arithmatex">\(Q \in \mathbb R^{n \times d_k}\)</span>：<span class="arithmatex">\(n\)</span> 个 Query 向量组成的矩阵</li>
+<li><span class="arithmatex">\(K \in \mathbb R^{m \times d_k}\)</span>：<span class="arithmatex">\(m\)</span> 个 Key 向量组成的矩阵</li>
+<li><span class="arithmatex">\(V \in \mathbb R^{m \times d_v}\)</span>：<span class="arithmatex">\(m\)</span> 个 Value 向量组成的矩阵</li>
 </ul>
-<p>也就是Self-Attention 会把每个 token 的向量映射成三个向量</p>
-<div class="arithmatex">\[
-q_i, \quad k_i, \quad v_i
-\]</div>
-<p>这里前两个的维度是相同的，<span class="arithmatex">\(d_k,d_v\)</span> 未必需要和前面的 <span class="arithmatex">\(d\)</span> 相同</p>
-<p>Self-Attention 的标准公式：</p>
+<p><strong>Attention 的标准公式</strong></p>
 <div class="arithmatex">\[
 \boxed{
 \operatorname{Attention}(Q,K,V)
@@ -2993,7 +3028,7 @@ q_i, \quad k_i, \quad v_i
 \frac{QK^\top}{\sqrt{d_k}}
 \right)V}
 \]</div>
-<p><span class="arithmatex">\(QK^\top\in \mathbb R^{n\times n}\)</span> 中的元素 <span class="arithmatex">\(s_{ij}\)</span> 表示第 <span class="arithmatex">\(i\)</span> 个 token 对第 <span class="arithmatex">\(j\)</span> 个 token 的关注程度</p>
+<p><span class="arithmatex">\(QK^\top\in \mathbb R^{n\times n}\)</span> 中的元素 <span class="arithmatex">\(s_{ij}\)</span> 表示第 <span class="arithmatex">\(i\)</span> 个 token 对第 <span class="arithmatex">\(j\)</span> 个 token 的关注程度。在 Self-Attention 中，Query 和 Key 来自同一序列，故 <span class="arithmatex">\(n=m\)</span>。此时 <span class="arithmatex">\(s_{ij}\)</span> 可理解为第 <span class="arithmatex">\(i\)</span> 个 token 对第 <span class="arithmatex">\(j\)</span> 个 token 的关注程度</p>
 <p><span class="arithmatex">\(d_k\)</span> 是 Key 或 Query 向量的维度，当 <span class="arithmatex">\(d_k\)</span> 较大时，点积 <span class="arithmatex">\(QK^\top\)</span> 的方差会增大，导致 softmax 梯度变得很小。分别取查询矩阵 <span class="arithmatex">\(Q\)</span> 和键矩阵 <span class="arithmatex">\(K\)</span> 的某一行 <span class="arithmatex">\(q,k\in \mathbb{R}^{d_k}\)</span>，则有下述关系</p>
 <div class="arithmatex">\[
 \text{Var} (q\cdot k) = d_k
@@ -3002,8 +3037,7 @@ q_i, \quad k_i, \quad v_i
 <div class="arithmatex">\[
 \text{Var}\left( \frac{q\cdot k}{\sqrt{d_k}}\right) = 1
 \]</div>
-<p>即这是在将方差归一化为 1</p>
-<p>设</p>
+<p>即这是在将方差归一化为 1。设</p>
 <div class="arithmatex">\[
 A=
 \operatorname{softmax}
@@ -3013,7 +3047,7 @@ A=
 \]</div>
 <p>这里 softmax 是按行来做的</p>
 <p>最后 <span class="arithmatex">\(Z=AV\)</span>，相当于把不同 token 的 Value 向量加权求和</p>
-<p>参数：模型中真正需要训练的是生成 <span class="arithmatex">\(Q,K,V\)</span> 的三个线性变换矩阵：</p>
+<p>参数：模型中 <strong>真正需要训练的</strong> 是生成 <span class="arithmatex">\(Q,K,V\)</span> 的三个线性变换矩阵：</p>
 <div class="arithmatex">\[
 W_Q, \quad W_K, \quad W_V
 \]</div>
@@ -3036,6 +3070,62 @@ b_Q, b_K,b_V \in \mathbb{R}^{64}
 <div class="arithmatex">\[
 147456 + 3\times 64 = 147648
 \]</div>
+</blockquote>
+<h3 id="cross-attention">Cross-Attention</h3>
+<p>假设机器翻译，整个过程是（英文翻译为中文）</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>英文句子
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>   ↓
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Encoder
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>   ↓
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>英文语义表示
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>   ↓
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>Decoder
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>   ↓
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>中文句子
+</code></pre></div>
+<p>Encoder 的作用：把输入语言转换成机器能够理解的语义表示。如输入 I love machine learning，先经过分词，转为 <code>[I, love, machine, learning]</code>，每个 token 变为 embedding：</p>
+<div class="arithmatex">\[
+X=
+\begin{bmatrix}
+x_1\\
+x_2\\
+x_3\\
+x_4
+\end{bmatrix}
+\]</div>
+<p>经过 Encoder <span class="arithmatex">\(H=\operatorname{Encoder}(X)\)</span>，得到：</p>
+<div class="arithmatex">\[
+H=
+\begin{bmatrix}
+h_1\\
+h_2\\
+h_3\\
+h_4
+\end{bmatrix}
+\]</div>
+<p>这里 <span class="arithmatex">\(h_i\)</span> 不仅有本身单词的含义，还融合了上下文（eg：经过 Encoder 后，某个 <span class="arithmatex">\(h_{\text{machine}}\)</span> 不只是“机器”之义，还知道了后面有“学习”，所以理解成“机器学习” ）</p>
+<p>Encoder 本质在做“词 → 待上下文的语义表示”</p>
+<p>Decoder 的作用：根据 Encoder 提供的信息，一个一个生成目标语言</p>
+<p>具体例子：</p>
+<blockquote>
+<p>Encoder 输入：（3 个 token）</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>I love AI
+</code></pre></div>
+<p>Decoder 当前生成</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>我 喜欢
+</code></pre></div>
+<p>此时 Decoder 产生 Query <span class="arithmatex">\(Q \in \mathbb{R}^{2 \times d_k}\)</span>，Encoder 产生 Key <span class="arithmatex">\(K \in \mathbb R^{3 \times d_k}\)</span>，此时 <span class="arithmatex">\(QK^\top \in \mathbb R^{2 \times 3}\)</span>，即</p>
+<div class="arithmatex">\[
+\begin{bmatrix}
+s_{11}&amp;s_{12}&amp;s_{13}\\
+s_{21}&amp;s_{22}&amp;s_{23}
+\end{bmatrix}
+\]</div>
+<p>含义：</p>
+<ul>
+<li>第一行：“我”这个 Query 看英文三个 token 的程度</li>
+<li>第二行：“喜欢”这个 Query 看英文三个 token 的程度</li>
+</ul>
 </blockquote>
 <hr />
 <h2 id="_5">线性代数</h2>
