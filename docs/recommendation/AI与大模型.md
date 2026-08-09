@@ -431,13 +431,15 @@ Transformer 是一种用 **Self-Attention** 来建模 token 与 token 之间关�
 >
 > Transformer 不只是按顺序读，而是会让每个词去“看”这句话里的其他词，判断哪些词对自己更重要
 
-RNN 特点：按顺序处理
+而 RNN 特点：按顺序处理
 
-缺点：
+**缺点**：
 
-1. 长句子中，前面的信息传到后面会衰减
-2. 不能很好并行，因为必须一个词一个词处理；
-3. 长距离依赖不好建模
+- 长句子中，前面的信息传到后面会衰减
+
+- 不能很好并行，因为必须一个词一个词处理；
+
+- 长距离依赖不好建模
 
 Transformer：不再按顺序一步步读，而是让所有 token 同时互相“看一遍”，即为“Self-Attention”
 
@@ -465,7 +467,7 @@ $$
 - 4 表示有 4 个 token
 - $d$ 表示每个 token 的 embedding 维度（是 token 原始输入向量维度，hidden size 维度）
 
-Self-Attention 对每一个 token，重新生成一个新的向量，这个新向量会**融合**句子中其他 token 的信息
+Self-Attention 对每一个 token，重新生成一个新的向量，这个新向量会 **融合** 句子中其他 token 的信息
 
 >  比如对于“学习”这个 token，它可能会重点关注“机器”，因为“机器学习”是一个整体概念
 
@@ -486,19 +488,13 @@ $$
 Q=XW_Q,\quad K=XW_K,\quad V=XW_V
 $$
 
-- $Q \in \mathbb R^{n \times d_k}$：所有 token 的 Query
-- $K \in \mathbb R^{n \times d_k}$：所有 token 的 Key
-- $V \in \mathbb R^{n \times d_v}$：所有 token 的 Value
-
-也就是Self-Attention 会把每个 token 的向量映射成三个向量
-$$
-q_i, \quad k_i, \quad v_i
-$$
-这里前两个的维度是相同的，$d_k,d_v$ 未必需要和前面的 $d$ 相同
+- $Q \in \mathbb R^{n \times d_k}$：$n$ 个 Query 向量组成的矩阵
+- $K \in \mathbb R^{m \times d_k}$：$m$ 个 Key 向量组成的矩阵
+- $V \in \mathbb R^{m \times d_v}$：$m$ 个 Value 向量组成的矩阵
 
 
 
-Self-Attention 的标准公式：
+**Attention 的标准公式**
 $$
 \boxed{
 \operatorname{Attention}(Q,K,V)
@@ -508,7 +504,7 @@ $$
 \frac{QK^\top}{\sqrt{d_k}}
 \right)V}
 $$
-$QK^\top\in \mathbb R^{n\times n}$ 中的元素 $s_{ij}$ 表示第 $i$ 个 token 对第 $j$ 个 token 的关注程度
+$QK^\top\in \mathbb R^{n\times n}$ 中的元素 $s_{ij}$ 表示第 $i$ 个 token 对第 $j$ 个 token 的关注程度。在 Self-Attention 中，Query 和 Key 来自同一序列，故 $n=m$。此时 $s_{ij}$ 可理解为第 $i$ 个 token 对第 $j$ 个 token 的关注程度
 
 $d_k$ 是 Key 或 Query 向量的维度，当 $d_k$ 较大时，点积 $QK^\top$ 的方差会增大，导致 softmax 梯度变得很小。分别取查询矩阵 $Q$ 和键矩阵 $K$ 的某一行 $q,k\in \mathbb{R}^{d_k}$，则有下述关系
 $$
@@ -518,9 +514,8 @@ $$
 $$
 \text{Var}\left( \frac{q\cdot k}{\sqrt{d_k}}\right) = 1
 $$
-即这是在将方差归一化为 1
+即这是在将方差归一化为 1。设
 
-设
 $$
 A=
 \operatorname{softmax}
@@ -534,7 +529,7 @@ $$
 
 
 
-参数：模型中真正需要训练的是生成 $Q,K,V$ 的三个线性变换矩阵：
+参数：模型中 **真正需要训练的** 是生成 $Q,K,V$ 的三个线性变换矩阵：
 $$
 W_Q, \quad W_K, \quad W_V
 $$
@@ -559,6 +554,76 @@ $$
 > 147456 + 3\times 64 = 147648
 > $$
 > 
+
+### Cross-Attention
+
+假设机器翻译，整个过程是（英文翻译为中文）
+
+```
+英文句子
+   ↓
+Encoder
+   ↓
+英文语义表示
+   ↓
+Decoder
+   ↓
+中文句子
+```
+
+Encoder 的作用：把输入语言转换成机器能够理解的语义表示。如输入 I love machine learning，先经过分词，转为 `[I, love, machine, learning]`，每个 token 变为 embedding：
+$$
+X=
+\begin{bmatrix}
+x_1\\
+x_2\\
+x_3\\
+x_4
+\end{bmatrix}
+$$
+经过 Encoder $H=\operatorname{Encoder}(X)$，得到：
+$$
+H=
+\begin{bmatrix}
+h_1\\
+h_2\\
+h_3\\
+h_4
+\end{bmatrix}
+$$
+这里 $h_i$ 不仅有本身单词的含义，还融合了上下文（eg：经过 Encoder 后，某个 $h_{\text{machine}}$ 不只是“机器”之义，还知道了后面有“学习”，所以理解成“机器学习” ）
+
+Encoder 本质在做“词 → 待上下文的语义表示”
+
+Decoder 的作用：根据 Encoder 提供的信息，一个一个生成目标语言
+
+
+
+具体例子：
+
+> Encoder 输入：（3 个 token）
+>
+> ```
+> I love AI
+> ```
+>
+> Decoder 当前生成
+>
+> ```
+> 我 喜欢
+> ```
+>
+> 此时 Decoder 产生 Query $Q \in \mathbb{R}^{2 \times d_k}$，Encoder 产生 Key $K \in \mathbb R^{3 \times d_k}$，此时 $QK^\top \in \mathbb R^{2 \times 3}$，即
+> $$
+> \begin{bmatrix}
+> s_{11}&s_{12}&s_{13}\\
+> s_{21}&s_{22}&s_{23}
+> \end{bmatrix}
+> $$
+> 含义：
+>
+> - 第一行：“我”这个 Query 看英文三个 token 的程度
+> - 第二行：“喜欢”这个 Query 看英文三个 token 的程度
 
 ---
 
