@@ -4,50 +4,58 @@
 
 ### 参数
 
-指的是**模型中需要被学习的变量**
+模型中需要被学习的变量
 
+- **优化中**
 
+  设优化形式 $\min_{\theta} f(\theta)$，这里 $\theta = (\theta_1, \theta_2, \dots, \theta_n) \in \mathbb{R}^n$ 是一个**向量参数**，每一个 $\theta_i$ 都是一个参数
 
-**优化中**
-
-优化形式：
-
-$$
-\min_{\theta} f(\theta)
-$$
-
-这里的 $\theta = (\theta_1, \theta_2, \dots, \theta_n) \in \mathbb{R}^n$ 就是一个**向量参数**：
-
-每一个 $\theta_i$ 都是一个参数
-
-
-
-**机器学习中**
-
-1. 线性模型
-   $$
-   y = w_1 x_1 + w_2 x_2 + b
-   $$
-   参数为 $\theta = (w_1, w_2, b)$
-
-2. 神经网络
-
-   一个简单全连接层：
-   $$
-   y = Wx + b
-   $$
-   参数是：
-
-   - 权重矩阵 $W$
-   - 偏置 $b$
+- **机器学习中**
+  - 线性模型：$y = w_1 x_1 + w_2 x_2 + b$，参数为 $\theta = (w_1, w_2, b)$
+  - 神经网络：一个简单 **全连接层** 为 $y = Wx + b$，参数为 权重矩阵 $W$、偏置 $b$
 
 ---
 
 
 
+### Softmax
+
+把得分向量归一成概率分布：各分量非负且和为 1
+
+具体算法：（数值稳定版本）设输入的向量为 $z$，先减最大值再指数归一化，保证数值稳定：
+$$
+p_i = \frac{e^{z_i - \max z}}{\sum_j e^{z_j - \max{z}}}
+$$
+**代码**（假设传入的是 Pyhton 的 list 类型 `scores`）
+
+```python
+import torch
+
+def softmax(scores: list[float]) -> torch.Tensor:
+    scores = torch.tensor(scores, dtype=torch.float32)
+    
+    max_score = torch.max(scores)
+    exp_scores = torch.exp(scores - max_score)
+    sum_exp_scores = torch.sum(exp_scores)
+    
+    return exp_scores / sum_exp_scores
+```
+
+- **具体例子**
+
+  > 设 `scores = [1, 2, 3]`。首先经过 def 内的第一行，`scores` 变为 `tensor([1., 2., 3.])`
+  >
+  > `max_score` 为 `tensor(3.)`，接下来 `scores - max_score` 会 **广播**，具体来说为
+  >
+  > ```
+  > tensor([1., 2., 3.]) - tensor(3.)
+  > ```
+
+
+
 ### K - Means
 
-迭代过程中，衡量样本点**归属**的核心准则是：到质心的欧氏距离最小
+迭代过程中，衡量样本点 **归属** 的核心准则是：**到质心的欧氏距离最小**
 
 ---
 
@@ -63,9 +71,11 @@ SmoothQuant 通过等价变换，把量化难度从 activation 迁移到 weight�
 
 ### LayerNorm
 
-**流程**，$\mathrm{LN}(\cdot)$ 操作
+可视为一个算子 $\mathrm{LN}(\cdot):\mathbb{R}^d \to \mathbb{R}^d$，$x \mapsto y = \mathrm{LN}(x)$
 
-可视为一个算子 $\mathrm{LN}:\mathbb{R}^d \to \mathbb{R}^d$，$x \mapsto y = \mathrm{LN}(x)$
+LN 可在一定程度上避免 **梯度消失** 或 **梯度爆炸** 的问题，**增强模型的泛化能力**
+
+**计算流程**：
 
 1. 计算均值
    $$
@@ -87,84 +97,65 @@ SmoothQuant 通过等价变换，把量化难度从 activation 迁移到 weight�
    y_i = \gamma \hat{x}_i + \beta
    $$
 
-> 先减均值 → 再除方差 → 再仿射变换
-
-LN可在一定程度上避免**梯度消失**或**梯度爆炸**的问题，**增强模型的泛化能力**
+即：先减均值 → 再除方差 → 再仿射变换
 
 
 
-**在神经网络中的理解**
+#### Post-LN
 
-设数据张量 $X \in \mathbb{R}^{N \times d}$
+原始 Transformer
 
-$N$：样本数（batch size）
-
-$d$：特征维度（embedding 维度）
-
-第 $k$ 个样本，记为 $x^{(k)} \in \mathbb{R}^d$，简记为 $x$，就是准备输入到 LN 中的向量
-
-
-
-#### Post-LN（原始 Transformer）
-
+先做子层计算 Sublayer ，再加残差 $x$  ，再做 LayerNorm
 $$
 y = \mathrm{LN}(x + \mathrm{Sublayer}(x))
 $$
 
-先做子层计算（Attention / FFN）  
+- $\mathrm{Sublayer}(x)$：可以是以下两种
 
-加残差：$x + \text{Sublayer}(x)$  
-
-再做 LayerNorm
-
-- $\mathrm{Sublayer}(x)$：记为 $F(x)$，可以是以下两种
-
-  - ① Attention
+  - Attention
     $$
-    F(x) = \mathrm{softmax}(xW_Q (xW_K)^T) xW_V
+     \mathrm{softmax}(xW_Q (xW_K)^\top) xW_V
     $$
 
-  - ② MLP
+  - MLP
     $$
-    F(x) = W_2 \sigma(W_1 x + b_1) + b_2
+    W_2 \sigma(W_1 x + b_1) + b_2
     $$
     
 
 #### Pre-LN
 
-现在的主流。结构为
+现在的主流。先对输入做 LN，结构为
 $$
 y = x + \mathrm{Sublayer}(\mathrm{LN}(x))
 $$
-先对输入做 LN
-
 ---
 
 
 
 ### RMSNorm
 
-RMS：Root Mean Square，均方根
+#### 均方根
 
-> 均方根可以看成是一个向量的”平均大小“
->
-> - 普通均值：
->   $$
->   \frac{1}{d}\sum x_i
->   $$
->   会正负抵消
->
-> - 均方根
->   $$
->   \sqrt{\frac{1}{d}\sum x_i^2}
->   $$
->   更加稳定
+RMS：Root Mean Square，均方根。均方根可以看成是一个向量的”平均大小“
+
+普通的均值
+$$
+\frac{1}{d}\sum x_i
+$$
+会正负抵消。而均方根
+$$
+\sqrt{\frac{1}{d}\sum x_i^2}
+$$
+更加稳定
+
+
 
 **流程**
 
 1. 计算均方
    $$
-   \text{RMS} = \sqrt{\frac{1}{d}\sum_{i=1}^d x_i^2 + \epsilon}
+   \text{RMS} = \sqrt{\frac{1}{d}\sum_{i=1}^d x_i^2 + \varepsilon}
    $$
 
 2. 归一化
@@ -235,30 +226,12 @@ $$
 
 #### 与前馈神经网络对比
 
-| 特性         | 前馈网络 | RNN                |
-| ------------ | -------- | ------------------ |
-| 是否有记忆   | ❌        | ✔                  |
-| 输入是否独立 | ✔        | ❌                  |
-| 是否建模时间 | ❌        | ✔                  |
-| 结构         | DAG      | 有环（展开后是链） |
-
----
-
-
-
-### SGD
-
-（Stochastic Gradient Descent）
-
-不属于自适应学习率方法
-
-更新：
-$$
-\theta \leftarrow \theta - \eta \nabla f(\theta)
-$$
-学习率 $\eta$：对于所有参数 **完全一样**
-
-步长：$\eta$
+|     特性     | 前馈网络 |        RNN         |
+| :----------: | :------: | :----------------: |
+|  是否有记忆  |    无    |         有         |
+| 输入是否独立 |    有    |         无         |
+| 是否建模时间 |    无    |         有         |
+|     结构     |   DAG    | 有环（展开后是链） |
 
 ---
 
@@ -297,36 +270,13 @@ $$
 
 
 
-### 主成分分析 PCA
-
-在主成分分析中，我们需要将原始数据投影到特征向量所指向的方向上
-
-假设我们有一个已经完成中心化处理的二维数据点 $x = [3,4]^\top$
-
-通过计算协方差矩阵，得到对应于最大特征值的第一主成分方向的单位特征向量 $w=[0.8,0.6]^\top$
-
-数据点 $x$ 在该主成分方向上的投影值（即降维后的一维坐标）的计算方式为：
-
-> 由第一主成分方向 $w = [0.8,0.6]^T$
->
-> **投影值就是做内积**：
-> $$
-> w^T x
-> = 0.8 \times 3 + 0.6 \times 4=4.8
-> $$
-> 从而降维后的一维坐标为 4.8
-
----
-
-
-
 ### KV Cache
 
 在 Transformer 推理时，每一层都会产生：Key（K）、Value（V）
 
-这些东西会被**缓存下来（Cache）**，因为后面的 token 会反复用到前面所有 token 的 K、V
+这些东西会被 **缓存下来（Cache）**，因为后面的 token 会反复用到前面所有 token 的 K、V
 
-所以 KV Cache 是一个**不断增长的大矩阵**（随序列长度增长
+所以 KV Cache 是一个 **不断增长的大矩阵**（随序列长度增长
 
 
 
