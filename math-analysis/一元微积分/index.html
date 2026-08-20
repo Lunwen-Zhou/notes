@@ -2462,7 +2462,7 @@
 
 
 <h1 id="_1">一元微积分</h1>
-<p class="document-modified-time">更新时间：<time datetime="2026-08-14T18:15+00:00">2026年08月15日 02:15</time></p>
+<p class="document-modified-time">更新时间：<time datetime="2026-08-18T05:42+00:00">2026年08月18日 13:42</time></p>
 
 <h2 id="_2">数学基础</h2>
 <h3 id="_3">调和平均数</h3>
@@ -2476,11 +2476,6 @@
 <div class="arithmatex">\[
 \sum_{n=1}^{\infty} \frac{1}{n} = 1 + \frac{1}{2} + \frac{1}{3} + \cdots
 \]</div>
-<p>记部分和为 <span class="arithmatex">\(H_n = \sum_{k=1}^{n} \frac{1}{k}\)</span>，增长速率近似为</p>
-<div class="arithmatex">\[
-H_n \approx \ln n + \gamma + \frac{1}{2n} - \frac{1}{12n^2} + \cdots
-\]</div>
-<p>其中 <span class="arithmatex">\(\gamma \approx 0.5772\)</span> 是<strong>欧拉-马歇罗尼常数</strong>（Euler–Mascheroni constant）</p>
 </li>
 <li>
 <p>广义调和级数（<span class="arithmatex">\(p\)</span> - 级数）</p>
@@ -2623,14 +2618,14 @@ x^4+1 \in O \left(x^4\right)
 \]</div>
 <p><strong>Proof</strong>：</p>
 <blockquote>
-<p>条件 <span class="arithmatex">\(\lim_{x \to x_0^+} g(x) = -\infty\)</span>：对于上述的 <span class="arithmatex">\(M &lt; 0\)</span>，<span class="arithmatex">\(\exists \delta &gt; 0\)</span>，使得当 <span class="arithmatex">\(x_0 &lt; x &lt; x_0 + \delta\)</span> 时，恒有 <span class="arithmatex">\(g(x) &lt; M\)</span></p>
+<p>条件 <span class="arithmatex">\(\lim_{x \to x_0^+} g(x) = -\infty\)</span>：<span class="arithmatex">\(\forall M &lt; 0\)</span>，<span class="arithmatex">\(\exists \delta &gt; 0\)</span>，使得当 <span class="arithmatex">\(x_0 &lt; x &lt; x_0 + \delta\)</span> 时，恒有 <span class="arithmatex">\(g(x) &lt; M\)</span></p>
 <p>条件 <span class="arithmatex">\(\lim_{y \to -\infty} f(y) = +\infty\)</span>：<span class="arithmatex">\(\forall G &gt; 0\)</span>，<span class="arithmatex">\(\exists N &lt; 0\)</span>，使得当 <span class="arithmatex">\(y &lt; N\)</span> 时，恒有 <span class="arithmatex">\(f(y) &gt; G\)</span></p>
 <blockquote>
 <p>需要证明：</p>
 <p><span class="arithmatex">\(\forall G'&gt;0\)</span>，<span class="arithmatex">\(\exists \delta' &gt;0\)</span>，使得当 <span class="arithmatex">\(x_0 &lt; x &lt; x_0 + \delta'\)</span> 时，恒有 <span class="arithmatex">\(f(g(x)) &gt; G'\)</span></p>
 </blockquote>
-<p><span class="arithmatex">\(\forall G' &gt;0\)</span>，<span class="arithmatex">\(\exists N' &lt; 0\)</span>，使得当 <span class="arithmatex">\(y &lt; N'\)</span> 时，恒有 <span class="arithmatex">\(f(y) &gt; G'\)</span></p>
-<p>取 <span class="arithmatex">\(M = N'\)</span>，则 <span class="arithmatex">\(\exists \delta' &gt; 0\)</span>，使得当 <span class="arithmatex">\(x_0 &lt; x &lt; x_0 +\delta'\)</span> 时，<span class="arithmatex">\(g(x) &lt; N'\)</span>，从而有 <span class="arithmatex">\(f(g(x)) &gt; G'\)</span> 成立 <span class="arithmatex">\(\quad \square\)</span></p>
+<p><span class="arithmatex">\(\boxed{\forall G' &gt;0}\)</span>，<span class="arithmatex">\(\exists N' &lt; 0\)</span>，使得当 <span class="arithmatex">\(y &lt; N'\)</span> 时，恒有 <span class="arithmatex">\(f(y) &gt; G'\)</span></p>
+<p>取 <span class="arithmatex">\(M = N'\)</span>，则 <span class="arithmatex">\(\boxed{\exists \delta' &gt; 0}\)</span>，使得当 <span class="arithmatex">\(x_0 &lt; x &lt; x_0 +\delta'\)</span> 时，<span class="arithmatex">\(g(x) &lt; N'\)</span>，从而有 <span class="arithmatex">\(f(g(x)) &gt; G'\)</span> 成立 <span class="arithmatex">\(\quad \square\)</span></p>
 </blockquote>
 <p>设</p>
 <div class="arithmatex">\[

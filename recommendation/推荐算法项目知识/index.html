@@ -3622,8 +3622,8 @@ L=\frac{1}{m}\sum_{i=1}^m L_i
 <a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
 <a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>
-<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;训练得到的 w:&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">w</span><span class="p">)</span>
-<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;训练得到的 b:&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"训练得到的 w:"</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">w</span><span class="p">)</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"训练得到的 b:"</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
 <a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>
 <a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>
 <a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a><span class="c1"># =========================</span>
@@ -3645,8 +3645,8 @@ L=\frac{1}{m}\sum_{i=1}^m L_i
 <a id="__codelineno-6-50" name="__codelineno-6-50" href="#__codelineno-6-50"></a><span class="n">proba</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <a id="__codelineno-6-51" name="__codelineno-6-51" href="#__codelineno-6-51"></a><span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <a id="__codelineno-6-52" name="__codelineno-6-52" href="#__codelineno-6-52"></a>
-<a id="__codelineno-6-53" name="__codelineno-6-53" href="#__codelineno-6-53"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;预测概率:&quot;</span><span class="p">,</span> <span class="n">proba</span><span class="p">)</span>
-<a id="__codelineno-6-54" name="__codelineno-6-54" href="#__codelineno-6-54"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;预测类别:&quot;</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
+<a id="__codelineno-6-53" name="__codelineno-6-53" href="#__codelineno-6-53"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"预测概率:"</span><span class="p">,</span> <span class="n">proba</span><span class="p">)</span>
+<a id="__codelineno-6-54" name="__codelineno-6-54" href="#__codelineno-6-54"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"预测类别:"</span><span class="p">,</span> <span class="n">pred</span><span class="p">)</span>
 </code></pre></div>
 <p>结果</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>训练得到的 w: [1.62083082 1.61838942]
@@ -4674,7 +4674,7 @@ y_{\text{rank\_train}}
 </table>
 <p>⑥：第一关键字，按照用户排序。第二关键字，在同一个用户内部，按照时间（last_timestamp）升序排序，排序完仍然叫 <code>interactions_agg</code></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">interactions_agg</span> <span class="o">=</span> <span class="n">interactions_agg</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="p">[</span><span class="s2">&quot;personId&quot;</span><span class="p">,</span> <span class="s2">&quot;last_timestamp&quot;</span><span class="p">]</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>    <span class="p">[</span><span class="s2">"personId"</span><span class="p">,</span> <span class="s2">"last_timestamp"</span><span class="p">]</span>
 <a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="p">)</span>
 </code></pre></div>
 <p>再进行时间留一法切分（⑦）interactions_agg → train_df + test_df</p>
