@@ -1898,6 +1898,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#def_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        def 矩阵关于标量求导
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#thm_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1909,7 +1920,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#def_5" class="md-nav__link">
+  <a href="#def_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         def 雅可比矩阵
@@ -1937,7 +1948,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#def_6" class="md-nav__link">
+  <a href="#def_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         def 梯度矩阵
@@ -2138,10 +2149,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#at-a" class="md-nav__link">
+  <a href="#atop-a" class="md-nav__link">
     <span class="md-ellipsis">
       
-        \(A^T A\) 的半正定性
+        \(A^\top A\) 的半正定性
       
     </span>
   </a>
@@ -2556,6 +2567,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#def_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        def 矩阵关于标量求导
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#thm_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2567,7 +2589,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#def_5" class="md-nav__link">
+  <a href="#def_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         def 雅可比矩阵
@@ -2595,7 +2617,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#def_6" class="md-nav__link">
+  <a href="#def_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         def 梯度矩阵
@@ -2796,10 +2818,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#at-a" class="md-nav__link">
+  <a href="#atop-a" class="md-nav__link">
     <span class="md-ellipsis">
       
-        \(A^T A\) 的半正定性
+        \(A^\top A\) 的半正定性
       
     </span>
   </a>
@@ -2940,7 +2962,7 @@
 
 
 <h1 id="_1">高等代数</h1>
-<p class="document-modified-time">更新时间：<time datetime="2026-08-05T05:23+00:00">2026年08月05日 13:23</time></p>
+<p class="document-modified-time">更新时间：<time datetime="2026-08-30T18:08+00:00">2026年08月31日 02:08</time></p>
 
 <h2 id="_2">迹</h2>
 <h3 id="_3">基本性质</h3>
@@ -2964,7 +2986,7 @@
 </li>
 <li>
 <p><strong>转置不变性</strong></p>
-<p><span class="arithmatex">\(\text{tr}(A^T) = \text{tr}(A)\)</span>，复数情况：<span class="arithmatex">\(\text{tr}(A^*) = \overline{\text{tr}(A)}\)</span></p>
+<p><span class="arithmatex">\(\text{tr}(A^\top) = \text{tr}(A)\)</span>，复数情况：<span class="arithmatex">\(\text{tr}(A^*) = \overline{\text{tr}(A)}\)</span></p>
 </li>
 <li>
 <p><strong>特征值关系</strong></p>
@@ -2977,22 +2999,23 @@
 <h3 id="schur">迹的 Schur 不等式</h3>
 <p><span class="arithmatex">\(\forall A \in \mathbb{R}^{n \times n}\)</span>，有</p>
 <div class="arithmatex">\[
-\text{tr}(A^2) \le \text{tr}(A^T A)
+\text{tr}(A^2) \le \text{tr}(A^\top A)
 \]</div>
 <p><strong>严格不等式成立的条件</strong>：当且仅当 <span class="arithmatex">\(A\)</span> 不对称时</p>
 <ul>
 <li>不对称：<span class="arithmatex">\(\exists(i, j)(i \neq j)\)</span> ，使得 <span class="arithmatex">\(a_{ij} \neq a_{ji}\)</span> 时（即不对称时）</li>
 </ul>
 <p><strong>Proof</strong>：</p>
-<p><strong>计算 <span class="arithmatex">\(\text{tr}(A^T A)\)</span></strong></p>
+<blockquote>
+<p>① 计算 <span class="arithmatex">\(\text{tr}(A^\top A)\)</span></p>
 <div class="arithmatex">\[
-A^T A = \begin{pmatrix} a_{11} &amp; a_{21} &amp; \cdots &amp; a_{n1} \\ a_{12} &amp; a_{22} &amp; \cdots &amp; a_{n2} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{1n} &amp; a_{2n} &amp; \cdots &amp; a_{nn} \end{pmatrix} \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn} \end{pmatrix}
+A^\top A = \begin{pmatrix} a_{11} &amp; a_{21} &amp; \cdots &amp; a_{n1} \\ a_{12} &amp; a_{22} &amp; \cdots &amp; a_{n2} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{1n} &amp; a_{2n} &amp; \cdots &amp; a_{nn} \end{pmatrix} \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn} \end{pmatrix}
 \]</div>
 <p>第 <span class="arithmatex">\(k\)</span> 个对角线元素为 <span class="arithmatex">\(\sum_i a_{ik}^2\)</span>。求迹刚好遍历全部元素</p>
 <div class="arithmatex">\[
-\text{tr}(A^T A) = \sum_i \sum_j a_{ij}^2
+\text{tr}(A^\top A) = \sum_i \sum_j a_{ij}^2
 \]</div>
-<p><strong>计算 <span class="arithmatex">\(\text{tr}(A^2)\)</span></strong></p>
+<p>② 计算 <span class="arithmatex">\(\text{tr}(A^2)\)</span></p>
 <div class="arithmatex">\[
 A^2 = A \cdot A = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn} \end{pmatrix} \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\ a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ a_{n1} &amp; a_{n2} &amp; \cdots &amp; a_{nn} \end{pmatrix}
 \]</div>
@@ -3003,15 +3026,17 @@ A^2 = A \cdot A = \begin{pmatrix} a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} 
 <p>作差</p>
 <div class="arithmatex">\[
 \begin{aligned}
-\text{tr}(A^T A) - \text{tr}(A^2) &amp;= \sum_{i,j} a_{ij}^2 - \sum_{i,j} a_{ij}a_{ji} \\
+\text{tr}(A^\top A) - \text{tr}(A^2) &amp;= \sum_{i,j} a_{ij}^2 - \sum_{i,j} a_{ij}a_{ji} \\
 &amp;= \sum_{i &gt; j} \left( a_{ij}^2 + a_{ji}^2 - 2a_{ij}a_{ji} \right) \\
 &amp;= \sum_{i &gt; j} (a_{ij} - a_{ji})^2 \ge 0
 \end{aligned}
 \]</div>
-<p><span class="arithmatex">\(\square\)</span></p>
+<p><span class="arithmatex">\(\square\)</span>
+</p>
+</blockquote>
 <h2 id="_4">矩阵分解</h2>
 <h3 id="def">def 置换矩阵</h3>
-<p>设 <span class="arithmatex">\(P\in\mathbb{R}^{n\times n}\)</span>，若 <span class="arithmatex">\(P\)</span> 的每一行和每一列都恰好有一个1，其余为0，则称 <span class="arithmatex">\(P\)</span> 为<strong>置换矩阵（permutation matrix）</strong></p>
+<p>设 <span class="arithmatex">\(P\in\mathbb{R}^{n\times n}\)</span>，若 <span class="arithmatex">\(P\)</span> 的每一行和每一列都恰好有一个 1，其余为 0，则称 <span class="arithmatex">\(P\)</span> 为 <strong>置换矩阵</strong>（permutation matrix）</p>
 <hr />
 <h4 id="_5">作用 对向量重排</h4>
 <p>对一个列向量 <span class="arithmatex">\(x \in \mathbb{R}^n\)</span>，<span class="arithmatex">\(Px\)</span> 的用处在于将其打乱位置，但是还是一列 <span class="arithmatex">\(n\)</span> 维的列向量，即</p>
@@ -3083,7 +3108,7 @@ f(UXV)=f(X)
 \quad
 \forall\; U,V\ \text{正交}
 \]</div>
-<p>可能会写成 <span class="arithmatex">\(V^T\)</span> 以更贴近SVD分解</p>
+<p>可能会写成 <span class="arithmatex">\(V^\top\)</span> 以更贴近SVD分解</p>
 <p>例子 <span class="arithmatex">\(\|X\|_F^2\)</span></p>
 <blockquote>
 <p>（法1）因为</p>
@@ -3096,27 +3121,21 @@ f(UXV)=f(X)
 <div class="arithmatex">\[
 \begin{aligned}
 \|UXV\|_{F}^{2}
-&amp;= \operatorname{Tr}\!\left(V^{T} X^{T} U^{T} U X V\right) \\
-&amp;= \operatorname{Tr}\!\left(V^{T} X^{T} X V\right) \\
-&amp;= \operatorname{Tr}\!\left(V V^{T} X^{T} X\right)
+&amp;= \operatorname{Tr}\!\left(V^{\top} X^{\top} U^{\top} U X V\right) \\
+&amp;= \operatorname{Tr}\!\left(V^{\top} X^{\top} X V\right) \\
+&amp;= \operatorname{Tr}\!\left(V V^{\top} X^{\top} X\right)
 \end{aligned}
 \]</div>
-<p>再用 <span class="arithmatex">\(V^T = V^{-1}\)</span> 即可，从而为谱函数</p>
+<p>再用 <span class="arithmatex">\(V^\top = V^{-1}\)</span> 即可，从而为谱函数</p>
 </blockquote>
 <h3 id="_7">对称矩阵与反对称矩阵的唯一分解</h3>
-<p><span class="arithmatex">\(\forall A \in \mathbb{R}^{n \times n}\)</span>，存在<strong>唯一</strong> <span class="arithmatex">\(S, K \in \mathbb{R}^{n \times n}\)</span>，使得 <span class="arithmatex">\(A\)</span> 可以分解为</p>
+<p><span class="arithmatex">\(\forall A \in \mathbb{R}^{n \times n}\)</span>，存在 <strong>唯一</strong> <span class="arithmatex">\(S, K \in \mathbb{R}^{n \times n}\)</span>，使得</p>
 <div class="arithmatex">\[
 A = S + K
 \]</div>
-<p>满足：</p>
-<ul>
-<li><span class="arithmatex">\(S\)</span> 是对称矩阵</li>
-<li><span class="arithmatex">\(K\)</span> 是反对称矩阵（ <span class="arithmatex">\(K^T = -K\)</span> ）</li>
-</ul>
-<p>由以下公式<strong>唯一构造</strong>：</p>
+<p>满足 <span class="arithmatex">\(S\)</span> 是对称矩阵，<span class="arithmatex">\(K\)</span> 是反对称矩阵（<span class="arithmatex">\(K^\top = -K\)</span>）。由以下公式 <strong>唯一</strong> 构造：</p>
 <div class="arithmatex">\[
-S = \frac{1}{2}(A + A^T) \\
-K = \frac{1}{2}(A - A^T)
+S = \frac{1}{2}(A + A^\top),\quad K = \frac{1}{2}(A - A^\top)
 \]</div>
 <h2 id="_8">矩阵求导</h2>
 <h3 id="def_3">def 矩阵可微算子、矩阵值函数</h3>
@@ -3138,22 +3157,19 @@ f_{11}(X)&amp;\cdots&amp;f_{1q}(X)\\
 f_{p1}(X)&amp;\cdots&amp;f_{pq}(X)
 \end{pmatrix}
 \]</div>
-<p>若 <span class="arithmatex">\(f_{ij}:\mathbb{R}^{mn}\to\mathbb{R}\)</span> 均为普通多元函数（关于所有的变量 <span class="arithmatex">\(x_{kl}(k \in  1 \dots m,l\in 1 \dots n)\)</span> 可微），则称映射 <span class="arithmatex">\(\mathcal{F}\)</span> 为<strong>可微矩阵算子</strong> 或 <strong>矩阵值函数</strong>（Matrix-Valued Function）</p>
-<ul>
-<li><span class="arithmatex">\(X\in\mathbb{R}^{m\times n} \iff X\)</span> 有 <span class="arithmatex">\(m \times n\)</span> 个变量</li>
-</ul>
+<p>若 <span class="arithmatex">\(f_{ij}:\mathbb{R}^{mn}\to\mathbb{R}\)</span> 均为普通多元函数（关于所有的变量 <span class="arithmatex">\(x_{kl}\left(k \in \{1 \dots m \},l\in \{1 \dots n \} \right )\)</span> 可微），则称映射 <span class="arithmatex">\(\mathcal{F}\)</span> 为 <strong>可微矩阵算子</strong> 或 <strong>矩阵值函数</strong>（Matrix-Valued Function）</p>
 <hr />
-<p><span class="arithmatex">\(d\mathcal{F}\)</span> 例子</p>
-<p>二次型 <span class="arithmatex">\(X^TX\)</span></p>
+<p><span class="arithmatex">\(\mathrm d\mathcal{F}\)</span> 例子</p>
+<p>二次型 <span class="arithmatex">\(X^\top X\)</span></p>
 <p>（二次型矩阵算子）<span class="arithmatex">\(X=
 \begin{pmatrix}
 x_{11}&amp;x_{12}\\
 x_{21}&amp;x_{22}
-\end{pmatrix}\)</span> ，证明 <span class="arithmatex">\(X^TX\)</span> 是<strong>可微矩阵算子</strong>。</p>
+\end{pmatrix}\)</span> ，证明 <span class="arithmatex">\(X^\top X\)</span> 是<strong>可微矩阵算子</strong></p>
 <p><strong>Proof</strong>：</p>
 <blockquote>
 <div class="arithmatex">\[
-X^TX=
+X^\top X=
 \begin{pmatrix}
 x_{11}^2+x_{21}^2 &amp; x_{11}x_{12}+x_{21}x_{22}\\
 x_{11}x_{12}+x_{21}x_{22} &amp; x_{12}^2+x_{22}^2
@@ -3167,7 +3183,7 @@ x_{11}x_{12}+x_{21}x_{22} &amp; x_{12}^2+x_{22}^2
 </ul>
 <p>故可微，其微分为</p>
 <div class="arithmatex">\[
-d(X^TX)=X^T dX+(dX)^T X
+\mathrm d(X^\top X)=X^\top \mathrm dX+(\mathrm dX)^\top X
 \]</div>
 </blockquote>
 <p>反例 <span class="arithmatex">\(\|X\|_1\)</span></p>
@@ -3176,13 +3192,13 @@ d(X^TX)=X^T dX+(dX)^T X
 </blockquote>
 <p><span class="arithmatex">\(AX B\)</span>，线性矩阵算子</p>
 <blockquote>
-<p>是可微的，而且微分为 <span class="arithmatex">\(d\mathcal{F}(X)=A(dX)B\)</span></p>
+<p>是可微的，而且微分为 <span class="arithmatex">\(\mathrm d\mathcal{F}(X)=A(\mathrm dX)B\)</span></p>
 </blockquote>
 <p>逆算子 <span class="arithmatex">\(X^{-1}\)</span></p>
 <blockquote>
 <p>若 <span class="arithmatex">\(X\)</span> 可逆，则该算子可微，且</p>
 <div class="arithmatex">\[
-d(X^{-1})=-X^{-1}(dX)X^{-1}
+\mathrm d(X^{-1})=-X^{-1}(\mathrm dX)X^{-1}
 \]</div>
 </blockquote>
 <hr />
@@ -3190,58 +3206,58 @@ d(X^{-1})=-X^{-1}(dX)X^{-1}
 <blockquote>
 <p>在 <span class="arithmatex">\(X\succ 0\)</span> 时可微，且</p>
 <div class="arithmatex">\[
-d\log\det(X)=\operatorname{Tr}\!\big(X^{-1}dX\big)
+\mathrm d\log\det(X)=\operatorname{Tr}\!\big(X^{-1}\mathrm dX\big)
 \]</div>
 </blockquote>
 <p>谱函数 <span class="arithmatex">\(\|X\|_F^2\)</span></p>
 <blockquote>
 <p>属于可微矩阵算子</p>
 <div class="arithmatex">\[
-d\|X\|_F^2
+\mathrm d\|X\|_F^2
 =
-2\,\operatorname{Tr}(X^T dX)
+2\,\operatorname{Tr}(X^\top \mathrm dX)
 \]</div>
 </blockquote>
 <hr />
 <h3 id="thm">Thm 矩阵微分基础运算法则</h3>
-<p>设 <span class="arithmatex">\(A\)</span> 和 <span class="arithmatex">\(B\)</span> 为<strong>可微矩阵算子</strong>，<span class="arithmatex">\(a\)</span> 为标量，则微分算子 <span class="arithmatex">\(d\)</span> 满足以下性质：</p>
+<p>设 <span class="arithmatex">\(A\)</span> 和 <span class="arithmatex">\(B\)</span> 为<strong>可微矩阵算子</strong>，<span class="arithmatex">\(a\)</span> 为标量，则微分算子 <span class="arithmatex">\(\mathrm d\)</span> 满足以下性质：</p>
 <ul>
 <li><strong>线性律 (Linearity):</strong> </li>
 </ul>
 <div class="arithmatex">\[
-d(A \pm B) = dA \pm dB  \qquad d(aA) = a \cdot dA
+\mathrm d(A \pm B) = \mathrm dA \pm \mathrm dB  \qquad \mathrm d(aA) = a \cdot \mathrm dA
 \]</div>
 <ul>
 <li>
 <p><strong>乘积法则 (Product Rule):</strong> </p>
 <div class="arithmatex">\[
-d(AB) = (dA)B + A(dB)
+\mathrm d(AB) = (\mathrm dA)B + A(\mathrm dB)
 \]</div>
 </li>
 <li>
 <p><strong>转置 (Transpose):</strong> </p>
 <div class="arithmatex">\[
-d(A^T) = (dA)^T 
+\mathrm d(A^\top) = (\mathrm dA)^\top 
 \]</div>
 </li>
 <li>
 <p><strong>迹 (Trace):</strong> </p>
 <div class="arithmatex">\[
-d(\text{Tr}(A)) = \text{Tr}(dA)
+\mathrm d(\text{Tr}(A)) = \text{Tr}(\mathrm dA)
 \]</div>
 </li>
 </ul>
 <hr />
 <h3 id="_9">全微分的标准形式</h3>
 <div class="arithmatex">\[
-df = \text{Tr}\left( (\nabla_X f)^T dX \right)
+\mathrm df = \text{Tr}\left( (\nabla_X f)^\top \mathrm dX \right)
 \]</div>
 <h4 id="_10">梯度的求法</h4>
-<p>只要能算出 <span class="arithmatex">\(df = \text{Tr}\left( (A^T dX \right)\)</span> ，可以直接说 <span class="arithmatex">\(\nabla_X f = A\)</span></p>
+<p>只要能算出 <span class="arithmatex">\(\mathrm df = \text{Tr}\left( (A^\top \mathrm dX \right)\)</span> ，可以直接说 <span class="arithmatex">\(\nabla_X f = A\)</span></p>
 <h4 id="_11">研究实例</h4>
-<p>PCA：<span class="arithmatex">\(f\left( X \right)=\frac{1}{2}\left\| X{{X}^{T}}-{{\Sigma }_{h}} \right\|_{F}^{2}\)</span> ，在计算 <span class="arithmatex">\(\nabla f\left( X \right)\)</span> 时，先算出 $<span class="arithmatex">\(df = \text{Tr}\left( (2AX)^T dX \right)\)</span><span class="arithmatex">\(，\)</span>A = X{{X}^{T}}-{\Sigma }_{h}$，此时</p>
+<p>PCA：<span class="arithmatex">\(f\left( X \right)=\frac{1}{2}\left\| X{{X}^{\top}}-{{\Sigma }_{h}} \right\|_{F}^{2}\)</span> ，在计算 <span class="arithmatex">\(\nabla f\left( X \right)\)</span> 时，先算出 $<span class="arithmatex">\(\mathrm df = \text{Tr}\left( (2AX)^\top \mathrm dX \right)\)</span><span class="arithmatex">\(，\)</span>A = X{{X}^{\top}}-{\Sigma }_{h}$，此时</p>
 <div class="arithmatex">\[
-\boxed{\nabla_X f = 2AX = 2(XX^T - \Sigma_h)X}
+\boxed{\nabla_X f = 2AX = 2(XX^\top - \Sigma_h)X}
 \]</div>
 <p>见：<em>notability 多元微积分</em></p>
 <hr />
@@ -3255,27 +3271,56 @@ X(t): \mathbb{R} \to \mathbb{R}^{n \times m}
 <li>例：<span class="arithmatex">\(X(t) = A + tB\)</span>，其中 <span class="arithmatex">\(A, B\)</span> 是常数矩阵</li>
 </ul>
 <hr />
+<h3 id="def_5">def 矩阵关于标量求导</h3>
+<p>设 <span class="arithmatex">\(C(t)=\bigl[c_{ij}(t)\bigr]\in \mathbb{R}^{m\times n}\)</span>，其中每个元素 <span class="arithmatex">\(c_{ij}(t)\)</span> 都是标量 <span class="arithmatex">\(t\)</span> 的 <strong>可微函数</strong>，则矩阵函数 <span class="arithmatex">\(C(t)\)</span> 关于标量 <span class="arithmatex">\(t\)</span> 的导数定义为逐元素求导：</p>
+<div class="arithmatex">\[
+\left[
+\frac{\mathrm d C(t)}{\mathrm dt}
+\right]_{ij}
+=
+\frac{\mathrm d c_{ij}(t)}{\mathrm dt}
+\]</div>
+<p>写成极限形式为：</p>
+<div class="arithmatex">\[
+\frac{\mathrm d C(t)}{\mathrm dt}
+=
+\lim_{h\to 0}
+\frac{C(t+h)-C(t)}{h}
+\]</div>
+<p>两种定义是等价的</p>
+<hr />
 <h3 id="thm_1">Thm 矩阵乘积的求导</h3>
 <p>（Leibniz 公式）</p>
-<p>设 <span class="arithmatex">\(A(t)\)</span> 和 <span class="arithmatex">\(B(t)\)</span> 是标量 <span class="arithmatex">\(t\)</span> 的可微矩阵函数，则</p>
+<p>设 <span class="arithmatex">\(A(t)\)</span> 和 <span class="arithmatex">\(B(t)\)</span> 是标量 <span class="arithmatex">\(t\)</span> 的可微矩阵函数，且 <span class="arithmatex">\(C(t) = A(t)B(t)\)</span>，则</p>
 <div class="arithmatex">\[
-\frac{d}{dt} C(t) = \left( \frac{d}{dt} A(t) \right) B(t) + A(t) \left( \frac{d}{dt} B(t) \right)
+\frac{\mathrm d}{\mathrm dt} C(t) = \left( \frac{\mathrm d}{\mathrm dt} A(t) \right) B(t) + A(t) \left( \frac{\mathrm d}{\mathrm dt} B(t) \right)
 \]</div>
 <ul>
 <li>公式中必须严格保持 <span class="arithmatex">\(A,B\)</span> 的先后顺序</li>
 </ul>
 <p><strong>Proof</strong>：</p>
+<blockquote>
+<p>由矩阵乘法的定义，矩阵 <span class="arithmatex">\(C(t)\)</span> 中每个元素为</p>
 <div class="arithmatex">\[
 c_{ij}(t) = \sum_{k} a_{ik}(t)b_{kj}(t)
 \]</div>
-<p>应用标量函数的乘积求导法则</p>
+<p>应用 <strong>标量</strong> 函数的乘积求导法则</p>
 <div class="arithmatex">\[
-\frac{d}{dt} c_{ij}(t) = \sum_{k} \left( \frac{da_{ik}(t)}{dt} \cdot b_{kj}(t) + a_{ik}(t) \cdot \frac{db_{kj}(t)}{dt} \right)
+\begin{aligned}
+\left[\frac{\mathrm d}{\mathrm dt} C(t)\right]_{ij}
+&amp;=\frac{\mathrm d}{\mathrm d t }c_{ij}(t)\\
+&amp;=\frac{\mathrm d}{\mathrm d t } \left( \sum_{k} a_{ik}(t)b_{kj}(t) \right) \\
+&amp;= \sum_{k} \left( \frac{\mathrm da_{ik}(t)}{\mathrm dt} \cdot b_{kj}(t) + a_{ik}(t) \cdot \frac{\mathrm db_{kj}(t)}{\mathrm dt} \right) \\
+&amp;=\left(\sum_{k} \frac{\mathrm da_{ik}(t)}{\mathrm dt} \cdot b_{kj}(t) \right) 
++
+\left( \sum_k a_{ik}(t) \cdot \frac{\mathrm db_{kj}(t)}{\mathrm dt}  \right)
+\end{aligned}
 \]</div>
-<p>第一项是 <span class="arithmatex">\(\left [ \frac{dA}{dt} \cdot B\right ]_{ij}\)</span> ，第二项是 <span class="arithmatex">\(\left [ A \cdot \frac{dB}{dt} \right ]_{ij}\)</span>，得证</p>
+<p>第一项是矩阵 <span class="arithmatex">\(\frac{\mathrm dA}{\mathrm dt} \cdot B\)</span> 的第 <span class="arithmatex">\((i,j)\)</span> 位元素，第二项是矩阵 <span class="arithmatex">\(A \cdot \frac{\mathrm dB}{\mathrm dt}\)</span> 的第 <span class="arithmatex">\((i,j)\)</span> 位元素 <span class="arithmatex">\(\quad \square\)</span></p>
+</blockquote>
 <hr />
-<h3 id="def_5">def 雅可比矩阵</h3>
-<p>设 <span class="arithmatex">\(f:\mathbb{R}^n \rightarrow \mathbb{R}^m\)</span>，若 <span class="arithmatex">\(y\)</span> 的每个分量 <span class="arithmatex">\(y_i\)</span> 对每个自变量 <span class="arithmatex">\(x_j(1 \le j \le n)\)</span> 均存在一阶偏导数，则 <span class="arithmatex">\(f\)</span> 的<strong>雅可比矩阵</strong>（Jacobian Matrix）定义为一个 <span class="arithmatex">\(m \times n\)</span> 的矩阵：</p>
+<h3 id="def_6">def 雅可比矩阵</h3>
+<p>设 <span class="arithmatex">\(f:\mathbb{R}^n \rightarrow \mathbb{R}^m\)</span>，若 <span class="arithmatex">\(y\)</span> 的每个分量 <span class="arithmatex">\(y_i\)</span> 对每个自变量 <span class="arithmatex">\(x_j(1 \le j \le n)\)</span> 均存在一阶偏导数，则 <span class="arithmatex">\(f\)</span> 的 <strong>雅可比矩阵</strong>（Jacobian Matrix）定义为一个 <span class="arithmatex">\(m \times n\)</span> 的矩阵：</p>
 <div class="arithmatex">\[
 \frac{\partial y}{\partial x} = \begin{pmatrix} \frac{\partial y_1}{\partial x_1} &amp; \frac{\partial y_1}{\partial x_2} &amp; \cdots &amp; \frac{\partial y_1}{\partial x_n} \\ \frac{\partial y_2}{\partial x_1} &amp; \frac{\partial y_2}{\partial x_2} &amp; \cdots &amp; \frac{\partial y_2}{\partial x_n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ \frac{\partial y_m}{\partial x_1} &amp; \frac{\partial y_m}{\partial x_2} &amp; \cdots &amp; \frac{\partial y_m}{\partial x_n} \end{pmatrix}
 \]</div>
@@ -3296,8 +3341,8 @@ y_2
 \frac{\partial y}{\partial x} = \begin{pmatrix} \frac{\partial y_1}{\partial r} &amp; \frac{\partial y_1}{\partial \theta} \\ \frac{\partial y_2}{\partial r} &amp; \frac{\partial y_2}{\partial \theta} \end{pmatrix} = \begin{pmatrix} \cos \theta &amp; -r \sin \theta \\ \sin \theta &amp; r \cos \theta \end{pmatrix}
 \]</div>
 <hr />
-<h3 id="def_6">def 梯度矩阵</h3>
-<p>设 <span class="arithmatex">\(X\)</span>  <span class="arithmatex">\(m \times n\)</span> </p>
+<h3 id="def_7">def 梯度矩阵</h3>
+<p>设 <span class="arithmatex">\(X \in \mathbb{R}^{m \times n}\)</span> </p>
 <div class="arithmatex">\[
 X = \begin{pmatrix} x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1n} \\ x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2n} \\ \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ x_{m1} &amp; x_{m2} &amp; \cdots &amp; x_{mn} \end{pmatrix}
 \]</div>
@@ -3310,11 +3355,11 @@ X = \begin{pmatrix} x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1n} \\ x_{21} &amp
 <blockquote>
 <div class="arithmatex">\[
 \begin{aligned}
-\frac{\partial}{\partial X}\operatorname{tr}(XA) &amp;= A^T \\
-\frac{\partial}{\partial X}\operatorname{tr}(X^T A) &amp;= A
+\frac{\partial}{\partial X}\operatorname{tr}(XA) &amp;= A^\top \\
+\frac{\partial}{\partial X}\operatorname{tr}(X^\top A) &amp;= A
 \end{aligned}
 \]</div>
-<p>应用：设 <span class="arithmatex">\(h(X) = \text{tr}(M^T X) = \text{tr}(X^TM)\)</span> ，<span class="arithmatex">\(\nabla h(X) = M\)</span></p>
+<p>应用：设 <span class="arithmatex">\(h(X) = \text{tr}(M^\top X) = \text{tr}(X^\top M)\)</span> ，<span class="arithmatex">\(\nabla h(X) = M\)</span></p>
 </blockquote>
 <p>二次型 <span class="arithmatex">\(\text{tr}(XBX^\top)\)</span></p>
 <div class="arithmatex">\[
@@ -3329,10 +3374,10 @@ X = \begin{pmatrix} x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1n} \\ x_{21} &amp
 <li>对于标量函数，求导前套上一个 <span class="arithmatex">\(\text{tr}\)</span> ，结果不变</li>
 </ul>
 </blockquote>
-<p>实例 <span class="arithmatex">\(a^T X B c\)</span></p>
+<p>实例 <span class="arithmatex">\(a^\top X B c\)</span></p>
 <blockquote>
 <p>统计学、信号处理常见</p>
-<p>由 <span class="arithmatex">\(f(X) = \text{tr}(a^T X B c)\)</span> ，<span class="arithmatex">\(f(X) = \text{tr}( X (B ca^T)) =(B ca^T)^T = ac^TB^T\)</span></p>
+<p>由 <span class="arithmatex">\(f(X) = \text{tr}(a^\top X B c)\)</span> ，<span class="arithmatex">\(f(X) = \text{tr}( X (B ca^\top)) =(B ca^\top)^\top = ac^\top B^\top\)</span></p>
 </blockquote>
 <h2 id="_13">行列式</h2>
 <h3 id="_14">定义</h3>
@@ -3359,11 +3404,14 @@ a_4 &amp; 0 &amp; 0 &amp; 0
 \end{vmatrix}
 \]</div>
 <p>的值</p>
-<p><strong>Sol</strong>：定义中的 <span class="arithmatex">\(a_{1j_1}a_{2j_2}\cdots a_{nj_n}\)</span>，只有在每一行，分别刚好选中 <span class="arithmatex">\(a_1,a_2,a_3,a_4\)</span> 才有可能不为 0，因此</p>
+<p><strong>Sol</strong>：</p>
+<blockquote>
+<p>定义中的 <span class="arithmatex">\(a_{1j_1}a_{2j_2}\cdots a_{nj_n}\)</span>，只有在每一行，分别刚好选中 <span class="arithmatex">\(a_1,a_2,a_3,a_4\)</span> 才有可能不为 0，因此</p>
 <div class="arithmatex">\[
 \Delta = (-1)^{\tau(4321)}a_{14}a_{23}a_{32}a_{41}=a_1a_2a_3a_4
 \]</div>
 <p><span class="arithmatex">\(\square\)</span></p>
+</blockquote>
 <h3 id="_15">基本公式</h3>
 <p>数乘行列式：<span class="arithmatex">\(|kA| = k^n |A|\)</span>，其中 <span class="arithmatex">\(A \in \mathbb{R}^{n \times n}\)</span></p>
 <p>逆矩阵的行列式 <span class="arithmatex">\(|A^{-1}| = \frac{1}{|A|}\)</span></p>
@@ -3371,7 +3419,7 @@ a_4 &amp; 0 &amp; 0 &amp; 0
 <h3 id="_16">行列式求导</h3>
 <p>设 <span class="arithmatex">\(A(t) = (a_{ij}(t))\)</span> 是一个 <span class="arithmatex">\(n \times n\)</span> 的矩阵，其元素 <span class="arithmatex">\(a_{ij}(t)\)</span> 均是关于变量 <span class="arithmatex">\(t\)</span> 的<strong>可微函数</strong>，则</p>
 <div class="arithmatex">\[
-\frac{d}{dt} \det(A(t)) = \sum_{i=1}^{n} \det \begin{pmatrix} a_{11} &amp; \dots &amp; a_{1n} \\ \vdots &amp; \ddots &amp; \vdots \\ a'_{i1} &amp; \dots &amp; a'_{in} \\ \vdots &amp; \ddots &amp; \vdots \\ a_{n1} &amp; \dots &amp; a_{nn} \end{pmatrix}
+\frac{\mathrm d}{\mathrm dt} \det(A(t)) = \sum_{i=1}^{n} \det \begin{pmatrix} a_{11} &amp; \dots &amp; a_{1n} \\ \vdots &amp; \ddots &amp; \vdots \\ a'_{i1} &amp; \dots &amp; a'_{in} \\ \vdots &amp; \ddots &amp; \vdots \\ a_{n1} &amp; \dots &amp; a_{nn} \end{pmatrix}
 \]</div>
 <ul>
 <li>依次对每一行求导、其余行保持不变的 <span class="arithmatex">\(n\)</span> 个行列式之和</li>
@@ -3383,7 +3431,9 @@ a_4 &amp; 0 &amp; 0 &amp; 0
 \begin{vmatrix}a &amp; e^{-a} &amp; \ln a \\b &amp; e^{-b} &amp; \ln b \\1 &amp; -e^{-\xi} &amp; \xi^{-1}\end{vmatrix}=0.
 \]</div>
 <p>（2025年复旦大学插班生考试）</p>
-<p><strong>Proof</strong>：① 存在性：构造函数</p>
+<p><strong>Proof</strong>：</p>
+<blockquote>
+<p>① 存在性：构造函数</p>
 <div class="arithmatex">\[
 f(x)=
 \begin{vmatrix}
@@ -3435,6 +3485,7 @@ b\left(-\frac{e^{-a}}{x^2}-e^{-x}\ln a\right)
 \end{align}
 \]</div>
 <p>由于 <span class="arithmatex">\(y = \frac{1}{xe^x}\)</span>、<span class="arithmatex">\(y = \frac{\ln x}{x}\)</span> 均在 <span class="arithmatex">\((e,+\infty)\)</span> 单调递减，故 <span class="arithmatex">\(f''(x) &gt;0\)</span>，从而 <span class="arithmatex">\(\xi\)</span> 唯一 <span class="arithmatex">\(\quad \square\)</span></p>
+</blockquote>
 <h2 id="_18">逆矩阵</h2>
 <h3 id="_19">基本公式</h3>
 <div class="arithmatex">\[
@@ -3444,7 +3495,7 @@ A^{-1} = \frac{A^*}{|A| }
 <h2 id="_20">对称矩阵</h2>
 <p>任何一个实对称矩阵 <span class="arithmatex">\(A\)</span>，都存在<strong>正交矩阵</strong> <span class="arithmatex">\(Q\)</span>，使得</p>
 <div class="arithmatex">\[
-A = Q \Lambda Q^T
+A = Q \Lambda Q^\top
 \]</div>
 <p>其中 <span class="arithmatex">\(\Lambda\)</span> 是由 <span class="arithmatex">\(A\)</span> 的所有特征值组成的对角矩阵</p>
 <h2 id="_21">正定矩阵</h2>
@@ -3452,21 +3503,22 @@ A = Q \Lambda Q^T
 <h3 id="_22">正定矩阵的充要条件</h3>
 <p>设 <span class="arithmatex">\(A\)</span> 为 <span class="arithmatex">\(n\)</span> 阶实对称矩阵，则以下条件均等价：</p>
 <ol>
-<li>（定义）<span class="arithmatex">\(\forall x \in \mathbb{R}^n,\ x \neq 0\)</span>，有 <span class="arithmatex">\(x^T Ax &gt; 0\)</span></li>
+<li>（定义）<span class="arithmatex">\(\forall x \in \mathbb{R}^n,\ x \neq 0\)</span>，有 <span class="arithmatex">\(x^\top Ax &gt; 0\)</span></li>
 <li>（特征值）<span class="arithmatex">\(A\)</span> 的所有特征值 <span class="arithmatex">\(&gt; 0\)</span></li>
-<li>（合同）存在可逆 <span class="arithmatex">\(C\)</span>，使得 <span class="arithmatex">\(A = C^T C\)</span></li>
+<li>（合同）存在可逆 <span class="arithmatex">\(C\)</span>，使得 <span class="arithmatex">\(A = C^\top C\)</span></li>
 <li>（主子式）<span class="arithmatex">\(A\)</span> 的所有顺序主子式（或主子式） <span class="arithmatex">\(&gt; 0\)</span></li>
 <li>（惯性指数）<span class="arithmatex">\(A\)</span> 的正惯性指数为 <span class="arithmatex">\(n\)</span></li>
 </ol>
-<p><strong>性质：</strong> 已知 <span class="arithmatex">\(A\)</span> 为实对称矩阵，则 <span class="arithmatex">\(A\)</span> 为半正定矩阵 <span class="arithmatex">\(\iff\)</span> <span class="arithmatex">\(\forall \mu &gt; 0\)</span>，有 <span class="arithmatex">\(A + \mu I\)</span> 是正定矩阵。</p>
+<p><strong>性质：</strong> 已知 <span class="arithmatex">\(A\)</span> 为实对称矩阵，则 <span class="arithmatex">\(A\)</span> 为半正定矩阵 <span class="arithmatex">\(\iff\)</span> <span class="arithmatex">\(\forall \mu &gt; 0\)</span>，有 <span class="arithmatex">\(A + \mu I\)</span> 是正定矩阵</p>
+<p><strong>Proof</strong>：</p>
 <blockquote>
-<p><strong>Proof</strong>：①（<span class="arithmatex">\(\Rightarrow\)</span>）</p>
+<p>①（<span class="arithmatex">\(\Rightarrow\)</span>）</p>
 <p>已知 <span class="arithmatex">\(A \succeq 0\)</span>，若 <span class="arithmatex">\(A\)</span> 为半正定矩阵，则其特征值 <span class="arithmatex">\(\lambda_i \geq 0\)</span>。存在正交矩阵 <span class="arithmatex">\(Q\)</span>，使得</p>
 <div class="arithmatex">\[
-A = Q \Lambda Q^T, \quad\Lambda = \text{diag}(\lambda_1, \lambda_2, \dots, \lambda_n)
+A = Q \Lambda Q^\top, \quad\Lambda = \text{diag}(\lambda_1, \lambda_2, \dots, \lambda_n)
 \]</div>
 <div class="arithmatex">\[
-A + \mu I = Q \Lambda Q^T + \mu Q Q^T = Q (\Lambda + \mu I) Q^T = Q (\Lambda + \mu I) Q^{-1}
+A + \mu I = Q \Lambda Q^\top + \mu Q Q^\top = Q (\Lambda + \mu I) Q^\top = Q (\Lambda + \mu I) Q^{-1}
 \]</div>
 <p>故 <span class="arithmatex">\(A + \mu I\)</span> 与 <span class="arithmatex">\(\Lambda + \mu I\)</span> 相似。<span class="arithmatex">\(\Lambda + \mu I\)</span> 的特征值 <span class="arithmatex">\(\lambda_i + \mu&gt;0(i=1,\ldots,n)\)</span>，由于相似矩阵具有相同的特征值，<span class="arithmatex">\(\Rightarrow A + \mu I\)</span> 的特征值均为正数</p>
 <p><span class="arithmatex">\(A + \mu I\)</span> 的特征值均为正数且是对称阵，故 <span class="arithmatex">\(A + \mu I\)</span> 为正定矩阵</p>
@@ -3476,15 +3528,15 @@ A + \mu I = Q \Lambda Q^T + \mu Q Q^T = Q (\Lambda + \mu I) Q^T = Q (\Lambda + \
 </blockquote>
 <p>任意 <span class="arithmatex">\(x \in \mathbb{R}^n\)</span> 且 <span class="arithmatex">\(x \neq 0\)</span>，恒有</p>
 <div class="arithmatex">\[
-x^T(A + \mu I)x &gt; 0
+x^\top(A + \mu I)x &gt; 0
 \]</div>
 <div class="arithmatex">\[
-x^T A x + \mu x^T I x &gt; 0 \implies x^T A x + \mu \|x\|_2^2 &gt; 0
+x^\top A x + \mu x^\top I x &gt; 0 \implies x^\top A x + \mu \|x\|_2^2 &gt; 0
 \]</div>
 <div class="arithmatex">\[
-x^T A x &gt; -\mu \|x\|_2^2
+x^\top A x &gt; -\mu \|x\|_2^2
 \]</div>
-<p>这是一个关于一维变量 <span class="arithmatex">\(\mu\)</span> 的恒成立问题，故 <span class="arithmatex">\(x^T A x\geq0\)</span> 恒成立。当 <span class="arithmatex">\(x=0\)</span> 时，该式也成立，故 <span class="arithmatex">\(A \succeq 0\)</span> <span class="arithmatex">\(\quad \square\)</span></p>
+<p>这是一个关于一维变量 <span class="arithmatex">\(\mu\)</span> 的恒成立问题，故 <span class="arithmatex">\(x^\top A x\geq0\)</span> 恒成立。当 <span class="arithmatex">\(x=0\)</span> 时，该式也成立，故 <span class="arithmatex">\(A \succeq 0\)</span> <span class="arithmatex">\(\quad \square\)</span></p>
 </blockquote>
 <h2 id="_23">半正定矩阵</h2>
 <p>（Positive Semi-definite, PSD）</p>
@@ -3492,40 +3544,41 @@ x^T A x &gt; -\mu \|x\|_2^2
 <p>设 <span class="arithmatex">\(A\)</span> 为 <span class="arithmatex">\(n\)</span> 阶实对称矩阵，则以下条件均等价：</p>
 <ol>
 <li>
-<p>（定义）<span class="arithmatex">\(\forall x \in \mathbb{R}^n\)</span>，有 <span class="arithmatex">\(x^T Ax \geq 0\)</span></p>
+<p>（定义）<span class="arithmatex">\(\forall x \in \mathbb{R}^n\)</span>，有 <span class="arithmatex">\(x^\top Ax \geq 0\)</span></p>
 </li>
 <li>
 <p>（特征值） <span class="arithmatex">\(A\)</span> 的所有特征值 <span class="arithmatex">\(\geq 0\)</span></p>
 </li>
 </ol>
 <blockquote>
-<p>定义中并不需要像正定矩阵那样，去掉 <span class="arithmatex">\(x=0\)</span></p>
+<p>定义中并不需要像正定矩阵去掉 <span class="arithmatex">\(x=0\)</span></p>
 </blockquote>
 <h3 id="thm_2">Thm：对称正半定矩阵的平方根存在性</h3>
 <p>若 <span class="arithmatex">\(W \in \mathbb{R}^{n \times n}\)</span> 是实对称半正定矩阵（<span class="arithmatex">\(W \succeq 0\)</span>），则<strong>存在唯一</strong>的对称半正定矩阵（记为 <span class="arithmatex">\(W^{1/2}\)</span>），使得</p>
 <div class="arithmatex">\[
 W^{1/2}W^{1/2} = W
 \]</div>
-<h3 id="at-a"><span class="arithmatex">\(A^T A\)</span> 的半正定性</h3>
-<p>对任意 <span class="arithmatex">\(A \in \mathbb{R}^{m \times n}\)</span>，<span class="arithmatex">\(A^T A\)</span> 是（对称）半正定矩阵</p>
+<h3 id="atop-a"><span class="arithmatex">\(A^\top A\)</span> 的半正定性</h3>
+<p>对任意 <span class="arithmatex">\(A \in \mathbb{R}^{m \times n}\)</span>，<span class="arithmatex">\(A^\top A\)</span> 是（对称）半正定矩阵</p>
 <blockquote>
-<p><strong>Proof</strong>：①（对称性）易验证 <span class="arithmatex">\((A^T A)^T = A^T (A^T)^T = A^T A\)</span></p>
-<p>②（半正定性）<span class="arithmatex">\(\forall x \in \mathbb{R}^n\)</span>，<span class="arithmatex">\(x^T (A^T A) x = \|Ax\|^2 \ge 0 \implies\)</span> 半正定</p>
-<p>其中，<span class="arithmatex">\(\|a\|^2 = a^T a\)</span> 为向量 2-范数</p>
+<p><strong>Proof</strong>：①（对称性）易验证 <span class="arithmatex">\((A^\top A)^\top = A^\top (A^\top)^\top = A^\top A\)</span></p>
+<p>②（半正定性）<span class="arithmatex">\(\forall x \in \mathbb{R}^n\)</span>，<span class="arithmatex">\(x^\top (A^\top A) x = \|Ax\|^2 \ge 0 \implies\)</span> 半正定</p>
+<p>其中，<span class="arithmatex">\(\|a\|^2 = a^\top a\)</span> 为向量 2-范数</p>
 <blockquote>
 <p>使用2-范数的原因：</p>
-<p>半正定的定义是要证出 <span class="arithmatex">\(x^TAx\geq 0\)</span>，并不关心使用了什么范数</p>
+<p>半正定的定义是要证出 <span class="arithmatex">\(x^\top Ax\geq 0\)</span>，并不关心使用了什么范数</p>
 </blockquote>
 </blockquote>
 <h2 id="_25">二次型</h2>
-<p>基本写法</p>
-<p>设 <span class="arithmatex">\(x = (x_1,x_2,\dots,x_n)^T\)</span>，则</p>
+<p><strong>基本写法</strong></p>
+<p>设 <span class="arithmatex">\(x = (x_1,x_2,\dots,x_n)^\top\)</span>，则</p>
 <div class="arithmatex">\[
-x^T A x = \sum_{i=1}^n \sum_{j=1}^n x_ix_ja_{ij}
+x^\top A x = \sum_{i=1}^n \sum_{j=1}^n x_ix_ja_{ij}
 \]</div>
 <h3 id="_26">将二次型还原回一个对称矩阵</h3>
 <p>例：若二次型 <span class="arithmatex">\(f(x_1,x_2,x_3)=5x_1^2+5x_2^2+cx_3^2-2x_1x_2+6x_1x_3-6x_2x_3\)</span> 的秩为 2，则 <span class="arithmatex">\(c=\)</span> <span class="arithmatex">\(\underline{\hspace{3.5em}}.\)</span></p>
 <p><strong>Sol</strong>：</p>
+<blockquote>
 <div class="arithmatex">\[
 f(x)=
 \begin{bmatrix}x_1 &amp; x_2 &amp; x_3\end{bmatrix}
@@ -3546,6 +3599,7 @@ f(x)=
 =24c-72=0
 \]</div>
 <p>故 <span class="arithmatex">\(c=3\)</span> <span class="arithmatex">\(\quad \square\)</span></p>
+</blockquote>
 <h3 id="_27">二次型函数的线性化</h3>
 <p>设 <span class="arithmatex">\(A\)</span> 为<strong>对称矩阵</strong>，考虑二次型函数 <span class="arithmatex">\(f(x) =x^\top Ax\)</span>，现将其近似为仿射函数。求梯度得</p>
 <div class="arithmatex">\[
@@ -3606,8 +3660,12 @@ R^{-1} = \begin{pmatrix} \cos\theta &amp; \sin\theta \\ -\sin\theta &amp; \cos\t
 </ul>
 <h4 id="_32">例题</h4>
 <p>设 <span class="arithmatex">\(A = \begin{pmatrix} \sin \frac{\pi}{1013} &amp; -\cos \frac{\pi}{1013} \\ \cos \frac{\pi}{1013} &amp; \sin \frac{\pi}{1013} \end{pmatrix}^{2026}\)</span>，则 <span class="arithmatex">\(A\)</span> 的迹 <span class="arithmatex">\(\text{tr} A =\)</span> <span class="arithmatex">\(\underline{\hspace{3.5em}}.\)</span></p>
-<p><em>（2026 CMC 数学组，一.1 ）</em></p>
-<p><strong>Sol</strong>：将题目中的底数矩阵凑成标准旋转矩阵</p>
+<blockquote>
+<p>2026 CMC 数学组，一 1</p>
+</blockquote>
+<p><strong>Sol</strong>：</p>
+<blockquote>
+<p>将题目中的底数矩阵凑成标准旋转矩阵</p>
 <div class="arithmatex">\[
 B = \begin{pmatrix} \cos\left(\frac{\pi}{2} - \frac{\pi}{1013}\right) &amp; -\sin\left(\frac{\pi}{2} - \frac{\pi}{1013}\right) \\ \sin\left(\frac{\pi}{2} - \frac{\pi}{1013}\right) &amp; \cos\left(\frac{\pi}{2} - \frac{\pi}{1013}\right) \end{pmatrix}
 \]</div>
@@ -3623,6 +3681,7 @@ A = B^{2026} &amp;= \begin{pmatrix} \cos(2026\theta) &amp; -\sin(2026\theta) \\ 
 \end{aligned}
 \]</div>
 <p>故 <span class="arithmatex">\(\text{tr} A = -2\)</span> <span class="arithmatex">\(\quad \square\)</span></p>
+</blockquote>
 
 
 
