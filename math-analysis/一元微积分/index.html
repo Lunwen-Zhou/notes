@@ -2462,7 +2462,7 @@
 
 
 <h1 id="_1">一元微积分</h1>
-<p class="document-modified-time">更新时间：<time datetime="2026-08-30T18:55+00:00">2026年08月31日 02:55</time></p>
+<p class="document-modified-time">更新时间：<time datetime="2026-08-31T04:58+00:00">2026年08月31日 12:58</time></p>
 
 <h2 id="_2">数学基础</h2>
 <h3 id="_3">调和平均数</h3>
@@ -2598,7 +2598,7 @@ o\!\left(
 &amp;\leq \left|\int_a^M f(t)\,\mathrm dt\right| +\int_M^x |f(t)|\,\mathrm dt \\
 &amp;:=C + \int_M^x |f(t)|\,\mathrm dt \\
 &amp;\leq C+\varepsilon_1\int_M^x\varphi(t)\,\mathrm dt
-\end{aligned}
+\end{aligned} 
 \]</div>
 <p>由于 <span class="arithmatex">\(x&gt;a\)</span>、<span class="arithmatex">\(\varphi(t) &gt; 0\)</span>：</p>
 <div class="arithmatex">\[
@@ -2609,7 +2609,7 @@ o\!\left(
 +
 \varepsilon_1 \cdot
 \frac{\int_M^x\varphi(t)\,\mathrm dt}
-{\int_a^x\varphi(t)\,\mathrm dt}
+{\int_a^x\varphi(t)\,\mathrm dt}\tag{1}
 \]</div>
 <p>由于</p>
 <div class="arithmatex">\[
@@ -2624,30 +2624,19 @@ o\!\left(
 \frac{C}{\int_a^x\varphi(t)\,\mathrm dt}
 +\varepsilon_1
 \]</div>
-<p>由于 <span class="arithmatex">\(\int_a^{+\infty}\varphi(t)\,\mathrm dt\)</span> 发散， <span class="arithmatex">\(\int_a^x\varphi(t)\,\mathrm dt\to+\infty\)</span>（as <span class="arithmatex">\(x\to+\infty\)</span>），上式右侧的第一项趋于 0</p>
-<p><span class="arithmatex">\(\boxed{\forall \varepsilon&gt;0}\)</span>，取 <span class="arithmatex">\(\varepsilon_2 =\dfrac{\varepsilon}{2}&gt;0\)</span>，则 <span class="arithmatex">\(\exists G&gt;a\)</span>，s.t. 当 <span class="arithmatex">\(x&gt;G\)</span> 时</p>
+<p>由于 <span class="arithmatex">\(\int_a^{+\infty}\varphi(t)\,\mathrm dt\)</span> 发散， <span class="arithmatex">\(\int_a^x\varphi(t)\,\mathrm dt\to+\infty\)</span>（as <span class="arithmatex">\(x\to+\infty\)</span>），上式右侧的第一项趋于 0。即 <span class="arithmatex">\(\forall \varepsilon_2 &gt; 0\)</span>，<span class="arithmatex">\(\exists G&gt;a\)</span>，s.t. 当 <span class="arithmatex">\(x&gt;G\)</span> 时，恒有</p>
 <div class="arithmatex">\[
-\frac{C}{\int_a^x\varphi(t)\,\mathrm dt}&lt;\varepsilon_2=\frac{\varepsilon}{2}
+\left|\frac{C}{\int_a^x\varphi(t)\,\mathrm dt}-0 \right |&lt;\varepsilon_2 \tag{2}
 \]</div>
-<p>同样，取 <span class="arithmatex">\(\varepsilon_1 =\dfrac{\varepsilon}{2}&gt;0\)</span>，取 <span class="arithmatex">\(\boxed{N=\max\{M,G\}}\)</span>，当 <span class="arithmatex">\(x&gt;N\)</span> 时，恒有</p>
-<div class="arithmatex">\[
-\frac{\left|\int_a^x f(t)\,\mathrm dt\right|}
-{\int_a^x\varphi(t)\,\mathrm dt}
-\le
-\varepsilon_1
-=
-\frac{\varepsilon}{2}
-\]</div>
+<p><span class="arithmatex">\(\boxed{\forall \varepsilon&gt;0}\)</span>，取 <span class="arithmatex">\(\varepsilon_1 = \varepsilon_2 =\dfrac{\varepsilon}{2}\)</span>，则 <span class="arithmatex">\(\exist M&gt; a\)</span>，<span class="arithmatex">\(\exist G&gt;a\)</span> s.t. 使得 (1)、(2) 式成立，当 <span class="arithmatex">\(\boxed{x&gt;\max \{M,G\}}\)</span>时</p>
 <div class="arithmatex">\[
 \left |
 \frac{\int_a^x f(t)\,\mathrm dt}
 {\int_a^x\varphi(t)\,\mathrm dt}-0
 \right |
-\leq
-\left |  
-\varepsilon_1 + \varepsilon_2 
-\right |
-\leq \left| \frac{\varepsilon}{2} + \frac{\varepsilon}{2}\right | = \varepsilon
+&lt;
+\varepsilon_1 + \varepsilon_2 =
+\frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
 \]</div>
 <p><span class="arithmatex">\(\square\)</span></p>
 </blockquote>
