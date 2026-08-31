@@ -1751,6 +1751,45 @@
   <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       
+        性质
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="性质">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定积分关于积分区间端点的连续性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        习题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         定积分性质
       
     </span>
@@ -1764,7 +1803,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
+  <a href="#_27" class="md-nav__link">
     <span class="md-ellipsis">
       
         实数连续统
@@ -2416,6 +2455,45 @@
   <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       
+        性质
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="性质">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定积分关于积分区间端点的连续性
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        习题
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         定积分性质
       
     </span>
@@ -2429,7 +2507,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
+  <a href="#_27" class="md-nav__link">
     <span class="md-ellipsis">
       
         实数连续统
@@ -2462,7 +2540,7 @@
 
 
 <h1 id="_1">一元微积分</h1>
-<p class="document-modified-time">更新时间：<time datetime="2026-08-31T04:58+00:00">2026年08月31日 12:58</time></p>
+<p class="document-modified-time">更新时间：<time datetime="2026-08-31T19:30+00:00">2026年09月01日 03:30</time></p>
 
 <h2 id="_2">数学基础</h2>
 <h3 id="_3">调和平均数</h3>
@@ -2624,7 +2702,7 @@ o\!\left(
 \frac{C}{\int_a^x\varphi(t)\,\mathrm dt}
 +\varepsilon_1
 \]</div>
-<p>由于 <span class="arithmatex">\(\int_a^{+\infty}\varphi(t)\,\mathrm dt\)</span> 发散， <span class="arithmatex">\(\int_a^x\varphi(t)\,\mathrm dt\to+\infty\)</span>（as <span class="arithmatex">\(x\to+\infty\)</span>），上式右侧的第一项趋于 0。即 <span class="arithmatex">\(\forall \varepsilon_2 &gt; 0\)</span>，<span class="arithmatex">\(\exists G&gt;a\)</span>，s.t. 当 <span class="arithmatex">\(x&gt;G\)</span> 时，恒有</p>
+<p>由于 <span class="arithmatex">\(\int_a^{+\infty}\varphi(t)\,\mathrm dt\)</span> 发散， <span class="arithmatex">\(\int_a^x\varphi(t)\,\mathrm dt\to+\infty\)</span>（as <span class="arithmatex">\(x\to+\infty\)</span>），上式右侧的第一项趋于 0。即 <span class="arithmatex">\(\forall \varepsilon_2 &gt; 0\)</span>，<span class="arithmatex">\(\exist G&gt;a\)</span>，s.t. 当 <span class="arithmatex">\(x&gt;G\)</span> 时，恒有</p>
 <div class="arithmatex">\[
 \left|\frac{C}{\int_a^x\varphi(t)\,\mathrm dt}-0 \right |&lt;\varepsilon_2 \tag{2}
 \]</div>
@@ -2887,6 +2965,20 @@ f(x)=f(a)+f'(a)(x-a)+O\left((x-a)^2\right)
 </li>
 </ul>
 <h2 id="_22">定积分</h2>
+<h3 id="_23">性质</h3>
+<h4 id="_24">定积分关于积分区间端点的连续性</h4>
+<p>设 <span class="arithmatex">\(f\in [a,b]\)</span>，则</p>
+<div class="arithmatex">\[
+\lim_{x\to b^-}\int_a^x f(t)\,dt
+=
+\int_a^b f(t)\,dt
+\]</div>
+<div class="arithmatex">\[
+\lim_{x\to a^+}\int_x^b f(t)\,dt
+=
+\int_a^b f(t)\,dt
+\]</div>
+<h3 id="_25">习题</h3>
 <p>计算积分 </p>
 <div class="arithmatex">\[
 I(b) = \int_{0}^{\frac{\pi}{2}} \frac{\mathrm dx}{b + \tan x} (b &gt; 0)
@@ -2919,7 +3011,7 @@ bI+J=\int_{0}^{\frac{\pi}{2}}\mathrm dx=\frac{\pi}{2}
 <p><span class="arithmatex">\(\square\)</span>
 </p>
 </blockquote>
-<h3 id="_23">定积分性质</h3>
+<h3 id="_26">定积分性质</h3>
 <ul>
 <li>
 <p><strong>性质</strong>（线性性质）：若 <span class="arithmatex">\(f,g\)</span> 在 <span class="arithmatex">\([a,b]\)</span> 上可积，设 <span class="arithmatex">\(\lambda, \mu \in \mathbb R\)</span> 为常数。则 <span class="arithmatex">\(\lambda f + \mu g\)</span> 在 <span class="arithmatex">\([0,1]\)</span> 上可积，且满足</p>
@@ -2980,7 +3072,7 @@ I_1
 \]</div>
 <p><span class="arithmatex">\(\square\)</span></p>
 </blockquote>
-<h2 id="_24">实数连续统</h2>
+<h2 id="_27">实数连续统</h2>
 
 
 
