@@ -17,10 +17,10 @@ hide:
   <span class="note-card__link">查看笔记 →</span>
 </a>
 
-<a class="note-card" href="推荐算法基础/">
+<a class="note-card" href="推荐算法note/">
   <span class="note-card__category">算法工程 · 推荐算法</span>
 
-  <h2>推荐算法基础</h2>
+  <h2>推荐算法基础知识</h2>
   <p></p>
   <span class="note-card__link">查看笔记 →</span>
 </a>

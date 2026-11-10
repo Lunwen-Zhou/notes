@@ -30,20 +30,16 @@
       "modified_at": "2026-09-13T19:31:23+08:00"
     },
     "docs/python/MD  Leetcode 解法笔记.md": {
-      "content_sha256": "8d9be53e36a86b7c3436a309d5bfc7ed13620c02cfa128f6ef97ebde49838a88",
-      "modified_at": "2026-10-27T19:23:33+08:00"
+      "content_sha256": "e5eb7d66f66b3a461e21eb079e8ea0a876a7527febc4517d19f008d2027c3735",
+      "modified_at": "2026-11-10T11:33:52+08:00"
     },
     "docs/python/index.md": {
       "content_sha256": "d7fa2bff0b80baa224e8e50a05ff987f3aadaccbae2db0b60a58dbef03ffa8cc",
       "modified_at": "2026-11-10T11:25:52+08:00"
     },
     "docs/recommendation/index.md": {
-      "content_sha256": "8ffa3f3439cf55386a28f2bee46f2efea7126237e55d19c7b47a36e810a8af48",
-      "modified_at": "2026-08-05T13:38:11+08:00"
-    },
-    "docs/recommendation/推荐算法基础.md": {
-      "content_sha256": "602786704d02e374d36df4c13ebf111da26209d8f82ffc9061f7de00a2511272",
-      "modified_at": "2026-08-06T12:44:12+08:00"
+      "content_sha256": "655eac0fca3b3903ed0f2e32be63191a5501e75b200ed7f29ca97775a1a9701c",
+      "modified_at": "2026-11-10T11:33:16+08:00"
     },
     "docs/recommendation/推荐算法项目知识.md": {
       "content_sha256": "4128fa504ed4dce881149913dbf568c44c50e5be9f99c28e40853f475f3f7082",
@@ -136,6 +132,10 @@
     "docs/recommendation/AI与大模型.md": {
       "content_sha256": "5227d1064b8c23358304583076ef4dfec9587e0fc83871be51c39df78bba8821",
       "modified_at": "2026-08-17T02:44:14+08:00"
+    },
+    "docs/recommendation/推荐算法note.md": {
+      "content_sha256": "b078f662871894fd97430126c0ef3a845ab82996445240c87150ca370e6f3582",
+      "modified_at": "2026-11-10T11:33:36+08:00"
     }
   }
 }

@@ -10,7 +10,7 @@ nav:
   - 推荐算法:
       - 推荐算法: recommendation/index.md
       - 推荐算法项目知识: recommendation/推荐算法项目知识.md
-      - 推荐算法基础: recommendation/推荐算法基础.md
+      - 推荐算法基础知识: recommendation/推荐算法note.md
       - 机器学习: recommendation/机器学习.md
       - 聚类: recommendation/聚类.md
       - AI 与大模型: recommendation/AI与大模型.md
