@@ -1,8 +1,191 @@
 # leetcode 解法笔记
 
-### 说明
+## 目录
 
-笔记每一个点最好提炼出一个主题，便于后续阅读
+哈希表
+
+```
+1   两数之和
+49  字母异位词分组
+128 最长连续序列
+```
+
+双指针
+
+```
+283 移动零
+11  盛最多水的容器
+15  三数之和
+42  接雨水
+```
+
+滑动窗口
+
+```
+3   无重复字符的最长子串
+438 找到字符串中所有字母异位词
+```
+
+子串
+
+```
+560 和为 K 的子数组
+239 滑动窗口最大值
+76  最小覆盖子串
+```
+
+数组
+
+```
+56  合并区间
+189 轮转数组
+238 除了自身以外数组的乘积
+41  缺失的第一个正数
+```
+
+矩阵
+
+```
+73  矩阵置零
+54  螺旋矩阵
+48  旋转图象
+```
+
+链表
+
+```
+160 相交链表
+206 反转链表
+234 回文链表
+141 环形链表
+142 环形链表 II
+21  合并两个有序链表
+2   两数相加
+19  删除链表的倒数第 N 个结点
+24  两两交换链表中的节点
+25  K 个一组翻转链表
+138 随机链表的复制
+148 排序链表
+23  合并 K 个升序链表
+146 LRU 缓存
+```
+
+二叉树
+
+```
+94  二叉树的中序遍历
+104 二叉树的最大深度
+226 翻转二叉树
+101 对称二叉树
+543 二叉树的直径
+102 二叉树的层序遍历
+108 将有序数组转换为二叉搜索树
+98  验证二叉搜索树
+230 二叉搜索树中第 K 小的元素
+199 二叉树的右视图
+114 二叉树展开为链表
+105 从前序与中序遍历序列构造二叉树
+437 路径总和 III
+236 二叉树的最近公共祖先
+124 二叉树中的最大路径和
+```
+
+图论
+
+```
+200 岛屿数量
+994 腐烂的橘子
+207 课程表
+208 实现 Trie (前缀树)
+```
+
+回溯
+
+```
+46  全排列
+78  子集
+17  电话号码的字母组合
+39  组合总和
+22  括号生成
+79  单词搜索
+131 分割回文串
+51  N 皇后
+```
+
+二分查找
+
+```
+35  搜索插入位置
+240 搜索二维矩阵 II
+74  搜索二维矩阵
+34  在排序数组中查找元素的第一个和最后一个位置
+33  搜索旋转排序数组
+153 寻找旋转排序数组中的最小值
+4   寻找两个正序数组的中位数
+```
+
+栈
+
+```
+20  有效的括号
+155 最小栈
+394 字符串解码
+739 每日温度
+84  柱状图中最大的矩形
+32  最长有效括号
+```
+
+堆
+
+```
+215 数组中的第 K 个最大元素
+347 前 K 个高频元素
+295 数据流的中位数
+```
+
+贪心算法
+
+```
+121 买卖股票的最佳时机
+55  跳跃游戏
+45  跳跃游戏 II
+763 划分字母区间
+```
+
+动态规划
+
+```
+70  爬楼梯
+118 杨辉三角
+53  最大子数组和
+198 打家劫舍
+279 完全平方数
+322 零钱兑换
+139 单词拆分
+300 最长递增子序列
+152 乘积最大子数组
+416 分割等和子集
+```
+
+多维动态规划
+
+```
+62   不同路径
+64   最小路径和
+5    最长回文子串
+1143 最长公共子序列
+72   编辑距离
+```
+
+技巧
+
+```
+136 只出现一次的数字
+169 多数元素
+75  颜色分类
+31  下一个排列
+287 寻找重复数
+```
 
 ## 哈希表
 
@@ -31,27 +214,6 @@ class Solution:
                 return [i,mp[val]]
             else:
                 mp[num] = i
-```
-
-C++
-
-```c++
-class Solution{
-public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-        unordered_map<int, int> mp;
-        for (int i=0; i < nums.size(); ++i){
-            int val = target - nums[i];
-            if (mp.find(val) != mp.end()) {
-                return {i, mp[val]};
-            } else{
-                mp[nums[i]] = i;
-            }
-
-        }
-        return {};
-    }
-};
 ```
 
 如果用双循环，时间为 $O(n^2)$，这里用哈希表将其降为 $O(n)$
@@ -294,17 +456,19 @@ class Solution:
         return ans
 ```
 
-- 要提前排序，这是双指针法的基础
+要提前排序，这是双指针法的基础
 
-- 注 1
+- **`while left < right and nums[left] == second` 要 left < right 的原因**
 
-  这里 `nums[left] == second:` 不能写成 `nums[left] == nums[left + 1]`
+  例：`[-2, 1, 1]`，此时 `first = -2`、`second = 1`、`third = 1`
 
-  因为 `while left < right` 这个循环如果要停止，必须要每次操作都至少移动了一下 `left` 或 `right` 指针。上面的写法中，前者一定可以移动，但后者未必可以移动
+  如果没有 `left < right`，`left` 会从 1 变为 2，继续变为 3，数组会越界
 
-**出错**：① `two_sum = nums[left] + nums[right]` 要在循环内部开头算，每次循环 `left` 、`right` 是一定有变化的
+- **`nums[left] == second:` 不能写成 `nums[left] == nums[left + 1]` 的原因** 
 
-② `second = nums[left]`、`third = nums[right]` 忘记写 `nums`
+  外层 `while left < right` 这个循环如果要停止，必须要每次操作都至少移动了一下 `left` 或 `right` 指针
+
+  前者的写法一定能每次至少移动一下，后者未必能做到，可能无法退出循环
 
 ---
 
@@ -349,6 +513,10 @@ class Solution:
         return water
 ```
 
+- **算法原理**
+
+  
+
 
 
 ## 滑动窗口
@@ -366,6 +534,13 @@ class Solution:
 输出: 3
 ```
 
+```
+0 <= s.length <= 10^5
+s 由英文字母、数字、符号和空格组成
+```
+
+**解法 1**：时间 $O(n)$
+
 ```python
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
@@ -375,38 +550,33 @@ class Solution:
         ans = 0
 
         for i, ch in enumerate(s):
-            if ch in mp and mp[ch] >= left: # 检查ch是否在mp，是为了保护后面的mp[ch]
+            if ch in mp and mp[ch] >= left:
                 left = mp[ch] + 1
-
-            mp[ch] = i  # 共用的，每次都看一下这一次的子串长度
+            mp[ch] = i
             ans = max(ans,i - left + 1)
         return ans 
 ```
 
-`if ch in mp` 如果当前的字符不在里面，这样也避免了去取没有的 `mp`
+当前的合法解为 $[\text{left, i}]$，从而长度为 `i - left + 1`
 
-**解法 2**
+**解法 2**（用 set）时间 $O(n)$
 
 ```python
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        if s == "": # 不特判也不影响
-            return 0
-        ch_set = set()
         left = 0
-        n = len(s)
+        win = set()
         ans = 0
-        for i in range(n):
-            ch = s[i]
-            if ch not in ch_set:
-                ch_set.add(ch)
-                ans = max(ans, i - left + 1)
+        for i,ch in enumerate(s):
+            if ch not in win:
+                win.add(ch)
             else:
                 while s[left] != ch:
-                    ch_del = s[left]
-                    ch_set.remove(ch_del)
+                    ch_left = s[left]
+                    win.remove(ch_left)
                     left += 1
                 left += 1
+            ans = max(ans, i - left + 1)
         return ans
 ```
 
@@ -419,11 +589,18 @@ class Solution:
 不考虑答案输出的顺序
 
 ```
+1 <= s.length, p.length <= 3 * 10^4
+s 和 p 仅包含小写字母
+```
+
+```
 输入: s = "cbaebabacd", p = "abc"
 输出: [0,6]
 输入: s = "abab", p = "ab"
 输出: [0,1,2]
 ```
+
+时间 $O(m)$，空间 $O(1)$
 
 ```python
 class Solution:
@@ -458,7 +635,17 @@ class Solution:
         return ans
 ```
 
-- 直接硬解，时间 $O(nm \log m)$，具体：
+- **复杂度**：时间 $O(m)$，空间 $O(1)$
+
+  初始化 `Counter(p)`、看第一个窗口都是 $O(n)$
+
+  一共滑动 $m-n$ 次，每次执行 `if win == p_count:`，假设 `p` 中有 $k$ 种不同的字符，比一次要 $O(k)$，故时间复杂度为 $O(n + (m-n)k)$，最差情况下 $k = n$，此时时间 $O(mn)$，空间 $O(k)$
+
+  但如果只包含小写字母，时间 $O(m+n) = O(m)$
+
+  > 算法在一开始直接特判了 $m < n$ 的情况，长度可以直接提取
+
+- **硬解时间为 $O(nm \log m)$**
 
   目标字符串 $p$ 排序为 $O(m \log m)$
 
@@ -466,7 +653,7 @@ class Solution:
 
   比较排序后的子串与排序后的目标字符串 $p$ 是否相等 $O(m)$
 
-  总共会生成约 $n$ 个子串（$n-m+1$），因一般 $n >> m$，$O(n)$，从而总共 $O(nm \log m)$
+  总共会生成约 $n$ 个子串（$n-m+1$），一般 $n \gg m$，故 $O(n)$，总共时间 $O(nm \log m)$
 
 - 本题用 $O(mn)$ 的方法也会超时间
 
@@ -600,7 +787,7 @@ class Solution:
 s 和 t 由英文字母组成
 ```
 
-优化切片的解法：时间 $O(m+n)$
+**解法**（优化切片）时间：$O(|s|+|t|)$
 
 ```python
 class Solution:
@@ -619,59 +806,16 @@ class Solution:
         min_len = INF
 
         for i, ch in enumerate(s):  # i 为右端点
-            if ch in t_count: # 因为ch不一定会在t_count中，直接使用后面的t_count[ch]可能出错
+            if ch in t_count: # 不在的话，i肯定是需要继续看的，而且肯定没法增加satisfies
                 win[ch] = win.get(ch, 0) + 1
                 if win[ch] == t_count[ch]:
                     satisfies += 1
 
             while satisfies == requires:
-                cur_len = i - left + 1
-                if cur_len < min_len:
-                    min_len = cur_len
+                # 此时是一种覆盖，所以先看一次答案。每次left左移时，都需要看一次答案
+                if i - left + 1 < min_len:
+                    min_len = i - left + 1
                     start = left
-
-                # 收缩可能会让satisfies变小
-                ch_left = s[left]
-                if ch_left in t_count:
-                    win[ch_left] -= 1
-                    if win[ch_left] < t_count[ch_left]:  #
-                        satisfies -= 1
-                left += 1
-
-        return "" if min_len == INF else s[start:start + min_len]
-```
-
-- `left` 和 `start` 的区别：
-
-  `left` 是当前滑动窗口的左端点，会随着算法不断移动
-
-  `start` 是目前找到的最优答案的起始位置，只在发现更短合法窗口时更新
-
-下面这个解法没有优化切片，时间为 $O(m^2 + n)$
-
-```python
-class Solution:
-    def minWindow(self, s: str, t: str) -> str:
-        t_count = {}
-        for ch in t:
-            t_count[ch] = t_count.get(ch, 0) + 1
-
-        requires = len(t_count) 
-        win = {}
-
-        left = 0
-        satisfies = 0
-        ans = ""
-        for i, ch in enumerate(s):
-            if ch in t_count:
-                win[ch] = win.get(ch, 0) + 1
-                if win[ch] == t_count[ch]:
-                    satisfies += 1
-
-            while satisfies == requires:
-                tmp_ans = s[left:i + 1]
-                if ans == "" or len(tmp_ans) < len(ans): 
-                    ans = tmp_ans
 
                 ch_left = s[left]
                 if ch_left in t_count:
@@ -679,22 +823,55 @@ class Solution:
                     if win[ch_left] < t_count[ch_left]:
                         satisfies -= 1
                 left += 1
-        return ans
+
+        return "" if min_len == INF else s[start:start + min_len]
 ```
 
-- 时间复杂度 $O(m^2+n)$
+- **`left` 和 `start` 的定义**
 
-  设 $m = |s|$，$n = |t|$。一开始处理 `t`：$O(n)$
+  `left` 是当前滑动窗口的左端点，会随着算法不断移动
 
-  算法主体 `for i,ch in enumerate(s):` 为 $O(m)$
+  `start` 是目前找到的最优答案的起始位置，**只在发现更短合法窗口时更新**
 
-  `while satisfies == req:` 这里也还是 $O(m)$，因为左右端点都是单调走完一次 s
+- **时间复杂度**：$O(|s| + |t|)$
 
-  但是切片 `tmp_ans = s[left:i+1]` 是瓶颈，最坏情况下窗口长度是 $O(m)$，因此这一部分为 $O(m^2)$
+  `for ch in t`：$O(|t|)$
 
-  总时间复杂度为 $O(n)+O(m)+O(m^2)=O(m^2+n)$
+  `for i, ch in enumerate(s)`：$O(|s|)$，虽然里面还有 while，但这并不是 $|s|^2$，因为 `left`、`start` 都只能单向移动，因此是 $O(|s|)+O(|s|)=O(|s|)$
 
-因此主要需要优化切片
+  故时间复杂度为 $O(|s| + |t|)$
+
+**对比解法**（没有优化切片，核心代码）时间 $O(|s|^2 + |t|)$
+
+```python
+for i, ch in enumerate(s):
+    if ch in t_count:
+        win[ch] = win.get(ch, 0) + 1
+        if win[ch] == t_count[ch]:
+            satisfies += 1
+
+    while satisfies == requires:
+        tmp_ans = s[left:i + 1]
+        if ans == "" or len(tmp_ans) < len(ans): 
+            ans = tmp_ans
+
+        ch_left = s[left]
+        if ch_left in t_count:
+            win[ch_left] -= 1
+            if win[ch_left] < t_count[ch_left]:
+                satisfies -= 1
+        left += 1
+```
+
+- **时间复杂度**：$O(|m|^2+|t|)$
+
+  同样 `for ch in t`：$O(|t|)$
+
+  `for i, ch in enumerate(s)`：$O(|s|)$，`while satisfies == requires` 也是 $O(|s|)$，因左右端点 `left`、`i` 是单向移动
+
+  切片 `tmp_ans = s[left:i+1]` 是瓶颈，**最坏情况下** 窗口长度是 $O(|s|^2)$
+
+  故总复杂度为 $O(|s|^2 + |t|)$
 
 
 
@@ -1040,7 +1217,7 @@ class Solution:
 
 你必须在 **原地** 旋转图像，这意味着你需要直接修改输入的二维矩阵。**请不要** 使用另一个矩阵来旋转图像。例：
 
-<img src="Leetcode 解法笔记.assets/mat1.jpg" alt="mat1" style="zoom:48%;" />
+<img src="MD  Leetcode 解法笔记.assets/mat1.jpg" alt="mat1" style="zoom:48%;" />
 
 ```
 输入：matrix = [[1,2,3],[4,5,6],[7,8,9]]
@@ -1080,7 +1257,7 @@ class Solution(object):
 
 图示两个链表在节点 `c1` 开始相交：
 
-<img src="Leetcode 解法笔记.assets/160_statement.png" alt="160_statement" style="zoom:48%;" />
+<img src="MD  Leetcode 解法笔记.assets/160_statement.png" alt="160_statement" style="zoom:48%;" />
 
 题目数据 **保证** 整个链式结构中不存在环
 
@@ -1135,7 +1312,7 @@ class Solution:
 
 例：
 
-<img src="Leetcode 解法笔记.assets/rev1ex1.jpg" alt="rev1ex1" style="zoom:52%;" />
+<img src="MD  Leetcode 解法笔记.assets/rev1ex1.jpg" alt="rev1ex1" style="zoom:52%;" />
 
 ```
 输入：head = [1,2,3,4,5]
@@ -1330,7 +1507,7 @@ class Solution:
 
 **Proof**：如下图所示，即证明：快慢指针第一次相遇于 $M$ 后，把一个指针放回 `head`，另一个留在 $M$，二者都每次走一步，它们会在环入口 $E$ 相遇
 
-<img src="Leetcode 解法笔记.assets/ChatGPT Image 2026年7月16日 19_07_34.png" alt="ChatGPT Image 2026年7月16日 19_07_34" style="zoom:26%;" />
+<img src="MD  Leetcode 解法笔记.assets/ChatGPT Image 2026年7月16日 19_07_34.png" alt="ChatGPT Image 2026年7月16日 19_07_34" style="zoom:26%;" />
 
 定义 $d(x,y)$ 为：从节点 $x$ 出发，沿着 `next` 走，**第一次** 到达 $y$ 所需要的 **步数**（至少需要 1 步）
 
@@ -1561,7 +1738,6 @@ class Solution:
 ```
 输入：head = [1,2,3,4,5], k = 2
 输出：[2,1,4,3,5]
-
 输入：head = [1,2,3,4,5], k = 3
 输出：[3,2,1,4,5]
 ```
@@ -1608,9 +1784,9 @@ class Solution:
 
 这道题是不难的，注意把翻转后的链表接回去即可
 
-- 出错：`rev_head, rev_tail = self.reverse(group_prev.next, kth)` 这里传入的链表开头，写成了 `group_prev`，其实是需要再前进一个位置的
+- **在 while 循环中，要先向前走，再去判断是否为 None**
 
-- 在 while 循环中，要先向前  `kth = kth.next`，再去判断 `kth` 是否为 `None`，如
+  如
 
   ```
    0 -> 1 -> 2 -> None   设 k = 3
@@ -1618,7 +1794,9 @@ class Solution:
   kth
   ```
 
-  需要从 0 的下一个开始，至少还有 3 个节点。如果是先判断 `kth` 是否为 `None`，有可能让 `kth` 刚好出于 `None` 的位置
+  先走再判断：则 3 次判断的节点分别为 1、2、None
+
+  先判断再走：0、1、2，会误以为这种情况下，在 0 之后还有三个节点
 
 ---
 
@@ -1769,7 +1947,7 @@ lists[i] 按 升序 排列
 lists[i].length 的总和不超过 10^4
 ```
 
-**法1**：最小堆
+**法 1**：最小堆
 
 ```python
 # Definition for singly-linked list.
@@ -1796,22 +1974,15 @@ class Solution:
         return dummy.next
 ```
 
-时间：$O(N \log k)$（$N$ 为数据总个数，$k$ 为链表个数），具体：
+- **时间复杂度**：$O(N \log k)$，$N$ 为数据总个数，$k$ 为链表个数
 
-- 最多往堆里放 $k$ 个元素（每个链表的头节点）。每次 `heappush`：$O(\log k)$，共 $k$ 次。时间：$O(k \log k)$
+  堆里最多只有 $k$ 个元组，每次 heappush 操作的时间为 $O(\log k)$，要操作
 
-- 对于每一个节点：
+  对于每个节点，需要被 heappop、heappush（若有 `next`）。总节点数为 $N$，从而时间复杂度为 $O(N \log k)$
 
-  - 被 `heappop` 一次
-  - 并且如果有 `next`，会被 `heappush` 一次
-  
-  大约 $O(N)$，每次**堆操作**复杂度 $O(\log k)$，故 $O(N\log k)$
+**出错**：while heap 内部的 cur 忘记向后移
 
-故 $O(k \log k) + O(N \log k) = O(N\log k)$
-
-**出错**：`while heap` 内部的 cur 忘记向后移
-
-**法2**：暴力解法
+**法 2**：暴力解法
 
 可以通过 leetcode
 
@@ -1836,13 +2007,13 @@ class Solution:
         return dummy.next
 ```
 
-时间：$O(N\log N)$（$N$ 为数据总个数）。具体：
+- **时间复杂度**：$O(N\log N)$，$N$ 为数据总个数
 
-- 遍历所有链表，把值收集到数组 `data` 中，会把每个节点访问一次，故 $O(N)$
-- 对数组 `data` 排序， $O(N\log N)$
-- 根据排好序的数组重新建一个新链表，又遍历一遍数组，故 $O(N)$
+  - 遍历所有链表，把值收集到数组 `data` 中，会把每个节点访问一次，故 $O(N)$
+  - 对数组 `data` 排序， $O(N\log N)$
+  - 根据排好序的数组重新建一个新链表，又遍历一遍数组，故 $O(N)$
 
-故 $O(N) + O(N\log N) + O(N) = O(N\log N)$
+  从而为 $O(N \log N)$
 
 ---
 
@@ -1927,8 +2098,6 @@ class Node:
         self.next = None
 ```
 
-`head` 没有prev， `tail` 没有next，都是None，并不是真的没有，只是不会用到这两个
-
 `_add_to_head`、`_remove` 都是比较有必要额外去写的函数
 
 **出错**：当插入新节点，超出容量后，没有删除最久没使用的节点
@@ -1951,7 +2120,11 @@ class Node:
 
   插入 key = 3 的节点时，虽然程序删掉了 tail 前面的节点。但是如果不在 `self.mp` 中也删除，还是能通过字典记住这个节点的，并且字典中是有节点 2 的
 
-  
+- `len(self.mp) > self.capacity` 用小于号的原因
+
+  前面的 `self.mp[key] = node` 新增了一个节点，因此如果已经满了，节点数会是 capacity+1
+
+
 
 ## 二叉树
 
@@ -2041,7 +2214,7 @@ class Solution:
 输出：[4,7,2,9,6,3,1]
 ```
 
-<img src="Leetcode 解法笔记.assets/image-20260714215428738.png" alt="image-20260714215428738" style="zoom:19%;" />
+<img src="MD  Leetcode 解法笔记.assets/image-20260714215428738.png" alt="image-20260714215428738" style="zoom:19%;" />
 
 ```
 下图
@@ -2049,7 +2222,7 @@ class Solution:
 输出：[2,3,1]
 ```
 
-<img src="Leetcode 解法笔记.assets/image-20260714215550616.png" alt="image-20260714215550616" style="zoom:18%;" />
+<img src="MD  Leetcode 解法笔记.assets/image-20260714215550616.png" alt="image-20260714215550616" style="zoom:18%;" />
 
 ```
 输入：root = []
@@ -2149,7 +2322,7 @@ class Solution:
 输出：3
 ```
 
-<img src="Leetcode 解法笔记.assets/image-20260714220743286.png" alt="image-20260714220743286" style="zoom:14%;" />
+<img src="MD  Leetcode 解法笔记.assets/image-20260714220743286.png" alt="image-20260714220743286" style="zoom:14%;" />
 
 ```
 输入：root = [1,2]
@@ -2505,13 +2678,15 @@ class Solution:
         return backtrack(root)
 ```
 
-- `def count_from(node, target):` 的定义
+- **`count_from(node, target)` 的定义**
 
   统计从 `node` 开始（一定要从这个节点开始），向下形成的路径数
 
-- `def backtrack(node):` 的定义
+- **`backtrack(node)` 的定义**
 
   以 `node` 为根节点的树，对其每一个节点均调用 count_from，统计路径和为 `targetSum` 的总数
+  
+  作为递归，可以只把问题拆小一点，对根节点调用一次 count_from，然后左右子树再调用 backtrack（已经考虑左右子树的所有起点，不一定要从 node.left、node.right 作为起点）
 
 ---
 
@@ -2743,7 +2918,7 @@ class Solution:
 
   - 如果只写 `while fresh > 0`
 
-    在情况 `2 0 1` 中，有新鲜橘子，但它永远接触不到腐烂橘子，会**死循环**
+    在情况 `2 0 1` 中，有新鲜橘子，但它永远接触不到腐烂橘子，会 **死循环**
 
 **出错**：① 最后return没有考虑 fresh =0 的情况
 
@@ -2784,7 +2959,7 @@ class Solution:
         indegree = [0] * numCourses
         graph = [[] for _ in range(numCourses) ]
 
-        for x,y in prerequisites: #(x,y) y -> x
+        for x,y in prerequisites:
             indegree[x] += 1
             graph[y].append(x)
         
@@ -2792,7 +2967,7 @@ class Solution:
         for i in range(numCourses):
             if indegree[i] == 0:
                 q.append(i)
-        
+
         count = 0
         while q:
             cur_node = q.popleft()
@@ -3247,7 +3422,7 @@ class Solution:
 
 **进阶：**你可以使用搜索剪枝的技术来优化解决方案，使其在 `board` 更大的情况下可以更快解决问题？
 
-<img src="Leetcode 解法笔记.assets/word2.jpg" alt="word2" style="zoom:65%;" />
+<img src="MD  Leetcode 解法笔记.assets/word2.jpg" alt="word2" style="zoom:65%;" />
 
 ```
 输入：board = [['A','B','C','E'],['S','F','C','S'],['A','D','E','E']], word = "ABCCED"
@@ -3306,6 +3481,8 @@ class Solution:
 
   由于已经考虑了匹配到底，所以在 `for dx,dy in directions:` 的循环中，一旦有 True 的就可以返回
 
+**出错**：当 `for dx,dy in directions` 没有找到单词时，是需要把当前的格子释放出来的，避免影响别的分支
+
 ---
 
 ### 131 分割回文串
@@ -3328,7 +3505,9 @@ s 仅由小写英文字母组成
 class Solution:
     def partition(self, s: str) -> List[List[str]]:
         n = len(s)
-        def is_sym(left,right):
+        ans = []
+
+        def is_sym(left, right):
             while left < right:
                 if s[left] != s[right]:
                     return False
@@ -3336,26 +3515,18 @@ class Solution:
                 right -= 1
             return True
 
-        ans = []
-        path = []
-        def backtrack(i): #本次切片的起始下标为i
-            if i == n:
-                ans.append(path.copy())
+        def backtrack(start, path):
+            if start == n:
+                ans.append(path[:])
                 return 
-            for end in range(i,n):
-                if is_sym(i,end):
-                    path.append(s[i:end+1])
-                    backtrack(end+1)
+            for end in range(start, n):
+                if is_sym(start, end):
+                    path.append(s[start: end + 1]) # start处单个字符也可以够成回文串
+                    backtrack(end + 1, path)
                     path.pop()
-        backtrack(0)
+        backtrack(0, [])
         return ans
 ```
-
-- `if i == n:` 用 $n$ 而非 $n-1$ 的原因
-
-  `i` 表示**本次切片的起始下标**
-
-  当已经把字符串全部切完时 `end = 1`，下一次切片的起始位置应该是 $end +1$，即 $n$，已经越过了最后一个字符
 
 ---
 
@@ -3527,7 +3698,7 @@ $$
 输出：false
 ```
 
-注：题35的应用
+注：题 35 的应用
 
 ```python
 class Solution(object):
@@ -3796,7 +3967,7 @@ class Solution:
             return self.findMedianSortedArrays(nums2, nums1)
         left = 0
         right = n1
-        while left<right:
+        while left < right:
             m1 = (left + right) // 2
             m2 = k - m1
             if nums1[m1] < nums2[m2-1]:
@@ -3819,45 +3990,88 @@ class Solution:
             return (left_max + right_min)/2
 ```
 
-- `nums2[m2 - 1]` 不会越界
+- **算法理论**
 
-  二分法可知 $0 \leq m_1 \leq n_1-1$，由于 $m_2 = k-m_1$，则
+  本质并不是合并数组，而是在两个有序数组中，分别找到一个 **切分位置**，使得左半部分的所有元素数值都 $\leq$ 右半部分的所有元素
+  
+  设 `nums1` 左侧有 $m_1$ 个元素，`nums2` 左侧有 $m_2$ 个元素，则需要满足
   $$
-  k-n_1 \leq m_2-1 \leq k-1
+  m_1+m_2 = k=\left\lfloor\frac{n_1+n_2+1}{2}\right\rfloor
   $$
+  只要确定了 $m_1$，则 $k-m_2$，因此只需要决定在 `nums1` 中的划分位置，是一个二分问题	
+  
+- **记忆要点**
 
-  $$
-  k=\left\lfloor \frac{n_1+n_2+1}{2}\right\rfloor
-  \ge
-  \left\lfloor \frac{n_1+n_1+1}{2}\right\rfloor
-  =\left\lfloor n_1 + \frac12\right\rfloor=n_1
-  $$
+  - 左侧的元素个数为 $k = \left\lfloor\frac{n_1+n_2+1}{2}\right\rfloor$
 
-  $$
-  k=\left\lfloor \frac{n_1+n_2+1}{2}\right\rfloor
-  \le
-  \left\lfloor \frac{n_2+n_2+1}{2}\right\rfloor
-  =
-  \left\lfloor n_2+\frac12 \right\rfloor
-  =
-  n_2
-  $$
+  - 奇数时，左侧比右侧多 1 个元素；偶数时一样多
 
-  故
-  $$
-  0 \leq m_2-1 \leq n_2 -1
-  $$
-  因此 `nums2[m2-1]` 数组的索引是安全的
+  - $n_1 \leq n_2$
+  
+  - `nums1`：`[0, ... , m1-1 | m1, ... , n1]`
+  
+    `nums2`：`[0, ... , m2-1 | m2, ... , n2]`
+  
+  - 二分法中用 `nums1[m1] < nums2[m2-1]` 判不对的情况
+  
+- **性质**：当 $n_1 \leq n_2$ 时，`nums2[m2 - 1]` 不会数组越界
 
-最后输出的时候要注意边界情况
+  > 即证明 $0\leq m_2 - 1 \leq n_2-1$
 
-本题不算难，主要是记住
+  **Proof**：
 
-- `k = (n1 + n2 + 1) // 2`
-- 控制 $n_1 \leq n_2$
-- 二分法中用 $nums_1[m_1] < nums_2[m_2 - 1]$ 判断不对的情况
-
-**出错**：最后可以直接输出 `left_max` 的是 $n_1 + n_2$ 为奇数的情况
+  > 首先如果使用到了 `nums2[m2 - 1]`，说明正在 while 循环（不然可能因为 $n_1 = 0$ 而不进入 while）。此时在循环中严格有
+  > $$
+  > 0 \leq \text{left} < \text{right} \leq n_1
+  > $$
+  >
+  > > 这里因为用到 `nums2[m2 - 1]` 时，还没有退出 while，关系 `left < right` 尚能严格保持
+  >
+  > 则
+  > $$
+  > 0 \leq \text{left} < n_1, \quad0<\text{right} \leq n_1
+  > $$
+  >
+  > $$
+  > 0 < \text{left}+\text{right} < 2n_1
+  > $$
+  >
+  > $$
+  > 0 < \frac{\text{left} + \text{right}}{2} < n_1
+  > $$
+  >
+  > 而 $m_1 = \left\lfloor \frac{\text{left} + \text{right}}{2}\right\rfloor$，故 $0 \leq m_1 \leq n_1-1$。由于 $m_2 = k-m_1$，则
+  > $$
+  > k-n_1 \leq m_2-1 \leq k-1
+  > $$
+  >
+  > $$
+  > k=
+  > \boxed{
+  > \left\lfloor \frac{n_1+n_2+1}{2}\right\rfloor
+  > \geq
+  > \left\lfloor \frac{n_1+n_1+1}{2}\right\rfloor
+  > }
+  > =\left\lfloor n_1 + \frac12\right\rfloor=n_1
+  > $$
+  >
+  > $$
+  > k=
+  > \boxed{
+  > \left\lfloor \frac{n_1+n_2+1}{2}\right\rfloor
+  > \le
+  > \left\lfloor \frac{n_2+n_2+1}{2}\right\rfloor}
+  > =
+  > \left\lfloor n_2+\frac12 \right\rfloor
+  > =
+  > n_2
+  > $$
+  >
+  > 上述框内需要 $n_1 \leq n_2$ 的条件才成立。故
+  > $$
+  > 0 \leq m_2-1 \leq n_2 -1
+  > $$
+  > $\square$
 
 
 
@@ -4097,9 +4311,11 @@ class Solution:
 
 ### 84 柱状图中最大的矩形
 
-给定 n 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 
+给定 $n$ 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 
 
 求在该柱状图中，能够勾勒出来的矩形的最大面积
+
+<img src="MD  Leetcode 解法笔记.assets/image-20260910022423055.png" alt="image-20260910022423055" style="zoom:20%;" />
 
 ```
 输入：heights = [2,1,5,6,2,3]
@@ -4114,7 +4330,7 @@ class Solution:
 0 <= heights[i] <= 10^4
 ```
 
-*算例、说明，见 notability*
+算例与说明，见 *notability*
 
 ```python
 class Solution:
@@ -4131,9 +4347,9 @@ class Solution:
         return ans
 ```
 
-- 栈里存的是**下标**，并且这些下标对应的高度满足单调增（但不用严格）
+- 栈里存的是 **下标**，并且这些下标对应的高度满足单调增（但不用严格）
 
-- 核心计算 `(i-stack[-1]-1)*heights[j]` 说明
+- **核心计算 `(i-stack[-1]-1)*heights[j]` 的原理**
 
   当下标 `j` 被弹出时，说明当前柱子 `i` 的高度小于 `heights[j]`，因此 `i` 是 `j` 右侧第一个比它矮的位置
 
@@ -4143,10 +4359,10 @@ class Solution:
 
   因此，以 `heights[j]` 为高度时，当前可确定的矩形横向范围是 `(stack[-1], i)`，不包含两端，其宽度为
   $$
-  i - stack[-1] - 1
+  i - \text{stack}[-1] - 1
   $$
 
-出错：`ans` 不能预设为 `float('-inf')`。在测试用例 `heights = [0]` 中，会输出 null，但实际应该是 0
+**出错**：`ans` 不能预设为 `float('-inf')`。在测试用例 `heights = [0]` 中，会输出 null，但实际应该是 0
 
 ---
 
@@ -4176,14 +4392,14 @@ s[i] 为 '(' 或 ')'
 class Solution:
     def longestValidParentheses(self, s: str) -> int:
         n = len(s)
-        stack = [-1] # 存的是s中的下标
+        stack = [-1] 
         ans = 0
         for i in range(n):
             if s[i] == '(':
                 stack.append(i) # 登记进去了一个要消除的下标
             else:
                 stack.pop()
-                if stack == []:
+                if not stack:
                     stack.append(i)
                 else:
                     ans = max(ans, i - stack[-1])
@@ -4192,19 +4408,17 @@ class Solution:
 
 - `stack` 的定义
 
-  当前还没有被匹配掉的括号的下标（栈底为边界）
+  当前还没有被匹配掉的括号的下标，执行 `stack.pop()` 后，合法的一段是不包括 `stack[-1]` 的
 
   遇到 `'('` 时，把它的下标压栈，表示“这个左括号还在等待匹配”
 
-  `stack = [-1]`：$-1$ 是最后一个无法参与匹配的位置，相当“边界”
-
-  比如第一个是 `)`，和下标 -1 匹配掉后，这是一个无法匹配的边界，所以要马上把当前的 `i` 加入
+  比如第一个是 `)`，和下标 -1 匹配掉后，这是一个无法匹配的边界，所以要马上把当前的 `i` 加入，这是下次匹配的边界（不包括 $i$，即合法的一段至少从 $i+1$ 开始）
 
 
 
 ## 堆
 
-### 215 数组中的第K个最大元素
+### 215 数组中的第 K 个最大元素
 
 给定整数数组 `nums` 和整数 `k`，请返回数组中第 `k` 个最大的元素
 
@@ -4224,8 +4438,6 @@ class Solution:
 -10^4 <= nums[i] <= 10^4
 ```
 
-暴力解法，时间 $O(n \log n)$
-
 **解法**：最小堆
 
 ```python
@@ -4241,6 +4453,12 @@ class Solution:
 ```
 
 时刻维护 $k$ 个目前遇到的最大元素，堆顶是这 $k$ 个元素中最小的
+
+- **堆实现的时间复杂度**
+
+  设当前堆中的元素个数为 $m$，则 `heapq.heappush(heap, num)` 的时间复杂度为 $O(\log m)$
+
+  Python 中 `heapq` 使用二叉最小堆，新元素先放到堆的末尾，然后可能不断向上调整，二叉堆高度是 $O(\log m)$，即：最坏情况下要向上移 $O(\log m)$ 层
 
 如果要比较堆顶元素，可以写成
 
@@ -4292,9 +4510,9 @@ class Solution:
         return [num for _,num in heap]
 ```
 
-**出错**：`for num, freq in mp.items():` 写成了 `for i in range(n):`，这样会重复入堆
+**出错**：`for num, freq in mp.items()` 写成了 `for i in range(n)`，这样会重复入堆
 
-解法2：（可以通过）
+**解法 2**：（可以通过）
 
 ```python
 class Solution:
@@ -4356,11 +4574,9 @@ class MedianFinder:
             return (-self.small[0] + self.large[0]) / 2
 ```
 
-- 看起来“每次都进 large”
+现在算法中是控制小根堆中元素数量 $\geq$ 大根堆中元素数量，也可以反过来定义。这样做主要是为了在总共是奇数元素个数时，能知道最中间的元素是位于哪一侧
 
-  实际上每次都会竞争一次，每次有新的元素时，先暂时归类为 small，small 中较大的那个会被送到 large，一般（有时候可能不送回，保持 $len(small) \geq len(large)$）大的又会送回一个数到 small
 
-  
 
 ## 贪心算法
 
@@ -4427,17 +4643,20 @@ class Solution:
     def canJump(self, nums: List[int]) -> bool:
         max_pos = 0
         n = len(nums)
-        for i,jump in enumerate(nums): # 最后一个位置也是要验证的，因为如果 n-1 > max_pos的话，也还是False的，说明这个位置到不了
+        for i in range(n):
             if i > max_pos:
                 return False
-            max_pos = max (max_pos, i + jump)
+            max_pos = max (max_pos, i + nums[i])
 
             if max_pos >= n-1:
                 return True
+                
         return True
 ```
 
-在算法迭代过程中始终维护一个能跳到的最远距离
+在算法计算过程中始终维护一个 **能跳到的最远距离**
+
+要先判断 `if i > max_pos`，这里是在检查下标 $i$ 的位置是否是可达的，只有可达，才可以进入下一步的更新 `max_pos`
 
 ---
 
@@ -4464,7 +4683,7 @@ class Solution:
 0 <= nums[i] <= 1000
 ```
 
-题目要求“测试用例保证可以到达 `n - 1`”，主要是为了专注于解决跳多少次的问题，本身即使无法到达，贪心算法也是正确的
+> 题目说 “测试用例保证可以到达 `n - 1`”，主要是为了专注于解决跳多少次的问题，本身即使无法到达，贪心算法也是正确的
 
 ```python
 class Solution:
@@ -4474,18 +4693,18 @@ class Solution:
         max_pos = 0
         jump = 0
         for i in range(n-1): # 最后一个不用看了，如果能跳到这里，就没必要再把jump+1
-            max_pos = max(max_pos,i + nums[i])
+            max_pos = max(max_pos,i + nums[i]) # 每次都在拓展下一次能跳的最远位置
             if i == end: # 要开始更新新一轮的边界了
                 end = max_pos
                 jump += 1
         return jump
 ```
 
-当 `i = n-1` 时，应当开始统计 `jump` 的数量了，所以 return
+当 $i=n-1$ 时，应当开始统计 `jump` 的数量了，所以 return
 
 先看 `max_pos` 再看 `jump` 是合理的，一开始 0 位置时，确实也没有跳
 
-在下标 0 处肯定会被算1次，本次的范围就是 nums[0]
+在下标 0 处肯定会被算1次，本次累计能跳的最远的位置是 $0 + \text{nums}[0]$
 
 ---
 
@@ -4513,15 +4732,16 @@ s 仅由小写英文字母组成
 class Solution:
     def partitionLabels(self, s: str) -> List[int]:
         # 每个字符最后出现的位置，一开始完全统计好
-        ch_right = {ch:i for i,ch in enumerate(s)} # {字符 : 预先统计最后出现的位置}
+        ch_right = {ch:i for i,ch in enumerate(s)}
+        
         ans = []
         seg_len = 0
-        max_right = 0
+        max_pos = 0
         
         for i,ch in enumerate(s):
             seg_len += 1
-            max_right = max(max_right, ch_right[ch])
-            if i == max_right:
+            max_pos = max(max_pos, ch_right[ch])
+            if i == max_pos:
                 ans.append(seg_len)
                 seg_len = 0
         return ans
@@ -4567,7 +4787,7 @@ class Solution:
         return dp[n-1]
 ```
 
-变体，增加限制不允许连续两次都上 2 级台阶（美的 24-11 经验贴）
+**变式**，增加限制不允许连续两次都上 2 级台阶（美的 24-11 经验贴）
 
 ```python
 class Solution:
@@ -4768,29 +4988,27 @@ class Solution:
         return dp[n-1]
 ```
 
-- 复杂度
+- **复杂度**
+  
   - 时间：$O(n)$，只需要进行一次遍历
-  - 空间：$O(n)$，使用了状态数组，可以用滚动数组将数组压缩至 $O(1)$
+  - 空间：$O(n)$，使用了状态数组，可以用 **滚动数组** 将空间压缩至 $O(1)$
+  
+- **状态转移方程**
 
-- 状态转移方程
-
-  设 $f(i)$ 表示偷窃到第 $i(i=0,\dots)$ 个房屋时，所能获得的最大金额，只有两个选择：
+  设 $\text{dp}[i]$ 表示偷窃到只有下标为 0 至下标为 $i$ 的房屋时的最优结果，在考虑下标 $i$ 的房子时：
 
   ① 偷第 $i$ 间房：
   $$
-  f(i) = f(i-2) + \text{nums}[i]f(i) = f(i-2) + \text{nums}[i]
+  \text{dp}[i] = \text{dp}[i-2] + \text{nums}[i]
   $$
   ② 不偷第 $i$ 间房：
   $$
-  f(i) = f(i-1)
+  \text{dp}[i] = \text{dp}[i-1]
   $$
   故
   $$
-  f(i) = \max(f(i-1), f(i-2) + \text{nums}[i])
+  \text{dp}[i] = \max(\text{dp}[i-1], \text{dp}[i-2] + \text{nums}[i])
   $$
-  
-
-如果不单独处理 $n =1,2$，程序的运行是依赖了 Python 的负索引特性（不规范写法）
 
 ---
 
@@ -4838,8 +5056,6 @@ class Solution:
   $$
   边界条件：$f(0) = 0$，凑成数字 0 需要 0 个平方数
 
-**出错**：① `float('inf')` 写成 `float('int')`
-
 
 ---
 
@@ -4864,7 +5080,8 @@ class Solution:
 ```python
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
-        dp = [float('inf')] * (amount + 1)
+        INF = float('inf')
+        dp = [INF] * (amount + 1)
         dp[0] = 0
 
         for i in range(1, amount + 1):
@@ -4872,14 +5089,14 @@ class Solution:
                 if i - coin >= 0:
                     dp[i] = min(dp[i], dp[i - coin] + 1)
 
-        return -1 if dp[amount] > amount else dp[amount]
+        return -1 if dp[amount] == INF else dp[amount]
 ```
 
 - 状态转移方程
 
   设 $f(i)$ 表示凑成金额 $i$ 所需的最少硬币个数
 
-  对于金额 $i$，可以尝试使用**硬币列表**中的**每一枚**硬币 $c$， $c \in \text{coins}$
+  对于金额 $i$，可以尝试使用 **硬币列表** 中的 **每一枚** 硬币 $c(c \in \text{coins})$
 
   若选择面值为 $c$ 的硬币，则问题转化为：凑成金额 $i - c$ 所需的最少硬币个数 + 1，故
   $$
@@ -4887,13 +5104,13 @@ class Solution:
   $$
   边界条件：$f(0)$
 
-- 具体例子（最后为什么 $\infty$ 表示无法被凑出）
+- **例子**
 
-  设 `coins = [2]`、`amount = 3`，初始化 `dp = [0, inf, inf, inf]`
-
-  - $f(1)$：唯一的硬币是 2。因 $2 > 1$，无法使用，$f(1)$ 保持 `inf`
-  - $f(2)$：只有硬币 2 可以用。$f(2) = \min(\inf, f(2-2) + 1) = f(0) + 1 = 1$
-  - $f(3)$：只有硬币 2 可以用。$f(3) = \min(\inf, f(3-2) + 1) = f(1) + 1 = \inf$
+  > 设 `coins = [2]`、`amount = 3`，初始化 `dp = [0, inf, inf, inf]`
+  >
+  > - $f(1)$：唯一的硬币是 2。因 $2 > 1$，无法使用，$f(1)$ 保持 `inf`
+  > - $f(2)$：只有硬币 2 可以用。$f(2) = \min(\inf, f(2-2) + 1) = f(0) + 1 = 1$
+  > - $f(3)$：只有硬币 2 可以用。$f(3) = \min(\inf, f(3-2) + 1) = f(1) + 1 = \inf$
 
 ---
 
@@ -4925,22 +5142,22 @@ class Solution:
             if dp[i]:
                 for word in wordDict:
                     if s[i:i+len(word)] == word:
-                        dp[i+len(word)] = True
+                        dp[i+len(word)] = True # 共有i+len(word)个字符可以被凑出
 
         return dp[n]
 ```
 
-- `dp` 的定义
+- **`dp` 的定义**
 
-  `dp[i]` 表示 $s[0:i)$ 是否是可以被凑出来的。因此 `dp[0]` 空串是肯定可以被凑出来的
+  `dp[i]`：前 $i$ 个字符是否可以被凑出，`dp[0]` 可以被凑出
 
 ---
 
 ### 300 最长递增子序列
 
-给你一个整数数组 `nums` ，找到其中最长严格递增子序列的长度。
+给你一个整数数组 `nums` ，找到其中最长严格递增子序列的长度
 
-**子序列** 是由数组派生而来的序列，删除（或不删除）数组中的元素而不改变其余元素的顺序。例如，`[3,6,2,7]` 是数组 `[0,3,1,6,2,2,7]` 的子序列。
+**子序列** 是由数组派生而来的序列，删除（或不删除）数组中的元素而不改变其余元素的顺序。例如，`[3,6,2,7]` 是数组 `[0,3,1,6,2,2,7]` 的子序列
 
 问：你能将算法的时间复杂度降低到 $O(n \log (n))$ 吗?
 
@@ -4970,21 +5187,20 @@ class Solution:
         return ans
 ```
 
-初始状态需要设置为都是1，否则会出错，每一个元素都至少可以**自身**可以构成一个长度为 $1$ 的递增子序列
+初始状态需要设置为都是 1，否则会出错，每一个元素都至少可以 **自身** 可以构成一个长度为 $1$ 的递增子序列
 
-- 状态转移方程
+- **状态转移方程**
 
-  设 $f(i)$ 表示以 $\text{nums}[i]$ 结尾的最长严格递增子序列的**长度**
+  设 $\text{dp}(i)$ 表示以 $\text{nums}[i]$ 结尾的最长严格递增子序列的**长度**
   $$
-  f(i) = \max_{0 \le j < i, \text{nums}[j] < \text{nums}[i]} \{ f(j) \} + 1
+  \text{dp}(i) = \max_{0 \le j < i, \text{nums}[j] < \text{nums}[i]} \{ \text{dp}(j) \} + 1
   $$
   结果为
   $$
-  \max_{0 \le i < n} \{ f(i) \}
+  \max_{0 \le i < n} \{ \text{dp}(i) \}
   $$
   
-- 时间复杂度：$O(n^2)$
-
+- **时间复杂度**：$O(n^2)$
 
 **解法 2**：时间 $O(n \log(n))$
 
@@ -5005,25 +5221,26 @@ class Solution:
         return len(tail)
 ```
 
-- `tail` 的定义
+- **贪心点**
 
-  `tail[i]` 目前记录的长度为 $i + 1$ 的所有递增子序列中，**结尾元素**最小的
+  对于长度相同的递增子序列，永远保留 “结尾更小” 的那个
 
-- **性质**：`tail` 数组是严格递增的
+- **`tail` 的定义**
 
-  证明：若不然，存在 $i(0\leq i \leq |\text{tail}|- 2)$，使得
-  $$
-  \text{tail}[i] \ge \text{tail}[i+1]
-  $$
-  存在一个长度为 $i+2$ 的严格递增子序列：
-  $$
-  a_1 < a_2 < \cdots < a_{i+1} < a_{i+2}
-  $$
-  使得 $a_{i+2} = \text{tail}[i+1]$，对于这个子序列，取第 1 至第 $i+1$ 项，则
-  $$
-  \text{tail}[i] \leq a_{i+1} < a_{i+2} = \text{tail}[i+1]
-  $$
-  即 $\text{tail}[i]  < \text{tail}[i+1]$，与假设矛盾 $\quad \square$
+  `tail[i]` 目前记录的长度为 $i + 1$ 的所有严格递增子序列中，最小的 **结尾** 元素
+
+- **例子**
+
+  | 当前 num |   当前 tail   | 二分位置 |    操作     |    新 tail    |
+  | :------: | :-----------: | :------: | :---------: | :-----------: |
+  |    10    |     `[]`      |    0     |   append    |    `[10]`     |
+  |    9     |    `[10]`     |    0     |  10 换成 9  |     `[9]`     |
+  |    2     |     `[9]`     |    0     |  9 换成 2   |     `[2]`     |
+  |    5     |     `[2]`     |    1     |   append    |    `[2,5]`    |
+  |    3     |    `[2,5]`    |    1     |  5 换成 3   |    `[2,3]`    |
+  |    7     |    `[2,3]`    |    2     |   append    |   `[2,3,7]`   |
+  |   101    |   `[2,3,7]`   |    3     |   append    | `[2,3,7,101]` |
+  |    18    | `[2,3,7,101]` |    3     | 101 换成 18 | `[2,3,7,18]`  |
 
 ---
 
@@ -5038,10 +5255,10 @@ class Solution:
 ```
 输入: nums = [2,3,-2,4]
 输出: 6
-解释: 子数组 [2,3] 有最大乘积 6。
+解释: 子数组 [2,3] 有最大乘积 6
 输入: nums = [-2,0,-1]
 输出: 0
-解释: 结果不能为 2, 因为 [-2,-1] 不是子数组。
+解释: 结果不能为 2, 因为 [-2,-1] 不是子数组
 ```
 
 ```
@@ -5058,18 +5275,44 @@ class Solution:
         cur_min = nums[0]
         n = len(nums)
 
-        for i in range(1,n): #
-            triple = (nums[i],cur_max * nums[i],cur_min * nums[i])
-            cur_max = max(triple)
-            cur_min = min(triple)
-            ans = max(ans,cur_max)
+        for i in range(1,n):
+            triple = (nums[i], nums[i] * cur_max, nums[i] * cur_min)
+            cur_max = max(triple) # f_{i-1}^{\max}
+            cur_min = min(triple) # f_{i-1}^{\min}
+            ans = max(ans, cur_max)
         
         return ans
 ```
 
-考虑最小值是因为两个负数相乘可能会变成一个更大的正数
+- **时间复杂度**：$O(n)$
 
-双循环枚举，时间为 $O(n^2)$
+- **算法原理**
+
+  设 $f_{i}^{\max}$ 表示以 $\text{nums}[i]$ 结尾的 “连续子数组” 中的最大答案，同理 $f_{i}^{\min}$ 为最小答案，记 $a_i = \text{nums[i]}$
+
+  - 若 $a_i>0$，要计算 $f_i^{\max}$，常理上明显会有两种选择：
+
+    ① 直接用 $\text{nums}[i]$
+
+    ② 乘前一位置的最好结果 $f_{i-1}^{\max}$，由于 $a_i>0$，**不会改变序的关系**，$a_i f_{i-1}^{\max}$ 一定是以 $\text{nums}[i-1]$、$\text{nums}[i]$ 结尾的最好结果，故
+    $$
+    f_i^{\max} = \max \{ a_i,a_i f_{i-1}^{\max} \} \quad (a_i>0)
+    $$
+
+  - 若 $a_i<0$，同上也是有两种情况，但 $a_i<0$ 时，会改变序的关系，$a_i f_{i-1}^{\min}$ 才是以 $\text{nums}[i-1]$、$\text{nums}[i]$ 结尾的最好结果（这里明确了是一定以后两位结尾的最好结果，并不一定由于单独最后一个），此时
+    $$
+    f_i^{\max} = \max \{ a_i,a_i f_{i-1}^{\min} \} \quad (a_i<0)
+    $$
+    因此我们可以提炼出下述公式 (1)
+
+  - $a_i = 0$ 时，我们已经知道 $f_i^{\max} = 0$，公式 (1) 可以正确给出该结果
+
+  因此在状态转移方程中是需要维护 $f_i^{\max}$、$f_i^{\min}$ 的
+
+- **状态转移方程**
+  $$
+  f_i^{\max} = \max \{ a_i,a_i f_{i-1}^{\max}, a_i f_{i-1}^{\min}\} \tag{1}
+  $$
 
 ---
 
@@ -5344,15 +5587,17 @@ class Solution:
         return ans
 ```
 
-要分两种中心，分别对应奇数、偶数的回文串
+- **算法理论**
 
-`s2 = expand(i,i+1)` 无需要检查 $i$ 与 $i+1$ 位置是否相同，此时 expand 中返回的 `s[left+1:right]` 是空的
+  遍历起点时，要分两种中心，分别对应奇数、偶数回文串
 
-当 $i = n-1$ 时，expand 传入 $(n-1,n)$，此时 `right` 不满足 expand 中的条件，返回 `s[n:n]`，这仍然是空的
+  当 `i` 在最后一个时，此时 `i = n-1`，expand 中 `left = 0`、`right = n-1`，不满足 while 循环中条件，返回空字符串
 
-因此不用增加额外的判断
+  因此不用增加额外的判断
 
-而且如果 `for i in range(n):` 改成 $n-1$，会导致例子 `"a"` 不会进入循环，程序输出 `""`，而非 `"a"`
+- **`for i in range(n)` 循环中用 `n` 不用 `n-1` 的原因**
+
+  会导致例子 `"a"` 不会进入循环，程序输出 `""`，而非 `"a"`
 
 ---
 
@@ -5439,6 +5684,21 @@ class Solution:
                     dp[i][j] = min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1]) + 1
         return dp[m][n]
 ```
+
+- `dp[i][j]` 的定义
+
+  `word1` 取前 $i$ 个字符，`word2` 取前 $j$ 个字符，这两个词能把前者转换为后者的最少次数，任意两个单词一定是可达的，至少可以先全部删掉再全部增加为 `word2`
+
+- **状态转移**
+
+  都是相对于 `word1` 而言的
+
+  `dp[i-1][j]`：删除（即删除 `word1` 最后一个词）
+
+  `dp[i][j-1]`：增加（在 `word1` 最后增加一个 `word2` 最后的字母）
+
+  `dp[i-1][j-1]`：替换
+
 
 
 ## 技巧
@@ -5605,24 +5865,28 @@ class Solution:
                 right -= 1
 ```
 
-`left` 下一个该放0的位置（还没有放）
+- **数组划分的结构**
+  $$
+  \underbrace{[0,\ldots, \text{left-1}]}_{0区}\,
+  \underbrace{[\text{left},\ldots, i-1]}_{1区}\,
+  \underbrace{[i,\ldots, \text{right}]}_{待处理}\,
+  \underbrace{[\text{right+1},\ldots, n-1]}_{2区}
+  $$
+  `left`：下一个该放 0 的位置（还没有放）
 
-`right` 下一个该放2的位置（也还没放）
+  `right`：下一个该放 2 的位置（也还没放）
 
-`i` 当前扫描指针，是正在处理的未知区域
+  `i`：当前扫描指针，是正在处理的未知区域
 
-将数组划分为四个部分
+- **else 分支不能 i+=1**
 
-```
-[0 ... left-1]   → 0 区
-[left ... i-1]   → 1 区
-[i ... right]    → 未处理
-[right+1 ... n-1] → 2 区
-```
+  `left` 处传来的 `nums[left]` 可以确定是 1，能与 `i` 前面 $[\text{left}, i-1]$ 连接上
 
-因此 `else:` 不用 `i += 1`，因为传过来的 `right` 位置还没有处理好，但是 `left` 是落在左边已处理好的区域 $[left, i-1]$ 中
+  但是 `right` 是处于待处理区域，并不清楚 `nums[right]` 传来的内容
 
-**出错**：`while i <= right:` 没有加等号
+- **`while i <= right` 需要加等号**
+
+  当 $i = \text{right}$ 时，待处理的区域并 **不是空集**，所以仍然需要处理
 
 ---
 

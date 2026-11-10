@@ -17,7 +17,7 @@ nav:
   - Python:
       - Python: python/index.md
       - Python 笔记本: python/MD  Python 笔记本.md
-      - Leetcode 解法笔记: python/Leetcode 解法笔记.md
+      - Leetcode 解法笔记: python/MD  Leetcode 解法笔记.md
       - Leetcode 补充习题: python/MD  Leetcode 补充习题.md
       - 数据结构与算法: python/MD  数据结构与算法.md
       - Python 库: python/MD  Python 库.md

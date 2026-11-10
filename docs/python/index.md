@@ -15,7 +15,7 @@ hide:
   <span class="note-card__link">查看笔记 →</span>
 </a>
 
-<a class="note-card" href="Leetcode%20解法笔记/">
+<a class="note-card" href="MD%20%20Leetcode%20解法笔记/">
   <span class="note-card__category">编程 · Python</span>
   <h2>Leetcode 解法笔记</h2>
   <p></p>
