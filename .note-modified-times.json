@@ -18,12 +18,12 @@
       "modified_at": "2026-11-08T15:10:22+08:00"
     },
     "docs/math-analysis/一元微积分.md": {
-      "content_sha256": "1c91742e8655fec9905e89db37cf92cf85ba64ee829455966a6170107edf2cdc",
-      "modified_at": "2026-11-06T01:07:07+08:00"
+      "content_sha256": "9cfd6a3c972d3559cde738ebe415474c9673d534d7ef40633932908cc5117af6",
+      "modified_at": "2026-11-14T01:59:43+08:00"
     },
     "docs/math-analysis/习题清单 - 分析学.md": {
-      "content_sha256": "90ef09f914e241744994adbe802f9acd7e5081302cd5934ea41d424f6288b5c7",
-      "modified_at": "2026-11-06T01:10:20+08:00"
+      "content_sha256": "1d12e81df256275e0e58ef548f5fa0ff0470685bcd0ccfc5efa51aa3b59ded19",
+      "modified_at": "2026-11-14T02:03:05+08:00"
     },
     "docs/math-analysis/多元微积分.md": {
       "content_sha256": "f2cb613e16a228178e70f29ebc603f96e066b81aecafe92151d5098b3d9a9d6f",
@@ -136,6 +136,10 @@
     "docs/recommendation/推荐算法note.md": {
       "content_sha256": "b078f662871894fd97430126c0ef3a845ab82996445240c87150ca370e6f3582",
       "modified_at": "2026-11-10T11:33:36+08:00"
+    },
+    "docs/math-analysis/一元微积分习题册.md": {
+      "content_sha256": "f97a5027fb781ab7fbba0a7f21cc9e094e3fa2bb72337b38e3a28b5ea55e9bdd",
+      "modified_at": "2026-10-31T01:49:15+08:00"
     }
   }
 }
