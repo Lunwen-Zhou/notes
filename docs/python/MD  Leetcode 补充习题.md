@@ -1,5 +1,7 @@
 # Leetcode 补充习题
 
+**说明**：本笔记本收录了 leetcode 中非 hot 100 的补充习题
+
 ## 哈希表
 
 ### 387 字符串中的第一个唯一字符
@@ -101,6 +103,123 @@ class Solution:
             num += 1
         return res[-1]
 ```
+
+
+
+## 滑动窗口
+
+### 209 长度最小的子数组
+
+给定一个含有 `n` 个正整数的数组和一个正整数 `target` 
+
+找出该数组中满足其总和大于等于 `target` 的长度最小的 **子数组** `[numsl, numsl+1, ..., numsr-1, numsr]` ，并返回其长度**。**如果不存在符合条件的子数组，返回 `0`
+
+**进阶**：如果你已经实现 $O(n)$ 时间复杂度的解法, 请尝试设计一个 $O(n \log n)$ 时间复杂度的解法
+
+```
+输入：target = 7, nums = [2,3,1,2,4,3]
+输出：2
+输入：target = 4, nums = [1,4,4]
+输出：1
+输入：target = 11, nums = [1,1,1,1,1,1,1,1]
+输出：0
+```
+
+```
+1 <= target <= 10^9
+1 <= nums.length <= 10^5
+1 <= nums[i] <= 10^4
+```
+
+**解法 1**（滑动窗口）：时间 $O(n)$，空间 $O(1)$
+
+```python
+class Solution:
+    def minSubArrayLen(self, target: int, nums: list[int]) -> int:
+        n = len(nums)
+        INF = float('inf')
+        
+        left = 0
+        cur = 0
+        min_length = INF
+        for right in range(n):
+            cur += nums[right]
+            while cur - nums[left] >= target:
+                cur = cur - nums[left]
+                left += 1
+            if cur >= target and right - left + 1 < min_length:
+                min_length = right - left + 1
+        return min_length if min_length != INF else 0
+```
+
+- **循环 `while cur - nums[left] >= target:` 不用加条件 `left < right`**
+
+  即不用写成：
+
+  ```python
+  while left < right and cur - nums[left] >= target:
+  ```
+
+  当 `left == right` 时，`cur` 就是 `left`、`right` 所在的值，减掉自身后 `cur - nums[left]` =0，而右侧的 `target >= 1`，从而一定不成立
+
+- **复杂度**
+
+  - 时间 $O(n)$
+
+  - 空间 $O(1)$
+
+    只用到了 `left`、`right`、`min_length`、`right`、`n` 等变量
+
+**解法 2**（前缀和 + 二分查找）：时间 $O(n\log n)$，空间 $O(n)$
+
+```python
+class Solution:
+    def minSubArrayLen(self, target: int, nums: list[int]) -> int:
+        def lower_bound(a, goal):
+            left = a
+            right = n
+            while left < right:
+                mid = (left + right) // 2
+                if prefix_sum[mid] < goal:
+                    left = mid + 1
+                else:
+                    right = mid
+            return left
+
+        INF = float('inf')
+        n = len(nums)
+        cur = 0
+        prefix_sum = []
+        min_length = INF
+        for i in range(n):
+            cur += nums[i]
+            prefix_sum.append(cur)
+        
+        prefix = 0
+        for left in range(n):
+            right = lower_bound(left, target + prefix)
+            if right == n:
+                break
+            min_length = min(min_length, right - left + 1)
+            prefix += nums[left]
+
+        return min_length if min_length != INF else 0
+```
+
+- **算法原理**
+
+  定义 $\text{prefix\_sum}[j] = \sum_{i=1}^j \text{nums}[i]$，该数组是严格单调递增的。再遍历左端点，每次都使用二分查找。如果二分查找返回 `n`，说明到从 `left` 到数组末尾的元素之和都小于 `target`，找不到合法的右端点，所以可以提前 break
+
+**复杂度**
+
+- 时间 $O(n\log n)$
+- 空间 $O(n)$。存储了存储前缀和数组
+
+下面我们考虑 `nums` 中有正有负的情况
+
+**解法 3**：（有待补充）
+
+原本的滑动窗口不再有效。正数情况，右端点右移使窗口和变大；左端点右移，则变小。负数情形没有这个性质
 
 
 
@@ -220,7 +339,7 @@ $$
 matrix[i][j] 为 '0' 或 '1'
 ```
 
-*leecode 84 柱状图中最大的矩形，直接应用*
+*leecode 84 柱状图中最大的矩形* 的直接应用
 
 ```python
 class Solution:
@@ -384,30 +503,30 @@ $$
 $$
 **Proof**：
 
-① **性质**：任意合法方案 $c$ 满足 $c_i \geq \text{left}[i]$
-
-用数学归纳法证明：
-
-- $i=0$ 时。$c_0 \ge 1 = \text{left}[0]$
-
-- 设对 $i-1$ 有 $c_{i-1} \geq \text{left}[i-1]$。现在考虑 $c_i$ 与 $\text{left}[i]$ 的关系：
-
-  - 若 $\text{ratings}[i] > \text{ratings}[i-1]$：
-    $$
-    c_i \ge c_{i-1}+1 \ge \text{left}[i-1]+1 =\text{left}[i]
-    $$
-
-  - 若 $\text{ratings}[i] \leq \text{ratings}[i-1]$：
-
-    此时 $\text{left}[i] = 1$，显然 $c_i \geq \text{left}[i]$
-
-  故 $c_i\geq \text{left}[i]$
-
-- $c_i \geq \text{left}[i],i=0,1,\ldots,n-1$
-
-② 同理有 $c_i \geq \text{right},i=0,1,\ldots,n-1$
-
-③ 因此 $c_i \ge \max(\text{left}[i],\text{right}[i]) = d_i$ $\quad \square$
+> ① 先证明一个 **性质**：任意合法方案 $c$ 满足 $c_i \geq \text{left}[i]$
+>
+> 用数学归纳法证明：
+>
+> - $i=0$ 时。$c_0 \ge 1 = \text{left}[0]$
+>
+> - 设对 $i-1$ 有 $c_{i-1} \geq \text{left}[i-1]$。现在考虑 $c_i$ 与 $\text{left}[i]$ 的关系：
+>
+>   - 若 $\text{ratings}[i] > \text{ratings}[i-1]$：
+>     $$
+>     c_i \ge c_{i-1}+1 \ge \text{left}[i-1]+1 =\text{left}[i]
+>     $$
+>
+>   - 若 $\text{ratings}[i] \leq \text{ratings}[i-1]$：
+>
+>     此时 $\text{left}[i] = 1$，显然 $c_i \geq \text{left}[i]$
+>
+>   故 $c_i\geq \text{left}[i]$
+>
+> - $c_i \geq \text{left}[i],i=0,1,\ldots,n-1$
+>
+> ② 同理有 $c_i \geq \text{right},i=0,1,\ldots,n-1$
+>
+> ③ 因此 $c_i \ge \max(\text{left}[i],\text{right}[i]) = d_i$ $\quad \square$
 
 
 
