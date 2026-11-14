@@ -2818,7 +2818,7 @@
 
 
 <h1 id="_1">一元微积分</h1>
-<p class="document-modified-time">更新时间：<time datetime="2026-11-13T17:59+00:00">2026年11月14日 01:59</time></p>
+<p class="document-modified-time">更新时间：<time datetime="2026-11-14T16:46+00:00">2026年11月15日 00:46</time></p>
 
 <h2 id="_2">数学基础</h2>
 <h3 id="_3">调和平均数</h3>
@@ -3228,7 +3228,7 @@ G'(x)=\frac{F'(x)e^{\lambda x}-\lambda e^{\lambda x}\cdot F(x)}{(e^{\lambda x})^
 <div class="arithmatex">\[
 f'(c) = \frac{f(b) - f(a)}{b-a}
 \]</div>
-<p><strong>例题</strong></p>
+<p><strong>习题</strong></p>
 <p>设函数 <span class="arithmatex">\(f\)</span> 在 <span class="arithmatex">\([0,1]\)</span> 上可导，且 <span class="arithmatex">\(f(0)=0\)</span>，<span class="arithmatex">\(f(1) = 1\)</span>。证明：对于任意正数 <span class="arithmatex">\(\lambda,m\)</span>，存在两个不同的点 <span class="arithmatex">\(\xi,\eta\in(0,1)\)</span>，使得</p>
 <div class="arithmatex">\[
 \frac{\lambda}{f'(\xi)}
@@ -3301,6 +3301,34 @@ f'(\eta)=\frac{f(1)-f(c)}{1-c}
 =1
 \]</div>
 <p>由分析法可知，原命题成立 <span class="arithmatex">\(\quad \square\)</span></p>
+</blockquote>
+<p>假设函数 <span class="arithmatex">\(f(x)\)</span> 在 <span class="arithmatex">\([0,1]\)</span> 上连续，在 <span class="arithmatex">\((0,1)\)</span> 内二阶可导，过点 <span class="arithmatex">\(A(0,f(0))\)</span> 与点 <span class="arithmatex">\(B(1,f(1))\)</span> 的直线与曲线 <span class="arithmatex">\(y=f(x)\)</span> 相交于点 <span class="arithmatex">\(C(c,f(c))\)</span>，其中 <span class="arithmatex">\(0&lt;c&lt;1\)</span></p>
+<p>证明：在 <span class="arithmatex">\((0,1)\)</span> 内至少存在一点 <span class="arithmatex">\(\xi\)</span>，使得 <span class="arithmatex">\(f''(\xi)=0\)</span></p>
+<blockquote>
+<p><em>全国大学生数学竞赛，第1届 初赛，数学类</em></p>
+</blockquote>
+<p><strong>Proof</strong>：</p>
+<blockquote>
+<p>由题意可以作出如下示意图：</p>
+<p><img src="../一元微积分.assets/罗尔定理示意图-4674667.svg" alt="罗尔定理示意图" style="zoom:65%;" /></p>
+<p>故由斜率关系 <span class="arithmatex">\(k_{AB} = k_{AC} = k_{CB}\)</span>：</p>
+<div class="arithmatex">\[
+\frac{f(1)-f(0)}{1-0}=\frac{f(1)-f(c)}{1-c}=\frac{f(c)-f(0)}{c-0}
+\]</div>
+<p>由 <span class="arithmatex">\(f\in C[0,c]\cap D(0,c)\)</span>，由 <em>Lagrange 微分中值定理</em>，<span class="arithmatex">\(\exists\, u\in(0,c)\)</span>，使得</p>
+<div class="arithmatex">\[
+f'(u)=\frac{f(c)-f(0)}{c-0}
+\]</div>
+<p>由 <span class="arithmatex">\(f\in C[c,1] \cap D(c,1)\)</span>，同理 <span class="arithmatex">\(\exists\, v\in(c,1)\)</span>，使得</p>
+<div class="arithmatex">\[
+f'(v)=\frac{f(1)-f(c)}{1-c}
+\]</div>
+<p>由 <span class="arithmatex">\(f(x)\)</span> 在 <span class="arithmatex">\((0,1)\)</span> 内二阶可导， <span class="arithmatex">\([u,v] \subseteq (0,1)\)</span>，故 <span class="arithmatex">\(f'\in C[u,v] \cap D(u,v)\)</span>，又 <span class="arithmatex">\(f'(u) = f'(v)\)</span>，由 <em>Rolle 中值定理</em>，<span class="arithmatex">\(\exists \,\xi\in(u,v)\subseteq(0,1)\)</span>，使得 <span class="arithmatex">\(f''(\xi)=0\)</span> <span class="arithmatex">\(\quad \square\)</span></p>
+</blockquote>
+<p><strong>记号 <span class="arithmatex">\(f \in C[a,b]\)</span> 中一般不写 <span class="arithmatex">\(f(x) \in C[a,b]\)</span></strong></p>
+<blockquote>
+<p><span class="arithmatex">\(f(x)\)</span> 通常表示函数在 <span class="arithmatex">\(x\)</span> 处的取值，而非函数本身</p>
+<p>符号 <span class="arithmatex">\(f \in C[a,b]\)</span> 表示 <strong>函数</strong> <span class="arithmatex">\(f\)</span> 属于区间 <span class="arithmatex">\([a,b]\)</span> 上的连续函数空间，强调的是函数本身</p>
 </blockquote>
 <hr />
 <h3 id="_22">泰勒展开</h3>
@@ -3602,7 +3630,7 @@ e^{2y}+\int_0^{x+y}\cos(t^2)\,\mathrm{d}t=1
 <div class="arithmatex">\[
 4e^{2y}\cdot(y')^2+2e^{2y}y''-\sin\left(\left(x+y\right)^2\right)\cdot2(x+y)\cdot(1+y')^2+\cos\left(\left(x+y\right)^2\right)\cdot y''=0
 \]</div>
-<p>代入 <span class="arithmatex">\(y(0)=0\)</span>，<span class="arithmatex">\(y'(0)=-\frac13\)</span>，得 <span class="arithmatex">\(y''(0)=-\frac4{27}\)</span></p>
+<p>代入 <span class="arithmatex">\(y(0)=0\)</span>，<span class="arithmatex">\(y'(0)=-\frac13\)</span>，得 <span class="arithmatex">\(y''(0)=\boxed{-\frac4{27}}\)</span> <span class="arithmatex">\(\quad \square\)</span></p>
 </blockquote>
 <hr />
 <h3 id="_28">转定积分</h3>
